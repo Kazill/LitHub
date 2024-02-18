@@ -1,25 +1,29 @@
 import React from 'react';
-function Projects() {
-    return (
+        import { Link } from "react-router-dom";
+        function Projects() {
+        return (
 <div>
     <center><h1>Project list</h1></center>
     <ProjectList />
     <AddProject />
 </div>
-    );
-}
-function AddProject() {
-    return (
+        );
+        }
+        function AddProject() {
+        return (
 <button>Add new project</button>
-    );
-}
-function ProjectList(){
-    return(
+        );
+        }
+        function ProjectList(){
+        return(
 <div>
+<Link to="/project">
     <h2>Project name</h2>
-    <p>Languages: ...</p>
-    <p>Last updated: ...</p>
+</Link>
+<p>Source: ...</p>
+<p>Languages: ...</p>
+<p>Last updated: ...</p>
 </div>
-    );
-}
-export default Projects;
+        );
+        }
+        export default Projects;
