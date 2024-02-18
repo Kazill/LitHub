@@ -11,7 +11,9 @@ import React from 'react';
         }
         function AddProject() {
         return (
+<Link to="/addProject">
 <button>Add new project</button>
+</Link>
         );
         }
         function ProjectList(){
