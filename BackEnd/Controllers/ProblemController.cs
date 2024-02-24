@@ -28,9 +28,9 @@ namespace BackEnd.Controllers
 
         // GET api/<UserController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public Problem Get(int id)
         {
-            return _context.Problem.Select(x => x.Id == id).ToString();
+            return _context.Problem.ToList().Find(x => x.Id == id);
         }
 
         // POST api/<UserController>

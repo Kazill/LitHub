@@ -1,17 +1,57 @@
-import React from 'react';
-        function Project() {
-        return (
-<div>
-    <center><h1>Project name</h1></center>
-    <p>(summary)Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    <p><b>Source:</b> ...</p>
-    <p><b>Languages:</b> ...</p>
-    <p><b>Last updated:</b> ...</p>
-    <div>
-        <h2>Files:</h2>
-        <a href="https://github.com/Kazill/LitHub">Base file</a>
-    </div>
-</div>
-        );
+import { useLocation } from 'react-router-dom';
+import React, {useEffect, useState} from 'react';
+import axios from "axios";
+
+
+const useQuery= () => {
+    return new URLSearchParams(useLocation().search);
+}
+
+interface problemData{
+    title:string,
+    lastUpdate:string,
+    languages:string,
+    source:string,
+    descrition:string,
+    link:string
+}
+
+
+
+
+function Project(this: any) {
+
+    const id = useQuery().get('id');
+
+    const [problem, setProblem] = useState<problemData>();
+    useEffect(() => {
+        async function fetchData() {
+            try {
+                const response = await axios.get(`https://localhost:7054/api/Problem/${id}`,{});
+                console.log(response.data);
+                setProblem(response.data);
+            } catch (error) {
+                // Handle the error or log it
+                console.error(error);
+            }
         }
-        export default Project;
+
+        fetchData();
+    }, [ id ]);
+    return (
+        <><div>
+                <div>
+                    <center><h1>{problem?.title}</h1></center>
+                    <p>{problem?.descrition}</p>
+                    <p><b>Įkėlėjas: </b>{problem?.source}</p>
+                    <p><b>Kalbos: </b>{problem?.languages}</p>
+                    <p><b>Paskutinis atnaujinimas: </b>{problem?.lastUpdate}</p>
+                    <div>
+                        <h2>Failai:</h2>
+                        <a href={problem?.link}>{problem?.link}</a>
+                    </div>
+                </div>
+        </div></>
+    );
+}
+export default Project;
