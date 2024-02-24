@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import { TextField } from "@mui/material";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import dayjs from "dayjs";
+import { Link } from "react-router-dom";
 
 function getDate() {
         const today = new Date();
@@ -12,11 +12,12 @@ function Project() {
     console.log('start');
     const [formData, setFormData] = useState({
         id: 0,
-        title: "string",
-        description: "string",
+        title: "",
+        description: "",
         lastUpdate: getDate(),
-        languages: "string",
-        link: "string"
+        languages: "",
+        link: "",
+        source: "user"
     });
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -49,7 +50,8 @@ function Project() {
             <p>Aprašymas: {' '} <TextField multiline = {true} onChange={handleInputChange} name="description"/></p>
             <p>Kalbos: {' '} <TextField onChange={handleInputChange} name="languages"/></p>
             <p>GitHub nuoroda: {' '} <TextField onChange={handleInputChange} name="link"/></p>
-            <button type="submit" onClick={handleSubmit}>Išsaugoti</button>
+            <Link to="/Project"><button type="submit" onClick={handleSubmit}>Išsaugoti</button></Link>
+            
         </div>
     );
 }
