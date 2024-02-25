@@ -1,41 +1,42 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
-import axios, {AxiosResponse} from "axios";
+import axios from "axios";
 
-interface problemData{
-        id:number,
-        title:string,
-        lastUpdate:string,
-        languages:string,
-        source:string
-    }
+interface ProblemData {
+    id: number,
+    title: string,
+    lastUpdate: string,
+    languages: string,
+    source: string
+}
 
 function Projects() {
-        return (
-                <div>
-                        <center><h1>Projektų sarašas</h1></center>
-                        <ProjectList />
-                        <AddProject />
-                </div>
-        );
+    return (
+        <div>
+            <center><h1>Projektų sarašas</h1></center>
+            <ProjectList />
+            <AddProject />
+        </div>
+    );
 }
 
 function AddProject() {
-return (
+    return (
         <Link to="/addProject">
-                <button>Add new project</button>
+            <button>Pridėti Projekta</button>
         </Link>
-        );
+    );
 }
-function ProjectList(){
 
-        const [problem, setProblem] = useState<problemData[]>([]);
+function ProjectList() {
+    const [problems, setProblems] = useState<ProblemData[]>([]);
+
     useEffect(() => {
         async function fetchData() {
             try {
-                const response = await axios.get('https://localhost:7054/api/Problem',{});
+                const response = await axios.get('https://localhost:7054/api/Problem');
                 console.log(response.data);
-                setProblem(response.data);
+                setProblems(response.data);
             } catch (error) {
                 // Handle the error or log it
                 console.error(error);
@@ -45,19 +46,34 @@ function ProjectList(){
         fetchData();
     }, []);
 
-        return(
-                <><div>
-                        {problem.map(item => (
-                                <div>
-                                        <Link to={`/Project?id=${item.id}`}>
-                                                <h2>{item.title}</h2>
-                                        </Link>
-                                        <p>Įkėlėjas: {item.source}</p>
-                                        <p>Kalbos: {item.languages}</p>
-                                        <p>Paskutinis atnaujimimas: {item.lastUpdate}</p>
-                                </div>
-                        ))}
-                </div></>
-        );
+    const handleDelete = async (id: number) => {
+        try {
+            await axios.delete(`https://localhost:7054/api/Problem/${id}`);
+            setProblems(problems.filter(problem => problem.id !== id));
+        } catch (error) {
+            // Handle the error or log it
+            console.error(error);
+        }
+    };
+
+    return (
+        <div>
+            {problems.map(problem => (
+                <div key={problem.id}>
+                    <Link to={`/Project?id=${problem.id}`}>
+                        <h2>{problem.title}</h2>
+                    </Link>
+                    <p>Įkėlėjas: {problem.source}</p>
+                    <p>Kalbos: {problem.languages}</p>
+                    <p>Paskutinis atnaujimimas: {problem.lastUpdate}</p>
+                    <button onClick={() => handleDelete(problem.id)}>Šalinti</button>
+                    <Link to={`/editProject?id=${problem.id}`}>
+                        <button>Redaguoti</button>
+                    </Link>
+                </div>
+            ))}
+        </div>
+    );
 }
+
 export default Projects;

@@ -1,20 +1,24 @@
 import React from 'react';
-        import { Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
-        import Project from './project';
-        import Projects from './projects';
-        import Example from './pages/comWithBackEx';
-import Add from './addProject';
+import Projects from './projects';
+import Project from './project';
+import MainPage from './MainPage';
+import EditProject from './editProject';
+import AddProject from './addProject';
+import Example from './pages/comWithBackEx';
 
-        const Main = () => {
-        return (
-<Routes>
-    <Route path='/' element={<Projects/>}></Route>
-<Route path='/project' element={<Project/>}></Route>
-<Route path='/projects' element={<Projects/>}></Route>
-<Route path='/addProject' element={<Add/>}></Route>
-        <Route path='/example' element={<Example/>}></Route>
+const Main = () => {
+    return (
+        <Routes>
+            <Route path='/' element={<MainPage />} />
+            <Route path='/projects' element={<Projects/>}></Route>
+            <Route path='/project' element={<Project/>}></Route>
+            <Route path='/addProject' element={<AddProject/>}></Route>
+            <Route path='/editProject' element={<EditProject/>}></Route>
+            <Route path='/example' element={<Example/>}></Route>
         </Routes>
-        );
-        }
-        export default Main;
+    );
+}
+
+export default Main;

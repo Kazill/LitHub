@@ -51,16 +51,58 @@ namespace BackEnd.Controllers
             }
         }
 
-        // PUT api/<UserController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
+		// PUT api/<UserController>/5
+		[HttpPut("{id}")]
+		public IActionResult Put(int id, [FromBody] Problem updatedProblem)
+		{
+			try
+			{
+				var existingProblem = _context.Problem.FirstOrDefault(p => p.Id == id);
 
-        // DELETE api/<UserController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+				if (existingProblem == null)
+				{
+					return NotFound(); // Return 404 if the problem is not found
+				}
+
+				// Update the properties of existingProblem with the values from the updatedProblem
+				existingProblem.Title = updatedProblem.Title;
+				existingProblem.Description = updatedProblem.Description;
+				existingProblem.Languages = updatedProblem.Languages;
+				existingProblem.Link = updatedProblem.Link;
+				existingProblem.lastUpdate = updatedProblem.lastUpdate;
+
+				_context.SaveChanges();
+
+				return Ok(existingProblem); // Return 200 OK if the update is successful, optionally you can return the updated problem
+			}
+			catch (Exception ex)
+			{
+				return StatusCode(500, $"Internal server error: {ex.Message}"); // Return 500 Internal Server Error if an exception occurs
+			}
+		}
+
+
+		// DELETE api/<ProblemController>/5
+		[HttpDelete("{id}")]
+        public IActionResult Delete(int id)
         {
+            try
+            {
+                var problem = _context.Problem.FirstOrDefault(p => p.Id == id);
+                if (problem == null)
+                {
+                    return NotFound(); // Return 404 if problem not found
+                }
+
+                _context.Problem.Remove(problem);
+                _context.SaveChanges();
+
+                return NoContent(); // Return 204 No Content if deletion is successful
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}"); // Return 500 Internal Server Error if an exception occurs
+            }
         }
     }
 }

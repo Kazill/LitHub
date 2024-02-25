@@ -1,0 +1,11 @@
+.main-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Set height to viewport height for full-screen appearance */
+    background-color: #f0f0f0; /* Add a background color */
+}
+
+.content {
+    text-align: center;
+}
