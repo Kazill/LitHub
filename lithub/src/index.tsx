@@ -4,12 +4,15 @@ import './index.css';
 import App from './App';
 import Projects from './projects';
 import reportWebVitals from './reportWebVitals';
+import Nav from "./components/Nav";
 
 import Main from './routes';
 import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.render((
+
 <BrowserRouter>
+    <Nav/>
   <Main /> {/* The various pages will be displayed by the `Main` component. */}
 </BrowserRouter>
         ), document.getElementById('root')
