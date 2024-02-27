@@ -13,7 +13,7 @@ interface ProblemData {
 function Projects() {
     return (
         <div>
-            <center><h1>Projektų sarašas</h1></center>
+            <center><h1>Projektų sąrašas</h1></center>
             <ProjectList />
             <AddProject />
         </div>
