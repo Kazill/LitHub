@@ -2,13 +2,17 @@ import React, {useState} from 'react';
 import { TextField } from "@mui/material";
 import axios from "axios";
 import dayjs from "dayjs";
-import { Link } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+
+
+
 
 function getDate() {
         const today = new Date();
         return dayjs(today).format("YYYY-MM-DD");
 }
 function Project() {
+    const navigate = useNavigate();
     console.log('start');
     const [formData, setFormData] = useState({
         id: 0,
@@ -37,8 +41,8 @@ function Project() {
             });
 
             console.log('Response from server:', response.data);
-            //navigate('/');
-            window.location.reload()
+            navigate('/Projects');
+            //window.location.reload()
         } catch (error) {
             console.error('Error submitting post:', error);
         }
@@ -50,7 +54,7 @@ function Project() {
             <p>Aprašymas: {' '} <TextField multiline = {true} onChange={handleInputChange} name="description"/></p>
             <p>Kalbos: {' '} <TextField onChange={handleInputChange} name="languages"/></p>
             <p>GitHub nuoroda: {' '} <TextField onChange={handleInputChange} name="link"/></p>
-            <Link to="/Project"><button type="submit" onClick={handleSubmit}>Išsaugoti</button></Link>
+            <button type="submit" onClick={handleSubmit}>Išsaugoti</button>
             
         </div>
     );

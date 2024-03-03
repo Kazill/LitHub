@@ -1,31 +1,28 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ACER\\Desktop\\3 Metai\\2 pusmetis\\PVP\\LitHub\\BackEnd\\BackEnd.csproj": {}
+    "C:\\Users\\sera\\Desktop\\pvp\\git\\t2\\LitHub\\BackEnd\\BackEnd.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ACER\\Desktop\\3 Metai\\2 pusmetis\\PVP\\LitHub\\BackEnd\\BackEnd.csproj": {
+    "C:\\Users\\sera\\Desktop\\pvp\\git\\t2\\LitHub\\BackEnd\\BackEnd.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ACER\\Desktop\\3 Metai\\2 pusmetis\\PVP\\LitHub\\BackEnd\\BackEnd.csproj",
+        "projectUniqueName": "C:\\Users\\sera\\Desktop\\pvp\\git\\t2\\LitHub\\BackEnd\\BackEnd.csproj",
         "projectName": "BackEnd",
-        "projectPath": "C:\\Users\\ACER\\Desktop\\3 Metai\\2 pusmetis\\PVP\\LitHub\\BackEnd\\BackEnd.csproj",
-        "packagesPath": "C:\\Users\\ACER\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ACER\\Desktop\\3 Metai\\2 pusmetis\\PVP\\LitHub\\BackEnd\\obj\\",
+        "projectPath": "C:\\Users\\sera\\Desktop\\pvp\\git\\t2\\LitHub\\BackEnd\\BackEnd.csproj",
+        "packagesPath": "C:\\Users\\sera\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\sera\\Desktop\\pvp\\git\\t2\\LitHub\\BackEnd\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\ACER\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\sera\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -82,7 +79,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }
