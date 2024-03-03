@@ -58,7 +58,7 @@ const EditProject: React.FC = () => {
             });
 
             console.log('Response from server:', response.data);
-            navigate('/projects');
+            navigate(`/project?id=${formData.id}`);
         } catch (error) {
             console.error('Error submitting post:', error);
         }

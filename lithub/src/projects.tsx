@@ -73,15 +73,7 @@ function ProjectList() {
         fetchData();
     }, []);
 
-    const handleDelete = async (id: number) => {
-        try {
-            await axios.delete(`https://localhost:7054/api/Problem/${id}`);
-            setProblems(problems.filter(problem => problem.id !== id));
-        } catch (error) {
-            // Handle the error or log it
-            console.error(error);
-        }
-    };
+    
 
     return (
         <div>
@@ -93,10 +85,7 @@ function ProjectList() {
                     <p>Įkėlėjas: {problem.source}</p>
                     <p>Kalbos: {problem.languages}</p>
                     <p>Paskutinis atnaujimimas: {problem.lastUpdate}</p>
-                    <button onClick={() => handleDelete(problem.id)}>Šalinti</button>
-                    <Link to={`/editProject?id=${problem.id}`}>
-                        <button>Redaguoti</button>
-                    </Link>
+                    
                 </div>
             ))}
         </div>
