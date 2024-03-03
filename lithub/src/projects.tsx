@@ -60,9 +60,9 @@ function ProjectList() {
         <div>
             {problems.map(problem => (
                 <div key={problem.id}>
-                    <Link to={`/Project?id=${problem.id}`}>
-                        <h2>{problem.title}</h2>
-                    </Link>
+                    <h2><Link to={`/Project?id=${problem.id}`}>
+                        {problem.title}
+                    </Link></h2>
                     <p>Įkėlėjas: {problem.source}</p>
                     <p>Kalbos: {problem.languages}</p>
                     <p>Paskutinis atnaujimimas: {problem.lastUpdate}</p>
