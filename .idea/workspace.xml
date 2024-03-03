@@ -3,17 +3,19 @@
   <component name="ChangeListManager">
     <list default="true" id="cd781ad1-b838-430a-ba37-ff28ae16d614" name="Changes" comment="fixed link to project extending beond the title/adding project now changes window to projects">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/.vs/BackEnd/v17/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/.vs/BackEnd/v17/.suo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/bin/Debug/net6.0/BackEnd.dll" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/bin/Debug/net6.0/BackEnd.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/bin/Debug/net6.0/BackEnd.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/bin/Debug/net6.0/BackEnd.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/obj/Debug/net6.0/BackEnd.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/obj/Debug/net6.0/BackEnd.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/obj/Debug/net6.0/BackEnd.dll" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/obj/Debug/net6.0/BackEnd.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackEnd/obj/Debug/net6.0/BackEnd.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/obj/Debug/net6.0/BackEnd.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/.vs/BackEnd/DesignTimeBuild/.dtbcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/.vs/BackEnd/DesignTimeBuild/.dtbcache.v2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/.vs/ProjectEvaluation/backend.metadata.v5.2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/.vs/ProjectEvaluation/backend.projects.v5.2" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/lithub/node_modules/.cache/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/lithub/node_modules/.cache/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lithub/node_modules/.cache/default-development/0.pack" beforeDir="false" afterPath="$PROJECT_DIR$/lithub/node_modules/.cache/default-development/0.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lithub/node_modules/.cache/default-development/1.pack" beforeDir="false" afterPath="$PROJECT_DIR$/lithub/node_modules/.cache/default-development/1.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lithub/node_modules/.cache/default-development/2.pack" beforeDir="false" afterPath="$PROJECT_DIR$/lithub/node_modules/.cache/default-development/2.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lithub/node_modules/.cache/default-development/3.pack" beforeDir="false" afterPath="$PROJECT_DIR$/lithub/node_modules/.cache/default-development/3.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lithub/node_modules/.cache/default-development/4.pack" beforeDir="false" afterPath="$PROJECT_DIR$/lithub/node_modules/.cache/default-development/4.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lithub/node_modules/.cache/default-development/index.pack" beforeDir="false" afterPath="$PROJECT_DIR$/lithub/node_modules/.cache/default-development/index.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lithub/node_modules/.cache/default-development/index.pack.old" beforeDir="false" afterPath="$PROJECT_DIR$/lithub/node_modules/.cache/default-development/index.pack.old" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lithub/node_modules/.cache/tsconfig.tsbuildinfo" beforeDir="false" afterPath="$PROJECT_DIR$/lithub/node_modules/.cache/tsconfig.tsbuildinfo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lithub/src/projects.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/lithub/src/projects.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,7 +26,7 @@
     <option name="done" value="true" />
   </component>
   <component name="Git.Merge.Settings">
-    <option name="BRANCH" value="origin/addProblem" />
+    <option name="BRANCH" value="minorChanges" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -94,7 +96,14 @@
       <option name="project" value="LOCAL" />
       <updated>1708702296017</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="fixed link to project extending beond the title/adding project now changes window to projects">
+      <created>1709455626332</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1709455626332</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -124,6 +133,7 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="problem table" />
     <MESSAGE value="add project" />
-    <option name="LAST_COMMIT_MESSAGE" value="add project" />
+    <MESSAGE value="fixed link to project extending beond the title/adding project now changes window to projects" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed link to project extending beond the title/adding project now changes window to projects" />
   </component>
 </project>

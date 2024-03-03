@@ -11,13 +11,39 @@ interface ProblemData {
 }
 
 function Projects() {
-    return (
-        <div>
-            <center><h1>Projektų sąrašas</h1></center>
-            <ProjectList />
-            <AddProject />
-        </div>
-    );
+    const [selectedRole, setSelectedRole] = useState('');
+
+    useEffect(() => {
+        // Fetch initial role when component mounts
+        fetchRole();
+    }, []);
+
+    const fetchRole = () => {
+        fetch('https://localhost:7054/api/Roles')
+            .then(response => response.json())
+            .then(role => {
+                // Process the data received from the backend
+                setSelectedRole(role ? role.name : 'error in role format');
+            })
+            .catch(error => console.error('Error fetching role:', error));
+    };
+    if (selectedRole === "Patvirtinas"){
+        return (
+            <div>
+                <center><h1>Projektų sąrašas</h1></center>
+                <ProjectList />
+                <AddProject />
+            </div>
+        ); 
+    }
+    else{
+        return (
+            <div>
+                <center><h1>Projektų sąrašas</h1></center>
+                <ProjectList />
+            </div>
+        ); 
+    }
 }
 
 function AddProject() {
@@ -29,6 +55,7 @@ function AddProject() {
 }
 
 function ProjectList() {
+
     const [problems, setProblems] = useState<ProblemData[]>([]);
 
     useEffect(() => {
