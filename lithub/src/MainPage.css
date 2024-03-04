@@ -1,6 +1,4 @@
-body {
-    overflow: hidden; /* Prevent scrolling */
-}
+
 
 .main-page {
     display: flex;
