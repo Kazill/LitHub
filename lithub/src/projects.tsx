@@ -55,14 +55,14 @@ function AddProject() {
 }
 
 function ProjectList() {
-
     const [problems, setProblems] = useState<ProblemData[]>([]);
+    const [startDate, setStartDate] = useState<string>('');
+    const [endDate, setEndDate] = useState<string>('');
 
     useEffect(() => {
         async function fetchData() {
             try {
                 const response = await axios.get('https://localhost:7054/api/Problem');
-                console.log(response.data);
                 setProblems(response.data);
             } catch (error) {
                 // Handle the error or log it
@@ -73,11 +73,24 @@ function ProjectList() {
         fetchData();
     }, []);
 
-    
+    const filteredProblems = problems.filter(problem => {
+        if (startDate && endDate) {
+            return problem.lastUpdate >= startDate && problem.lastUpdate <= endDate;
+        }
+        return true; // If no dates are selected, return all problems
+    });
 
     return (
         <div>
-            {problems.map(problem => (
+        <div style={{ marginBottom: '10px' }}>
+            <label htmlFor="startDate" style={{ marginRight: '10px' }}>Nuo:</label>
+            <input type="date" id="startDate" value={startDate} onChange={e => setStartDate(e.target.value)} />
+        </div>
+        <div style={{ marginBottom: '10px' }}>
+            <label htmlFor="endDate" style={{ marginRight: '10px' }}>Iki:</label>
+            <input type="date" id="endDate" value={endDate} onChange={e => setEndDate(e.target.value)} />
+        </div>
+            {filteredProblems.map(problem => (
                 <div key={problem.id}>
                     <h2><Link to={`/Project?id=${problem.id}`}>
                         {problem.title}
@@ -85,7 +98,6 @@ function ProjectList() {
                     <p>Įkėlėjas: {problem.source}</p>
                     <p>Kalbos: {problem.languages}</p>
                     <p>Paskutinis atnaujimimas: {problem.lastUpdate}</p>
-                    
                 </div>
             ))}
         </div>
