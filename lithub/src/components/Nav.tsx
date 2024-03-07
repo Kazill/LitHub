@@ -18,7 +18,7 @@ function OptionsForDesktop(role: string){
     switch (role){
         case "Svečias":
             return(<div><Button href='' sx={{color: 'black'}}>Registruotis</Button>
-                <Button href=''
+                <Button href='/login'
                     sx={{
                     color: 'white',
                     background: 'green',
@@ -68,7 +68,7 @@ function OptionsForMobile(role: string){
                     <Button href='' sx={{ color: 'black' }}>Registruotis</Button>
                 </MenuItem>
                 <MenuItem>
-                    <Button href=''
+                    <Button href='/login'
                             sx={{
                                 color: 'white', background: 'green',
                              ":hover": { background: '#00a600' }

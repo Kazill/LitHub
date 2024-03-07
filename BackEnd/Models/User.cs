@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace BackEnd.Models
 {
@@ -8,6 +9,13 @@ namespace BackEnd.Models
         public int Id { get; set; }
         
         [StringLength(maximumLength: 100)]
-        public string Name { get; set; }
+        public string UserName { get; set; }
+        [StringLength(maximumLength: 100)]
+        public string Email { get; set; }
+        [StringLength(maximumLength: 100)]
+        public string Password { get; set; }
+        [DefaultValue("Svečias")]
+        public string Role { get; set; }
+
     }
 }

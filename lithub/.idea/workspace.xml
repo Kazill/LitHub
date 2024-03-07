@@ -5,30 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="664ef725-6020-414a-b03b-b548f3de4bdf" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../BackEnd/.vs/BackEnd/DesignTimeBuild/.dtbcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/.vs/BackEnd/DesignTimeBuild/.dtbcache.v2" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../BackEnd/.vs/BackEnd/v17/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/.vs/BackEnd/v17/.suo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BackEnd/obj/BackEnd.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/obj/BackEnd.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BackEnd/obj/BackEnd.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/obj/BackEnd.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BackEnd/obj/Debug/net6.0/BackEnd.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/obj/Debug/net6.0/BackEnd.AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BackEnd/obj/Debug/net6.0/BackEnd.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/obj/Debug/net6.0/BackEnd.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BackEnd/obj/Debug/net6.0/BackEnd.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/obj/Debug/net6.0/BackEnd.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BackEnd/obj/Debug/net6.0/BackEnd.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/obj/Debug/net6.0/BackEnd.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BackEnd/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BackEnd/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BackEnd/Migrations/LithubContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/Migrations/LithubContextModelSnapshot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BackEnd/Models/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/Models/User.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BackEnd/bin/Debug/net6.0/BackEnd.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/bin/Debug/net6.0/BackEnd.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BackEnd/bin/Debug/net6.0/BackEnd.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/bin/Debug/net6.0/BackEnd.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BackEnd/obj/Debug/net6.0/BackEnd.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/obj/Debug/net6.0/BackEnd.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BackEnd/obj/Debug/net6.0/BackEnd.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/obj/Debug/net6.0/BackEnd.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BackEnd/obj/Debug/net6.0/BackEnd.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/obj/Debug/net6.0/BackEnd.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BackEnd/obj/Debug/net6.0/ref/BackEnd.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/obj/Debug/net6.0/ref/BackEnd.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BackEnd/obj/Debug/net6.0/refint/BackEnd.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/obj/Debug/net6.0/refint/BackEnd.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BackEnd/obj/staticwebassets.pack.sentinel" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/obj/staticwebassets.pack.sentinel" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/node_modules/.cache/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/.eslintcache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/default-development/0.pack" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/default-development/0.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/node_modules/.cache/default-development/1.pack" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/default-development/1.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/default-development/10.pack" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/default-development/10.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/default-development/2.pack" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/default-development/2.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/default-development/3.pack" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/default-development/3.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/node_modules/.cache/default-development/4.pack" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/default-development/4.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/node_modules/.cache/default-development/5.pack" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/default-development/5.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/node_modules/.cache/default-development/6.pack" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/default-development/6.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/default-development/7.pack" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/default-development/7.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/default-development/9.pack" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/default-development/9.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/default-development/8.pack" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/default-development/8.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/node_modules/.cache/default-development/index.pack" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/default-development/index.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/node_modules/.cache/default-development/index.pack.old" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/default-development/index.pack.old" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/tsconfig.tsbuildinfo" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/tsconfig.tsbuildinfo" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Nav.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nav.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,8 +38,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript JSX File" />
         <option value="CSS File" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
@@ -63,7 +63,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "Navbar-roles",
+    "git-widget-placeholder": "login-page",
     "last_opened_file_path": "C:/Users/robot/Documents/LitHub/lithub",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
@@ -84,7 +84,9 @@
       <option name="presentableId" value="Default" />
       <updated>1708942394531</updated>
       <workItem from="1708942395817" duration="7436000" />
-      <workItem from="1709573025255" duration="3189000" />
+      <workItem from="1709573025255" duration="3437000" />
+      <workItem from="1709576709790" duration="904000" />
+      <workItem from="1709827910968" duration="861000" />
     </task>
     <servers />
   </component>
