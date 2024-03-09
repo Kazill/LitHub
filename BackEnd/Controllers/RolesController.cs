@@ -8,7 +8,7 @@ namespace BackEnd.Controllers
     [ApiController]
     public class RolesController : ControllerBase
     {
-        private static Roles selectedRole = new Roles { Name = "Administratorius" }; // Initial default role
+        private static Roles selectedRole = new Roles { Name = "Svečias" }; // Initial default role
 
         // Endpoint for retrieving the selected role
         [HttpGet]

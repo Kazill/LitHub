@@ -1,11 +1,42 @@
 import { AppBar, Toolbar, IconButton, Typography, Button, Box, Menu, MenuItem } from "@mui/material";
 import React, { useState, useEffect } from 'react';
-import { Link } from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import MenuIcon from '@mui/icons-material/Menu';
 import {AccountCircle} from "@mui/icons-material";
+import {jwtDecode, JwtPayload} from "jwt-decode";
+
+interface CustomJwtPayload extends JwtPayload {
+    username: string;
+    role: string;
+    // Add other custom properties if needed
+}
 
 //Switch navbar buttons according to the user role for desktop
 function OptionsForDesktop(role: string){
+    const navigate = useNavigate()
+    const handleLogout = () => {
+        localStorage.removeItem('accessToken');
+        fetch('https://localhost:7054/api/Roles/update', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ Name: "Svečias" }),
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to update role');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Role updated successfully:', data);
+            })
+            .catch(error => {
+                console.error('Error updating role:', error);
+            });
+        navigate('/');
+    };
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
     const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -15,8 +46,9 @@ function OptionsForDesktop(role: string){
     const handleClose = () => {
         setAnchorEl(null);
     };
-    switch (role){
-        case "Svečias":
+    let token=localStorage.getItem('accessToken')
+    switch (token){
+        case null:
             return(<div><Button href='' sx={{color: 'black'}}>Registruotis</Button>
                 <Button href='/login'
                     sx={{
@@ -27,6 +59,7 @@ function OptionsForDesktop(role: string){
                 Prisijungti
             </Button></div>);
         default:
+            const data :CustomJwtPayload=jwtDecode(token)
             return(<div>
                 <IconButton
                     size="large"
@@ -53,16 +86,42 @@ function OptionsForDesktop(role: string){
                     open={Boolean(anchorEl)}
                     onClose={handleClose}
                 >
-                    <MenuItem onClick={handleClose}>Paskyra</MenuItem>
-                    <MenuItem onClick={handleClose}>Atsijungti</MenuItem>
+                    <MenuItem onClick={handleClose}>{data.username}</MenuItem>
+                    {/*<MenuItem onClick={handleClose}>Paskyra</MenuItem>*/}
+                    <MenuItem onClick={handleLogout}>Atsijungti</MenuItem>
                 </Menu>
             </div>);
     }
 }
 //Switch navbar buttons according to the user role for mobile
 function OptionsForMobile(role: string){
-    switch (role){
-        case "Svečias":
+    const navigate = useNavigate()
+    const handleLogout = () => {
+        localStorage.removeItem('accessToken');
+        fetch('https://localhost:7054/api/Roles/update', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ Name: "Svečias" }),
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to update role');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Role updated successfully:', data);
+            })
+            .catch(error => {
+                console.error('Error updating role:', error);
+            });
+        navigate('/');
+    };
+    let token=localStorage.getItem('accessToken')
+    switch (token){
+        case null:
             return(<div>
                 <MenuItem>
                     <Button href='' sx={{ color: 'black' }}>Registruotis</Button>
@@ -79,9 +138,10 @@ function OptionsForMobile(role: string){
                 </MenuItem>
             </div>);
         default:
+            const data :CustomJwtPayload=jwtDecode(token)
             return(<div>
                 <MenuItem>
-                    <Button href='' sx={{ color: 'black' }}>Paskyra</Button>
+                    <Button href='' sx={{ color: 'black' }}>{data.username}</Button>
                 </MenuItem>
                 <MenuItem>
                 <Button href=''
@@ -89,7 +149,7 @@ function OptionsForMobile(role: string){
                             color: 'white',
                             background: 'green',
                             ":hover": {background: '#00a600'}                 }}
-                >
+                onClick={handleLogout}>
                     Atsijungti
                 </Button>
                 </MenuItem>
@@ -147,6 +207,7 @@ const Nav: React.FC<{}> = () => {
     };
 
 
+
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =
         React.useState<null | HTMLElement>(null);
@@ -184,16 +245,16 @@ const Nav: React.FC<{}> = () => {
             open={isMobileMenuOpen}
             onClose={handleMobileMenuClose}
         >
-            <MenuItem>
+           {/* <MenuItem>
                 <select id="roleSelect" value={selectedRole} onChange={handleRoleChange}>
                     <option value="Administratorius">Administratorius</option>
                     <option value="Svečias">Svečias</option>
                     <option value="Prisiregistravęs">Prisiregistravęs</option>
                     <option value="Patvirtinas">Patvirtinas</option>
                 </select>
-            </MenuItem>
+            </MenuItem>*/}
             <MenuItem>
-                <Button href='/' sx={{ color: 'black' }}>Laisvai platinami kodai</Button>
+                <Button href='/' sx={{ color: 'black' }}>Pagrindinis</Button>
             </MenuItem>
             <MenuItem>
                 <Button href='/projects' sx={{ color: 'black' }}>Projektai</Button>
@@ -220,12 +281,12 @@ const Nav: React.FC<{}> = () => {
                     </Typography>
                     <Box sx={{ flexGrow: 1 }} />
                     <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-                        <select id="roleSelect" value={selectedRole} onChange={handleRoleChange}>
+                        {/*<select id="roleSelect" value={selectedRole} onChange={handleRoleChange}>
                             <option value="Administratorius">Administratorius</option>
                             <option value="Svečias">Svečias</option>
                             <option value="Prisiregistravęs">Prisiregistravęs</option>
                             <option value="Patvirtinas">Patvirtinas</option>
-                        </select>
+                        </select>*/}
                         <Button href='/' sx={{ color: 'black' }}>Pagrindinis</Button>
                         <Button href='/projects' sx={{ color: 'black' }}>Projektai</Button>
                         <Button href='' sx={{ color: 'black' }}>Kas tai?</Button>

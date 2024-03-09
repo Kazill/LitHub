@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "WQCnBg5mCY7WZRCOgS3AUOxkAyv+b4TJxgzdfJzSGNCBpCBmR8qzQ1pnJb34NWjnffsglg5X16bEn6iG2fzYRw==",
+  "dgSpecHash": "FyHxMABulKLHl7GQlx+mMv0e8gAeK8LMOee/SJcoZ+kGA14LUvVrLkfO7A1LrtCVxsJx8Ug1oaiPqAuUc9nhgQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\robot\\Documents\\LitHub\\BackEnd\\BackEnd.csproj",
+  "projectFilePath": "C:\\Users\\robot\\Documents\\GitHub\\LitHub\\BackEnd\\BackEnd.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\robot\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\robot\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.16\\microsoft.entityframeworkcore.7.0.16.nupkg.sha512",
@@ -23,6 +23,10 @@
     "C:\\Users\\robot\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\7.0.0\\microsoft.extensions.logging.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\robot\\.nuget\\packages\\microsoft.extensions.options\\7.0.0\\microsoft.extensions.options.7.0.0.nupkg.sha512",
     "C:\\Users\\robot\\.nuget\\packages\\microsoft.extensions.primitives\\7.0.0\\microsoft.extensions.primitives.7.0.0.nupkg.sha512",
+    "C:\\Users\\robot\\.nuget\\packages\\microsoft.identitymodel.abstractions\\7.4.0\\microsoft.identitymodel.abstractions.7.4.0.nupkg.sha512",
+    "C:\\Users\\robot\\.nuget\\packages\\microsoft.identitymodel.jsonwebtokens\\7.4.0\\microsoft.identitymodel.jsonwebtokens.7.4.0.nupkg.sha512",
+    "C:\\Users\\robot\\.nuget\\packages\\microsoft.identitymodel.logging\\7.4.0\\microsoft.identitymodel.logging.7.4.0.nupkg.sha512",
+    "C:\\Users\\robot\\.nuget\\packages\\microsoft.identitymodel.tokens\\7.4.0\\microsoft.identitymodel.tokens.7.4.0.nupkg.sha512",
     "C:\\Users\\robot\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
     "C:\\Users\\robot\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
     "C:\\Users\\robot\\.nuget\\packages\\mysqlconnector\\2.2.5\\mysqlconnector.2.2.5.nupkg.sha512",
@@ -32,6 +36,7 @@
     "C:\\Users\\robot\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.5.0\\swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",
     "C:\\Users\\robot\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.5.0\\swashbuckle.aspnetcore.swaggerui.6.5.0.nupkg.sha512",
     "C:\\Users\\robot\\.nuget\\packages\\system.codedom\\4.4.0\\system.codedom.4.4.0.nupkg.sha512",
+    "C:\\Users\\robot\\.nuget\\packages\\system.identitymodel.tokens.jwt\\7.4.0\\system.identitymodel.tokens.jwt.7.4.0.nupkg.sha512",
     "C:\\Users\\robot\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
     "C:\\Users\\robot\\.nuget\\packages\\system.text.encodings.web\\7.0.0\\system.text.encodings.web.7.0.0.nupkg.sha512",
     "C:\\Users\\robot\\.nuget\\packages\\system.text.json\\7.0.0\\system.text.json.7.0.0.nupkg.sha512"

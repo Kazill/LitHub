@@ -6,18 +6,64 @@ import {
     Checkbox, FormControlLabel, TextField
 } from "@mui/material";
 import React, { useState, useEffect } from 'react';
-import { Link } from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import MenuIcon from '@mui/icons-material/Menu';
 import {AccountCircle} from "@mui/icons-material";
+import axios from "axios";
 const Login = () => {
+    const navigate = useNavigate();
 
-    const handleSubmit = async (event: { preventDefault: () => void; currentTarget: HTMLFormElement | undefined; }) => {
-        event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        console.log({
-            email: data.get("email"),
-            password: data.get("password"),
-        });
+    const [formData, setFormData] = useState({
+        UserName: '',
+        Password: '',
+        Role: ''
+    });
+    const updateRoleInBackend = (newRole: string) => {
+        // Send request to update role in the backend
+        fetch('https://localhost:7054/api/Roles/update', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ Name: newRole }),
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to update role');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Role updated successfully:', data);
+            })
+            .catch(error => {
+                console.error('Error updating role:', error);
+            });
+    };
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
+    };
+    const handleSubmit = async (event: React.FormEvent) => {
+        event.preventDefault()
+        try {
+            const response = await axios.post('https://localhost:7054/api/User/login', formData, {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            localStorage.setItem('accessToken', response.data)
+            await updateRoleInBackend(formData.Role);
+            navigate('/');
+        }catch (e) {
+            console.error('Error submitting form:', e);
+        }
+
+    };
+    const handleRoleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        const newRole = event.target.value;
+        setFormData({...formData,"Role":newRole})
     };
 
     return(
@@ -35,26 +81,34 @@ const Login = () => {
                     margin="normal"
                     required
                     fullWidth
-                    id="email"
-                    label="El. Paštas"
-                    name="email"
-                    autoComplete="email"
+                    id="UserName"
+                    label="Vartotojo vardas"
+                    name="UserName"
+                    autoComplete="username"
                     autoFocus
+                    onChange={handleInputChange}
                 />
                 <TextField
                     margin="normal"
                     required
                     fullWidth
-                    name="password"
+                    name="Password"
                     label="Slaptažodis"
-                    type="password"
-                    id="password"
+                    type="Password"
+                    id="Password"
                     autoComplete="current-password"
+                    onChange={handleInputChange}
                 />
                 {/*<FormControlLabel*/}
                 {/*    control={<Checkbox value="remember" color="primary" />}*/}
                 {/*    label="Remember me"*/}
                 {/*/>*/}
+                <Typography>Rolė:</Typography>
+                <select id="role" onChange={handleRoleChange}>
+                    <option value="Administratorius">Administratorius</option>
+                    <option value="Prisiregistravęs">Prisiregistravęs</option>
+                    <option value="Patvirtinas">Patvirtinas</option>
+                </select>
                 <Button
                     type="submit"
                     fullWidth
