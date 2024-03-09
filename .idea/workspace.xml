@@ -1,24 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cd781ad1-b838-430a-ba37-ff28ae16d614" name="Changes" comment="only &quot;Patvirtintas&quot; can add project">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lithub/node_modules/.cache/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/lithub/node_modules/.cache/.eslintcache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lithub/node_modules/.cache/default-development/0.pack" beforeDir="false" afterPath="$PROJECT_DIR$/lithub/node_modules/.cache/default-development/0.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lithub/node_modules/.cache/default-development/10.pack" beforeDir="false" afterPath="$PROJECT_DIR$/lithub/node_modules/.cache/default-development/10.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lithub/node_modules/.cache/default-development/5.pack" beforeDir="false" afterPath="$PROJECT_DIR$/lithub/node_modules/.cache/default-development/5.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lithub/node_modules/.cache/default-development/6.pack" beforeDir="false" afterPath="$PROJECT_DIR$/lithub/node_modules/.cache/default-development/6.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lithub/node_modules/.cache/default-development/7.pack" beforeDir="false" afterPath="$PROJECT_DIR$/lithub/node_modules/.cache/default-development/7.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lithub/node_modules/.cache/default-development/8.pack" beforeDir="false" afterPath="$PROJECT_DIR$/lithub/node_modules/.cache/default-development/8.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lithub/node_modules/.cache/default-development/9.pack" beforeDir="false" afterPath="$PROJECT_DIR$/lithub/node_modules/.cache/default-development/9.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lithub/node_modules/.cache/default-development/index.pack" beforeDir="false" afterPath="$PROJECT_DIR$/lithub/node_modules/.cache/default-development/index.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lithub/node_modules/.cache/default-development/index.pack.old" beforeDir="false" afterPath="$PROJECT_DIR$/lithub/node_modules/.cache/default-development/index.pack.old" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lithub/node_modules/.cache/tsconfig.tsbuildinfo" beforeDir="false" afterPath="$PROJECT_DIR$/lithub/node_modules/.cache/tsconfig.tsbuildinfo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lithub/src/addProject.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/lithub/src/addProject.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lithub/src/editProject.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/lithub/src/editProject.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lithub/src/project.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/lithub/src/project.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lithub/src/projects.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/lithub/src/projects.tsx" afterDir="false" />
-    </list>
+    <list default="true" id="cd781ad1-b838-430a-ba37-ff28ae16d614" name="Changes" comment="only &quot;Patvirtintas&quot; can add project" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -40,6 +23,10 @@
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="2" />
   </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 7
+}]]></component>
   <component name="ProjectId" id="2cl5gzOT2ta913JUoFg9uTmkM6d" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -48,20 +35,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;temurin-17&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/sera/Desktop/pvp/git/t2/LitHub/BackEnd/Controllers&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "login-page",
+    "jdk.selected.JAVA_MODULE": "temurin-17",
+    "last_opened_file_path": "C:/Users/robot/Documents/GitHub/LitHub/lithub",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "show.migrate.to.gradle.popup": "false",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\sera\Desktop\pvp\git\t2\LitHub\BackEnd\Controllers" />
@@ -83,6 +73,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708673439939</updated>
+      <workItem from="1709908970437" duration="104000" />
     </task>
     <task id="LOCAL-00001" summary="problem table">
       <created>1708679123878</created>
@@ -114,6 +105,9 @@
     </task>
     <option name="localTasksCounter" value="5" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
