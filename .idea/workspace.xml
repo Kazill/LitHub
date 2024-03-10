@@ -1,7 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cd781ad1-b838-430a-ba37-ff28ae16d614" name="Changes" comment="only &quot;Patvirtintas&quot; can add project" />
+    <list default="true" id="cd781ad1-b838-430a-ba37-ff28ae16d614" name="Changes" comment="only &quot;Patvirtintas&quot; can add project">
+      <change afterPath="$PROJECT_DIR$/BackEnd/.vs/BackEnd/FileContentIndex/127252db-71a5-45d0-91e5-595edb685b89.vsidx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BackEnd/.vs/BackEnd/FileContentIndex/3a373689-2e87-4d87-b939-160f7d51c609.vsidx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BackEnd/.vs/BackEnd/FileContentIndex/68e9cfaf-c0fa-4fd9-88b7-86044f5b3098.vsidx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BackEnd/.vs/BackEnd/FileContentIndex/a0283792-c4a1-477b-9e8a-2339edb87c03.vsidx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/.vs/BackEnd/DesignTimeBuild/.dtbcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/.vs/BackEnd/DesignTimeBuild/.dtbcache.v2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/.vs/BackEnd/FileContentIndex/47815432-bb16-4cfd-bb28-0886cdee9dda.vsidx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/.vs/BackEnd/FileContentIndex/4fd19c0b-417a-4d5c-905c-c638688e9372.vsidx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/.vs/BackEnd/FileContentIndex/ec768e00-9f26-4a6c-a66e-b0c0c8406f93.vsidx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/.vs/BackEnd/FileContentIndex/f9dd6064-e4af-4213-b1be-b7cabfce2eaa.vsidx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/.vs/BackEnd/v17/.futdcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/.vs/BackEnd/v17/.futdcache.v2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/.vs/BackEnd/v17/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/.vs/BackEnd/v17/.suo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/.vs/ProjectEvaluation/backend.metadata.v7.bin" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/.vs/ProjectEvaluation/backend.metadata.v7.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/.vs/ProjectEvaluation/backend.projects.v7.bin" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/.vs/ProjectEvaluation/backend.projects.v7.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/Data/LithubContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/Data/LithubContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/Migrations/20240308150636_innit.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/Migrations/20240308150636_innit.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/Migrations/LithubContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/Migrations/LithubContextModelSnapshot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/bin/Debug/net6.0/BackEnd.dll" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/bin/Debug/net6.0/BackEnd.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/bin/Debug/net6.0/BackEnd.exe" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/bin/Debug/net6.0/BackEnd.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/bin/Debug/net6.0/BackEnd.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/bin/Debug/net6.0/BackEnd.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/obj/BackEnd.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/obj/BackEnd.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/obj/BackEnd.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/obj/BackEnd.csproj.nuget.g.props" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/obj/Debug/net6.0/BackEnd.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/obj/Debug/net6.0/BackEnd.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/obj/Debug/net6.0/BackEnd.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/obj/Debug/net6.0/BackEnd.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/obj/Debug/net6.0/BackEnd.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/obj/Debug/net6.0/BackEnd.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/obj/Debug/net6.0/BackEnd.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/obj/Debug/net6.0/BackEnd.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/obj/Debug/net6.0/BackEnd.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/obj/Debug/net6.0/BackEnd.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/obj/Debug/net6.0/BackEnd.dll" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/obj/Debug/net6.0/BackEnd.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/obj/Debug/net6.0/BackEnd.genruntimeconfig.cache" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/obj/Debug/net6.0/BackEnd.genruntimeconfig.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/obj/Debug/net6.0/BackEnd.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/obj/Debug/net6.0/BackEnd.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/obj/Debug/net6.0/apphost.exe" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/obj/Debug/net6.0/apphost.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/obj/Debug/net6.0/ref/BackEnd.dll" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/obj/Debug/net6.0/ref/BackEnd.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/obj/Debug/net6.0/refint/BackEnd.dll" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/obj/Debug/net6.0/refint/BackEnd.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackEnd/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/BackEnd/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lithub/node_modules/.cache/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/lithub/node_modules/.cache/.eslintcache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lithub/node_modules/.cache/default-development/0.pack" beforeDir="false" afterPath="$PROJECT_DIR$/lithub/node_modules/.cache/default-development/0.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lithub/node_modules/.cache/default-development/1.pack" beforeDir="false" afterPath="$PROJECT_DIR$/lithub/node_modules/.cache/default-development/1.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lithub/node_modules/.cache/default-development/index.pack" beforeDir="false" afterPath="$PROJECT_DIR$/lithub/node_modules/.cache/default-development/index.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lithub/node_modules/.cache/default-development/index.pack.old" beforeDir="false" afterPath="$PROJECT_DIR$/lithub/node_modules/.cache/default-development/index.pack.old" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lithub/node_modules/.cache/tsconfig.tsbuildinfo" beforeDir="false" afterPath="$PROJECT_DIR$/lithub/node_modules/.cache/tsconfig.tsbuildinfo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lithub/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/lithub/node_modules/.package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lithub/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/lithub/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lithub/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/lithub/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lithub/src/project.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/lithub/src/project.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lithub/src/projects.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/lithub/src/projects.tsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -23,10 +71,10 @@
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="2" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 7
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 7
+}</component>
   <component name="ProjectId" id="2cl5gzOT2ta913JUoFg9uTmkM6d" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -44,7 +92,7 @@
     "dart.analysis.tool.window.visible": "false",
     "git-widget-placeholder": "login-page",
     "jdk.selected.JAVA_MODULE": "temurin-17",
-    "last_opened_file_path": "C:/Users/robot/Documents/GitHub/LitHub/lithub",
+    "last_opened_file_path": "C:/Users/sera/Desktop/pvp/git/t3/LitHub",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
@@ -58,9 +106,9 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="NimRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+    <configuration default="true" type="Application" factoryName="Application">
       <method v="2">
-        <option name="nim.task.build.to.cache" enabled="true" />
+        <option name="Make" enabled="true" />
         <option name="com.soywiz.korge.intellij.UpdateResourceBeforeRunTask" enabled="false" />
       </method>
     </configuration>

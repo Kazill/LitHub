@@ -19,6 +19,24 @@ namespace BackEnd.Migrations
                 .HasAnnotation("ProductVersion", "7.0.16")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
+            modelBuilder.Entity("BackEnd.Models.Marked", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("problemId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("userName")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Marked");
+                });
+
             modelBuilder.Entity("BackEnd.Models.Problem", b =>
                 {
                     b.Property<int>("Id")

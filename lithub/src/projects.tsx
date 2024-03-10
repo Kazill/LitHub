@@ -1,6 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
 import axios from "axios";
+import {jwtDecode, JwtPayload} from "jwt-decode";
+import { FaStar } from "react-icons/fa";
+
+interface CustomJwtPayload extends JwtPayload {
+    username: string;
+    role: string;
+    // Add other custom properties if needed
+}
 
 interface ProblemData {
     id: number,
@@ -10,8 +18,15 @@ interface ProblemData {
     source: string
 }
 
+interface markedData{
+    problemId: number
+}
+
 function Projects() {
     const [selectedRole, setSelectedRole] = useState('');
+
+
+
 
     useEffect(() => {
         // Fetch initial role when component mounts
@@ -59,6 +74,8 @@ function ProjectList() {
     const [startDate, setStartDate] = useState<string>('');
     const [endDate, setEndDate] = useState<string>('');
 
+    const marks = SetMarked();
+
     useEffect(() => {
         async function fetchData() {
             try {
@@ -94,7 +111,7 @@ function ProjectList() {
                 <div key={problem.id}>
                     <h2><Link to={`/Project?id=${problem.id}`}>
                         {problem.title}
-                    </Link></h2>
+                    </Link>{IsMarked(marks, problem.id)}</h2>
                     <p>Įkėlėjas: {problem.source}</p>
                     <p>Kalbos: {problem.languages}</p>
                     <p>Paskutinis atnaujimimas: {problem.lastUpdate}</p>
@@ -102,6 +119,36 @@ function ProjectList() {
             ))}
         </div>
     );
+}
+
+function SetMarked(){
+    const [marks, setMarks] = useState<markedData[]>([]);
+    useEffect(() => {
+        let username = "";
+        let token=localStorage.getItem('accessToken')
+        if(token != null){
+                const data :CustomJwtPayload=jwtDecode(token);
+                username = data.username;
+        }
+        async function fetchData()  {
+            try {
+                const response = await axios.get(`https://localhost:7054/api/Marked/user/${username}`);
+                setMarks(response.data);
+            } catch (error) {
+                            // Handle the error or log it
+                console.error(error);
+            }
+        }
+        fetchData();
+    }, []);
+    return marks;
+}
+
+function IsMarked(marks:markedData[], id:number){
+    if(marks.find(x=> x.problemId === id) === undefined){
+        return(null);
+    }
+    return(<FaStar />);
 }
 
 export default Projects;
