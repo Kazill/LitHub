@@ -37,19 +37,21 @@ namespace BackEnd.Controllers
         [HttpPost]
         public void Post(Problem model)
         {
-            Console.WriteLine("njnj");
             try
             {
                 if (ModelState.IsValid)
                 {
+                    // Split the languages string into an array
+                    model.Languages = model.Languages.Split(', ');
                     _context.Problem.Add(model);
                     _context.SaveChanges();
                 }
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 throw;
             }
-        }
+        }  
 
 		// PUT api/<UserController>/5
 		[HttpPut("{id}")]

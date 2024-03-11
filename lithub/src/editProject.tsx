@@ -1,17 +1,16 @@
-// editProject.tsx
 import React, { useState, useEffect } from 'react';
-import { TextField } from "@mui/material";
+import { TextField, Autocomplete } from "@mui/material";
 import axios from "axios";
 import { useNavigate, useLocation } from "react-router-dom";
 
 interface ProblemData {
-    id: number,
-    title: string,
-    description: string,
-    lastUpdate: string,
-    languages: string,
-    link: string,
-    source: string
+    id: number;
+    title: string;
+    description: string;
+    lastUpdate: string;
+    languages: string;
+    link: string;
+    source: string;
 }
 
 const EditProject: React.FC = () => {
@@ -47,6 +46,10 @@ const EditProject: React.FC = () => {
         setFormData({ ...formData, [name]: value });
     };
 
+    const handleTagsChange = (_: any, values: string[]) => {
+        setFormData({ ...formData, languages: values.join(', ') });
+    };
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
@@ -66,12 +69,20 @@ const EditProject: React.FC = () => {
 
     return (
         <div>
-            <center><h1>Radaguoti projekta</h1></center>
+            <center><h1>Redaguoti projektą</h1></center>
             <form onSubmit={handleSubmit}>
-                <p>Pavadinimas: {' '} <TextField value={formData.title} onChange={handleInputChange} name="title"/></p>
-                <p>Aprašymas: {' '} <TextField multiline={true} value={formData.description} onChange={handleInputChange} name="description"/></p>
-                <p>Kalbos: {' '} <TextField value={formData.languages} onChange={handleInputChange} name="languages"/></p>
-                <p>GitHub nuoroda: {' '} <TextField value={formData.link} onChange={handleInputChange} name="link"/></p>
+                <p>Pavadinimas: {' '} <TextField value={formData.title} onChange={handleInputChange} name="title" /></p>
+                <p>Aprašymas: {' '} <TextField multiline={true} value={formData.description} onChange={handleInputChange} name="description" /></p>
+                <p>Kalbos: {' '}
+                    <Autocomplete
+                        multiple
+                        options={["JavaScript", "Python", "Java", "C++", "C#", "Ruby", "Go", "TypeScript", "Swift", "PHP"]}
+                        value={formData.languages.split(', ')}
+                        onChange={handleTagsChange}
+                        renderInput={(params) => <TextField {...params} />}
+                    />
+                </p>
+                <p>GitHub nuoroda: {' '} <TextField value={formData.link} onChange={handleInputChange} name="link" /></p>
                 <button type="submit">Išsaugoti</button>
             </form>
         </div>
