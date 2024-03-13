@@ -17,14 +17,51 @@ namespace BackEnd.Controllers
         }
 
         [HttpGet("problem/{problemId}")]
-        public async Task<ActionResult<IEnumerable<Comment>>> GetCommentsForProblem(int problemId)
+        public async Task<ActionResult<IEnumerable<CommentDto>>> GetCommentsForProblem(int problemId)
         {
+            // Fetch top-level comments
             var comments = await _context.Comment
                 .Where(c => c.ProblemId == problemId && c.ParentCommentId == null)
-                .Include(c => c.Replies) // You might need to adjust this to fetch nested replies properly
                 .ToListAsync();
 
-            return comments;
+            // Assuming CommentDto is a DTO that includes a collection for replies
+            List<CommentDto> commentDtos = new List<CommentDto>();
+
+            foreach (var comment in comments)
+            {
+                var commentDto = new CommentDto
+                {
+                    Id = comment.Id,
+                    Author = comment.Author,
+                    Text = comment.Text,
+                    PostedDate = comment.PostedDate,
+                    ProblemId = comment.ProblemId,
+                    Replies = new List<CommentDto>() // Initialize the Replies collection
+                };
+
+                // Fetch replies for each top-level comment
+                var replies = await _context.Comment
+                    .Where(c => c.ParentCommentId == comment.Id)
+                    .ToListAsync();
+
+                foreach (var reply in replies)
+                {
+                    commentDto.Replies.Add(new CommentDto
+                    {
+                        // Map reply properties to your CommentDto
+                        Id = reply.Id,
+                        Author = reply.Author,
+                        Text = reply.Text,
+                        PostedDate = reply.PostedDate,
+                        ProblemId = reply.ProblemId,
+                        ParentCommentId = reply.ParentCommentId
+                    });
+                }
+
+                commentDtos.Add(commentDto);
+            }
+
+            return commentDtos;
         }
 
         // GET: api/Comment
