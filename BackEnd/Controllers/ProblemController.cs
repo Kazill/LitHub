@@ -42,7 +42,8 @@ namespace BackEnd.Controllers
                 if (ModelState.IsValid)
                 {
                     // Split the languages string into an array
-                    model.Languages = model.Languages.Split(', ');
+                    // What is happening here? Why Languages are splitted into same Languages variable and why char has two symbols in it?
+                    //model.Languages = model.Languages.Split(', ');
                     _context.Problem.Add(model);
                     _context.SaveChanges();
                 }

@@ -104,7 +104,7 @@ const Login = () => {
                 {/*    label="Remember me"*/}
                 {/*/>*/}
                 <Typography>Rolė:</Typography>
-                <select id="role" onChange={handleRoleChange}>
+                <select id="role" onChange={handleRoleChange} defaultValue={"Administratorius"}>
                     <option value="Administratorius">Administratorius</option>
                     <option value="Prisiregistravęs">Prisiregistravęs</option>
                     <option value="Patvirtinas">Patvirtinas</option>

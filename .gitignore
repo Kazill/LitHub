@@ -8,8 +8,9 @@ logs
 **/*.backup.*
 **/*.back.*
 
-node_modules
-bower_components
+node_modules/
+npm-debug.log
+yarn-error.log
 
 *.sublime*
 

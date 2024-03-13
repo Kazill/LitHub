@@ -29,6 +29,8 @@ interface markedData{
     userName:string
 }
 
+
+
 function SetMarks(id:number){
     const [marks, setMarks] = useState<markedData[]>([]);
     useEffect(() => {
@@ -50,6 +52,22 @@ function SetMarks(id:number){
 
 
 function Project(this: any) {
+    const [selectedRole, setSelectedRole] = useState('');
+
+    useEffect(() => {
+        // Fetch initial role when component mounts
+        fetchRole();
+    }, []);
+
+    const fetchRole = () => {
+        fetch('https://localhost:7054/api/Roles')
+            .then(response => response.json())
+            .then(role => {
+                // Process the data received from the backend
+                setSelectedRole(role ? role.name : 'error in role format');
+            })
+            .catch(error => console.error('Error fetching role:', error));
+    };
 
     const id = useQuery().get('id');
 
@@ -83,6 +101,37 @@ function Project(this: any) {
             console.error(error);
         }
     };
+
+    const renderDeleteButton = () => {
+        if(selectedRole === "Administratorius"){
+            return <button onClick={() => handleDelete()}>Šalinti</button>;
+        }
+        return null;
+    };
+    const renderEditButton = () => {
+        console.log();
+
+        let token=localStorage.getItem('accessToken')
+        switch (token){
+            case null:
+                return(null);
+        default:
+            const data :CustomJwtPayload=jwtDecode(token)
+            console.log(problem?.source);
+            console.log(data.username);
+            console.log(selectedRole);
+                if(problem?.source === data.username && selectedRole === "Patvirtinas"){
+                    
+                    return( <Link to={`/editProject?id=${id}`}>
+                                <button>Redaguoti</button>
+                            </Link>);
+                }
+                else{
+                    return(null);
+                }
+        }
+    };
+    
     
     return (
         <><div>
@@ -92,7 +141,7 @@ function Project(this: any) {
                     <p><b>Įkėlėjas: </b>{problem?.source}</p>
                     <p><b>Kalbos: </b>{problem?.languages}</p>
                     <p><b>Paskutinis atnaujinimas: </b>{problem?.lastUpdate}</p>
-                    <select  id="id" value= "Pasižymėją programuotojai" >
+                    <select  id="id" value= "Pasižymėję programuotojai" >
                     <option value="start" hidden>Pasižymėją programuotojai</option>
                         {marks.map(mark => (
                             <option value="Vardas" disabled>{mark.userName}</option>
@@ -103,7 +152,8 @@ function Project(this: any) {
                         <a href={problem?.link}>{problem?.link}</a>
                     </div>
                     <MarkProject />
-                    <button onClick={() => handleDelete()}>Šalinti</button>
+                    {renderDeleteButton()}
+                    {renderEditButton()}
                     <Link to={`/editProject?id=${id}`}>
                         <button>Redaguoti</button>
                     </Link>
