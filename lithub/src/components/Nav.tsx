@@ -174,13 +174,15 @@ const Nav: React.FC<{}> = () => {
             })
             .catch(error => console.error('Error fetching role:', error));
     };
-    const handleRoleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const handleRoleChange = async (event: React.ChangeEvent<HTMLSelectElement>) => {
         const newRole = event.target.value;
         // Update selected role in the backend
-        updateRoleInBackend(newRole);
+        await updateRoleInBackend(newRole);
 
         // Update selected role in the frontend
         setSelectedRole(newRole);
+
+        window.location.reload();
     };
 
     const updateRoleInBackend = (newRole: string) => {
@@ -245,14 +247,14 @@ const Nav: React.FC<{}> = () => {
             open={isMobileMenuOpen}
             onClose={handleMobileMenuClose}
         >
-           {/* <MenuItem>
+           <MenuItem>
                 <select id="roleSelect" value={selectedRole} onChange={handleRoleChange}>
                     <option value="Administratorius">Administratorius</option>
                     <option value="Svečias">Svečias</option>
                     <option value="Prisiregistravęs">Prisiregistravęs</option>
                     <option value="Patvirtinas">Patvirtinas</option>
                 </select>
-            </MenuItem>*/}
+            </MenuItem>
             <MenuItem>
                 <Button href='/' sx={{ color: 'black' }}>Pagrindinis</Button>
             </MenuItem>
@@ -281,12 +283,12 @@ const Nav: React.FC<{}> = () => {
                     </Typography>
                     <Box sx={{ flexGrow: 1 }} />
                     <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-                        {/*<select id="roleSelect" value={selectedRole} onChange={handleRoleChange}>
+                        <select id="roleSelect" value={selectedRole} onChange={handleRoleChange}>
                             <option value="Administratorius">Administratorius</option>
                             <option value="Svečias">Svečias</option>
                             <option value="Prisiregistravęs">Prisiregistravęs</option>
                             <option value="Patvirtinas">Patvirtinas</option>
-                        </select>*/}
+                        </select>
                         <Button href='/' sx={{ color: 'black' }}>Pagrindinis</Button>
                         <Button href='/projects' sx={{ color: 'black' }}>Projektai</Button>
                         <Button href='' sx={{ color: 'black' }}>Kas tai?</Button>
