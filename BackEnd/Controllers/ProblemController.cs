@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using BackEnd.Data;
 using BackEnd.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -41,8 +41,6 @@ namespace BackEnd.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    // Split the languages string into an array
-                    model.Languages = model.Languages.Split(', ');
                     _context.Problem.Add(model);
                     _context.SaveChanges();
                 }
