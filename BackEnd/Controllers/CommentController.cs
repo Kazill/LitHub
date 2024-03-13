@@ -1,0 +1,105 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using BackEnd.Data;
+using BackEnd.Models;
+
+namespace BackEnd.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class CommentController : ControllerBase
+    {
+        private readonly LithubContext _context;
+
+        public CommentController(LithubContext context)
+        {
+            _context = context;
+        }
+
+        [HttpGet("problem/{problemId}")]
+        public async Task<ActionResult<IEnumerable<Comment>>> GetCommentsForProblem(int problemId)
+        {
+            var comments = await _context.Comment
+                .Where(c => c.ProblemId == problemId && c.ParentCommentId == null)
+                .Include(c => c.Replies) // You might need to adjust this to fetch nested replies properly
+                .ToListAsync();
+
+            return comments;
+        }
+
+        // GET: api/Comment
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Comment>>> GetComments()
+        {
+            return await _context.Comment
+                .Where(c => c.ParentCommentId == null) // Fetch only top-level comments
+                .ToListAsync();
+        }
+
+        // GET: api/Comment/5
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Comment>> GetComment(int id)
+        {
+            var comment = await _context.Comment.FindAsync(id);
+
+            if (comment == null)
+            {
+                return NotFound();
+            }
+
+            return comment;
+        }
+
+        // GET: api/Comment/5/replies
+        [HttpGet("{id}/replies")]
+        public async Task<ActionResult<IEnumerable<Comment>>> GetCommentReplies(int id)
+        {
+            var replies = await _context.Comment
+                .Where(c => c.ParentCommentId == id) // Fetch replies to the specified comment
+                .ToListAsync();
+
+            if (!replies.Any())
+            {
+                return NotFound();
+            }
+
+            return replies;
+        }
+
+        // POST: api/Comment
+        [HttpPost]
+        public async Task<ActionResult<Comment>> PostComment([FromBody] Comment comment)
+        {
+            if (!ModelState.IsValid)
+            {
+                var errors = ModelState.Values.SelectMany(v => v.Errors);
+                Console.WriteLine($"Model state errors: {string.Join(", ", errors.Select(e => e.ErrorMessage))}");
+                return BadRequest(ModelState);
+            }
+
+
+            Console.WriteLine($"Received comment: {System.Text.Json.JsonSerializer.Serialize(comment)}");
+            // Optionally, check if the referenced problem exists
+            var problemExists = await _context.Problem.AnyAsync(p => p.Id == comment.ProblemId);
+            if (!problemExists)
+            {
+                return BadRequest("Problem does not exist.");
+            }
+
+            // If ParentCommentId has value, optionally check if the parent comment exists
+            if (comment.ParentCommentId.HasValue)
+            {
+                var parentCommentExists = await _context.Comment.AnyAsync(c => c.Id == comment.ParentCommentId.Value);
+                if (!parentCommentExists)
+                {
+                    return BadRequest("Parent comment does not exist.");
+                }
+            }
+
+            _context.Comment.Add(comment);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction(nameof(GetComment), new { id = comment.Id }, comment);
+        }
+    }
+}
