@@ -114,7 +114,7 @@ function ProjectList() {
                     </Link>{IsMarked(marks, problem.id)}</h2>
                     <p>Įkėlėjas: {problem.source}</p>
                     <p>Kalbos: {problem.languages}</p>
-                    <p>Paskutinis atnaujimimas: {problem.lastUpdate}</p>
+                    <p>Paskutinis atnaujinimas: {problem.lastUpdate}</p>
                 </div>
             ))}
         </div>
