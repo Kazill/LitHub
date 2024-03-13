@@ -1,8 +1,8 @@
 import { useNavigate, useLocation } from 'react-router-dom';
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from "axios";
 import { Link } from "react-router-dom";
-import {jwtDecode, JwtPayload} from "jwt-decode";
+import { jwtDecode, JwtPayload } from "jwt-decode";
 import { FaStar } from "react-icons/fa";
 
 interface CustomJwtPayload extends JwtPayload {
@@ -12,24 +12,34 @@ interface CustomJwtPayload extends JwtPayload {
 }
 
 
-const useQuery= () => {
+const useQuery = () => {
     return new URLSearchParams(useLocation().search);
 }
 
-interface problemData{
-    title:string,
-    lastUpdate:string,
-    languages:string,
-    source:string,
-    description:string,
-    link:string
+interface problemData {
+    title: string,
+    lastUpdate: string,
+    languages: string,
+    source: string,
+    description: string,
+    link: string
 }
 
-interface markedData{
-    userName:string
+interface markedData {
+    userName: string
 }
 
-function SetMarks(id:number){
+interface CommentData {
+    id: number;
+    author: string;
+    text: string;
+    parentCommentId: number;
+    problemId: number;
+    postedDate: string;
+    replies?: CommentData[]; // Optional for nesting replies
+}
+
+function SetMarks(id: number) {
     const [marks, setMarks] = useState<markedData[]>([]);
     useEffect(() => {
         async function fetchData() {
@@ -50,6 +60,9 @@ function SetMarks(id:number){
 
 
 function Project(this: any) {
+    const [comments, setComments] = useState<CommentData[]>([]); // Define comments state here
+    const [newCommentText, setNewCommentText] = useState(''); // New state for the comment text
+    const [replyingTo, setReplyingTo] = useState<number | null>(null);
 
     const id = useQuery().get('id');
 
@@ -59,20 +72,24 @@ function Project(this: any) {
 
     const navigate = useNavigate();
 
-    useEffect(() => {
-        async function fetchData() {
-            try {
-                const response = await axios.get(`https://localhost:7054/api/Problem/${id}`,{});
-                console.log(response.data);
-                setProblem(response.data);
-            } catch (error) {
-                // Handle the error or log it
-                console.error(error);
-            }
+    const fetchData = async () => {
+        try {
+            const response = await axios.get(`https://localhost:7054/api/Problem/${id}`);
+            setProblem(response.data);
+            await fetchComments(); // Call a separated fetch function
+        } catch (error) {
+            console.error(error);
         }
+    };
 
+    const fetchComments = async () => {
+        const commentsResponse = await axios.get(`https://localhost:7054/api/Comment/problem/${id}`);
+        setComments(commentsResponse.data);
+    };
+
+    useEffect(() => {
         fetchData();
-    }, [ id ]);
+    }, [id]);
 
     const handleDelete = async () => {
         try {
@@ -83,57 +100,206 @@ function Project(this: any) {
             console.error(error);
         }
     };
-    
+    const handleNewCommentChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+        setNewCommentText(event.target.value);
+    };
+    const handleReplyClick = (commentId: number) => {
+        setReplyingTo(commentId);
+        // Optionally, scroll to the reply input or focus it for better user experience
+    };
+    let userRole = "Svečias"; // Default to guest if no token or role found
+    let userName = "Svečias";
+    const token = localStorage.getItem('accessToken');
+    if (token) {
+        const decoded: CustomJwtPayload = jwtDecode(token);
+        userRole = decoded.role;
+        userName = decoded.username;
+    }
+    const handleCommentSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        if (!newCommentText.trim()) return;
+        // Ensure `id` is not null and is a string before attempting to parse it
+        if (id === null) {
+            console.error("Problem ID is null. This should never happen.");
+            return; // Optionally, handle this case more gracefully in your UI
+        }
+        const problemId = parseInt(id, 10); // Use the radix parameter to ensure base 10
+        if (isNaN(problemId)) {
+            console.error("Problem ID is not a number. This should never happen.");
+            return; // Again, handle this error as appropriate for your application
+        }
+        try {
+            await axios.post(`https://localhost:7054/api/Comment`, {
+                author: userName, // Dynamic author name
+                text: newCommentText, // User input from state
+                problemId: problemId,
+                parentCommentId: replyingTo  // This could be dynamic too if you're implementing reply functionality
+            });
+
+            setNewCommentText(''); // Clear the comment box after successful submission
+            setReplyingTo(null); // Reset replyingTo state            
+            await fetchComments(); // Assuming you've implemented fetchComments method to reload comments
+        } catch (error) {
+            console.error("Failed to submit comment", error);
+        }
+    };
+    interface ReplyComponentProps {
+        commentId: number;
+        onSubmit: (replyText: string, commentId: number) => void;
+    }
+
+    function ReplyComponent({ commentId, onSubmit }: ReplyComponentProps) {
+        const [replyText, setReplyText] = useState('');
+
+        const handleReplyChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+            setReplyText(event.target.value);
+        };
+
+        const handleReplySubmit = (event: React.FormEvent<HTMLFormElement>) => {
+            event.preventDefault();
+            onSubmit(replyText, commentId); // Pass the reply text and comment ID back to the parent
+            setReplyText(''); // Reset the reply input after submission
+            setReplyingTo(null)
+        };
+
+        return (
+            <form onSubmit={handleReplySubmit}>
+                <textarea
+                    value={replyText}
+                    onChange={handleReplyChange}
+                    placeholder="Write your reply here..."
+                    style={{ width: '100%', height: '100px' }}
+                />
+                <button type="submit">Submit Reply</button>
+            </form>
+        );
+    }
+
+    // Function to render comments and their replies recursively
+    const renderComments = (comments: CommentData[], parentCommentId?: number) => {
+        return comments.map((comment) => (
+            <div key={comment.id}>
+                <p><strong>{comment.author}</strong> at {new Date(comment.postedDate).toLocaleString()}:</p>
+                <p>{comment.text}</p>
+                {
+                    userRole !== "Svečias" && (comment.parentCommentId === null || comment.parentCommentId === undefined) && (
+                        <button onClick={() => handleReplyClick(comment.id)}>Reply</button>
+                    )
+                }
+                {comment.replies && comment.replies.length > 0 && (
+                    <div style={{ marginLeft: '20px' }}>
+                        {renderComments(comment.replies, comment.id)}
+                    </div>
+                )}
+                {replyingTo === comment.id && (
+                    <ReplyComponent
+                        commentId={comment.id}
+                        onSubmit={async (replyText, parentCommentId) => {
+                            const problemId = Number(id); // Assuming `id` is the problem's ID from URL
+                            if (!replyText.trim()) return;
+                            console.log(parentCommentId);
+                            try {
+                                await axios.post(`https://localhost:7054/api/Comment`, {
+                                    author: userName,
+                                    text: replyText,
+                                    problemId: problemId,
+                                    parentCommentId: parentCommentId // This links the reply to its parent comment
+                                }, {
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                        // Include any other necessary headers, like authorization tokens
+                                    }
+                                });
+
+                                await fetchComments(); // Refresh comments to show the new reply
+                            } catch (error) {
+                                console.error("Failed to submit reply", error);
+                            }
+                        }}
+                    />
+
+                )}
+
+            </div>
+        ));
+    };
+
     return (
         <><div>
-                <div>
-                    <center><h1>{problem?.title} <IsMarked/></h1></center>
-                    <p>{problem?.description}</p>
-                    <p><b>Įkėlėjas: </b>{problem?.source}</p>
-                    <p><b>Kalbos: </b>{problem?.languages}</p>
-                    <p><b>Paskutinis atnaujinimas: </b>{problem?.lastUpdate}</p>
-                    <select  id="id" value= "Pasižymėją programuotojai" >
+            <div>
+                <center><h1>{problem?.title} <IsMarked /></h1></center>
+                <p>{problem?.description}</p>
+                <p><b>Įkėlėjas: </b>{problem?.source}</p>
+                <p><b>Kalbos: </b>{problem?.languages}</p>
+                <p><b>Paskutinis atnaujinimas: </b>{problem?.lastUpdate}</p>
+                <select id="id" value="Pasižymėją programuotojai" >
                     <option value="start" hidden>Pasižymėją programuotojai</option>
-                        {marks.map(mark => (
-                            <option value="Vardas" disabled>{mark.userName}</option>
-                        ))}
-                    </select>           
-                    <div>
-                        <h2>Failai:</h2>
-                        <a href={problem?.link}>{problem?.link}</a>
-                    </div>
-                    <MarkProject />
-                    <button onClick={() => handleDelete()}>Šalinti</button>
-                    <Link to={`/editProject?id=${id}`}>
-                        <button>Redaguoti</button>
-                    </Link>
+                    {marks.map(mark => (
+                        <option value="Vardas" disabled>{mark.userName}</option>
+                    ))}
+                </select>
+                <div>
+                    <h2>Failai:</h2>
+                    <a href={problem?.link}>{problem?.link}</a>
                 </div>
+                <MarkProject />
+                <button onClick={() => handleDelete()}>Šalinti</button>
+                <Link to={`/editProject?id=${id}`}>
+                    <button>Redaguoti</button>
+                </Link>
+            </div>
+
+            <div>
+                <h2>Komentarai:</h2>
+                {comments.length > 0 ? (
+                    renderComments(comments)
+                ) : (
+                    <div style={{ border: '1px solid #ccc', padding: '10px', marginTop: '10px' }}>
+                        Komentarų dar nėra.
+                    </div>
+                )}
+            </div>
+
+            <h3>Palikite komentarą:</h3>
+            {userRole !== "Svečias" ? (
+                <form onSubmit={handleCommentSubmit}>
+                    <textarea
+                        value={newCommentText}
+                        onChange={handleNewCommentChange}
+                        placeholder="Write your comment here..."
+                        style={{ width: '100%', height: '100px' }}
+                    />
+                    <button type="submit">Submit Comment</button>
+                </form>
+            ) : (
+                <p>Norint rašyti komentarą prisijunkite.</p>
+            )}
         </div></>
     );
 }
 
-function IsMarked(){
+function IsMarked() {
     const marks = SetMarks(Number(useQuery().get('id')));
-    let token=localStorage.getItem('accessToken')
-        switch (token){
-            case null:
-                return(null);
-            default:
-                const data :CustomJwtPayload=jwtDecode(token)
-                if(marks.find(x=> x.userName === data.username) === undefined){
-                    return(null);
-                }
-                else{
-                    return(<FaStar />);
-                }
-        }
+    let token = localStorage.getItem('accessToken')
+    switch (token) {
+        case null:
+            return (null);
+        default:
+            const data: CustomJwtPayload = jwtDecode(token)
+            if (marks.find(x => x.userName === data.username) === undefined) {
+                return (null);
+            }
+            else {
+                return (<FaStar />);
+            }
+    }
 }
 
-function MarkProject(){
+function MarkProject() {
     const id = useQuery().get('id');
     const marks = SetMarks(Number(id));
-    const handleMark = async (name:string) => {
-    const mark = {problemId:Number(id), userName:name}
+    const handleMark = async (name: string) => {
+        const mark = { problemId: Number(id), userName: name }
         try {
             const response = await axios.post('https://localhost:7054/api/Marked', {
                 ...mark,
@@ -150,19 +316,19 @@ function MarkProject(){
         }
     };
 
-    let token=localStorage.getItem('accessToken')
-        switch (token){
-            case null:
-                return(null);
+    let token = localStorage.getItem('accessToken')
+    switch (token) {
+        case null:
+            return (null);
         default:
-            const data :CustomJwtPayload=jwtDecode(token)
-                if(marks.find(x=> x.userName === data.username) === undefined){
-                    return(<button onClick={() => handleMark(data.username)}>Planuoju padėti</button>)
-                }
-                else{
-                    return(null);
-                }
-        }
+            const data: CustomJwtPayload = jwtDecode(token)
+            if (marks.find(x => x.userName === data.username) === undefined) {
+                return (<button onClick={() => handleMark(data.username)}>Planuoju padėti</button>)
+            }
+            else {
+                return (null);
+            }
+    }
 }
 
 export default Project;
