@@ -29,6 +29,14 @@ interface markedData{
     userName:string
 }
 
+interface CommentData {
+    commentId: number;
+    author: string;
+    text: string;
+    postedDate: string;
+    replies?: CommentData[]; // Optional for nesting replies
+}
+
 function SetMarks(id:number){
     const [marks, setMarks] = useState<markedData[]>([]);
     useEffect(() => {
@@ -50,6 +58,8 @@ function SetMarks(id:number){
 
 
 function Project(this: any) {
+    const [comments, setComments] = useState<CommentData[]>([]); // Define comments state here
+    const [newCommentText, setNewCommentText] = useState(''); // New state for the comment text
 
     const id = useQuery().get('id');
 
@@ -59,20 +69,24 @@ function Project(this: any) {
 
     const navigate = useNavigate();
 
-    useEffect(() => {
-        async function fetchData() {
-            try {
-                const response = await axios.get(`https://localhost:7054/api/Problem/${id}`,{});
-                console.log(response.data);
-                setProblem(response.data);
-            } catch (error) {
-                // Handle the error or log it
-                console.error(error);
-            }
+    const fetchData = async () => {
+        try {
+          const response = await axios.get(`https://localhost:7054/api/Problem/${id}`);
+          setProblem(response.data);
+          await fetchComments(); // Call a separated fetch function
+        } catch (error) {
+          console.error(error);
         }
-
+      };
+      
+      const fetchComments = async () => {
+        const commentsResponse = await axios.get(`https://localhost:7054/api/Comment/problem/${id}`);
+        setComments(commentsResponse.data);
+      };
+      
+      useEffect(() => {
         fetchData();
-    }, [ id ]);
+      }, [id]);
 
     const handleDelete = async () => {
         try {
@@ -83,7 +97,54 @@ function Project(this: any) {
             console.error(error);
         }
     };
+    const handleNewCommentChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+        setNewCommentText(event.target.value);
+    };
+    const handleCommentSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        if (!newCommentText.trim()) return;
+        // Ensure `id` is not null and is a string before attempting to parse it
+        if (id === null) {
+            console.error("Problem ID is null. This should never happen.");
+            return; // Optionally, handle this case more gracefully in your UI
+        }
+        const problemId = parseInt(id, 10); // Use the radix parameter to ensure base 10
+        if (isNaN(problemId)) {
+            console.error("Problem ID is not a number. This should never happen.");
+            return; // Again, handle this error as appropriate for your application
+        }
+        try {
+            await axios.post(`https://localhost:7054/api/Comment`, {
+                "author": "John Doe",
+                "text": "This is a sample comment.",
+                "problemId": 1,
+                "parentCommentId": null  // Include this only if making a reply to another comment
+              }
+              
+              
+              );
     
+            setNewCommentText(''); // Clear the comment box after successful submission
+            // Fetch comments again to update UI
+            await fetchComments(); // Assuming you've implemented fetchComments method to reload comments
+        } catch (error) {
+            console.error("Failed to submit comment", error);
+        }
+    };
+    // Function to render comments and their replies recursively
+    const renderComments = (comments: CommentData[]) => {
+        return comments.map((comment) => (
+            <div key={comment.commentId}>
+                <p><strong>{comment.author}</strong> at {new Date(comment.postedDate).toLocaleString()}:</p>
+                <p>{comment.text}</p>
+                {comment.replies && comment.replies.length > 0 && (
+                    <div style={{ marginLeft: '20px' }}>
+                        {renderComments(comment.replies)}
+                    </div>
+                )}
+            </div>
+        ));
+    };
     return (
         <><div>
                 <div>
@@ -108,6 +169,30 @@ function Project(this: any) {
                         <button>Redaguoti</button>
                     </Link>
                 </div>
+
+                <div>
+                <h2>Comments:</h2>
+                {comments.length > 0 ? (
+                    renderComments(comments)
+                ) : (
+                    <div style={{ border: '1px solid #ccc', padding: '10px', marginTop: '10px' }}>
+                        Komentarų dar nėra.
+                    </div>
+                )}
+            </div>
+
+            <div>
+                <h3>Leave a Comment</h3>
+                <form onSubmit={handleCommentSubmit}>
+                    <textarea
+                        value={newCommentText}
+                        onChange={handleNewCommentChange}
+                        placeholder="Write your comment here..."
+                        style={{ width: '100%', height: '100px' }}
+                    />
+                    <button type="submit">Submit Comment</button>
+                </form>
+            </div>
         </div></>
     );
 }
