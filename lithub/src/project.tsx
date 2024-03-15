@@ -63,6 +63,23 @@ function Project(this: any) {
     const [comments, setComments] = useState<CommentData[]>([]); // Define comments state here
     const [newCommentText, setNewCommentText] = useState(''); // New state for the comment text
     const [replyingTo, setReplyingTo] = useState<number | null>(null);
+    const [selectedRole, setSelectedRole] = useState('');
+
+    useEffect(() => {
+        // Fetch initial role when component mounts
+        fetchRole();
+    }, []);
+
+    const fetchRole = () => {
+        fetch('https://localhost:7054/api/Roles')
+            .then(response => response.json())
+            .then(role => {
+                // Process the data received from the backend
+                setSelectedRole(role ? role.name : 'error in role format');
+            })
+            .catch(error => console.error('Error fetching role:', error));
+    };
+
 
     const id = useQuery().get('id');
 
@@ -224,6 +241,42 @@ function Project(this: any) {
         ));
     };
 
+    const renderDeleteButton = () => {
+        if(selectedRole === "Administratorius"){
+            return <button onClick={() => handleDelete()}>Šalinti</button>;
+        }
+        return null;
+    };
+    const renderEditButton = () => {
+        console.log();
+
+        let token=localStorage.getItem('accessToken')
+        switch (token){
+            case null:
+                return(null);
+        default:
+            const data :CustomJwtPayload=jwtDecode(token)
+            console.log(problem?.source);
+            console.log(data.username);
+            console.log(selectedRole);
+                if(problem?.source === data.username && selectedRole === "Patvirtinas"){
+                    
+                    return( <Link to={`/editProject?id=${id}`}>
+                                <button>Redaguoti</button>
+                            </Link>);
+                }
+                else{
+                    return(null);
+                }
+        }
+    };
+    const renderMarkButton = () => {
+        if(selectedRole === "Prisiregistravęs"){
+            return <MarkProject />;
+        }
+        return null;
+    };
+
     return (
         <><div>
             <div>
@@ -242,11 +295,10 @@ function Project(this: any) {
                     <h2>Failai:</h2>
                     <a href={problem?.link}>{problem?.link}</a>
                 </div>
-                <MarkProject />
-                <button onClick={() => handleDelete()}>Šalinti</button>
-                <Link to={`/editProject?id=${id}`}>
-                    <button>Redaguoti</button>
-                </Link>
+                
+                {renderDeleteButton()}
+                {renderEditButton()}
+                {renderMarkButton()}
             </div>
 
             <div>
