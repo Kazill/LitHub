@@ -61,6 +61,22 @@ namespace BackEnd.Controllers
                 throw;
             }
         }
+        
+        // DELETE api/<MarkedController>/5
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            var markedToDelete = _context.Marked.Find(id);
+            if (markedToDelete == null)
+            {
+                return NotFound(); // Return 404 Not Found if the marked entity with the specified id is not found
+            }
+
+            _context.Marked.Remove(markedToDelete);
+            _context.SaveChanges();
+
+            return NoContent(); // Return 204 No Content after successful deletion
+        }
 
 
     }
