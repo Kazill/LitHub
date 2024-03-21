@@ -70,6 +70,7 @@ namespace BackEnd.Controllers
 				existingProblem.Languages = updatedProblem.Languages;
 				existingProblem.Link = updatedProblem.Link;
 				existingProblem.lastUpdate = updatedProblem.lastUpdate;
+                existingProblem.IsClosed = updatedProblem.IsClosed;
 
 				_context.SaveChanges();
 

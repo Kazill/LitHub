@@ -20,7 +20,8 @@ function Project() {
         lastUpdate: getDate(),
         languages: [] as string[], // Initialize languages as an array of strings
         link: "",
-        source: "user"
+        source: "user",
+        isClosed: false
     });
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {

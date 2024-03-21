@@ -22,7 +22,8 @@ interface problemData {
     languages: string,
     source: string,
     description: string,
-    link: string
+    link: string,
+    isClosed: boolean
 }
 
 interface markedData {
@@ -117,6 +118,40 @@ function Project(this: any) {
             console.error(error);
         }
     };
+
+    const handleClose = async (problem:problemData) => {
+        problem.isClosed = true;
+        try {
+            const response = await axios.put(`https://localhost:7054/api/Problem/${id}`, problem, {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            console.log('Response from server:', response.data);
+            window.location.reload()
+        } catch (error) {
+            // Handle the error or log it
+            console.error(error);
+        }
+    };
+    const handleOpen = async (problem:problemData) => {
+        problem.isClosed = false;
+        try {
+            const response = await axios.put(`https://localhost:7054/api/Problem/${id}`, problem, {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            console.log('Response from server:', response.data);
+            window.location.reload()
+        } catch (error) {
+            // Handle the error or log it
+            console.error(error);
+        }
+    };
+
     const handleNewCommentChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
         setNewCommentText(event.target.value);
     };
@@ -261,9 +296,35 @@ function Project(this: any) {
             console.log(selectedRole);
                 if(problem?.source === data.username && selectedRole === "Patvirtinas"){
                     
-                    return( <Link to={`/editProject?id=${id}`}>
-                                <button>Redaguoti</button>
-                            </Link>);
+                    return(
+                                <Link to={`/editProject?id=${id}`}>
+                                    <button>Redaguoti</button>
+                                </Link>
+                            );
+                }
+                else{
+                    return(null);
+                }
+        }
+    };
+    const renderCloseButton = (problem:problemData | undefined) => {
+        console.log();
+        let token=localStorage.getItem('accessToken')
+        switch (token){
+            case null:
+                return(null);
+        default:
+            const data :CustomJwtPayload=jwtDecode(token)
+            console.log(problem?.source);
+            console.log(data.username);
+            console.log(selectedRole);
+                if(problem?.source === data.username && selectedRole === "Patvirtinas" && problem !== undefined){
+                    if(!problem.isClosed){
+                        return(<button onClick={() => handleClose(problem)}>Uždaryti</button>);
+                    }
+                    else{
+                        return(<button onClick={() => handleOpen(problem)}>Atidaryti</button>);
+                    }
                 }
                 else{
                     return(null);
@@ -298,6 +359,7 @@ function Project(this: any) {
                 
                 {renderDeleteButton()}
                 {renderEditButton()}
+                {renderCloseButton(problem)}
                 {renderMarkButton()}
             </div>
 

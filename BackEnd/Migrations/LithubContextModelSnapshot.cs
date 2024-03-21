@@ -19,6 +19,39 @@ namespace BackEnd.Migrations
                 .HasAnnotation("ProductVersion", "7.0.16")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
+            modelBuilder.Entity("BackEnd.Models.Comment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Author")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int?>("CommentId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ParentCommentId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("PostedDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("ProblemId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Text")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CommentId");
+
+                    b.ToTable("Comment");
+                });
+
             modelBuilder.Entity("BackEnd.Models.Marked", b =>
                 {
                     b.Property<int>("Id")
@@ -45,6 +78,9 @@ namespace BackEnd.Migrations
 
                     b.Property<string>("Description")
                         .HasColumnType("longtext");
+
+                    b.Property<bool?>("IsClosed")
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("Languages")
                         .HasMaxLength(100)
@@ -98,6 +134,18 @@ namespace BackEnd.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("User");
+                });
+
+            modelBuilder.Entity("BackEnd.Models.Comment", b =>
+                {
+                    b.HasOne("BackEnd.Models.Comment", null)
+                        .WithMany("Replies")
+                        .HasForeignKey("CommentId");
+                });
+
+            modelBuilder.Entity("BackEnd.Models.Comment", b =>
+                {
+                    b.Navigation("Replies");
                 });
 #pragma warning restore 612, 618
         }

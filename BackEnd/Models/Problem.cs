@@ -17,5 +17,6 @@ namespace BackEnd.Models
         public string? Link { get; set; }
         [StringLength(maximumLength: 100)]
         public string? Source { get; set; }
+        public bool? IsClosed { get; set; }
     }
 }
