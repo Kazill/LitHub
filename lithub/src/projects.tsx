@@ -15,7 +15,8 @@ interface ProblemData {
     title: string,
     lastUpdate: string,
     languages: string,
-    source: string
+    source: string,
+    isClosed: boolean
 }
 
 interface markedData{
@@ -97,6 +98,13 @@ function ProjectList() {
         return true; // If no dates are selected, return all problems
     });
 
+    const isClosed = (closed:boolean) =>{
+        if(closed){
+            return("(Uždarytas)");
+        }
+        return "(Aktyvus)";
+    }
+
     return (
         <div>
         <div style={{ marginBottom: '10px' }}>
@@ -111,7 +119,7 @@ function ProjectList() {
                 <div key={problem.id}>
                     <h2><Link to={`/Project?id=${problem.id}`}>
                         {problem.title}
-                    </Link>{IsMarked(marks, problem.id)}</h2>
+                    </Link>{isClosed(problem?.isClosed)}{IsMarked(marks, problem.id)}</h2>
                     <p>Įkėlėjas: {problem.source}</p>
                     <p>Kalbos: {problem.languages}</p>
                     <p>Paskutinis atnaujinimas: {problem.lastUpdate}</p>

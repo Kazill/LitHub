@@ -234,7 +234,7 @@ function Project(this: any) {
                 <p><strong>{comment.author}</strong> at {new Date(comment.postedDate).toLocaleString()}:</p>
                 <p>{comment.text}</p>
                 {
-                    userRole !== "Svečias" && (comment.parentCommentId === null || comment.parentCommentId === undefined) && (
+                    userRole !== "Svečias" && !problem?.isClosed && (comment.parentCommentId === null || comment.parentCommentId === undefined) && (
                         <button onClick={() => handleReplyClick(comment.id)}>Reply</button>
                     )
                 }
@@ -294,7 +294,7 @@ function Project(this: any) {
             console.log(problem?.source);
             console.log(data.username);
             console.log(selectedRole);
-                if(problem?.source === data.username && selectedRole === "Patvirtinas"){
+                if(problem?.source === data.username && selectedRole === "Patvirtinas" && !problem?.isClosed){
                     
                     return(
                                 <Link to={`/editProject?id=${id}`}>
@@ -307,7 +307,7 @@ function Project(this: any) {
                 }
         }
     };
-    const renderCloseButton = (problem:problemData | undefined) => {
+    const renderCloseButton = () => {
         console.log();
         let token=localStorage.getItem('accessToken')
         switch (token){
@@ -318,8 +318,8 @@ function Project(this: any) {
             console.log(problem?.source);
             console.log(data.username);
             console.log(selectedRole);
-                if(problem?.source === data.username && selectedRole === "Patvirtinas" && problem !== undefined){
-                    if(!problem.isClosed){
+                if(problem?.source === data.username && selectedRole === "Patvirtinas"){
+                    if(!problem?.isClosed){
                         return(<button onClick={() => handleClose(problem)}>Uždaryti</button>);
                     }
                     else{
@@ -332,16 +332,23 @@ function Project(this: any) {
         }
     };
     const renderMarkButton = () => {
-        if(selectedRole === "Prisiregistravęs"){
+        if(selectedRole === "Prisiregistravęs" && !problem?.isClosed){
             return <MarkProject />;
         }
         return null;
     };
 
+    const isClosed = () =>{
+        if(problem?.isClosed){
+            return("(Uždarytas)");
+        }
+        return "(Aktyvus)";
+    }
+
     return (
         <><div>
             <div>
-                <center><h1>{problem?.title} <IsMarked /></h1></center>
+                <center><h1>{problem?.title} {isClosed()} <IsMarked /></h1></center>
                 <p>{problem?.description}</p>
                 <p><b>Įkėlėjas: </b>{problem?.source}</p>
                 <p><b>Kalbos: </b>{problem?.languages}</p>
@@ -359,7 +366,7 @@ function Project(this: any) {
                 
                 {renderDeleteButton()}
                 {renderEditButton()}
-                {renderCloseButton(problem)}
+                {renderCloseButton()}
                 {renderMarkButton()}
             </div>
 
@@ -375,7 +382,10 @@ function Project(this: any) {
             </div>
 
             <h3>Palikite komentarą:</h3>
-            {userRole !== "Svečias" ? (
+            {userRole !== "Svečias" ? ( 
+                problem?.isClosed ? (
+                    <p>Projektas uždarytas</p>
+                ) : (
                 <form onSubmit={handleCommentSubmit}>
                     <textarea
                         value={newCommentText}
@@ -385,12 +395,14 @@ function Project(this: any) {
                     />
                     <button type="submit">Submit Comment</button>
                 </form>
-            ) : (
+                )
+            ) : ( 
                 <p>Norint rašyti komentarą prisijunkite.</p>
             )}
         </div></>
     );
 }
+
 
 function IsMarked() {
     const marks = SetMarks(Number(useQuery().get('id')));
