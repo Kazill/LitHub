@@ -12,13 +12,16 @@ import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.render((
 
-<BrowserRouter>
-    <Nav/>
-  <Main /> {/* The various pages will be displayed by the `Main` component. */}
-  <Footer />
+  <BrowserRouter>
+    <div className="container">
+      <Nav />
+      <Main /> {/* The various pages will be displayed by the `Main` component. */}
+    </div>
+    <Footer />
 </BrowserRouter>
         ), document.getElementById('root')
         );
+
 
 //const root = ReactDOM.createRoot(
   //document.getElementById('root') as HTMLElement
