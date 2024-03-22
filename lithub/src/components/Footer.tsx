@@ -6,7 +6,7 @@ const Footer: React.FC = () => {
     return (
         <AppBar position="static" color="default" className="footer">
             <Toolbar>
-                <Typography variant="h6" color="green" sx={{ flexGrow: 1 }}>
+                <Typography variant="h6" color="black" sx={{ flexGrow: 1 }}>
                     &copy; 2024 Lithub. All rights reserved.
                 </Typography>
                 <Box sx={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}>
