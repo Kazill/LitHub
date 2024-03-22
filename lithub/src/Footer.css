@@ -1,6 +1,14 @@
-body .footer {
-    position:fixed;
-    left:0;
-    bottom:0;
-    right:0;
-}
+.container {
+    min-height: 100vh;
+    padding-bottom: 0px;
+    position: relative;
+  }
+  
+  .footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f8f9fa;
+    z-index: 999;
+  }
