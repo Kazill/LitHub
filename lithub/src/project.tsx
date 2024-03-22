@@ -28,6 +28,7 @@ interface problemData {
 
 interface markedData {
     userName: string
+    id: number;
 }
 
 interface CommentData {
@@ -441,18 +442,35 @@ function MarkProject() {
             console.error('Error submitting post:', error);
         }
     };
+    
+    const handleUnmark = async (name: string) => {
+        try {
+            const existingMark = marks.find(x => x.userName === name);
+            if (existingMark) {
+                const response = await axios.delete(`https://localhost:7054/api/Marked/${existingMark.id}`);
+                console.log('Response from server:', response.data);
+                window.location.reload(); // Reload the page to reflect the updated marks
+            }
+        } catch (error) {
+            console.error('Error removing mark:', error);
+        }
+    };
 
-    let token = localStorage.getItem('accessToken')
+    let token = localStorage.getItem('accessToken');
     switch (token) {
         case null:
             return (null);
         default:
-            const data: CustomJwtPayload = jwtDecode(token)
-            if (marks.find(x => x.userName === data.username) === undefined) {
-                return (<button onClick={() => handleMark(data.username)}>Planuoju padėti</button>)
-            }
-            else {
-                return (null);
+            const data: CustomJwtPayload = jwtDecode(token);
+            const userMark = marks.find(x => x.userName === data.username);
+            if (!userMark) {
+                return (<button onClick={() => handleMark(data.username)}>Planuoju padėti</button>);
+            } else {
+                return (
+                    <div>
+                        <button onClick={() => handleUnmark(data.username)}>Atšaukti pasižymėjimą</button>
+                    </div>
+                );
             }
     }
 }

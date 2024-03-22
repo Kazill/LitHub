@@ -16,7 +16,6 @@ namespace BackEnd.Controllers
     {
         private readonly LithubContext _context;
         private readonly IConfiguration _configuration;
-        public static User user = new User();
         public UserController(LithubContext context, IConfiguration configuration)
         {
             _context = context;
@@ -27,15 +26,16 @@ namespace BackEnd.Controllers
 
         public ActionResult<User> Login(UserDto request)
         {
-            /*if (!_context.User.Any(x=>x.Email == request.Email))
+            var user = _context.User.FirstOrDefault(x => x.UserName == request.UserName && x.Password == request.Password);
+            if (user==null)
             {
                 return BadRequest("Blogas vartotojas ar slaptazodis");
-            }*/
-            string token = CreateToken(request);
+            }
+            string token = CreateToken(user);
             return Ok(token);
         }
 
-        private string CreateToken(UserDto user)
+        private string CreateToken(User user)
         {
             List<Claim> claims = new List<Claim> {
                 new Claim("username", user.UserName),
