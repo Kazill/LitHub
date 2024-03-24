@@ -5,18 +5,23 @@ import App from './App';
 import Projects from './projects';
 import reportWebVitals from './reportWebVitals';
 import Nav from "./components/Nav";
+import Footer from "./components/Footer"; // Import the Footer component
 
 import Main from './routes';
 import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.render((
 
-<BrowserRouter>
-    <Nav/>
-  <Main /> {/* The various pages will be displayed by the `Main` component. */}
+  <BrowserRouter>
+    <div className="container">
+      <Nav />
+      <Main /> {/* The various pages will be displayed by the `Main` component. */}
+    </div>
+    <Footer />
 </BrowserRouter>
         ), document.getElementById('root')
         );
+
 
 //const root = ReactDOM.createRoot(
   //document.getElementById('root') as HTMLElement
