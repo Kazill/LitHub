@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
 import axios from "axios";
-import {jwtDecode, JwtPayload} from "jwt-decode";
+import { jwtDecode, JwtPayload } from "jwt-decode";
 import { FaStar } from "react-icons/fa";
+import { AiOutlineClose } from 'react-icons/ai';
+import './projects.css';
 
 interface CustomJwtPayload extends JwtPayload {
     username: string;
@@ -19,19 +21,22 @@ interface ProblemData {
     isClosed: boolean
 }
 
-interface markedData{
+interface markedData {
     problemId: number
 }
 
 function Projects() {
     const [selectedRole, setSelectedRole] = useState('');
-
-
-
+    const [showLanguageFilter, setShowLanguageFilter] = useState(false);
+    const [selectedLanguages, setSelectedLanguages] = useState<string[]>([]);
+    const [availableLanguages, setAvailableLanguages] = useState<string[]>([]);
+    const [filterText, setFilterText] = useState('');
 
     useEffect(() => {
         // Fetch initial role when component mounts
         fetchRole();
+        // Set sample available languages
+        setAvailableLanguages(["JavaScript", "Python", "Java", "C++", "C#", "Ruby", "Go", "TypeScript", "Swift", "PHP"]);
     }, []);
 
     const fetchRole = () => {
@@ -43,22 +48,64 @@ function Projects() {
             })
             .catch(error => console.error('Error fetching role:', error));
     };
-    if (selectedRole === "Patvirtinas"){
+
+    const toggleLanguageFilter = () => {
+        setShowLanguageFilter(!showLanguageFilter);
+    };
+
+    const handleLanguageSelection = (language: string) => {
+        if (selectedLanguages.includes(language)) {
+            setSelectedLanguages(selectedLanguages.filter(lang => lang !== language));
+        } else {
+            setSelectedLanguages([...selectedLanguages, language]);
+        }
+    };
+
+    const handleOverlayClose = () => {
+        setShowLanguageFilter(false);
+    };
+
+    const filterAvailableLanguages = () => {
+        return availableLanguages.filter(language =>
+            language.toLowerCase().includes(filterText.toLowerCase())
+        );
+    };
+
+    if (selectedRole === "Patvirtinas") {
         return (
             <div>
                 <center><h1>Projektų sąrašas</h1></center>
-                <ProjectList />
+                <button onClick={toggleLanguageFilter}>Filtravimas pagal kalba</button>
+                <LanguageFilterOverlay
+                    show={showLanguageFilter}
+                    onClose={handleOverlayClose}
+                    selectedLanguages={selectedLanguages}
+                    availableLanguages={filterAvailableLanguages()}
+                    onSelectLanguage={handleLanguageSelection}
+                    filterText={filterText}
+                    onFilterTextChange={setFilterText}
+                />
+                <ProjectList selectedLanguages={selectedLanguages} />
                 <AddProject />
             </div>
-        ); 
-    }
-    else{
+        );
+    } else {
         return (
             <div>
                 <center><h1>Projektų sąrašas</h1></center>
-                <ProjectList />
+                <button onClick={toggleLanguageFilter}>Filtravimas pagal kalba</button>
+                <LanguageFilterOverlay
+                    show={showLanguageFilter}
+                    onClose={handleOverlayClose}
+                    selectedLanguages={selectedLanguages}
+                    availableLanguages={filterAvailableLanguages()}
+                    onSelectLanguage={handleLanguageSelection}
+                    filterText={filterText}
+                    onFilterTextChange={setFilterText}
+                />
+                <ProjectList selectedLanguages={selectedLanguages} />
             </div>
-        ); 
+        );
     }
 }
 
@@ -70,7 +117,7 @@ function AddProject() {
     );
 }
 
-function ProjectList() {
+function ProjectList({ selectedLanguages }: { selectedLanguages: string[] }) {
     const [problems, setProblems] = useState<ProblemData[]>([]);
     const [startDate, setStartDate] = useState<string>('');
     const [endDate, setEndDate] = useState<string>('');
@@ -92,10 +139,11 @@ function ProjectList() {
     }, []);
 
     const filteredProblems = problems.filter(problem => {
-        if (startDate && endDate) {
-            return problem.lastUpdate >= startDate && problem.lastUpdate <= endDate;
+        if (selectedLanguages.length > 0) {
+            const problemLanguages = problem.languages.split(',').map(lang => lang.trim());
+            return selectedLanguages.every(lang => problemLanguages.includes(lang));
         }
-        return true; // If no dates are selected, return all problems
+        return true; // If no languages are selected, return all problems
     });
 
     const isClosed = (closed:boolean) =>{
@@ -107,14 +155,14 @@ function ProjectList() {
 
     return (
         <div>
-        <div style={{ marginBottom: '10px' }}>
-            <label htmlFor="startDate" style={{ marginRight: '10px' }}>Nuo:</label>
-            <input type="date" id="startDate" value={startDate} onChange={e => setStartDate(e.target.value)} />
-        </div>
-        <div style={{ marginBottom: '10px' }}>
-            <label htmlFor="endDate" style={{ marginRight: '10px' }}>Iki:</label>
-            <input type="date" id="endDate" value={endDate} onChange={e => setEndDate(e.target.value)} />
-        </div>
+            <div style={{ marginBottom: '10px' }}>
+                <label htmlFor="startDate" style={{ marginRight: '10px' }}>Nuo:</label>
+                <input type="date" id="startDate" value={startDate} onChange={e => setStartDate(e.target.value)} />
+            </div>
+            <div style={{ marginBottom: '10px' }}>
+                <label htmlFor="endDate" style={{ marginRight: '10px' }}>Iki:</label>
+                <input type="date" id="endDate" value={endDate} onChange={e => setEndDate(e.target.value)} />
+            </div>
             {filteredProblems.map(problem => (
                 <div key={problem.id}>
                     <h2><Link to={`/Project?id=${problem.id}`}>
@@ -129,21 +177,21 @@ function ProjectList() {
     );
 }
 
-function SetMarked(){
+function SetMarked() {
     const [marks, setMarks] = useState<markedData[]>([]);
     useEffect(() => {
         let username = "";
-        let token=localStorage.getItem('accessToken')
-        if(token != null){
-                const data :CustomJwtPayload=jwtDecode(token);
-                username = data.username;
+        let token = localStorage.getItem('accessToken')
+        if (token != null) {
+            const data: CustomJwtPayload = jwtDecode(token);
+            username = data.username;
         }
-        async function fetchData()  {
+        async function fetchData() {
             try {
                 const response = await axios.get(`https://localhost:7054/api/Marked/user/${username}`);
                 setMarks(response.data);
             } catch (error) {
-                            // Handle the error or log it
+                // Handle the error or log it
                 console.error(error);
             }
         }
@@ -152,11 +200,57 @@ function SetMarked(){
     return marks;
 }
 
-function IsMarked(marks:markedData[], id:number){
-    if(marks.find(x=> x.problemId === id) === undefined){
-        return(null);
+function IsMarked(marks: markedData[], id: number) {
+    if (marks.find(x => x.problemId === id) === undefined) {
+        return (null);
     }
-    return(<FaStar />);
+    return (<FaStar />);
 }
 
+function LanguageFilterOverlay(props: {
+    show: boolean;
+    onClose: () => void;
+    selectedLanguages: string[];
+    availableLanguages: string[];
+    onSelectLanguage: (language: string) => void;
+    filterText: string;
+    onFilterTextChange: (text: string) => void;
+}) {
+    const { show, onClose, selectedLanguages, availableLanguages, onSelectLanguage, filterText, onFilterTextChange } = props;
+
+    // Filter available languages based on the filter text
+    const filteredLanguages = availableLanguages.filter(language =>
+        language.toLowerCase().includes(filterText.toLowerCase())
+    );
+
+    return (
+        <div className="language-filter-overlay" style={{ display: show ? 'flex' : 'none' }} onClick={onClose}>
+            <div className="language-filter-box" onClick={(e) => e.stopPropagation()}>
+                <button className="close-btn" onClick={onClose}>
+                    <AiOutlineClose /> {/* Close icon */}
+                </button>
+                <h2>Pasirink kalba</h2>
+                <input type="text" placeholder=" " value={filterText} onChange={(e) => onFilterTextChange(e.target.value)} />
+                {filteredLanguages.length > 0 ? (
+                    <ul className="language-list">
+                        {filteredLanguages.map(language => (
+                            <li key={language}>
+                                <label>
+                                    <input
+                                        type="checkbox"
+                                        checked={selectedLanguages.includes(language)}
+                                        onChange={() => onSelectLanguage(language)}
+                                    />
+                                    {language}
+                                </label>
+                            </li>
+                        ))}
+                    </ul>
+                ) : (
+                    <p>Nerasta</p>
+                )}
+            </div>
+        </div>
+    );
+}
 export default Projects;
