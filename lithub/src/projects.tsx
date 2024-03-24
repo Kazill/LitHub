@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { jwtDecode, JwtPayload } from "jwt-decode";
 import { FaStar } from "react-icons/fa";
+import {Container, Grid, Pagination, Typography} from '@mui/material';
 import { AiOutlineClose } from 'react-icons/ai';
 import './projects.css';
 
@@ -85,8 +86,8 @@ function Projects() {
                     filterText={filterText}
                     onFilterTextChange={setFilterText}
                 />
-                <ProjectList selectedLanguages={selectedLanguages} />
                 <AddProject />
+                <ProjectList selectedLanguages={selectedLanguages} />
             </div>
         );
     } else {
@@ -121,9 +122,15 @@ function ProjectList({ selectedLanguages }: { selectedLanguages: string[] }) {
     const [problems, setProblems] = useState<ProblemData[]>([]);
     const [startDate, setStartDate] = useState<string>('');
     const [endDate, setEndDate] = useState<string>('');
+    const [page, setPage] = useState(1);
 
     const marks = SetMarked();
+    const per_page = 5;
 
+    const hangleChange = (e: any, p: React.SetStateAction<number>) =>{
+        setPage(p);
+
+    }
     useEffect(() => {
         async function fetchData() {
             try {
@@ -134,7 +141,6 @@ function ProjectList({ selectedLanguages }: { selectedLanguages: string[] }) {
                 console.error(error);
             }
         }
-
         fetchData();
     }, []);
 
@@ -155,24 +161,36 @@ function ProjectList({ selectedLanguages }: { selectedLanguages: string[] }) {
 
     return (
         <div>
-            <div style={{ marginBottom: '10px' }}>
-                <label htmlFor="startDate" style={{ marginRight: '10px' }}>Nuo:</label>
-                <input type="date" id="startDate" value={startDate} onChange={e => setStartDate(e.target.value)} />
-            </div>
-            <div style={{ marginBottom: '10px' }}>
-                <label htmlFor="endDate" style={{ marginRight: '10px' }}>Iki:</label>
-                <input type="date" id="endDate" value={endDate} onChange={e => setEndDate(e.target.value)} />
-            </div>
-            {filteredProblems.map(problem => (
-                <div key={problem.id}>
-                    <h2><Link to={`/Project?id=${problem.id}`}>
-                        {problem.title}
-                    </Link>{isClosed(problem?.isClosed)}{IsMarked(marks, problem.id)}</h2>
-                    <p>Įkėlėjas: {problem.source}</p>
-                    <p>Kalbos: {problem.languages}</p>
-                    <p>Paskutinis atnaujinimas: {problem.lastUpdate}</p>
-                </div>
-            ))}
+        <div style={{ marginBottom: '10px' }}>
+            <label htmlFor="startDate" style={{ marginRight: '10px' }}>Nuo:</label>
+            <input type="date" id="startDate" value={startDate} onChange={e => setStartDate(e.target.value)} />
+        </div>
+        <div style={{ marginBottom: '10px' }}>
+            <label htmlFor="endDate" style={{ marginRight: '10px' }}>Iki:</label>
+            <input type="date" id="endDate" value={endDate} onChange={e => setEndDate(e.target.value)} />
+        </div>
+            <Container maxWidth="sm">
+                <Grid container spacing={2}>
+                {filteredProblems.slice((page-1)*per_page, page*per_page).map(problem => (
+                    <Grid item xs={12} key={problem.id}>
+                    <div>
+                        <h2><Link to={`/Project?id=${problem.id}`}>
+                            {problem.title}
+                        </Link>{isClosed(problem?.isClosed)}{IsMarked(marks, problem.id)}</h2>
+                        <p>Įkėlėjas: {problem.source}</p>
+                        <p>Kalbos: {problem.languages}</p>
+                        <p>Paskutinis atnaujinimas: {problem.lastUpdate}</p>
+                    </div>
+                    </Grid>
+                ))}
+                </Grid>
+                        <Pagination
+                            count={Math.max(1, Math.ceil(filteredProblems.length / per_page))}
+                            page={page}
+                            onChange={hangleChange}
+                            style={{ display: 'flex', justifyContent: 'center' }}
+                        />
+            </Container>
         </div>
     );
 }
