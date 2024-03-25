@@ -338,3 +338,8 @@ C:\Users\sera\Desktop\pvp\git\t3\LitHub\BackEnd\obj\Debug\net6.0\refint\BackEnd.
 C:\Users\sera\Desktop\pvp\git\t3\LitHub\BackEnd\obj\Debug\net6.0\BackEnd.pdb
 C:\Users\sera\Desktop\pvp\git\t3\LitHub\BackEnd\obj\Debug\net6.0\BackEnd.genruntimeconfig.cache
 C:\Users\sera\Desktop\pvp\git\t3\LitHub\BackEnd\obj\Debug\net6.0\ref\BackEnd.dll
+C:\Users\ACER\Desktop\3 Metai\2 pusmetis\PVP\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\ACER\Desktop\3 Metai\2 pusmetis\PVP\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\ACER\Desktop\3 Metai\2 pusmetis\PVP\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\ACER\Desktop\3 Metai\2 pusmetis\PVP\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\ACER\Desktop\3 Metai\2 pusmetis\PVP\LitHub\BackEnd\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
