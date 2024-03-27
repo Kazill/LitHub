@@ -9,6 +9,7 @@ import AddProject from './addProject';
 import Example from './pages/comWithBackEx';
 import LoginPage from './pages/Login'
 import {jwtDecode} from "jwt-decode";
+import Profile from './profile';
 
 function loadUserProfile() {
     try {
@@ -38,6 +39,7 @@ const Main = () => {
             <Route path='/editProject' element={<EditProject/>}></Route>
             <Route path='/example' element={<Example/>}></Route>
             <Route path='/login' element={<LoginPage/>}></Route>
+            <Route path='/profile/:username' element={<Profile/>}></Route>
         </Routes>
     );
 }

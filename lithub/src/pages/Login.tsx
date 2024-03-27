@@ -156,6 +156,7 @@ const Login = () => {
                 )}
                 <Typography>Rolė:</Typography>
                 <select id="role" onChange={handleRoleChange}>
+                    <option value=""></option>
                     <option value="Administratorius">Administratorius</option>
                     <option value="Prisiregistravęs">Prisiregistravęs</option>
                     <option value="Patvirtinas">Patvirtinas</option>
