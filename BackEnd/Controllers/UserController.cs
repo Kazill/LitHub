@@ -71,6 +71,19 @@ namespace BackEnd.Controllers
             return _context.User.Select(x => x.Id == id).ToString();
         }
 
+        // GET api/<UserController>/5
+        [HttpGet("username/{username}")]
+        public IActionResult Get(string username)
+        {
+            var user = _context.User.FirstOrDefault(x => x.UserName == username);
+            if (user == null)
+            {
+                return NotFound(); // Return 404 Not Found if user is not found
+            }
+            return Ok(user);
+        }
+
+
         // POST api/<UserController>
         [HttpPost]
         public void Post(User model)
