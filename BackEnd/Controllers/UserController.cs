@@ -27,7 +27,7 @@ namespace BackEnd.Controllers
         public ActionResult<User> Login(UserDto request)
         {
             var user = _context.User.FirstOrDefault(x => x.UserName == request.UserName && x.Password == request.Password);
-            if (user==null)
+            if (user == null)
             {
                 return BadRequest("Blogas vartotojas ar slaptazodis");
             }
@@ -49,7 +49,7 @@ namespace BackEnd.Controllers
 
             var token = new JwtSecurityToken(
                 claims: claims,
-                expires:  DateTime.Now.AddHours(1),
+                expires: DateTime.Now.AddHours(1),
                 signingCredentials: creds
                 );
             var jwt = new JwtSecurityTokenHandler().WriteToken(token);
@@ -95,7 +95,8 @@ namespace BackEnd.Controllers
                     _context.User.Add(model);
                     _context.SaveChanges();
                 }
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 throw;
             }

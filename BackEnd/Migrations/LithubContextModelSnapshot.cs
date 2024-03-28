@@ -45,11 +45,40 @@ namespace BackEnd.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<string>("Url")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CommentId");
 
                     b.ToTable("Comment");
+                });
+
+            modelBuilder.Entity("BackEnd.Models.Like", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("commentId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("problemId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("role")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("userName")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Like");
                 });
 
             modelBuilder.Entity("BackEnd.Models.Marked", b =>

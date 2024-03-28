@@ -13,6 +13,8 @@ namespace BackEnd.Models
 
         [Required]
         public string Text { get; set; }
+        [Required]
+        public string Url { get; set; }
 
         public DateTime PostedDate { get; set; } = DateTime.UtcNow;
 
