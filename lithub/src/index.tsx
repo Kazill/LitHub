@@ -2,10 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import Projects from './projects';
+import Projects from './pages/Projects/projects';
 import reportWebVitals from './reportWebVitals';
 import Nav from "./components/Nav";
-import Footer from "./components/Footer"; // Import the Footer component
+import Footer from "./components/Footer/Footer"; // Import the Footer component
 
 import Main from './routes';
 import { BrowserRouter } from 'react-router-dom';

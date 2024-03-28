@@ -1,345 +1,406 @@
-C:\Users\robot\Documents\GitHub\LitHub\BackEnd\bin\Debug\net6.0\appsettings.Development.json
-C:\Users\robot\Documents\GitHub\LitHub\BackEnd\bin\Debug\net6.0\appsettings.json
-C:\Users\robot\Documents\GitHub\LitHub\BackEnd\bin\Debug\net6.0\BackEnd.exe
-C:\Users\robot\Documents\GitHub\LitHub\BackEnd\bin\Debug\net6.0\BackEnd.deps.json
-C:\Users\robot\Documents\GitHub\LitHub\BackEnd\bin\Debug\net6.0\BackEnd.runtimeconfig.json
-C:\Users\robot\Documents\GitHub\LitHub\BackEnd\bin\Debug\net6.0\BackEnd.dll
-C:\Users\robot\Documents\GitHub\LitHub\BackEnd\bin\Debug\net6.0\BackEnd.pdb
-C:\Users\robot\Documents\GitHub\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.OpenApi.dll
-C:\Users\robot\Documents\GitHub\LitHub\BackEnd\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
-C:\Users\robot\Documents\GitHub\LitHub\BackEnd\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
-C:\Users\robot\Documents\GitHub\LitHub\BackEnd\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
-C:\Users\robot\Documents\GitHub\LitHub\BackEnd\obj\Debug\net6.0\BackEnd.csproj.AssemblyReference.cache
-C:\Users\robot\Documents\GitHub\LitHub\BackEnd\obj\Debug\net6.0\BackEnd.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\robot\Documents\GitHub\LitHub\BackEnd\obj\Debug\net6.0\BackEnd.AssemblyInfoInputs.cache
-C:\Users\robot\Documents\GitHub\LitHub\BackEnd\obj\Debug\net6.0\BackEnd.AssemblyInfo.cs
-C:\Users\robot\Documents\GitHub\LitHub\BackEnd\obj\Debug\net6.0\BackEnd.csproj.CoreCompileInputs.cache
-C:\Users\robot\Documents\GitHub\LitHub\BackEnd\obj\Debug\net6.0\BackEnd.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\robot\Documents\GitHub\LitHub\BackEnd\obj\Debug\net6.0\BackEnd.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\robot\Documents\GitHub\LitHub\BackEnd\obj\Debug\net6.0\staticwebassets\msbuild.BackEnd.Microsoft.AspNetCore.StaticWebAssets.props
-C:\Users\robot\Documents\GitHub\LitHub\BackEnd\obj\Debug\net6.0\staticwebassets\msbuild.build.BackEnd.props
-C:\Users\robot\Documents\GitHub\LitHub\BackEnd\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.BackEnd.props
-C:\Users\robot\Documents\GitHub\LitHub\BackEnd\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.BackEnd.props
-C:\Users\robot\Documents\GitHub\LitHub\BackEnd\obj\Debug\net6.0\staticwebassets.pack.json
-C:\Users\robot\Documents\GitHub\LitHub\BackEnd\obj\Debug\net6.0\staticwebassets.build.json
-C:\Users\robot\Documents\GitHub\LitHub\BackEnd\obj\Debug\net6.0\staticwebassets.development.json
-C:\Users\robot\Documents\GitHub\LitHub\BackEnd\obj\Debug\net6.0\scopedcss\bundle\BackEnd.styles.css
-C:\Users\robot\Documents\GitHub\LitHub\BackEnd\obj\Debug\net6.0\BackEnd.csproj.CopyComplete
-C:\Users\robot\Documents\GitHub\LitHub\BackEnd\obj\Debug\net6.0\BackEnd.dll
-C:\Users\robot\Documents\GitHub\LitHub\BackEnd\obj\Debug\net6.0\refint\BackEnd.dll
-C:\Users\robot\Documents\GitHub\LitHub\BackEnd\obj\Debug\net6.0\BackEnd.pdb
-C:\Users\robot\Documents\GitHub\LitHub\BackEnd\obj\Debug\net6.0\BackEnd.genruntimeconfig.cache
-C:\Users\robot\Documents\GitHub\LitHub\BackEnd\obj\Debug\net6.0\ref\BackEnd.dll
-C:\Users\robot\Documents\LitHub\BackEnd\bin\Debug\net6.0\appsettings.Development.json
-C:\Users\robot\Documents\LitHub\BackEnd\bin\Debug\net6.0\appsettings.json
-C:\Users\robot\Documents\LitHub\BackEnd\bin\Debug\net6.0\BackEnd.exe
-C:\Users\robot\Documents\LitHub\BackEnd\bin\Debug\net6.0\BackEnd.deps.json
-C:\Users\robot\Documents\LitHub\BackEnd\bin\Debug\net6.0\BackEnd.runtimeconfig.json
-C:\Users\robot\Documents\LitHub\BackEnd\bin\Debug\net6.0\BackEnd.dll
-C:\Users\robot\Documents\LitHub\BackEnd\bin\Debug\net6.0\BackEnd.pdb
-C:\Users\robot\Documents\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.OpenApi.dll
-C:\Users\robot\Documents\LitHub\BackEnd\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
-C:\Users\robot\Documents\LitHub\BackEnd\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
-C:\Users\robot\Documents\LitHub\BackEnd\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
-C:\Users\robot\Documents\LitHub\BackEnd\obj\Debug\net6.0\BackEnd.csproj.AssemblyReference.cache
-C:\Users\robot\Documents\LitHub\BackEnd\obj\Debug\net6.0\BackEnd.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\robot\Documents\LitHub\BackEnd\obj\Debug\net6.0\BackEnd.AssemblyInfoInputs.cache
-C:\Users\robot\Documents\LitHub\BackEnd\obj\Debug\net6.0\BackEnd.AssemblyInfo.cs
-C:\Users\robot\Documents\LitHub\BackEnd\obj\Debug\net6.0\BackEnd.csproj.CoreCompileInputs.cache
-C:\Users\robot\Documents\LitHub\BackEnd\obj\Debug\net6.0\BackEnd.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\robot\Documents\LitHub\BackEnd\obj\Debug\net6.0\BackEnd.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\robot\Documents\LitHub\BackEnd\obj\Debug\net6.0\staticwebassets.build.json
-C:\Users\robot\Documents\LitHub\BackEnd\obj\Debug\net6.0\staticwebassets.development.json
-C:\Users\robot\Documents\LitHub\BackEnd\obj\Debug\net6.0\scopedcss\bundle\BackEnd.styles.css
-C:\Users\robot\Documents\LitHub\BackEnd\obj\Debug\net6.0\BackEnd.csproj.CopyComplete
-C:\Users\robot\Documents\LitHub\BackEnd\obj\Debug\net6.0\BackEnd.dll
-C:\Users\robot\Documents\LitHub\BackEnd\obj\Debug\net6.0\refint\BackEnd.dll
-C:\Users\robot\Documents\LitHub\BackEnd\obj\Debug\net6.0\BackEnd.pdb
-C:\Users\robot\Documents\LitHub\BackEnd\obj\Debug\net6.0\BackEnd.genruntimeconfig.cache
-C:\Users\robot\Documents\LitHub\BackEnd\obj\Debug\net6.0\ref\BackEnd.dll
-C:\Users\robot\Documents\LitHub\BackEnd\bin\Debug\net6.0\Humanizer.dll
-C:\Users\robot\Documents\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
-C:\Users\robot\Documents\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
-C:\Users\robot\Documents\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
-C:\Users\robot\Documents\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.InMemory.dll
-C:\Users\robot\Documents\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
-C:\Users\robot\Documents\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.Caching.Abstractions.dll
-C:\Users\robot\Documents\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
-C:\Users\robot\Documents\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.dll
-C:\Users\robot\Documents\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
-C:\Users\robot\Documents\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.Logging.dll
-C:\Users\robot\Documents\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
-C:\Users\robot\Documents\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.Options.dll
-C:\Users\robot\Documents\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.Primitives.dll
-C:\Users\robot\Documents\LitHub\BackEnd\bin\Debug\net6.0\MySqlConnector.dll
-C:\Users\robot\Documents\LitHub\BackEnd\bin\Debug\net6.0\Pomelo.EntityFrameworkCore.MySql.dll
-C:\Users\robot\Documents\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Abstractions.dll
-C:\Users\robot\Documents\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
-C:\Users\robot\Documents\LitHub\BackEnd\bin\Debug\net6.0\Mono.TextTemplating.dll
-C:\Users\robot\Documents\LitHub\BackEnd\bin\Debug\net6.0\System.CodeDom.dll
-C:\Users\robot\Documents\LitHub\BackEnd\bin\Debug\net6.0\System.Text.Encodings.Web.dll
-C:\Users\robot\Documents\LitHub\BackEnd\bin\Debug\net6.0\System.Text.Json.dll
-C:\Users\robot\Documents\LitHub\BackEnd\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
-C:\Users\sera\Desktop\pvp\git\t2\LitHub\BackEnd\bin\Debug\net6.0\appsettings.Development.json
-C:\Users\sera\Desktop\pvp\git\t2\LitHub\BackEnd\bin\Debug\net6.0\appsettings.json
-C:\Users\sera\Desktop\pvp\git\t2\LitHub\BackEnd\bin\Debug\net6.0\BackEnd.exe
-C:\Users\sera\Desktop\pvp\git\t2\LitHub\BackEnd\bin\Debug\net6.0\BackEnd.deps.json
-C:\Users\sera\Desktop\pvp\git\t2\LitHub\BackEnd\bin\Debug\net6.0\BackEnd.runtimeconfig.json
-C:\Users\sera\Desktop\pvp\git\t2\LitHub\BackEnd\bin\Debug\net6.0\BackEnd.dll
-C:\Users\sera\Desktop\pvp\git\t2\LitHub\BackEnd\bin\Debug\net6.0\BackEnd.pdb
-C:\Users\sera\Desktop\pvp\git\t2\LitHub\BackEnd\bin\Debug\net6.0\Humanizer.dll
-C:\Users\sera\Desktop\pvp\git\t2\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
-C:\Users\sera\Desktop\pvp\git\t2\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
-C:\Users\sera\Desktop\pvp\git\t2\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
-C:\Users\sera\Desktop\pvp\git\t2\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.InMemory.dll
-C:\Users\sera\Desktop\pvp\git\t2\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
-C:\Users\sera\Desktop\pvp\git\t2\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.Caching.Abstractions.dll
-C:\Users\sera\Desktop\pvp\git\t2\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
-C:\Users\sera\Desktop\pvp\git\t2\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Abstractions.dll
-C:\Users\sera\Desktop\pvp\git\t2\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.dll
-C:\Users\sera\Desktop\pvp\git\t2\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
-C:\Users\sera\Desktop\pvp\git\t2\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
-C:\Users\sera\Desktop\pvp\git\t2\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.Logging.dll
-C:\Users\sera\Desktop\pvp\git\t2\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
-C:\Users\sera\Desktop\pvp\git\t2\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.Options.dll
-C:\Users\sera\Desktop\pvp\git\t2\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.Primitives.dll
-C:\Users\sera\Desktop\pvp\git\t2\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.OpenApi.dll
-C:\Users\sera\Desktop\pvp\git\t2\LitHub\BackEnd\bin\Debug\net6.0\Mono.TextTemplating.dll
-C:\Users\sera\Desktop\pvp\git\t2\LitHub\BackEnd\bin\Debug\net6.0\MySqlConnector.dll
-C:\Users\sera\Desktop\pvp\git\t2\LitHub\BackEnd\bin\Debug\net6.0\Pomelo.EntityFrameworkCore.MySql.dll
-C:\Users\sera\Desktop\pvp\git\t2\LitHub\BackEnd\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
-C:\Users\sera\Desktop\pvp\git\t2\LitHub\BackEnd\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
-C:\Users\sera\Desktop\pvp\git\t2\LitHub\BackEnd\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
-C:\Users\sera\Desktop\pvp\git\t2\LitHub\BackEnd\bin\Debug\net6.0\System.CodeDom.dll
-C:\Users\sera\Desktop\pvp\git\t2\LitHub\BackEnd\bin\Debug\net6.0\System.Text.Encodings.Web.dll
-C:\Users\sera\Desktop\pvp\git\t2\LitHub\BackEnd\bin\Debug\net6.0\System.Text.Json.dll
-C:\Users\sera\Desktop\pvp\git\t2\LitHub\BackEnd\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
-C:\Users\sera\Desktop\pvp\git\t2\LitHub\BackEnd\obj\Debug\net6.0\BackEnd.csproj.AssemblyReference.cache
-C:\Users\sera\Desktop\pvp\git\t2\LitHub\BackEnd\obj\Debug\net6.0\BackEnd.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\sera\Desktop\pvp\git\t2\LitHub\BackEnd\obj\Debug\net6.0\BackEnd.AssemblyInfoInputs.cache
-C:\Users\sera\Desktop\pvp\git\t2\LitHub\BackEnd\obj\Debug\net6.0\BackEnd.AssemblyInfo.cs
-C:\Users\sera\Desktop\pvp\git\t2\LitHub\BackEnd\obj\Debug\net6.0\BackEnd.csproj.CoreCompileInputs.cache
-C:\Users\sera\Desktop\pvp\git\t2\LitHub\BackEnd\obj\Debug\net6.0\BackEnd.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\sera\Desktop\pvp\git\t2\LitHub\BackEnd\obj\Debug\net6.0\BackEnd.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\sera\Desktop\pvp\git\t2\LitHub\BackEnd\obj\Debug\net6.0\staticwebassets\msbuild.BackEnd.Microsoft.AspNetCore.StaticWebAssets.props
-C:\Users\sera\Desktop\pvp\git\t2\LitHub\BackEnd\obj\Debug\net6.0\staticwebassets\msbuild.build.BackEnd.props
-C:\Users\sera\Desktop\pvp\git\t2\LitHub\BackEnd\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.BackEnd.props
-C:\Users\sera\Desktop\pvp\git\t2\LitHub\BackEnd\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.BackEnd.props
-C:\Users\sera\Desktop\pvp\git\t2\LitHub\BackEnd\obj\Debug\net6.0\staticwebassets.pack.json
-C:\Users\sera\Desktop\pvp\git\t2\LitHub\BackEnd\obj\Debug\net6.0\staticwebassets.build.json
-C:\Users\sera\Desktop\pvp\git\t2\LitHub\BackEnd\obj\Debug\net6.0\staticwebassets.development.json
-C:\Users\sera\Desktop\pvp\git\t2\LitHub\BackEnd\obj\Debug\net6.0\scopedcss\bundle\BackEnd.styles.css
-C:\Users\sera\Desktop\pvp\git\t2\LitHub\BackEnd\obj\Debug\net6.0\BackEnd.csproj.CopyComplete
-C:\Users\sera\Desktop\pvp\git\t2\LitHub\BackEnd\obj\Debug\net6.0\BackEnd.dll
-C:\Users\sera\Desktop\pvp\git\t2\LitHub\BackEnd\obj\Debug\net6.0\refint\BackEnd.dll
-C:\Users\sera\Desktop\pvp\git\t2\LitHub\BackEnd\obj\Debug\net6.0\BackEnd.pdb
-C:\Users\sera\Desktop\pvp\git\t2\LitHub\BackEnd\obj\Debug\net6.0\BackEnd.genruntimeconfig.cache
-C:\Users\sera\Desktop\pvp\git\t2\LitHub\BackEnd\obj\Debug\net6.0\ref\BackEnd.dll
-D:\git\LitHub-DeleteAndEdit\LitHub-DeleteAndEdit\BackEnd\bin\Debug\net6.0\appsettings.Development.json
-D:\git\LitHub-DeleteAndEdit\LitHub-DeleteAndEdit\BackEnd\bin\Debug\net6.0\appsettings.json
-D:\git\LitHub-DeleteAndEdit\LitHub-DeleteAndEdit\BackEnd\bin\Debug\net6.0\BackEnd.exe
-D:\git\LitHub-DeleteAndEdit\LitHub-DeleteAndEdit\BackEnd\bin\Debug\net6.0\BackEnd.deps.json
-D:\git\LitHub-DeleteAndEdit\LitHub-DeleteAndEdit\BackEnd\bin\Debug\net6.0\BackEnd.runtimeconfig.json
-D:\git\LitHub-DeleteAndEdit\LitHub-DeleteAndEdit\BackEnd\bin\Debug\net6.0\BackEnd.dll
-D:\git\LitHub-DeleteAndEdit\LitHub-DeleteAndEdit\BackEnd\bin\Debug\net6.0\BackEnd.pdb
-D:\git\LitHub-DeleteAndEdit\LitHub-DeleteAndEdit\BackEnd\bin\Debug\net6.0\Humanizer.dll
-D:\git\LitHub-DeleteAndEdit\LitHub-DeleteAndEdit\BackEnd\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
-D:\git\LitHub-DeleteAndEdit\LitHub-DeleteAndEdit\BackEnd\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
-D:\git\LitHub-DeleteAndEdit\LitHub-DeleteAndEdit\BackEnd\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
-D:\git\LitHub-DeleteAndEdit\LitHub-DeleteAndEdit\BackEnd\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.InMemory.dll
-D:\git\LitHub-DeleteAndEdit\LitHub-DeleteAndEdit\BackEnd\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
-D:\git\LitHub-DeleteAndEdit\LitHub-DeleteAndEdit\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.Caching.Abstractions.dll
-D:\git\LitHub-DeleteAndEdit\LitHub-DeleteAndEdit\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
-D:\git\LitHub-DeleteAndEdit\LitHub-DeleteAndEdit\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Abstractions.dll
-D:\git\LitHub-DeleteAndEdit\LitHub-DeleteAndEdit\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.dll
-D:\git\LitHub-DeleteAndEdit\LitHub-DeleteAndEdit\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
-D:\git\LitHub-DeleteAndEdit\LitHub-DeleteAndEdit\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
-D:\git\LitHub-DeleteAndEdit\LitHub-DeleteAndEdit\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.Logging.dll
-D:\git\LitHub-DeleteAndEdit\LitHub-DeleteAndEdit\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
-D:\git\LitHub-DeleteAndEdit\LitHub-DeleteAndEdit\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.Options.dll
-D:\git\LitHub-DeleteAndEdit\LitHub-DeleteAndEdit\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.Primitives.dll
-D:\git\LitHub-DeleteAndEdit\LitHub-DeleteAndEdit\BackEnd\bin\Debug\net6.0\Microsoft.OpenApi.dll
-D:\git\LitHub-DeleteAndEdit\LitHub-DeleteAndEdit\BackEnd\bin\Debug\net6.0\Mono.TextTemplating.dll
-D:\git\LitHub-DeleteAndEdit\LitHub-DeleteAndEdit\BackEnd\bin\Debug\net6.0\MySqlConnector.dll
-D:\git\LitHub-DeleteAndEdit\LitHub-DeleteAndEdit\BackEnd\bin\Debug\net6.0\Pomelo.EntityFrameworkCore.MySql.dll
-D:\git\LitHub-DeleteAndEdit\LitHub-DeleteAndEdit\BackEnd\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
-D:\git\LitHub-DeleteAndEdit\LitHub-DeleteAndEdit\BackEnd\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
-D:\git\LitHub-DeleteAndEdit\LitHub-DeleteAndEdit\BackEnd\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
-D:\git\LitHub-DeleteAndEdit\LitHub-DeleteAndEdit\BackEnd\bin\Debug\net6.0\System.CodeDom.dll
-D:\git\LitHub-DeleteAndEdit\LitHub-DeleteAndEdit\BackEnd\bin\Debug\net6.0\System.Text.Encodings.Web.dll
-D:\git\LitHub-DeleteAndEdit\LitHub-DeleteAndEdit\BackEnd\bin\Debug\net6.0\System.Text.Json.dll
-D:\git\LitHub-DeleteAndEdit\LitHub-DeleteAndEdit\BackEnd\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
-D:\git\LitHub-DeleteAndEdit\LitHub-DeleteAndEdit\BackEnd\obj\Debug\net6.0\BackEnd.csproj.AssemblyReference.cache
-D:\git\LitHub-DeleteAndEdit\LitHub-DeleteAndEdit\BackEnd\obj\Debug\net6.0\BackEnd.GeneratedMSBuildEditorConfig.editorconfig
-D:\git\LitHub-DeleteAndEdit\LitHub-DeleteAndEdit\BackEnd\obj\Debug\net6.0\BackEnd.AssemblyInfoInputs.cache
-D:\git\LitHub-DeleteAndEdit\LitHub-DeleteAndEdit\BackEnd\obj\Debug\net6.0\BackEnd.AssemblyInfo.cs
-D:\git\LitHub-DeleteAndEdit\LitHub-DeleteAndEdit\BackEnd\obj\Debug\net6.0\BackEnd.csproj.CoreCompileInputs.cache
-D:\git\LitHub-DeleteAndEdit\LitHub-DeleteAndEdit\BackEnd\obj\Debug\net6.0\BackEnd.MvcApplicationPartsAssemblyInfo.cs
-D:\git\LitHub-DeleteAndEdit\LitHub-DeleteAndEdit\BackEnd\obj\Debug\net6.0\BackEnd.MvcApplicationPartsAssemblyInfo.cache
-D:\git\LitHub-DeleteAndEdit\LitHub-DeleteAndEdit\BackEnd\obj\Debug\net6.0\staticwebassets\msbuild.BackEnd.Microsoft.AspNetCore.StaticWebAssets.props
-D:\git\LitHub-DeleteAndEdit\LitHub-DeleteAndEdit\BackEnd\obj\Debug\net6.0\staticwebassets\msbuild.build.BackEnd.props
-D:\git\LitHub-DeleteAndEdit\LitHub-DeleteAndEdit\BackEnd\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.BackEnd.props
-D:\git\LitHub-DeleteAndEdit\LitHub-DeleteAndEdit\BackEnd\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.BackEnd.props
-D:\git\LitHub-DeleteAndEdit\LitHub-DeleteAndEdit\BackEnd\obj\Debug\net6.0\staticwebassets.pack.json
-D:\git\LitHub-DeleteAndEdit\LitHub-DeleteAndEdit\BackEnd\obj\Debug\net6.0\staticwebassets.build.json
-D:\git\LitHub-DeleteAndEdit\LitHub-DeleteAndEdit\BackEnd\obj\Debug\net6.0\staticwebassets.development.json
-D:\git\LitHub-DeleteAndEdit\LitHub-DeleteAndEdit\BackEnd\obj\Debug\net6.0\scopedcss\bundle\BackEnd.styles.css
-D:\git\LitHub-DeleteAndEdit\LitHub-DeleteAndEdit\BackEnd\obj\Debug\net6.0\BackEnd.csproj.CopyComplete
-D:\git\LitHub-DeleteAndEdit\LitHub-DeleteAndEdit\BackEnd\obj\Debug\net6.0\BackEnd.dll
-D:\git\LitHub-DeleteAndEdit\LitHub-DeleteAndEdit\BackEnd\obj\Debug\net6.0\refint\BackEnd.dll
-D:\git\LitHub-DeleteAndEdit\LitHub-DeleteAndEdit\BackEnd\obj\Debug\net6.0\BackEnd.pdb
-D:\git\LitHub-DeleteAndEdit\LitHub-DeleteAndEdit\BackEnd\obj\Debug\net6.0\BackEnd.genruntimeconfig.cache
-D:\git\LitHub-DeleteAndEdit\LitHub-DeleteAndEdit\BackEnd\obj\Debug\net6.0\ref\BackEnd.dll
-C:\Users\ACER\Desktop\3 Metai\2 pusmetis\PVP\LitHub\BackEnd\bin\Debug\net6.0\appsettings.Development.json
-C:\Users\ACER\Desktop\3 Metai\2 pusmetis\PVP\LitHub\BackEnd\bin\Debug\net6.0\appsettings.json
-C:\Users\ACER\Desktop\3 Metai\2 pusmetis\PVP\LitHub\BackEnd\bin\Debug\net6.0\BackEnd.exe
-C:\Users\ACER\Desktop\3 Metai\2 pusmetis\PVP\LitHub\BackEnd\bin\Debug\net6.0\BackEnd.deps.json
-C:\Users\ACER\Desktop\3 Metai\2 pusmetis\PVP\LitHub\BackEnd\bin\Debug\net6.0\BackEnd.runtimeconfig.json
-C:\Users\ACER\Desktop\3 Metai\2 pusmetis\PVP\LitHub\BackEnd\bin\Debug\net6.0\BackEnd.dll
-C:\Users\ACER\Desktop\3 Metai\2 pusmetis\PVP\LitHub\BackEnd\bin\Debug\net6.0\BackEnd.pdb
-C:\Users\ACER\Desktop\3 Metai\2 pusmetis\PVP\LitHub\BackEnd\bin\Debug\net6.0\Humanizer.dll
-C:\Users\ACER\Desktop\3 Metai\2 pusmetis\PVP\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
-C:\Users\ACER\Desktop\3 Metai\2 pusmetis\PVP\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
-C:\Users\ACER\Desktop\3 Metai\2 pusmetis\PVP\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
-C:\Users\ACER\Desktop\3 Metai\2 pusmetis\PVP\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.InMemory.dll
-C:\Users\ACER\Desktop\3 Metai\2 pusmetis\PVP\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
-C:\Users\ACER\Desktop\3 Metai\2 pusmetis\PVP\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.Caching.Abstractions.dll
-C:\Users\ACER\Desktop\3 Metai\2 pusmetis\PVP\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
-C:\Users\ACER\Desktop\3 Metai\2 pusmetis\PVP\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Abstractions.dll
-C:\Users\ACER\Desktop\3 Metai\2 pusmetis\PVP\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.dll
-C:\Users\ACER\Desktop\3 Metai\2 pusmetis\PVP\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
-C:\Users\ACER\Desktop\3 Metai\2 pusmetis\PVP\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
-C:\Users\ACER\Desktop\3 Metai\2 pusmetis\PVP\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.Logging.dll
-C:\Users\ACER\Desktop\3 Metai\2 pusmetis\PVP\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
-C:\Users\ACER\Desktop\3 Metai\2 pusmetis\PVP\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.Options.dll
-C:\Users\ACER\Desktop\3 Metai\2 pusmetis\PVP\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.Primitives.dll
-C:\Users\ACER\Desktop\3 Metai\2 pusmetis\PVP\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.OpenApi.dll
-C:\Users\ACER\Desktop\3 Metai\2 pusmetis\PVP\LitHub\BackEnd\bin\Debug\net6.0\Mono.TextTemplating.dll
-C:\Users\ACER\Desktop\3 Metai\2 pusmetis\PVP\LitHub\BackEnd\bin\Debug\net6.0\MySqlConnector.dll
-C:\Users\ACER\Desktop\3 Metai\2 pusmetis\PVP\LitHub\BackEnd\bin\Debug\net6.0\Pomelo.EntityFrameworkCore.MySql.dll
-C:\Users\ACER\Desktop\3 Metai\2 pusmetis\PVP\LitHub\BackEnd\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
-C:\Users\ACER\Desktop\3 Metai\2 pusmetis\PVP\LitHub\BackEnd\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
-C:\Users\ACER\Desktop\3 Metai\2 pusmetis\PVP\LitHub\BackEnd\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
-C:\Users\ACER\Desktop\3 Metai\2 pusmetis\PVP\LitHub\BackEnd\bin\Debug\net6.0\System.CodeDom.dll
-C:\Users\ACER\Desktop\3 Metai\2 pusmetis\PVP\LitHub\BackEnd\bin\Debug\net6.0\System.Text.Encodings.Web.dll
-C:\Users\ACER\Desktop\3 Metai\2 pusmetis\PVP\LitHub\BackEnd\bin\Debug\net6.0\System.Text.Json.dll
-C:\Users\ACER\Desktop\3 Metai\2 pusmetis\PVP\LitHub\BackEnd\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
-C:\Users\ACER\Desktop\3 Metai\2 pusmetis\PVP\LitHub\BackEnd\obj\Debug\net6.0\BackEnd.csproj.AssemblyReference.cache
-C:\Users\ACER\Desktop\3 Metai\2 pusmetis\PVP\LitHub\BackEnd\obj\Debug\net6.0\BackEnd.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\ACER\Desktop\3 Metai\2 pusmetis\PVP\LitHub\BackEnd\obj\Debug\net6.0\BackEnd.AssemblyInfoInputs.cache
-C:\Users\ACER\Desktop\3 Metai\2 pusmetis\PVP\LitHub\BackEnd\obj\Debug\net6.0\BackEnd.AssemblyInfo.cs
-C:\Users\ACER\Desktop\3 Metai\2 pusmetis\PVP\LitHub\BackEnd\obj\Debug\net6.0\BackEnd.csproj.CoreCompileInputs.cache
-C:\Users\ACER\Desktop\3 Metai\2 pusmetis\PVP\LitHub\BackEnd\obj\Debug\net6.0\BackEnd.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\ACER\Desktop\3 Metai\2 pusmetis\PVP\LitHub\BackEnd\obj\Debug\net6.0\BackEnd.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\ACER\Desktop\3 Metai\2 pusmetis\PVP\LitHub\BackEnd\obj\Debug\net6.0\staticwebassets\msbuild.BackEnd.Microsoft.AspNetCore.StaticWebAssets.props
-C:\Users\ACER\Desktop\3 Metai\2 pusmetis\PVP\LitHub\BackEnd\obj\Debug\net6.0\staticwebassets\msbuild.build.BackEnd.props
-C:\Users\ACER\Desktop\3 Metai\2 pusmetis\PVP\LitHub\BackEnd\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.BackEnd.props
-C:\Users\ACER\Desktop\3 Metai\2 pusmetis\PVP\LitHub\BackEnd\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.BackEnd.props
-C:\Users\ACER\Desktop\3 Metai\2 pusmetis\PVP\LitHub\BackEnd\obj\Debug\net6.0\staticwebassets.pack.json
-C:\Users\ACER\Desktop\3 Metai\2 pusmetis\PVP\LitHub\BackEnd\obj\Debug\net6.0\staticwebassets.build.json
-C:\Users\ACER\Desktop\3 Metai\2 pusmetis\PVP\LitHub\BackEnd\obj\Debug\net6.0\staticwebassets.development.json
-C:\Users\ACER\Desktop\3 Metai\2 pusmetis\PVP\LitHub\BackEnd\obj\Debug\net6.0\scopedcss\bundle\BackEnd.styles.css
-C:\Users\ACER\Desktop\3 Metai\2 pusmetis\PVP\LitHub\BackEnd\obj\Debug\net6.0\BackEnd.csproj.CopyComplete
-C:\Users\ACER\Desktop\3 Metai\2 pusmetis\PVP\LitHub\BackEnd\obj\Debug\net6.0\BackEnd.dll
-C:\Users\ACER\Desktop\3 Metai\2 pusmetis\PVP\LitHub\BackEnd\obj\Debug\net6.0\refint\BackEnd.dll
-C:\Users\ACER\Desktop\3 Metai\2 pusmetis\PVP\LitHub\BackEnd\obj\Debug\net6.0\BackEnd.pdb
-C:\Users\ACER\Desktop\3 Metai\2 pusmetis\PVP\LitHub\BackEnd\obj\Debug\net6.0\BackEnd.genruntimeconfig.cache
-C:\Users\ACER\Desktop\3 Metai\2 pusmetis\PVP\LitHub\BackEnd\obj\Debug\net6.0\ref\BackEnd.dll
-C:\Users\robot\Documents\GitHub\LitHub\BackEnd\bin\Debug\net6.0\Humanizer.dll
-C:\Users\robot\Documents\GitHub\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
-C:\Users\robot\Documents\GitHub\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
-C:\Users\robot\Documents\GitHub\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
-C:\Users\robot\Documents\GitHub\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.InMemory.dll
-C:\Users\robot\Documents\GitHub\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
-C:\Users\robot\Documents\GitHub\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.Caching.Abstractions.dll
-C:\Users\robot\Documents\GitHub\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
-C:\Users\robot\Documents\GitHub\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Abstractions.dll
-C:\Users\robot\Documents\GitHub\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.dll
-C:\Users\robot\Documents\GitHub\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
-C:\Users\robot\Documents\GitHub\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
-C:\Users\robot\Documents\GitHub\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.Logging.dll
-C:\Users\robot\Documents\GitHub\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
-C:\Users\robot\Documents\GitHub\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.Options.dll
-C:\Users\robot\Documents\GitHub\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.Primitives.dll
-C:\Users\robot\Documents\GitHub\LitHub\BackEnd\bin\Debug\net6.0\Mono.TextTemplating.dll
-C:\Users\robot\Documents\GitHub\LitHub\BackEnd\bin\Debug\net6.0\MySqlConnector.dll
-C:\Users\robot\Documents\GitHub\LitHub\BackEnd\bin\Debug\net6.0\Pomelo.EntityFrameworkCore.MySql.dll
-C:\Users\robot\Documents\GitHub\LitHub\BackEnd\bin\Debug\net6.0\System.CodeDom.dll
-C:\Users\robot\Documents\GitHub\LitHub\BackEnd\bin\Debug\net6.0\System.Text.Encodings.Web.dll
-C:\Users\robot\Documents\GitHub\LitHub\BackEnd\bin\Debug\net6.0\System.Text.Json.dll
-C:\Users\robot\Documents\GitHub\LitHub\BackEnd\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
-C:\Users\robot\Documents\GitHub\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
-C:\Users\robot\Documents\GitHub\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
-C:\Users\robot\Documents\GitHub\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
-C:\Users\robot\Documents\GitHub\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
-C:\Users\robot\Documents\GitHub\LitHub\BackEnd\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
-C:\Users\sera\Desktop\pvp\git\t2\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
-C:\Users\sera\Desktop\pvp\git\t2\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
-C:\Users\sera\Desktop\pvp\git\t2\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
-C:\Users\sera\Desktop\pvp\git\t2\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
-C:\Users\sera\Desktop\pvp\git\t2\LitHub\BackEnd\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
-C:\Users\sera\Desktop\pvp\git\t3\LitHub\BackEnd\bin\Debug\net6.0\appsettings.Development.json
-C:\Users\sera\Desktop\pvp\git\t3\LitHub\BackEnd\bin\Debug\net6.0\appsettings.json
-C:\Users\sera\Desktop\pvp\git\t3\LitHub\BackEnd\bin\Debug\net6.0\BackEnd.exe
-C:\Users\sera\Desktop\pvp\git\t3\LitHub\BackEnd\bin\Debug\net6.0\BackEnd.deps.json
-C:\Users\sera\Desktop\pvp\git\t3\LitHub\BackEnd\bin\Debug\net6.0\BackEnd.runtimeconfig.json
-C:\Users\sera\Desktop\pvp\git\t3\LitHub\BackEnd\bin\Debug\net6.0\BackEnd.dll
-C:\Users\sera\Desktop\pvp\git\t3\LitHub\BackEnd\bin\Debug\net6.0\BackEnd.pdb
-C:\Users\sera\Desktop\pvp\git\t3\LitHub\BackEnd\bin\Debug\net6.0\Humanizer.dll
-C:\Users\sera\Desktop\pvp\git\t3\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
-C:\Users\sera\Desktop\pvp\git\t3\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
-C:\Users\sera\Desktop\pvp\git\t3\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
-C:\Users\sera\Desktop\pvp\git\t3\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.InMemory.dll
-C:\Users\sera\Desktop\pvp\git\t3\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
-C:\Users\sera\Desktop\pvp\git\t3\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.Caching.Abstractions.dll
-C:\Users\sera\Desktop\pvp\git\t3\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
-C:\Users\sera\Desktop\pvp\git\t3\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Abstractions.dll
-C:\Users\sera\Desktop\pvp\git\t3\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.dll
-C:\Users\sera\Desktop\pvp\git\t3\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
-C:\Users\sera\Desktop\pvp\git\t3\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
-C:\Users\sera\Desktop\pvp\git\t3\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.Logging.dll
-C:\Users\sera\Desktop\pvp\git\t3\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
-C:\Users\sera\Desktop\pvp\git\t3\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.Options.dll
-C:\Users\sera\Desktop\pvp\git\t3\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.Extensions.Primitives.dll
-C:\Users\sera\Desktop\pvp\git\t3\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
-C:\Users\sera\Desktop\pvp\git\t3\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
-C:\Users\sera\Desktop\pvp\git\t3\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
-C:\Users\sera\Desktop\pvp\git\t3\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
-C:\Users\sera\Desktop\pvp\git\t3\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.OpenApi.dll
-C:\Users\sera\Desktop\pvp\git\t3\LitHub\BackEnd\bin\Debug\net6.0\Mono.TextTemplating.dll
-C:\Users\sera\Desktop\pvp\git\t3\LitHub\BackEnd\bin\Debug\net6.0\MySqlConnector.dll
-C:\Users\sera\Desktop\pvp\git\t3\LitHub\BackEnd\bin\Debug\net6.0\Pomelo.EntityFrameworkCore.MySql.dll
-C:\Users\sera\Desktop\pvp\git\t3\LitHub\BackEnd\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
-C:\Users\sera\Desktop\pvp\git\t3\LitHub\BackEnd\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
-C:\Users\sera\Desktop\pvp\git\t3\LitHub\BackEnd\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
-C:\Users\sera\Desktop\pvp\git\t3\LitHub\BackEnd\bin\Debug\net6.0\System.CodeDom.dll
-C:\Users\sera\Desktop\pvp\git\t3\LitHub\BackEnd\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
-C:\Users\sera\Desktop\pvp\git\t3\LitHub\BackEnd\bin\Debug\net6.0\System.Text.Encodings.Web.dll
-C:\Users\sera\Desktop\pvp\git\t3\LitHub\BackEnd\bin\Debug\net6.0\System.Text.Json.dll
-C:\Users\sera\Desktop\pvp\git\t3\LitHub\BackEnd\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
-C:\Users\sera\Desktop\pvp\git\t3\LitHub\BackEnd\obj\Debug\net6.0\BackEnd.csproj.AssemblyReference.cache
-C:\Users\sera\Desktop\pvp\git\t3\LitHub\BackEnd\obj\Debug\net6.0\BackEnd.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\sera\Desktop\pvp\git\t3\LitHub\BackEnd\obj\Debug\net6.0\BackEnd.AssemblyInfoInputs.cache
-C:\Users\sera\Desktop\pvp\git\t3\LitHub\BackEnd\obj\Debug\net6.0\BackEnd.AssemblyInfo.cs
-C:\Users\sera\Desktop\pvp\git\t3\LitHub\BackEnd\obj\Debug\net6.0\BackEnd.csproj.CoreCompileInputs.cache
-C:\Users\sera\Desktop\pvp\git\t3\LitHub\BackEnd\obj\Debug\net6.0\BackEnd.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\sera\Desktop\pvp\git\t3\LitHub\BackEnd\obj\Debug\net6.0\BackEnd.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\sera\Desktop\pvp\git\t3\LitHub\BackEnd\obj\Debug\net6.0\staticwebassets\msbuild.BackEnd.Microsoft.AspNetCore.StaticWebAssets.props
-C:\Users\sera\Desktop\pvp\git\t3\LitHub\BackEnd\obj\Debug\net6.0\staticwebassets\msbuild.build.BackEnd.props
-C:\Users\sera\Desktop\pvp\git\t3\LitHub\BackEnd\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.BackEnd.props
-C:\Users\sera\Desktop\pvp\git\t3\LitHub\BackEnd\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.BackEnd.props
-C:\Users\sera\Desktop\pvp\git\t3\LitHub\BackEnd\obj\Debug\net6.0\staticwebassets.pack.json
-C:\Users\sera\Desktop\pvp\git\t3\LitHub\BackEnd\obj\Debug\net6.0\staticwebassets.build.json
-C:\Users\sera\Desktop\pvp\git\t3\LitHub\BackEnd\obj\Debug\net6.0\staticwebassets.development.json
-C:\Users\sera\Desktop\pvp\git\t3\LitHub\BackEnd\obj\Debug\net6.0\scopedcss\bundle\BackEnd.styles.css
-C:\Users\sera\Desktop\pvp\git\t3\LitHub\BackEnd\obj\Debug\net6.0\BackEnd.csproj.CopyComplete
-C:\Users\sera\Desktop\pvp\git\t3\LitHub\BackEnd\obj\Debug\net6.0\BackEnd.dll
-C:\Users\sera\Desktop\pvp\git\t3\LitHub\BackEnd\obj\Debug\net6.0\refint\BackEnd.dll
-C:\Users\sera\Desktop\pvp\git\t3\LitHub\BackEnd\obj\Debug\net6.0\BackEnd.pdb
-C:\Users\sera\Desktop\pvp\git\t3\LitHub\BackEnd\obj\Debug\net6.0\BackEnd.genruntimeconfig.cache
-C:\Users\sera\Desktop\pvp\git\t3\LitHub\BackEnd\obj\Debug\net6.0\ref\BackEnd.dll
-C:\Users\ACER\Desktop\3 Metai\2 pusmetis\PVP\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
-C:\Users\ACER\Desktop\3 Metai\2 pusmetis\PVP\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
-C:\Users\ACER\Desktop\3 Metai\2 pusmetis\PVP\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
-C:\Users\ACER\Desktop\3 Metai\2 pusmetis\PVP\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
-C:\Users\ACER\Desktop\3 Metai\2 pusmetis\PVP\LitHub\BackEnd\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
+C:/Users/robot/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/appsettings.Development.json
+C:/Users/robot/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/appsettings.json
+C:/Users/robot/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/BackEnd.exe
+C:/Users/robot/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/BackEnd.deps.json
+C:/Users/robot/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/BackEnd.runtimeconfig.json
+C:/Users/robot/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/BackEnd.dll
+C:/Users/robot/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/BackEnd.pdb
+C:/Users/robot/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.OpenApi.dll
+C:/Users/robot/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/Swashbuckle.AspNetCore.Swagger.dll
+C:/Users/robot/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/Swashbuckle.AspNetCore.SwaggerGen.dll
+C:/Users/robot/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/Swashbuckle.AspNetCore.SwaggerUI.dll
+C:/Users/robot/Documents/GitHub/LitHub/BackEnd/obj/Debug/net6.0/BackEnd.csproj.AssemblyReference.cache
+C:/Users/robot/Documents/GitHub/LitHub/BackEnd/obj/Debug/net6.0/BackEnd.GeneratedMSBuildEditorConfig.editorconfig
+C:/Users/robot/Documents/GitHub/LitHub/BackEnd/obj/Debug/net6.0/BackEnd.AssemblyInfoInputs.cache
+C:/Users/robot/Documents/GitHub/LitHub/BackEnd/obj/Debug/net6.0/BackEnd.AssemblyInfo.cs
+C:/Users/robot/Documents/GitHub/LitHub/BackEnd/obj/Debug/net6.0/BackEnd.csproj.CoreCompileInputs.cache
+C:/Users/robot/Documents/GitHub/LitHub/BackEnd/obj/Debug/net6.0/BackEnd.MvcApplicationPartsAssemblyInfo.cs
+C:/Users/robot/Documents/GitHub/LitHub/BackEnd/obj/Debug/net6.0/BackEnd.MvcApplicationPartsAssemblyInfo.cache
+C:/Users/robot/Documents/GitHub/LitHub/BackEnd/obj/Debug/net6.0/staticwebassets/msbuild.BackEnd.Microsoft.AspNetCore.StaticWebAssets.props
+C:/Users/robot/Documents/GitHub/LitHub/BackEnd/obj/Debug/net6.0/staticwebassets/msbuild.build.BackEnd.props
+C:/Users/robot/Documents/GitHub/LitHub/BackEnd/obj/Debug/net6.0/staticwebassets/msbuild.buildMultiTargeting.BackEnd.props
+C:/Users/robot/Documents/GitHub/LitHub/BackEnd/obj/Debug/net6.0/staticwebassets/msbuild.buildTransitive.BackEnd.props
+C:/Users/robot/Documents/GitHub/LitHub/BackEnd/obj/Debug/net6.0/staticwebassets.pack.json
+C:/Users/robot/Documents/GitHub/LitHub/BackEnd/obj/Debug/net6.0/staticwebassets.build.json
+C:/Users/robot/Documents/GitHub/LitHub/BackEnd/obj/Debug/net6.0/staticwebassets.development.json
+C:/Users/robot/Documents/GitHub/LitHub/BackEnd/obj/Debug/net6.0/scopedcss/bundle/BackEnd.styles.css
+C:/Users/robot/Documents/GitHub/LitHub/BackEnd/obj/Debug/net6.0/BackEnd.csproj.CopyComplete
+C:/Users/robot/Documents/GitHub/LitHub/BackEnd/obj/Debug/net6.0/BackEnd.dll
+C:/Users/robot/Documents/GitHub/LitHub/BackEnd/obj/Debug/net6.0/refint/BackEnd.dll
+C:/Users/robot/Documents/GitHub/LitHub/BackEnd/obj/Debug/net6.0/BackEnd.pdb
+C:/Users/robot/Documents/GitHub/LitHub/BackEnd/obj/Debug/net6.0/BackEnd.genruntimeconfig.cache
+C:/Users/robot/Documents/GitHub/LitHub/BackEnd/obj/Debug/net6.0/ref/BackEnd.dll
+C:/Users/robot/Documents/LitHub/BackEnd/bin/Debug/net6.0/appsettings.Development.json
+C:/Users/robot/Documents/LitHub/BackEnd/bin/Debug/net6.0/appsettings.json
+C:/Users/robot/Documents/LitHub/BackEnd/bin/Debug/net6.0/BackEnd.exe
+C:/Users/robot/Documents/LitHub/BackEnd/bin/Debug/net6.0/BackEnd.deps.json
+C:/Users/robot/Documents/LitHub/BackEnd/bin/Debug/net6.0/BackEnd.runtimeconfig.json
+C:/Users/robot/Documents/LitHub/BackEnd/bin/Debug/net6.0/BackEnd.dll
+C:/Users/robot/Documents/LitHub/BackEnd/bin/Debug/net6.0/BackEnd.pdb
+C:/Users/robot/Documents/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.OpenApi.dll
+C:/Users/robot/Documents/LitHub/BackEnd/bin/Debug/net6.0/Swashbuckle.AspNetCore.Swagger.dll
+C:/Users/robot/Documents/LitHub/BackEnd/bin/Debug/net6.0/Swashbuckle.AspNetCore.SwaggerGen.dll
+C:/Users/robot/Documents/LitHub/BackEnd/bin/Debug/net6.0/Swashbuckle.AspNetCore.SwaggerUI.dll
+C:/Users/robot/Documents/LitHub/BackEnd/obj/Debug/net6.0/BackEnd.csproj.AssemblyReference.cache
+C:/Users/robot/Documents/LitHub/BackEnd/obj/Debug/net6.0/BackEnd.GeneratedMSBuildEditorConfig.editorconfig
+C:/Users/robot/Documents/LitHub/BackEnd/obj/Debug/net6.0/BackEnd.AssemblyInfoInputs.cache
+C:/Users/robot/Documents/LitHub/BackEnd/obj/Debug/net6.0/BackEnd.AssemblyInfo.cs
+C:/Users/robot/Documents/LitHub/BackEnd/obj/Debug/net6.0/BackEnd.csproj.CoreCompileInputs.cache
+C:/Users/robot/Documents/LitHub/BackEnd/obj/Debug/net6.0/BackEnd.MvcApplicationPartsAssemblyInfo.cs
+C:/Users/robot/Documents/LitHub/BackEnd/obj/Debug/net6.0/BackEnd.MvcApplicationPartsAssemblyInfo.cache
+C:/Users/robot/Documents/LitHub/BackEnd/obj/Debug/net6.0/staticwebassets.build.json
+C:/Users/robot/Documents/LitHub/BackEnd/obj/Debug/net6.0/staticwebassets.development.json
+C:/Users/robot/Documents/LitHub/BackEnd/obj/Debug/net6.0/scopedcss/bundle/BackEnd.styles.css
+C:/Users/robot/Documents/LitHub/BackEnd/obj/Debug/net6.0/BackEnd.csproj.CopyComplete
+C:/Users/robot/Documents/LitHub/BackEnd/obj/Debug/net6.0/BackEnd.dll
+C:/Users/robot/Documents/LitHub/BackEnd/obj/Debug/net6.0/refint/BackEnd.dll
+C:/Users/robot/Documents/LitHub/BackEnd/obj/Debug/net6.0/BackEnd.pdb
+C:/Users/robot/Documents/LitHub/BackEnd/obj/Debug/net6.0/BackEnd.genruntimeconfig.cache
+C:/Users/robot/Documents/LitHub/BackEnd/obj/Debug/net6.0/ref/BackEnd.dll
+C:/Users/robot/Documents/LitHub/BackEnd/bin/Debug/net6.0/Humanizer.dll
+C:/Users/robot/Documents/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.dll
+C:/Users/robot/Documents/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.Abstractions.dll
+C:/Users/robot/Documents/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.Design.dll
+C:/Users/robot/Documents/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.InMemory.dll
+C:/Users/robot/Documents/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.Relational.dll
+C:/Users/robot/Documents/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.Extensions.Caching.Abstractions.dll
+C:/Users/robot/Documents/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.Extensions.Caching.Memory.dll
+C:/Users/robot/Documents/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.Extensions.DependencyInjection.dll
+C:/Users/robot/Documents/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:/Users/robot/Documents/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.Extensions.Logging.dll
+C:/Users/robot/Documents/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.Extensions.Logging.Abstractions.dll
+C:/Users/robot/Documents/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.Extensions.Options.dll
+C:/Users/robot/Documents/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.Extensions.Primitives.dll
+C:/Users/robot/Documents/LitHub/BackEnd/bin/Debug/net6.0/MySqlConnector.dll
+C:/Users/robot/Documents/LitHub/BackEnd/bin/Debug/net6.0/Pomelo.EntityFrameworkCore.MySql.dll
+C:/Users/robot/Documents/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.Extensions.Configuration.Abstractions.dll
+C:/Users/robot/Documents/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.Extensions.DependencyModel.dll
+C:/Users/robot/Documents/LitHub/BackEnd/bin/Debug/net6.0/Mono.TextTemplating.dll
+C:/Users/robot/Documents/LitHub/BackEnd/bin/Debug/net6.0/System.CodeDom.dll
+C:/Users/robot/Documents/LitHub/BackEnd/bin/Debug/net6.0/System.Text.Encodings.Web.dll
+C:/Users/robot/Documents/LitHub/BackEnd/bin/Debug/net6.0/System.Text.Json.dll
+C:/Users/robot/Documents/LitHub/BackEnd/bin/Debug/net6.0/runtimes/browser/lib/net6.0/System.Text.Encodings.Web.dll
+C:/Users/sera/Desktop/pvp/git/t2/LitHub/BackEnd/bin/Debug/net6.0/appsettings.Development.json
+C:/Users/sera/Desktop/pvp/git/t2/LitHub/BackEnd/bin/Debug/net6.0/appsettings.json
+C:/Users/sera/Desktop/pvp/git/t2/LitHub/BackEnd/bin/Debug/net6.0/BackEnd.exe
+C:/Users/sera/Desktop/pvp/git/t2/LitHub/BackEnd/bin/Debug/net6.0/BackEnd.deps.json
+C:/Users/sera/Desktop/pvp/git/t2/LitHub/BackEnd/bin/Debug/net6.0/BackEnd.runtimeconfig.json
+C:/Users/sera/Desktop/pvp/git/t2/LitHub/BackEnd/bin/Debug/net6.0/BackEnd.dll
+C:/Users/sera/Desktop/pvp/git/t2/LitHub/BackEnd/bin/Debug/net6.0/BackEnd.pdb
+C:/Users/sera/Desktop/pvp/git/t2/LitHub/BackEnd/bin/Debug/net6.0/Humanizer.dll
+C:/Users/sera/Desktop/pvp/git/t2/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.dll
+C:/Users/sera/Desktop/pvp/git/t2/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.Abstractions.dll
+C:/Users/sera/Desktop/pvp/git/t2/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.Design.dll
+C:/Users/sera/Desktop/pvp/git/t2/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.InMemory.dll
+C:/Users/sera/Desktop/pvp/git/t2/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.Relational.dll
+C:/Users/sera/Desktop/pvp/git/t2/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.Extensions.Caching.Abstractions.dll
+C:/Users/sera/Desktop/pvp/git/t2/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.Extensions.Caching.Memory.dll
+C:/Users/sera/Desktop/pvp/git/t2/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.Extensions.Configuration.Abstractions.dll
+C:/Users/sera/Desktop/pvp/git/t2/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.Extensions.DependencyInjection.dll
+C:/Users/sera/Desktop/pvp/git/t2/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:/Users/sera/Desktop/pvp/git/t2/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.Extensions.DependencyModel.dll
+C:/Users/sera/Desktop/pvp/git/t2/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.Extensions.Logging.dll
+C:/Users/sera/Desktop/pvp/git/t2/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.Extensions.Logging.Abstractions.dll
+C:/Users/sera/Desktop/pvp/git/t2/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.Extensions.Options.dll
+C:/Users/sera/Desktop/pvp/git/t2/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.Extensions.Primitives.dll
+C:/Users/sera/Desktop/pvp/git/t2/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.OpenApi.dll
+C:/Users/sera/Desktop/pvp/git/t2/LitHub/BackEnd/bin/Debug/net6.0/Mono.TextTemplating.dll
+C:/Users/sera/Desktop/pvp/git/t2/LitHub/BackEnd/bin/Debug/net6.0/MySqlConnector.dll
+C:/Users/sera/Desktop/pvp/git/t2/LitHub/BackEnd/bin/Debug/net6.0/Pomelo.EntityFrameworkCore.MySql.dll
+C:/Users/sera/Desktop/pvp/git/t2/LitHub/BackEnd/bin/Debug/net6.0/Swashbuckle.AspNetCore.Swagger.dll
+C:/Users/sera/Desktop/pvp/git/t2/LitHub/BackEnd/bin/Debug/net6.0/Swashbuckle.AspNetCore.SwaggerGen.dll
+C:/Users/sera/Desktop/pvp/git/t2/LitHub/BackEnd/bin/Debug/net6.0/Swashbuckle.AspNetCore.SwaggerUI.dll
+C:/Users/sera/Desktop/pvp/git/t2/LitHub/BackEnd/bin/Debug/net6.0/System.CodeDom.dll
+C:/Users/sera/Desktop/pvp/git/t2/LitHub/BackEnd/bin/Debug/net6.0/System.Text.Encodings.Web.dll
+C:/Users/sera/Desktop/pvp/git/t2/LitHub/BackEnd/bin/Debug/net6.0/System.Text.Json.dll
+C:/Users/sera/Desktop/pvp/git/t2/LitHub/BackEnd/bin/Debug/net6.0/runtimes/browser/lib/net6.0/System.Text.Encodings.Web.dll
+C:/Users/sera/Desktop/pvp/git/t2/LitHub/BackEnd/obj/Debug/net6.0/BackEnd.csproj.AssemblyReference.cache
+C:/Users/sera/Desktop/pvp/git/t2/LitHub/BackEnd/obj/Debug/net6.0/BackEnd.GeneratedMSBuildEditorConfig.editorconfig
+C:/Users/sera/Desktop/pvp/git/t2/LitHub/BackEnd/obj/Debug/net6.0/BackEnd.AssemblyInfoInputs.cache
+C:/Users/sera/Desktop/pvp/git/t2/LitHub/BackEnd/obj/Debug/net6.0/BackEnd.AssemblyInfo.cs
+C:/Users/sera/Desktop/pvp/git/t2/LitHub/BackEnd/obj/Debug/net6.0/BackEnd.csproj.CoreCompileInputs.cache
+C:/Users/sera/Desktop/pvp/git/t2/LitHub/BackEnd/obj/Debug/net6.0/BackEnd.MvcApplicationPartsAssemblyInfo.cs
+C:/Users/sera/Desktop/pvp/git/t2/LitHub/BackEnd/obj/Debug/net6.0/BackEnd.MvcApplicationPartsAssemblyInfo.cache
+C:/Users/sera/Desktop/pvp/git/t2/LitHub/BackEnd/obj/Debug/net6.0/staticwebassets/msbuild.BackEnd.Microsoft.AspNetCore.StaticWebAssets.props
+C:/Users/sera/Desktop/pvp/git/t2/LitHub/BackEnd/obj/Debug/net6.0/staticwebassets/msbuild.build.BackEnd.props
+C:/Users/sera/Desktop/pvp/git/t2/LitHub/BackEnd/obj/Debug/net6.0/staticwebassets/msbuild.buildMultiTargeting.BackEnd.props
+C:/Users/sera/Desktop/pvp/git/t2/LitHub/BackEnd/obj/Debug/net6.0/staticwebassets/msbuild.buildTransitive.BackEnd.props
+C:/Users/sera/Desktop/pvp/git/t2/LitHub/BackEnd/obj/Debug/net6.0/staticwebassets.pack.json
+C:/Users/sera/Desktop/pvp/git/t2/LitHub/BackEnd/obj/Debug/net6.0/staticwebassets.build.json
+C:/Users/sera/Desktop/pvp/git/t2/LitHub/BackEnd/obj/Debug/net6.0/staticwebassets.development.json
+C:/Users/sera/Desktop/pvp/git/t2/LitHub/BackEnd/obj/Debug/net6.0/scopedcss/bundle/BackEnd.styles.css
+C:/Users/sera/Desktop/pvp/git/t2/LitHub/BackEnd/obj/Debug/net6.0/BackEnd.csproj.CopyComplete
+C:/Users/sera/Desktop/pvp/git/t2/LitHub/BackEnd/obj/Debug/net6.0/BackEnd.dll
+C:/Users/sera/Desktop/pvp/git/t2/LitHub/BackEnd/obj/Debug/net6.0/refint/BackEnd.dll
+C:/Users/sera/Desktop/pvp/git/t2/LitHub/BackEnd/obj/Debug/net6.0/BackEnd.pdb
+C:/Users/sera/Desktop/pvp/git/t2/LitHub/BackEnd/obj/Debug/net6.0/BackEnd.genruntimeconfig.cache
+C:/Users/sera/Desktop/pvp/git/t2/LitHub/BackEnd/obj/Debug/net6.0/ref/BackEnd.dll
+D:/git/LitHub-DeleteAndEdit/LitHub-DeleteAndEdit/BackEnd/bin/Debug/net6.0/appsettings.Development.json
+D:/git/LitHub-DeleteAndEdit/LitHub-DeleteAndEdit/BackEnd/bin/Debug/net6.0/appsettings.json
+D:/git/LitHub-DeleteAndEdit/LitHub-DeleteAndEdit/BackEnd/bin/Debug/net6.0/BackEnd.exe
+D:/git/LitHub-DeleteAndEdit/LitHub-DeleteAndEdit/BackEnd/bin/Debug/net6.0/BackEnd.deps.json
+D:/git/LitHub-DeleteAndEdit/LitHub-DeleteAndEdit/BackEnd/bin/Debug/net6.0/BackEnd.runtimeconfig.json
+D:/git/LitHub-DeleteAndEdit/LitHub-DeleteAndEdit/BackEnd/bin/Debug/net6.0/BackEnd.dll
+D:/git/LitHub-DeleteAndEdit/LitHub-DeleteAndEdit/BackEnd/bin/Debug/net6.0/BackEnd.pdb
+D:/git/LitHub-DeleteAndEdit/LitHub-DeleteAndEdit/BackEnd/bin/Debug/net6.0/Humanizer.dll
+D:/git/LitHub-DeleteAndEdit/LitHub-DeleteAndEdit/BackEnd/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.dll
+D:/git/LitHub-DeleteAndEdit/LitHub-DeleteAndEdit/BackEnd/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.Abstractions.dll
+D:/git/LitHub-DeleteAndEdit/LitHub-DeleteAndEdit/BackEnd/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.Design.dll
+D:/git/LitHub-DeleteAndEdit/LitHub-DeleteAndEdit/BackEnd/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.InMemory.dll
+D:/git/LitHub-DeleteAndEdit/LitHub-DeleteAndEdit/BackEnd/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.Relational.dll
+D:/git/LitHub-DeleteAndEdit/LitHub-DeleteAndEdit/BackEnd/bin/Debug/net6.0/Microsoft.Extensions.Caching.Abstractions.dll
+D:/git/LitHub-DeleteAndEdit/LitHub-DeleteAndEdit/BackEnd/bin/Debug/net6.0/Microsoft.Extensions.Caching.Memory.dll
+D:/git/LitHub-DeleteAndEdit/LitHub-DeleteAndEdit/BackEnd/bin/Debug/net6.0/Microsoft.Extensions.Configuration.Abstractions.dll
+D:/git/LitHub-DeleteAndEdit/LitHub-DeleteAndEdit/BackEnd/bin/Debug/net6.0/Microsoft.Extensions.DependencyInjection.dll
+D:/git/LitHub-DeleteAndEdit/LitHub-DeleteAndEdit/BackEnd/bin/Debug/net6.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:/git/LitHub-DeleteAndEdit/LitHub-DeleteAndEdit/BackEnd/bin/Debug/net6.0/Microsoft.Extensions.DependencyModel.dll
+D:/git/LitHub-DeleteAndEdit/LitHub-DeleteAndEdit/BackEnd/bin/Debug/net6.0/Microsoft.Extensions.Logging.dll
+D:/git/LitHub-DeleteAndEdit/LitHub-DeleteAndEdit/BackEnd/bin/Debug/net6.0/Microsoft.Extensions.Logging.Abstractions.dll
+D:/git/LitHub-DeleteAndEdit/LitHub-DeleteAndEdit/BackEnd/bin/Debug/net6.0/Microsoft.Extensions.Options.dll
+D:/git/LitHub-DeleteAndEdit/LitHub-DeleteAndEdit/BackEnd/bin/Debug/net6.0/Microsoft.Extensions.Primitives.dll
+D:/git/LitHub-DeleteAndEdit/LitHub-DeleteAndEdit/BackEnd/bin/Debug/net6.0/Microsoft.OpenApi.dll
+D:/git/LitHub-DeleteAndEdit/LitHub-DeleteAndEdit/BackEnd/bin/Debug/net6.0/Mono.TextTemplating.dll
+D:/git/LitHub-DeleteAndEdit/LitHub-DeleteAndEdit/BackEnd/bin/Debug/net6.0/MySqlConnector.dll
+D:/git/LitHub-DeleteAndEdit/LitHub-DeleteAndEdit/BackEnd/bin/Debug/net6.0/Pomelo.EntityFrameworkCore.MySql.dll
+D:/git/LitHub-DeleteAndEdit/LitHub-DeleteAndEdit/BackEnd/bin/Debug/net6.0/Swashbuckle.AspNetCore.Swagger.dll
+D:/git/LitHub-DeleteAndEdit/LitHub-DeleteAndEdit/BackEnd/bin/Debug/net6.0/Swashbuckle.AspNetCore.SwaggerGen.dll
+D:/git/LitHub-DeleteAndEdit/LitHub-DeleteAndEdit/BackEnd/bin/Debug/net6.0/Swashbuckle.AspNetCore.SwaggerUI.dll
+D:/git/LitHub-DeleteAndEdit/LitHub-DeleteAndEdit/BackEnd/bin/Debug/net6.0/System.CodeDom.dll
+D:/git/LitHub-DeleteAndEdit/LitHub-DeleteAndEdit/BackEnd/bin/Debug/net6.0/System.Text.Encodings.Web.dll
+D:/git/LitHub-DeleteAndEdit/LitHub-DeleteAndEdit/BackEnd/bin/Debug/net6.0/System.Text.Json.dll
+D:/git/LitHub-DeleteAndEdit/LitHub-DeleteAndEdit/BackEnd/bin/Debug/net6.0/runtimes/browser/lib/net6.0/System.Text.Encodings.Web.dll
+D:/git/LitHub-DeleteAndEdit/LitHub-DeleteAndEdit/BackEnd/obj/Debug/net6.0/BackEnd.csproj.AssemblyReference.cache
+D:/git/LitHub-DeleteAndEdit/LitHub-DeleteAndEdit/BackEnd/obj/Debug/net6.0/BackEnd.GeneratedMSBuildEditorConfig.editorconfig
+D:/git/LitHub-DeleteAndEdit/LitHub-DeleteAndEdit/BackEnd/obj/Debug/net6.0/BackEnd.AssemblyInfoInputs.cache
+D:/git/LitHub-DeleteAndEdit/LitHub-DeleteAndEdit/BackEnd/obj/Debug/net6.0/BackEnd.AssemblyInfo.cs
+D:/git/LitHub-DeleteAndEdit/LitHub-DeleteAndEdit/BackEnd/obj/Debug/net6.0/BackEnd.csproj.CoreCompileInputs.cache
+D:/git/LitHub-DeleteAndEdit/LitHub-DeleteAndEdit/BackEnd/obj/Debug/net6.0/BackEnd.MvcApplicationPartsAssemblyInfo.cs
+D:/git/LitHub-DeleteAndEdit/LitHub-DeleteAndEdit/BackEnd/obj/Debug/net6.0/BackEnd.MvcApplicationPartsAssemblyInfo.cache
+D:/git/LitHub-DeleteAndEdit/LitHub-DeleteAndEdit/BackEnd/obj/Debug/net6.0/staticwebassets/msbuild.BackEnd.Microsoft.AspNetCore.StaticWebAssets.props
+D:/git/LitHub-DeleteAndEdit/LitHub-DeleteAndEdit/BackEnd/obj/Debug/net6.0/staticwebassets/msbuild.build.BackEnd.props
+D:/git/LitHub-DeleteAndEdit/LitHub-DeleteAndEdit/BackEnd/obj/Debug/net6.0/staticwebassets/msbuild.buildMultiTargeting.BackEnd.props
+D:/git/LitHub-DeleteAndEdit/LitHub-DeleteAndEdit/BackEnd/obj/Debug/net6.0/staticwebassets/msbuild.buildTransitive.BackEnd.props
+D:/git/LitHub-DeleteAndEdit/LitHub-DeleteAndEdit/BackEnd/obj/Debug/net6.0/staticwebassets.pack.json
+D:/git/LitHub-DeleteAndEdit/LitHub-DeleteAndEdit/BackEnd/obj/Debug/net6.0/staticwebassets.build.json
+D:/git/LitHub-DeleteAndEdit/LitHub-DeleteAndEdit/BackEnd/obj/Debug/net6.0/staticwebassets.development.json
+D:/git/LitHub-DeleteAndEdit/LitHub-DeleteAndEdit/BackEnd/obj/Debug/net6.0/scopedcss/bundle/BackEnd.styles.css
+D:/git/LitHub-DeleteAndEdit/LitHub-DeleteAndEdit/BackEnd/obj/Debug/net6.0/BackEnd.csproj.CopyComplete
+D:/git/LitHub-DeleteAndEdit/LitHub-DeleteAndEdit/BackEnd/obj/Debug/net6.0/BackEnd.dll
+D:/git/LitHub-DeleteAndEdit/LitHub-DeleteAndEdit/BackEnd/obj/Debug/net6.0/refint/BackEnd.dll
+D:/git/LitHub-DeleteAndEdit/LitHub-DeleteAndEdit/BackEnd/obj/Debug/net6.0/BackEnd.pdb
+D:/git/LitHub-DeleteAndEdit/LitHub-DeleteAndEdit/BackEnd/obj/Debug/net6.0/BackEnd.genruntimeconfig.cache
+D:/git/LitHub-DeleteAndEdit/LitHub-DeleteAndEdit/BackEnd/obj/Debug/net6.0/ref/BackEnd.dll
+C:/Users/ACER/Desktop/3 Metai/2 pusmetis/PVP/LitHub/BackEnd/bin/Debug/net6.0/appsettings.Development.json
+C:/Users/ACER/Desktop/3 Metai/2 pusmetis/PVP/LitHub/BackEnd/bin/Debug/net6.0/appsettings.json
+C:/Users/ACER/Desktop/3 Metai/2 pusmetis/PVP/LitHub/BackEnd/bin/Debug/net6.0/BackEnd.exe
+C:/Users/ACER/Desktop/3 Metai/2 pusmetis/PVP/LitHub/BackEnd/bin/Debug/net6.0/BackEnd.deps.json
+C:/Users/ACER/Desktop/3 Metai/2 pusmetis/PVP/LitHub/BackEnd/bin/Debug/net6.0/BackEnd.runtimeconfig.json
+C:/Users/ACER/Desktop/3 Metai/2 pusmetis/PVP/LitHub/BackEnd/bin/Debug/net6.0/BackEnd.dll
+C:/Users/ACER/Desktop/3 Metai/2 pusmetis/PVP/LitHub/BackEnd/bin/Debug/net6.0/BackEnd.pdb
+C:/Users/ACER/Desktop/3 Metai/2 pusmetis/PVP/LitHub/BackEnd/bin/Debug/net6.0/Humanizer.dll
+C:/Users/ACER/Desktop/3 Metai/2 pusmetis/PVP/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.dll
+C:/Users/ACER/Desktop/3 Metai/2 pusmetis/PVP/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.Abstractions.dll
+C:/Users/ACER/Desktop/3 Metai/2 pusmetis/PVP/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.Design.dll
+C:/Users/ACER/Desktop/3 Metai/2 pusmetis/PVP/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.InMemory.dll
+C:/Users/ACER/Desktop/3 Metai/2 pusmetis/PVP/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.Relational.dll
+C:/Users/ACER/Desktop/3 Metai/2 pusmetis/PVP/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.Extensions.Caching.Abstractions.dll
+C:/Users/ACER/Desktop/3 Metai/2 pusmetis/PVP/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.Extensions.Caching.Memory.dll
+C:/Users/ACER/Desktop/3 Metai/2 pusmetis/PVP/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.Extensions.Configuration.Abstractions.dll
+C:/Users/ACER/Desktop/3 Metai/2 pusmetis/PVP/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.Extensions.DependencyInjection.dll
+C:/Users/ACER/Desktop/3 Metai/2 pusmetis/PVP/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:/Users/ACER/Desktop/3 Metai/2 pusmetis/PVP/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.Extensions.DependencyModel.dll
+C:/Users/ACER/Desktop/3 Metai/2 pusmetis/PVP/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.Extensions.Logging.dll
+C:/Users/ACER/Desktop/3 Metai/2 pusmetis/PVP/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.Extensions.Logging.Abstractions.dll
+C:/Users/ACER/Desktop/3 Metai/2 pusmetis/PVP/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.Extensions.Options.dll
+C:/Users/ACER/Desktop/3 Metai/2 pusmetis/PVP/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.Extensions.Primitives.dll
+C:/Users/ACER/Desktop/3 Metai/2 pusmetis/PVP/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.OpenApi.dll
+C:/Users/ACER/Desktop/3 Metai/2 pusmetis/PVP/LitHub/BackEnd/bin/Debug/net6.0/Mono.TextTemplating.dll
+C:/Users/ACER/Desktop/3 Metai/2 pusmetis/PVP/LitHub/BackEnd/bin/Debug/net6.0/MySqlConnector.dll
+C:/Users/ACER/Desktop/3 Metai/2 pusmetis/PVP/LitHub/BackEnd/bin/Debug/net6.0/Pomelo.EntityFrameworkCore.MySql.dll
+C:/Users/ACER/Desktop/3 Metai/2 pusmetis/PVP/LitHub/BackEnd/bin/Debug/net6.0/Swashbuckle.AspNetCore.Swagger.dll
+C:/Users/ACER/Desktop/3 Metai/2 pusmetis/PVP/LitHub/BackEnd/bin/Debug/net6.0/Swashbuckle.AspNetCore.SwaggerGen.dll
+C:/Users/ACER/Desktop/3 Metai/2 pusmetis/PVP/LitHub/BackEnd/bin/Debug/net6.0/Swashbuckle.AspNetCore.SwaggerUI.dll
+C:/Users/ACER/Desktop/3 Metai/2 pusmetis/PVP/LitHub/BackEnd/bin/Debug/net6.0/System.CodeDom.dll
+C:/Users/ACER/Desktop/3 Metai/2 pusmetis/PVP/LitHub/BackEnd/bin/Debug/net6.0/System.Text.Encodings.Web.dll
+C:/Users/ACER/Desktop/3 Metai/2 pusmetis/PVP/LitHub/BackEnd/bin/Debug/net6.0/System.Text.Json.dll
+C:/Users/ACER/Desktop/3 Metai/2 pusmetis/PVP/LitHub/BackEnd/bin/Debug/net6.0/runtimes/browser/lib/net6.0/System.Text.Encodings.Web.dll
+C:/Users/ACER/Desktop/3 Metai/2 pusmetis/PVP/LitHub/BackEnd/obj/Debug/net6.0/BackEnd.csproj.AssemblyReference.cache
+C:/Users/ACER/Desktop/3 Metai/2 pusmetis/PVP/LitHub/BackEnd/obj/Debug/net6.0/BackEnd.GeneratedMSBuildEditorConfig.editorconfig
+C:/Users/ACER/Desktop/3 Metai/2 pusmetis/PVP/LitHub/BackEnd/obj/Debug/net6.0/BackEnd.AssemblyInfoInputs.cache
+C:/Users/ACER/Desktop/3 Metai/2 pusmetis/PVP/LitHub/BackEnd/obj/Debug/net6.0/BackEnd.AssemblyInfo.cs
+C:/Users/ACER/Desktop/3 Metai/2 pusmetis/PVP/LitHub/BackEnd/obj/Debug/net6.0/BackEnd.csproj.CoreCompileInputs.cache
+C:/Users/ACER/Desktop/3 Metai/2 pusmetis/PVP/LitHub/BackEnd/obj/Debug/net6.0/BackEnd.MvcApplicationPartsAssemblyInfo.cs
+C:/Users/ACER/Desktop/3 Metai/2 pusmetis/PVP/LitHub/BackEnd/obj/Debug/net6.0/BackEnd.MvcApplicationPartsAssemblyInfo.cache
+C:/Users/ACER/Desktop/3 Metai/2 pusmetis/PVP/LitHub/BackEnd/obj/Debug/net6.0/staticwebassets/msbuild.BackEnd.Microsoft.AspNetCore.StaticWebAssets.props
+C:/Users/ACER/Desktop/3 Metai/2 pusmetis/PVP/LitHub/BackEnd/obj/Debug/net6.0/staticwebassets/msbuild.build.BackEnd.props
+C:/Users/ACER/Desktop/3 Metai/2 pusmetis/PVP/LitHub/BackEnd/obj/Debug/net6.0/staticwebassets/msbuild.buildMultiTargeting.BackEnd.props
+C:/Users/ACER/Desktop/3 Metai/2 pusmetis/PVP/LitHub/BackEnd/obj/Debug/net6.0/staticwebassets/msbuild.buildTransitive.BackEnd.props
+C:/Users/ACER/Desktop/3 Metai/2 pusmetis/PVP/LitHub/BackEnd/obj/Debug/net6.0/staticwebassets.pack.json
+C:/Users/ACER/Desktop/3 Metai/2 pusmetis/PVP/LitHub/BackEnd/obj/Debug/net6.0/staticwebassets.build.json
+C:/Users/ACER/Desktop/3 Metai/2 pusmetis/PVP/LitHub/BackEnd/obj/Debug/net6.0/staticwebassets.development.json
+C:/Users/ACER/Desktop/3 Metai/2 pusmetis/PVP/LitHub/BackEnd/obj/Debug/net6.0/scopedcss/bundle/BackEnd.styles.css
+C:/Users/ACER/Desktop/3 Metai/2 pusmetis/PVP/LitHub/BackEnd/obj/Debug/net6.0/BackEnd.csproj.CopyComplete
+C:/Users/ACER/Desktop/3 Metai/2 pusmetis/PVP/LitHub/BackEnd/obj/Debug/net6.0/BackEnd.dll
+C:/Users/ACER/Desktop/3 Metai/2 pusmetis/PVP/LitHub/BackEnd/obj/Debug/net6.0/refint/BackEnd.dll
+C:/Users/ACER/Desktop/3 Metai/2 pusmetis/PVP/LitHub/BackEnd/obj/Debug/net6.0/BackEnd.pdb
+C:/Users/ACER/Desktop/3 Metai/2 pusmetis/PVP/LitHub/BackEnd/obj/Debug/net6.0/BackEnd.genruntimeconfig.cache
+C:/Users/ACER/Desktop/3 Metai/2 pusmetis/PVP/LitHub/BackEnd/obj/Debug/net6.0/ref/BackEnd.dll
+C:/Users/robot/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/Humanizer.dll
+C:/Users/robot/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.dll
+C:/Users/robot/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.Abstractions.dll
+C:/Users/robot/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.Design.dll
+C:/Users/robot/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.InMemory.dll
+C:/Users/robot/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.Relational.dll
+C:/Users/robot/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.Extensions.Caching.Abstractions.dll
+C:/Users/robot/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.Extensions.Caching.Memory.dll
+C:/Users/robot/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.Extensions.Configuration.Abstractions.dll
+C:/Users/robot/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.Extensions.DependencyInjection.dll
+C:/Users/robot/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:/Users/robot/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.Extensions.DependencyModel.dll
+C:/Users/robot/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.Extensions.Logging.dll
+C:/Users/robot/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.Extensions.Logging.Abstractions.dll
+C:/Users/robot/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.Extensions.Options.dll
+C:/Users/robot/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.Extensions.Primitives.dll
+C:/Users/robot/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/Mono.TextTemplating.dll
+C:/Users/robot/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/MySqlConnector.dll
+C:/Users/robot/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/Pomelo.EntityFrameworkCore.MySql.dll
+C:/Users/robot/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/System.CodeDom.dll
+C:/Users/robot/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/System.Text.Encodings.Web.dll
+C:/Users/robot/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/System.Text.Json.dll
+C:/Users/robot/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/runtimes/browser/lib/net6.0/System.Text.Encodings.Web.dll
+C:/Users/robot/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.IdentityModel.Abstractions.dll
+C:/Users/robot/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.IdentityModel.JsonWebTokens.dll
+C:/Users/robot/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.IdentityModel.Logging.dll
+C:/Users/robot/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.IdentityModel.Tokens.dll
+C:/Users/robot/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/System.IdentityModel.Tokens.Jwt.dll
+C:/Users/sera/Desktop/pvp/git/t2/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.IdentityModel.Abstractions.dll
+C:/Users/sera/Desktop/pvp/git/t2/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.IdentityModel.JsonWebTokens.dll
+C:/Users/sera/Desktop/pvp/git/t2/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.IdentityModel.Logging.dll
+C:/Users/sera/Desktop/pvp/git/t2/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.IdentityModel.Tokens.dll
+C:/Users/sera/Desktop/pvp/git/t2/LitHub/BackEnd/bin/Debug/net6.0/System.IdentityModel.Tokens.Jwt.dll
+C:/Users/sera/Desktop/pvp/git/t3/LitHub/BackEnd/bin/Debug/net6.0/appsettings.Development.json
+C:/Users/sera/Desktop/pvp/git/t3/LitHub/BackEnd/bin/Debug/net6.0/appsettings.json
+C:/Users/sera/Desktop/pvp/git/t3/LitHub/BackEnd/bin/Debug/net6.0/BackEnd.exe
+C:/Users/sera/Desktop/pvp/git/t3/LitHub/BackEnd/bin/Debug/net6.0/BackEnd.deps.json
+C:/Users/sera/Desktop/pvp/git/t3/LitHub/BackEnd/bin/Debug/net6.0/BackEnd.runtimeconfig.json
+C:/Users/sera/Desktop/pvp/git/t3/LitHub/BackEnd/bin/Debug/net6.0/BackEnd.dll
+C:/Users/sera/Desktop/pvp/git/t3/LitHub/BackEnd/bin/Debug/net6.0/BackEnd.pdb
+C:/Users/sera/Desktop/pvp/git/t3/LitHub/BackEnd/bin/Debug/net6.0/Humanizer.dll
+C:/Users/sera/Desktop/pvp/git/t3/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.dll
+C:/Users/sera/Desktop/pvp/git/t3/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.Abstractions.dll
+C:/Users/sera/Desktop/pvp/git/t3/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.Design.dll
+C:/Users/sera/Desktop/pvp/git/t3/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.InMemory.dll
+C:/Users/sera/Desktop/pvp/git/t3/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.Relational.dll
+C:/Users/sera/Desktop/pvp/git/t3/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.Extensions.Caching.Abstractions.dll
+C:/Users/sera/Desktop/pvp/git/t3/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.Extensions.Caching.Memory.dll
+C:/Users/sera/Desktop/pvp/git/t3/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.Extensions.Configuration.Abstractions.dll
+C:/Users/sera/Desktop/pvp/git/t3/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.Extensions.DependencyInjection.dll
+C:/Users/sera/Desktop/pvp/git/t3/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:/Users/sera/Desktop/pvp/git/t3/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.Extensions.DependencyModel.dll
+C:/Users/sera/Desktop/pvp/git/t3/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.Extensions.Logging.dll
+C:/Users/sera/Desktop/pvp/git/t3/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.Extensions.Logging.Abstractions.dll
+C:/Users/sera/Desktop/pvp/git/t3/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.Extensions.Options.dll
+C:/Users/sera/Desktop/pvp/git/t3/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.Extensions.Primitives.dll
+C:/Users/sera/Desktop/pvp/git/t3/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.IdentityModel.Abstractions.dll
+C:/Users/sera/Desktop/pvp/git/t3/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.IdentityModel.JsonWebTokens.dll
+C:/Users/sera/Desktop/pvp/git/t3/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.IdentityModel.Logging.dll
+C:/Users/sera/Desktop/pvp/git/t3/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.IdentityModel.Tokens.dll
+C:/Users/sera/Desktop/pvp/git/t3/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.OpenApi.dll
+C:/Users/sera/Desktop/pvp/git/t3/LitHub/BackEnd/bin/Debug/net6.0/Mono.TextTemplating.dll
+C:/Users/sera/Desktop/pvp/git/t3/LitHub/BackEnd/bin/Debug/net6.0/MySqlConnector.dll
+C:/Users/sera/Desktop/pvp/git/t3/LitHub/BackEnd/bin/Debug/net6.0/Pomelo.EntityFrameworkCore.MySql.dll
+C:/Users/sera/Desktop/pvp/git/t3/LitHub/BackEnd/bin/Debug/net6.0/Swashbuckle.AspNetCore.Swagger.dll
+C:/Users/sera/Desktop/pvp/git/t3/LitHub/BackEnd/bin/Debug/net6.0/Swashbuckle.AspNetCore.SwaggerGen.dll
+C:/Users/sera/Desktop/pvp/git/t3/LitHub/BackEnd/bin/Debug/net6.0/Swashbuckle.AspNetCore.SwaggerUI.dll
+C:/Users/sera/Desktop/pvp/git/t3/LitHub/BackEnd/bin/Debug/net6.0/System.CodeDom.dll
+C:/Users/sera/Desktop/pvp/git/t3/LitHub/BackEnd/bin/Debug/net6.0/System.IdentityModel.Tokens.Jwt.dll
+C:/Users/sera/Desktop/pvp/git/t3/LitHub/BackEnd/bin/Debug/net6.0/System.Text.Encodings.Web.dll
+C:/Users/sera/Desktop/pvp/git/t3/LitHub/BackEnd/bin/Debug/net6.0/System.Text.Json.dll
+C:/Users/sera/Desktop/pvp/git/t3/LitHub/BackEnd/bin/Debug/net6.0/runtimes/browser/lib/net6.0/System.Text.Encodings.Web.dll
+C:/Users/sera/Desktop/pvp/git/t3/LitHub/BackEnd/obj/Debug/net6.0/BackEnd.csproj.AssemblyReference.cache
+C:/Users/sera/Desktop/pvp/git/t3/LitHub/BackEnd/obj/Debug/net6.0/BackEnd.GeneratedMSBuildEditorConfig.editorconfig
+C:/Users/sera/Desktop/pvp/git/t3/LitHub/BackEnd/obj/Debug/net6.0/BackEnd.AssemblyInfoInputs.cache
+C:/Users/sera/Desktop/pvp/git/t3/LitHub/BackEnd/obj/Debug/net6.0/BackEnd.AssemblyInfo.cs
+C:/Users/sera/Desktop/pvp/git/t3/LitHub/BackEnd/obj/Debug/net6.0/BackEnd.csproj.CoreCompileInputs.cache
+C:/Users/sera/Desktop/pvp/git/t3/LitHub/BackEnd/obj/Debug/net6.0/BackEnd.MvcApplicationPartsAssemblyInfo.cs
+C:/Users/sera/Desktop/pvp/git/t3/LitHub/BackEnd/obj/Debug/net6.0/BackEnd.MvcApplicationPartsAssemblyInfo.cache
+C:/Users/sera/Desktop/pvp/git/t3/LitHub/BackEnd/obj/Debug/net6.0/staticwebassets/msbuild.BackEnd.Microsoft.AspNetCore.StaticWebAssets.props
+C:/Users/sera/Desktop/pvp/git/t3/LitHub/BackEnd/obj/Debug/net6.0/staticwebassets/msbuild.build.BackEnd.props
+C:/Users/sera/Desktop/pvp/git/t3/LitHub/BackEnd/obj/Debug/net6.0/staticwebassets/msbuild.buildMultiTargeting.BackEnd.props
+C:/Users/sera/Desktop/pvp/git/t3/LitHub/BackEnd/obj/Debug/net6.0/staticwebassets/msbuild.buildTransitive.BackEnd.props
+C:/Users/sera/Desktop/pvp/git/t3/LitHub/BackEnd/obj/Debug/net6.0/staticwebassets.pack.json
+C:/Users/sera/Desktop/pvp/git/t3/LitHub/BackEnd/obj/Debug/net6.0/staticwebassets.build.json
+C:/Users/sera/Desktop/pvp/git/t3/LitHub/BackEnd/obj/Debug/net6.0/staticwebassets.development.json
+C:/Users/sera/Desktop/pvp/git/t3/LitHub/BackEnd/obj/Debug/net6.0/scopedcss/bundle/BackEnd.styles.css
+C:/Users/sera/Desktop/pvp/git/t3/LitHub/BackEnd/obj/Debug/net6.0/BackEnd.csproj.CopyComplete
+C:/Users/sera/Desktop/pvp/git/t3/LitHub/BackEnd/obj/Debug/net6.0/BackEnd.dll
+C:/Users/sera/Desktop/pvp/git/t3/LitHub/BackEnd/obj/Debug/net6.0/refint/BackEnd.dll
+C:/Users/sera/Desktop/pvp/git/t3/LitHub/BackEnd/obj/Debug/net6.0/BackEnd.pdb
+C:/Users/sera/Desktop/pvp/git/t3/LitHub/BackEnd/obj/Debug/net6.0/BackEnd.genruntimeconfig.cache
+C:/Users/sera/Desktop/pvp/git/t3/LitHub/BackEnd/obj/Debug/net6.0/ref/BackEnd.dll
+C:/Users/ACER/Desktop/3 Metai/2 pusmetis/PVP/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.IdentityModel.Abstractions.dll
+C:/Users/ACER/Desktop/3 Metai/2 pusmetis/PVP/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.IdentityModel.JsonWebTokens.dll
+C:/Users/ACER/Desktop/3 Metai/2 pusmetis/PVP/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.IdentityModel.Logging.dll
+C:/Users/ACER/Desktop/3 Metai/2 pusmetis/PVP/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.IdentityModel.Tokens.dll
+C:/Users/ACER/Desktop/3 Metai/2 pusmetis/PVP/LitHub/BackEnd/bin/Debug/net6.0/System.IdentityModel.Tokens.Jwt.dll
+/Users/martynasbinisevicius/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/appsettings.Development.json
+/Users/martynasbinisevicius/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/appsettings.json
+/Users/martynasbinisevicius/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/BackEnd
+/Users/martynasbinisevicius/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/BackEnd.deps.json
+/Users/martynasbinisevicius/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/BackEnd.runtimeconfig.json
+/Users/martynasbinisevicius/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/BackEnd.dll
+/Users/martynasbinisevicius/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/BackEnd.pdb
+/Users/martynasbinisevicius/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/Humanizer.dll
+/Users/martynasbinisevicius/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.dll
+/Users/martynasbinisevicius/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.Abstractions.dll
+/Users/martynasbinisevicius/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.Design.dll
+/Users/martynasbinisevicius/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.InMemory.dll
+/Users/martynasbinisevicius/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.Relational.dll
+/Users/martynasbinisevicius/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.Extensions.Caching.Abstractions.dll
+/Users/martynasbinisevicius/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.Extensions.Caching.Memory.dll
+/Users/martynasbinisevicius/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.Extensions.Configuration.Abstractions.dll
+/Users/martynasbinisevicius/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.Extensions.DependencyInjection.dll
+/Users/martynasbinisevicius/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll
+/Users/martynasbinisevicius/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.Extensions.DependencyModel.dll
+/Users/martynasbinisevicius/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.Extensions.Logging.dll
+/Users/martynasbinisevicius/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.Extensions.Logging.Abstractions.dll
+/Users/martynasbinisevicius/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.Extensions.Options.dll
+/Users/martynasbinisevicius/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.Extensions.Primitives.dll
+/Users/martynasbinisevicius/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.IdentityModel.Abstractions.dll
+/Users/martynasbinisevicius/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/Users/martynasbinisevicius/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.IdentityModel.Logging.dll
+/Users/martynasbinisevicius/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.IdentityModel.Tokens.dll
+/Users/martynasbinisevicius/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/Microsoft.OpenApi.dll
+/Users/martynasbinisevicius/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/Mono.TextTemplating.dll
+/Users/martynasbinisevicius/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/MySqlConnector.dll
+/Users/martynasbinisevicius/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/Pomelo.EntityFrameworkCore.MySql.dll
+/Users/martynasbinisevicius/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/Swashbuckle.AspNetCore.Swagger.dll
+/Users/martynasbinisevicius/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/Swashbuckle.AspNetCore.SwaggerGen.dll
+/Users/martynasbinisevicius/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/Swashbuckle.AspNetCore.SwaggerUI.dll
+/Users/martynasbinisevicius/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/System.CodeDom.dll
+/Users/martynasbinisevicius/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/System.IdentityModel.Tokens.Jwt.dll
+/Users/martynasbinisevicius/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/System.Text.Encodings.Web.dll
+/Users/martynasbinisevicius/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/System.Text.Json.dll
+/Users/martynasbinisevicius/Documents/GitHub/LitHub/BackEnd/bin/Debug/net6.0/runtimes/browser/lib/net6.0/System.Text.Encodings.Web.dll
+/Users/martynasbinisevicius/Documents/GitHub/LitHub/BackEnd/obj/Debug/net6.0/BackEnd.csproj.AssemblyReference.cache
+/Users/martynasbinisevicius/Documents/GitHub/LitHub/BackEnd/obj/Debug/net6.0/BackEnd.GeneratedMSBuildEditorConfig.editorconfig
+/Users/martynasbinisevicius/Documents/GitHub/LitHub/BackEnd/obj/Debug/net6.0/BackEnd.AssemblyInfoInputs.cache
+/Users/martynasbinisevicius/Documents/GitHub/LitHub/BackEnd/obj/Debug/net6.0/BackEnd.AssemblyInfo.cs
+/Users/martynasbinisevicius/Documents/GitHub/LitHub/BackEnd/obj/Debug/net6.0/BackEnd.csproj.CoreCompileInputs.cache
+/Users/martynasbinisevicius/Documents/GitHub/LitHub/BackEnd/obj/Debug/net6.0/BackEnd.MvcApplicationPartsAssemblyInfo.cs
+/Users/martynasbinisevicius/Documents/GitHub/LitHub/BackEnd/obj/Debug/net6.0/BackEnd.MvcApplicationPartsAssemblyInfo.cache
+/Users/martynasbinisevicius/Documents/GitHub/LitHub/BackEnd/obj/Debug/net6.0/BackEnd.sourcelink.json
+/Users/martynasbinisevicius/Documents/GitHub/LitHub/BackEnd/obj/Debug/net6.0/staticwebassets.build.json
+/Users/martynasbinisevicius/Documents/GitHub/LitHub/BackEnd/obj/Debug/net6.0/staticwebassets.development.json
+/Users/martynasbinisevicius/Documents/GitHub/LitHub/BackEnd/obj/Debug/net6.0/staticwebassets/msbuild.BackEnd.Microsoft.AspNetCore.StaticWebAssets.props
+/Users/martynasbinisevicius/Documents/GitHub/LitHub/BackEnd/obj/Debug/net6.0/staticwebassets/msbuild.build.BackEnd.props
+/Users/martynasbinisevicius/Documents/GitHub/LitHub/BackEnd/obj/Debug/net6.0/staticwebassets/msbuild.buildMultiTargeting.BackEnd.props
+/Users/martynasbinisevicius/Documents/GitHub/LitHub/BackEnd/obj/Debug/net6.0/staticwebassets/msbuild.buildTransitive.BackEnd.props
+/Users/martynasbinisevicius/Documents/GitHub/LitHub/BackEnd/obj/Debug/net6.0/staticwebassets.pack.json
+/Users/martynasbinisevicius/Documents/GitHub/LitHub/BackEnd/obj/Debug/net6.0/scopedcss/bundle/BackEnd.styles.css
+/Users/martynasbinisevicius/Documents/GitHub/LitHub/BackEnd/obj/Debug/net6.0/BackEnd.csproj.CopyComplete
+/Users/martynasbinisevicius/Documents/GitHub/LitHub/BackEnd/obj/Debug/net6.0/BackEnd.dll
+/Users/martynasbinisevicius/Documents/GitHub/LitHub/BackEnd/obj/Debug/net6.0/refint/BackEnd.dll
+/Users/martynasbinisevicius/Documents/GitHub/LitHub/BackEnd/obj/Debug/net6.0/BackEnd.pdb
+/Users/martynasbinisevicius/Documents/GitHub/LitHub/BackEnd/obj/Debug/net6.0/BackEnd.genruntimeconfig.cache
+/Users/martynasbinisevicius/Documents/GitHub/LitHub/BackEnd/obj/Debug/net6.0/ref/BackEnd.dll

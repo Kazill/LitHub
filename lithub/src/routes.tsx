@@ -1,15 +1,15 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-import Projects from './projects';
-import Project from './project';
-import MainPage from './MainPage';
-import EditProject from './editProject';
-import AddProject from './addProject';
+import Projects from './pages/Projects/projects';
+import Project from './pages/project';
+import MainPage from './pages/MainPage/MainPage';
+import EditProject from './components/editProject';
+import AddProject from './components/addProject';
 import Example from './pages/comWithBackEx';
 import LoginPage from './pages/Login'
 import {jwtDecode} from "jwt-decode";
-import Profile from './profile';
+import Profile from './pages/profile';
 
 function loadUserProfile() {
     try {
