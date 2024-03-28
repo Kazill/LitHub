@@ -35,10 +35,18 @@ interface CommentData {
     id: number;
     author: string;
     text: string;
+    url: string;
     parentCommentId: number;
     problemId: number;
     postedDate: string;
     replies?: CommentData[]; // Optional for nesting replies
+}
+interface LikeData {
+    id: number;
+    userName: string;
+    role: string;
+    problemId: number;
+    commentId: number;
 }
 
 function SetMarks(id: number) {
@@ -63,7 +71,9 @@ function SetMarks(id: number) {
 
 function Project(this: any) {
     const [comments, setComments] = useState<CommentData[]>([]); // Define comments state here
+    const [likes, setLikes] = useState<LikeData[]>([]); // Define likes state here
     const [newCommentText, setNewCommentText] = useState(''); // New state for the comment text
+    const [newUrl, setNewUrl] = useState('');
     const [replyingTo, setReplyingTo] = useState<number | null>(null);
     const [selectedRole, setSelectedRole] = useState('');
 
@@ -96,6 +106,7 @@ function Project(this: any) {
             const response = await axios.get(`https://localhost:7054/api/Problem/${id}`);
             setProblem(response.data);
             await fetchComments(); // Call a separated fetch function
+            await fetchLikes();
         } catch (error) {
             console.error(error);
         }
@@ -105,6 +116,21 @@ function Project(this: any) {
         const commentsResponse = await axios.get(`https://localhost:7054/api/Comment/problem/${id}`);
         setComments(commentsResponse.data);
     };
+    const fetchLikes = async () => {
+        try {
+            const likesResponse = await axios.get(`https://localhost:7054/api/Like/byProblemId/${id}`);
+            setLikes(likesResponse.data); // Assuming `likes` state is of type LikeData[]
+        } catch (error: any) { // Specify 'any' if you're not sure about the type
+            if (error.response && error.response.status === 404) {
+                console.log('No likes found for this problem.');
+                setLikes([]); // Return an empty array if no likes are found
+            } else {
+                console.error('Failed to fetch likes:', error);
+                // Handle other errors appropriately
+            }
+        }
+    };
+
 
     useEffect(() => {
         fetchData();
@@ -120,7 +146,7 @@ function Project(this: any) {
         }
     };
 
-    const handleClose = async (problem:problemData) => {
+    const handleClose = async (problem: problemData) => {
         problem.isClosed = true;
         try {
             const response = await axios.put(`https://localhost:7054/api/Problem/${id}`, problem, {
@@ -136,7 +162,7 @@ function Project(this: any) {
             console.error(error);
         }
     };
-    const handleOpen = async (problem:problemData) => {
+    const handleOpen = async (problem: problemData) => {
         problem.isClosed = false;
         try {
             const response = await axios.put(`https://localhost:7054/api/Problem/${id}`, problem, {
@@ -156,6 +182,50 @@ function Project(this: any) {
     const handleNewCommentChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
         setNewCommentText(event.target.value);
     };
+    const handleNewUrlChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setNewUrl(event.target.value);
+    };
+    const handleLikeClick = async (commentId: number, likes: LikeData[]) => {
+        // Check if the user is signed in
+        if (!userName || userName.trim() === "" || userRole.trim() === "" || userName === userRole) {
+            // Display a message or perform any action for unsigned users
+            alert("User is not signed in. Please sign in to like comments.");
+            return;
+        }
+
+        const likedByCurrentUser = likes.some(like => like.commentId === commentId && like.userName === userName);
+
+        try {
+            if (likedByCurrentUser) {
+                // User has already liked the comment, so revoke the like
+                const likeToRemove = likes.find(like => like.commentId === commentId && like.userName === userName);
+                if (likeToRemove) {
+                    await axios.delete(`https://localhost:7054/api/Like/${likeToRemove.id}`);
+                    // Refresh likes after revoking the like
+                    await fetchLikes();
+                }
+            } else {
+                // User has not liked the comment, so create a new like
+                await axios.post(`https://localhost:7054/api/Like`, {
+                    userName: userName,
+                    role: userRole,
+                    problemId: id,
+                    commentId: commentId
+                }, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        // Include any other necessary headers, like authorization tokens
+                    }
+                });
+                // Refresh likes after liking the comment
+                await fetchLikes();
+            }
+        } catch (error) {
+            console.error("Failed to handle like click:", error);
+        }
+    };
+
+
     const handleReplyClick = (commentId: number) => {
         setReplyingTo(commentId);
         // Optionally, scroll to the reply input or focus it for better user experience
@@ -170,6 +240,22 @@ function Project(this: any) {
     }
     const handleCommentSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+        //const allowedDomains = ["github.com", "bitbucket.org"];
+        if (!newUrl) {
+            console.error("URL cannot be empty");
+            return;
+        }
+        /*try {
+            const urlObj = new URL(newUrl); // Tries to create a URL object, which will throw if the URL is invalid
+            if (!allowedDomains.includes(urlObj.hostname)) {
+                console.error("URL from this domain is not allowed");
+                return;
+              }
+            // Proceed with form submission or AJAX request here
+          } catch (error) {
+            console.error('Please enter a valid URL.');
+            return; // Stop the form submission
+          }*/
         if (!newCommentText.trim()) return;
         // Ensure `id` is not null and is a string before attempting to parse it
         if (id === null) {
@@ -186,7 +272,8 @@ function Project(this: any) {
                 author: userName, // Dynamic author name
                 text: newCommentText, // User input from state
                 problemId: problemId,
-                parentCommentId: replyingTo  // This could be dynamic too if you're implementing reply functionality
+                parentCommentId: replyingTo,  // This could be dynamic too if you're implementing reply functionality
+                url: newUrl
             });
 
             setNewCommentText(''); // Clear the comment box after successful submission
@@ -229,56 +316,70 @@ function Project(this: any) {
     }
 
     // Function to render comments and their replies recursively
-    const renderComments = (comments: CommentData[], parentCommentId?: number) => {
-        return comments.map((comment) => (
-            <div key={comment.id}>
-                <p><strong>{comment.author}</strong> at {new Date(comment.postedDate).toLocaleString()}:</p>
-                <p>{comment.text}</p>
-                {
-                    userRole !== "Svečias" && !problem?.isClosed && (comment.parentCommentId === null || comment.parentCommentId === undefined) && (
-                        <button onClick={() => handleReplyClick(comment.id)}>Reply</button>
-                    )
-                }
-                {comment.replies && comment.replies.length > 0 && (
-                    <div style={{ marginLeft: '20px' }}>
-                        {renderComments(comment.replies, comment.id)}
-                    </div>
-                )}
-                {replyingTo === comment.id && (
-                    <ReplyComponent
-                        commentId={comment.id}
-                        onSubmit={async (replyText, parentCommentId) => {
-                            const problemId = Number(id); // Assuming `id` is the problem's ID from URL
-                            if (!replyText.trim()) return;
-                            console.log(parentCommentId);
-                            try {
-                                await axios.post(`https://localhost:7054/api/Comment`, {
-                                    author: userName,
-                                    text: replyText,
-                                    problemId: problemId,
-                                    parentCommentId: parentCommentId // This links the reply to its parent comment
-                                }, {
-                                    headers: {
-                                        'Content-Type': 'application/json',
-                                        // Include any other necessary headers, like authorization tokens
-                                    }
-                                });
+    const renderComments = (comments: CommentData[], likes: LikeData[], parentCommentId?: number) => {
+        return comments.map((comment) => {
+            // Filter likes for the current comment
+            const commentLikes = likes.filter(like => like.commentId === comment.id);
 
-                                await fetchComments(); // Refresh comments to show the new reply
-                            } catch (error) {
-                                console.error("Failed to submit reply", error);
-                            }
-                        }}
-                    />
+            return (
+                <div key={comment.id}>
+                    <p><strong><Link to={`/profile/${comment.author}`}>{comment.author}</Link></strong> at {new Date(comment.postedDate).toLocaleString()}:</p>
+                    {/* {problem?.source === userName && ( */}
+                        <p>Likes: {commentLikes.length}</p>
+                     {/* )} */}
+                    {userRole === "Prisiregistravęs" && (
+                        <button className="like-button" onClick={() => handleLikeClick(comment.id, likes)}>
+                            Like
+                        </button>
+                    )}
 
-                )}
+                    <p>{comment.text}</p>
+                    <a href={comment.url} target="_blank" rel="noreferrer">{comment.url}</a>
+                    <br></br>
+                    {
+                        userRole !== "Svečias" && !problem?.isClosed && (comment.parentCommentId === null || comment.parentCommentId === undefined) && (
+                            <button onClick={() => handleReplyClick(comment.id)}>Reply</button>
+                        )
+                    }
+                    {comment.replies && comment.replies.length > 0 && (
+                        <div style={{ marginLeft: '20px' }}>
+                            {renderComments(comment.replies, likes, comment.id)}
+                        </div>
+                    )}
+                    {replyingTo === comment.id && (
+                        <ReplyComponent
+                            commentId={comment.id}
+                            onSubmit={async (replyText, parentCommentId) => {
+                                const problemId = Number(id); // Assuming `id` is the problem's ID from URL
+                                if (!replyText.trim()) return;
+                                console.log(parentCommentId);
+                                try {
+                                    await axios.post(`https://localhost:7054/api/Comment`, {
+                                        author: userName,
+                                        text: replyText,
+                                        problemId: problemId,
+                                        parentCommentId: parentCommentId // This links the reply to its parent comment
+                                    }, {
+                                        headers: {
+                                            'Content-Type': 'application/json',
+                                            // Include any other necessary headers, like authorization tokens
+                                        }
+                                    });
 
-            </div>
-        ));
+                                    await fetchComments(); // Refresh comments to show the new reply
+                                } catch (error) {
+                                    console.error("Failed to submit reply", error);
+                                }
+                            }}
+                        />
+                    )}
+                </div>
+            );
+        });
     };
 
     const renderDeleteButton = () => {
-        if(selectedRole === "Administratorius"){
+        if (selectedRole === "Administratorius") {
             return <button onClick={() => handleDelete()}>Šalinti</button>;
         }
         return null;
@@ -286,62 +387,56 @@ function Project(this: any) {
     const renderEditButton = () => {
         console.log();
 
-        let token=localStorage.getItem('accessToken')
-        switch (token){
+        let token = localStorage.getItem('accessToken')
+        switch (token) {
             case null:
-                return(null);
-        default:
-            const data :CustomJwtPayload=jwtDecode(token)
-            console.log(problem?.source);
-            console.log(data.username);
-            console.log(selectedRole);
-                if(problem?.source === data.username && selectedRole === "Patvirtinas" && !problem?.isClosed){
-                    
-                    return(
-                                <Link to={`/editProject?id=${id}`}>
-                                    <button>Redaguoti</button>
-                                </Link>
-                            );
+                return (null);
+            default:
+                const data: CustomJwtPayload = jwtDecode(token)
+                if (problem?.source === data.username && selectedRole === "Patvirtinas" && !problem?.isClosed) {
+
+                    return (
+                        <Link to={`/editProject?id=${id}`}>
+                            <button>Redaguoti</button>
+                        </Link>
+                    );
                 }
-                else{
-                    return(null);
+                else {
+                    return (null);
                 }
         }
     };
     const renderCloseButton = () => {
         console.log();
-        let token=localStorage.getItem('accessToken')
-        switch (token){
+        let token = localStorage.getItem('accessToken')
+        switch (token) {
             case null:
-                return(null);
-        default:
-            const data :CustomJwtPayload=jwtDecode(token)
-            console.log(problem?.source);
-            console.log(data.username);
-            console.log(selectedRole);
-                if(problem?.source === data.username && selectedRole === "Patvirtinas"){
-                    if(!problem?.isClosed){
-                        return(<button onClick={() => handleClose(problem)}>Uždaryti</button>);
+                return (null);
+            default:
+                const data: CustomJwtPayload = jwtDecode(token)
+                if (problem?.source === data.username && selectedRole === "Patvirtinas") {
+                    if (!problem?.isClosed) {
+                        return (<button onClick={() => handleClose(problem)}>Uždaryti</button>);
                     }
-                    else{
-                        return(<button onClick={() => handleOpen(problem)}>Atidaryti</button>);
+                    else {
+                        return (<button onClick={() => handleOpen(problem)}>Atidaryti</button>);
                     }
                 }
-                else{
-                    return(null);
+                else {
+                    return (null);
                 }
         }
     };
     const renderMarkButton = () => {
-        if(selectedRole === "Prisiregistravęs" && !problem?.isClosed){
+        if (selectedRole === "Prisiregistravęs" && !problem?.isClosed) {
             return <MarkProject />;
         }
         return null;
     };
 
-    const isClosed = () =>{
-        if(problem?.isClosed){
-            return("(Uždarytas)");
+    const isClosed = () => {
+        if (problem?.isClosed) {
+            return ("(Uždarytas)");
         }
         return "(Aktyvus)";
     }
@@ -351,7 +446,7 @@ function Project(this: any) {
             <div>
                 <center><h1>{problem?.title} {isClosed()} <IsMarked /></h1></center>
                 <p>{problem?.description}</p>
-                <p><b>Įkėlėjas: </b>{problem?.source}</p>
+                <p><b>Įkėlėjas: </b><Link to={`/profile/${problem?.source}`}>{problem?.source}</Link></p>
                 <p><b>Kalbos: </b>{problem?.languages}</p>
                 <p><b>Paskutinis atnaujinimas: </b>{problem?.lastUpdate}</p>
                 <select id="id" value="Pasižymėją programuotojai" >
@@ -364,7 +459,7 @@ function Project(this: any) {
                     <h2>Failai:</h2>
                     <a href={problem?.link}>{problem?.link}</a>
                 </div>
-                
+
                 {renderDeleteButton()}
                 {renderEditButton()}
                 {renderCloseButton()}
@@ -374,7 +469,7 @@ function Project(this: any) {
             <div>
                 <h2>Komentarai:</h2>
                 {comments.length > 0 ? (
-                    renderComments(comments)
+                    renderComments(comments, likes)
                 ) : (
                     <div style={{ border: '1px solid #ccc', padding: '10px', marginTop: '10px' }}>
                         Komentarų dar nėra.
@@ -383,21 +478,26 @@ function Project(this: any) {
             </div>
 
             <h3>Palikite komentarą:</h3>
-            {userRole !== "Svečias" ? ( 
+            {userRole !== "Svečias" ? (
                 problem?.isClosed ? (
                     <p>Projektas uždarytas</p>
                 ) : (
-                <form onSubmit={handleCommentSubmit}>
-                    <textarea
-                        value={newCommentText}
-                        onChange={handleNewCommentChange}
-                        placeholder="Write your comment here..."
-                        style={{ width: '100%', height: '100px' }}
-                    />
-                    <button type="submit">Submit Comment</button>
-                </form>
+                    <form onSubmit={handleCommentSubmit}>
+                        <textarea
+                            value={newCommentText}
+                            onChange={handleNewCommentChange}
+                            placeholder="Write your comment here..."
+                            style={{ width: '100%', height: '100px' }}
+                        />
+                        <input type="url"
+                            value={newUrl}
+                            onChange={handleNewUrlChange}
+                            id="websiteInput"
+                            placeholder="Enter website URL" />
+                        <button type="submit">Submit Comment</button>
+                    </form>
                 )
-            ) : ( 
+            ) : (
                 <p>Norint rašyti komentarą prisijunkite.</p>
             )}
         </div></>
@@ -442,7 +542,7 @@ function MarkProject() {
             console.error('Error submitting post:', error);
         }
     };
-    
+
     const handleUnmark = async (name: string) => {
         try {
             const existingMark = marks.find(x => x.userName === name);

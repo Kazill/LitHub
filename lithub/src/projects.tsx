@@ -177,7 +177,7 @@ function ProjectList({ selectedLanguages }: { selectedLanguages: string[] }) {
                         <h2><Link to={`/Project?id=${problem.id}`}>
                             {problem.title}
                         </Link>{isClosed(problem?.isClosed)}{IsMarked(marks, problem.id)}</h2>
-                        <p>Įkėlėjas: {problem.source}</p>
+                        <p>Įkėlėjas: <Link to={`/profile/${problem.source}`}>{problem.source}</Link></p>
                         <p>Kalbos: {problem.languages}</p>
                         <p>Paskutinis atnaujinimas: {problem.lastUpdate}</p>
                     </div>

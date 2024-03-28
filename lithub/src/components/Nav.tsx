@@ -86,7 +86,9 @@ function OptionsForDesktop(role: string){
                     open={Boolean(anchorEl)}
                     onClose={handleClose}
                 >
-                    <MenuItem onClick={handleClose}>{data.username}</MenuItem>
+<MenuItem component={Link} to={`/profile/${data.username}`} onClick={handleClose}>
+    {data.username}
+</MenuItem>
                     {/*<MenuItem onClick={handleClose}>Paskyra</MenuItem>*/}
                     <MenuItem onClick={handleLogout}>Atsijungti</MenuItem>
                 </Menu>

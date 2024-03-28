@@ -5,6 +5,7 @@
         public int Id { get; set; }
         public string Author { get; set; }
         public string Text { get; set; }
+        public string Url { get; set; }
         public DateTime PostedDate { get; set; }
         public int ProblemId { get; set; }
         // Assuming ParentCommentId might be useful in the DTO for structuring replies in the client

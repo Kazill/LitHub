@@ -15,5 +15,6 @@ namespace BackEnd.Data
         public DbSet<Problem> Problem { get; set; }
         public DbSet<Marked> Marked { get; set; }
         public DbSet<Comment> Comment { get; set; }
+        public DbSet<Like> Like { get; set; }
     }
 }

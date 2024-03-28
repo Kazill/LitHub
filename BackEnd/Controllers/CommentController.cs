@@ -34,6 +34,7 @@ namespace BackEnd.Controllers
                     Id = comment.Id,
                     Author = comment.Author,
                     Text = comment.Text,
+                    Url = comment.Url,
                     PostedDate = comment.PostedDate,
                     ProblemId = comment.ProblemId,
                     Replies = new List<CommentDto>() // Initialize the Replies collection
@@ -52,6 +53,7 @@ namespace BackEnd.Controllers
                         Id = reply.Id,
                         Author = reply.Author,
                         Text = reply.Text,
+                        Url = comment.Url,
                         PostedDate = reply.PostedDate,
                         ProblemId = reply.ProblemId,
                         ParentCommentId = reply.ParentCommentId
