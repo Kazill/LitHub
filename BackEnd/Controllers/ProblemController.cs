@@ -71,6 +71,7 @@ namespace BackEnd.Controllers
 				existingProblem.Link = updatedProblem.Link;
 				existingProblem.lastUpdate = updatedProblem.lastUpdate;
                 existingProblem.IsClosed = updatedProblem.IsClosed;
+                existingProblem.Source = updatedProblem.Source;
 
 				_context.SaveChanges();
 

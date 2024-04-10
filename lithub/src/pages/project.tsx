@@ -18,11 +18,11 @@ const useQuery = () => {
 
 interface problemData {
     title: string,
-    lastUpdate: string,
-    languages: string,
-    source: string,
-    description: string,
-    link: string,
+    lastUpdate: string | undefined,
+    languages: string | undefined,
+    source: string | undefined,
+    description: string | undefined,
+    link: string | undefined,
     isClosed: boolean
 }
 
@@ -143,6 +143,29 @@ function Project(this: any) {
         } catch (error) {
             // Handle the error or log it
             console.error(error);
+        }
+    };
+
+    const handleDeleteForCreator = async (problem: problemData) =>{
+
+        problem.description = undefined;
+        problem.lastUpdate = undefined;
+        problem.languages = undefined;
+        problem.link = undefined;
+        problem.source = undefined;
+        problem.isClosed = true;
+
+        try {
+            const response = await axios.put(`https://localhost:7054/api/Problem/${id}`, problem, {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            console.log('Response from server:', response.data);
+            window.location.reload()
+        } catch (error) {
+            console.error('Error submitting post:', error);
         }
     };
 
@@ -382,8 +405,23 @@ function Project(this: any) {
         if (selectedRole === "Administratorius") {
             return <button onClick={() => handleDelete()}>Šalinti</button>;
         }
+        else if (selectedRole === "Patvirtinas"){
+            let token = localStorage.getItem('accessToken')
+            switch (token) {
+            case null:
+                return (null);
+            default:
+                const data: CustomJwtPayload = jwtDecode(token)
+                if (problem?.source === data.username) {
+
+                    return <button onClick={() => handleDeleteForCreator(problem)}>Šalinti</button>;
+                }
+            }
+        }
         return null;
     };
+
+
     const renderEditButton = () => {
         console.log();
 
