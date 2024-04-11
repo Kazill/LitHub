@@ -49,7 +49,7 @@ function OptionsForDesktop(role: string){
     let token=localStorage.getItem('accessToken')
     switch (token){
         case null:
-            return(<div><Button href='' sx={{color: 'black'}}>Registruotis</Button>
+            return(<div><Button href='/register' sx={{color: 'black'}}>Registruotis</Button>
                 <Button href='/login'
                     sx={{
                     color: 'white',
@@ -126,7 +126,7 @@ function OptionsForMobile(role: string){
         case null:
             return(<div>
                 <MenuItem>
-                    <Button href='' sx={{ color: 'black' }}>Registruotis</Button>
+                    <Button href='/register' sx={{ color: 'black' }}>Registruotis</Button>
                 </MenuItem>
                 <MenuItem>
                     <Button href='/login'
