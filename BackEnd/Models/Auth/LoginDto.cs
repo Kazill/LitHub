@@ -2,7 +2,7 @@
 
 namespace BackEnd.Models
 {
-    public class UserDto
+    public class LoginDto
     {
         [Required]
         public string UserName { get; set; }
