@@ -21,12 +21,68 @@ namespace BackEnd.Controllers
             _context = context;
             _configuration = configuration;
         }
+        
+        public class ErrorInfo
+        {
+            public string error { get; set; }
+            public string message { get; set; }
+        }
+        
+        [HttpPost("register")]
+        public IActionResult Register(RegisterDto post)
+        {
+            try
+            {
+                List<ErrorInfo> errors = new List<ErrorInfo>();
+                if (_context.User.Any(x => x.UserName == post.UserName))
+                {
+                    errors.Add(new ErrorInfo{ error = "UserName", message = "Vartotojo vardas jau egzistuoja."});
+                }
+
+                if (_context.User.Any(x => x.Email == post.Email))
+                {
+                    errors.Add(new ErrorInfo{ error = "Email", message = "El. paštas jau egzistuoja."});
+                }
+
+                if (post.Password != post.PasswordConfirm)
+                {
+                    errors.Add(new ErrorInfo{ error = "PasswordConfirm", message = "Slaptažodžiai nesutampa."});
+                }
+
+                if (errors.Count() != 0)
+                {
+                    return BadRequest(errors);
+                }
+
+                var newUser = new User
+                {
+                    UserName = post.UserName,
+                    Email = post.Email,
+                    Password = post.Password,
+                    PhoneNumber = post.PhoneNumber,
+                    Role = "Prisiregistravęs"
+                };
+                _context.User.Add(newUser);
+                _context.SaveChanges();
+                return Ok("User registered successfully.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Klaida registracijoje: {ex.Message}");
+
+                return StatusCode(500, "Įvyko klaida.");
+            }
+        }
 
         [HttpPost("login")]
 
-        public ActionResult<User> Login(UserDto request)
+        public ActionResult<User> Login(LoginDto request)
         {
-            var user = _context.User.FirstOrDefault(x => x.UserName == request.UserName && x.Password == request.Password);
+            var user = _context.User
+                .AsEnumerable() 
+                .FirstOrDefault(x => 
+                    x.UserName == request.UserName && 
+                    x.Password == request.Password);
             if (user == null)
             {
                 return BadRequest("Blogas vartotojas ar slaptazodis");
