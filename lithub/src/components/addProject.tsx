@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { TextField, Button, Autocomplete } from "@mui/material";
+import React, { SyntheticEvent, useState } from 'react';
+import { TextField, Button, Autocomplete, FormControlLabel, Checkbox } from "@mui/material";
 import axios from "axios";
 import dayjs from "dayjs";
 import { useNavigate } from "react-router-dom";
@@ -21,12 +21,18 @@ function Project() {
         languages: [] as string[], // Initialize languages as an array of strings
         link: "",
         source: "user",
-        isClosed: false
+        isClosed: false,
+        isPrivate: false
     });
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
+    };
+
+    const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>, checked: boolean) => {
+        const { name } = e.target;
+        setFormData({ ...formData, [name]: checked });
     };
 
     const handleLanguagesChange = (_: any, values: string[]) => {
@@ -58,6 +64,7 @@ function Project() {
             <center><h1>Naujas projektas</h1></center>
             <p>Pavadinimas: {' '} <TextField onChange={handleInputChange} name="title" /></p>
             <p>Aprašymas: {' '} <TextField multiline={true} onChange={handleInputChange} name="description" /></p>
+            <FormControlLabel required control={<Checkbox onChange={handleCheckboxChange} name="isPrivate"/>}  label="Privatus projektas" />
             <p>Kalbos: {' '} 
                 <Autocomplete
                     multiple

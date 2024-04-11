@@ -18,5 +18,6 @@ namespace BackEnd.Models
         [StringLength(maximumLength: 100)]
         public string? Source { get; set; }
         public bool? IsClosed { get; set; }
+        public bool? IsPrivate { get; set; }
     }
 }
