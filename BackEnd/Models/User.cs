@@ -14,7 +14,11 @@ namespace BackEnd.Models
         public string Email { get; set; }
         [StringLength(maximumLength: 100)]
         public string Password { get; set; }
+        [StringLength(maximumLength: 12)]
+        [Phone]
+        public string PhoneNumber { get; set; }
         [DefaultValue("Prisiregistravęs")]
+        [StringLength(maximumLength: 100)]
         public string Role { get; set; }
 
     }
