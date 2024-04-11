@@ -26,28 +26,32 @@ const Register = () => {
         Password: '',
         PasswordConfirm: '',
         Email: '',
-        Phone: ''
+        Phone: '',
+        Error:''
     });
 
     const validateForm = () => {
         let isValid = true;
-        let errors = { UserName: '', Password: '',PasswordConfirm: '', Email: '',Phone: '' };
+        let errors = { UserName: '', Password: '',PasswordConfirm: '', Email: '',Phone: '',Error:'' };
 
         if (!formData.UserName) {
             errors.UserName = 'Vartotojo vardas yra privalomas.';
             isValid = false;
         }
-
+        if (!formData.Email) {
+            errors.Email = 'El. paštas yra privalomas.';
+            isValid = false;
+        }
+        if(formData.Password!=formData.PasswordConfirm){
+            errors.PasswordConfirm='Slaptažodžiai nesutampa.';
+            isValid = false;
+        }
         if (!formData.Password) {
             errors.Password = 'Slaptažodis yra privalomas.';
             isValid = false;
         }
         if (!formData.PasswordConfirm) {
-            errors.PasswordConfirm = 'Pakartoti slaptažodį yra privalomas.';
-            isValid = false;
-        }
-        if (!formData.Email) {
-            errors.Password = 'El. paštas yra privalomas.';
+            errors.PasswordConfirm = 'Pakartoti slaptažodį yra privaloma.';
             isValid = false;
         }
         if (!formData.PhoneNumber) {
@@ -68,9 +72,6 @@ const Register = () => {
         event.preventDefault()
 
         //setErrorMessages({ ...errorMessages, login: '' });
-        if(formData.Password!=formData.PasswordConfirm){
-            return;
-        }
         if (!validateForm()) {
             return;
         }
@@ -84,8 +85,11 @@ const Register = () => {
         }catch (e) {
             if (axios.isAxiosError(e)) {
                 if (e.response && e.response.status === 400) {
-                    //setErrorMessages({ ...errorMessages, login: 'Neteisingas vartotojo vardas arba slaptažodis.' });
-                    console.log("400 Error Message: ", e.response.data);
+                    e.response.data.forEach(function (response: any){
+                        const { error, message } = response;
+                        setErrorMessages({ ...errorMessages, [error]: message });
+                        console.log(response)
+                    })
                 } else {
                     console.error('Error submitting form:', e);
                 }
@@ -122,6 +126,9 @@ const Register = () => {
                 error={Boolean(errorMessages.UserName)}
                 onChange={handleInputChange}
             />
+            {errorMessages.UserName && (
+                <Typography color="error" >{errorMessages.UserName}</Typography>
+            )}
             <TextField
                 margin="normal"
                 required
@@ -133,6 +140,9 @@ const Register = () => {
                 error={Boolean(errorMessages.Email)}
                 onChange={handleInputChange}
             />
+            {errorMessages.Email && (
+                <Typography color="error" >{errorMessages.Email}</Typography>
+            )}
             <TextField
                 margin="normal"
                 required
@@ -145,6 +155,9 @@ const Register = () => {
                 error={Boolean(errorMessages.Password)}
                 onChange={handleInputChange}
             />
+            {errorMessages.Password && (
+                <Typography color="error"> {errorMessages.Password}</Typography>
+            )}
             <TextField
                 margin="normal"
                 required
@@ -157,6 +170,9 @@ const Register = () => {
                 error={Boolean(errorMessages.PasswordConfirm)}
                 onChange={handleInputChange}
             />
+            {errorMessages.PasswordConfirm && (
+                <Typography color="error"> {errorMessages.PasswordConfirm}</Typography>
+            )}
             <MuiTelInput
                 margin="normal"
                 required
@@ -171,9 +187,12 @@ const Register = () => {
             {/*    control={<Checkbox value="remember" color="primary" />}*/}
             {/*    label="Remember me"*/}
             {/*/>*/}
-            {/*errorMessages.login && (
-                <Typography color="error" align="center">{errorMessages.login}</Typography>
-            )*/}
+            {errorMessages.Phone && (
+                <Typography color="error" >{errorMessages.Phone}</Typography>
+            )}
+            {errorMessages.Error && (
+                <Typography color="error" >{errorMessages.Error}</Typography>
+            )}
             <Button
                 type="submit"
                 fullWidth
