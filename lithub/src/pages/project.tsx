@@ -23,7 +23,8 @@ interface problemData {
     source: string | undefined,
     description: string | undefined,
     link: string | undefined,
-    isClosed: boolean
+    isClosed: boolean,
+    isPrivate: boolean
 }
 
 interface markedData {
@@ -466,11 +467,26 @@ function Project(this: any) {
         }
     };
     const renderMarkButton = () => {
-        if (selectedRole === "Prisiregistravęs" && !problem?.isClosed) {
+        if (selectedRole === "Prisiregistravęs" && !problem?.isClosed && problem?.isPrivate) {
             return <MarkProject />;
         }
         return null;
     };
+
+    const renderChosen = () => {
+        if(problem?.isPrivate)
+        {
+            return(
+                <><select id="id" value="Pasižymėją programuotojai" >
+                    <option value="start" hidden>Pasižymėją programuotojai</option>
+                    {marks.map(mark => (
+                        <option value="Vardas" disabled>{mark.userName}</option>
+                    ))}
+                </select></>
+            )
+        }
+        return null;
+    }
 
     const isClosed = () => {
         if (problem?.isClosed) {
@@ -487,12 +503,7 @@ function Project(this: any) {
                 <p><b>Įkėlėjas: </b><Link to={`/profile/${problem?.source}`}>{problem?.source}</Link></p>
                 <p><b>Kalbos: </b>{problem?.languages}</p>
                 <p><b>Paskutinis atnaujinimas: </b>{problem?.lastUpdate}</p>
-                <select id="id" value="Pasižymėją programuotojai" >
-                    <option value="start" hidden>Pasižymėją programuotojai</option>
-                    {marks.map(mark => (
-                        <option value="Vardas" disabled>{mark.userName}</option>
-                    ))}
-                </select>
+                {renderChosen()}
                 <div>
                     <h2>Failai:</h2>
                     <a href={problem?.link}>{problem?.link}</a>
@@ -504,40 +515,47 @@ function Project(this: any) {
                 {renderMarkButton()}
             </div>
 
-            <div>
-                <h2>Komentarai:</h2>
-                {comments.length > 0 ? (
-                    renderComments(comments, likes)
-                ) : (
-                    <div style={{ border: '1px solid #ccc', padding: '10px', marginTop: '10px' }}>
-                        Komentarų dar nėra.
-                    </div>
-                )}
-            </div>
+            
 
-            <h3>Palikite komentarą:</h3>
-            {userRole !== "Svečias" ? (
-                problem?.isClosed ? (
-                    <p>Projektas uždarytas</p>
-                ) : (
-                    <form onSubmit={handleCommentSubmit}>
-                        <textarea
-                            value={newCommentText}
-                            onChange={handleNewCommentChange}
-                            placeholder="Write your comment here..."
-                            style={{ width: '100%', height: '100px' }}
-                        />
-                        <input type="url"
-                            value={newUrl}
-                            onChange={handleNewUrlChange}
-                            id="websiteInput"
-                            placeholder="Enter website URL" />
-                        <button type="submit">Submit Comment</button>
-                    </form>
-                )
+            {problem?.isPrivate ? (
+                <p>Projektas privatus</p>
             ) : (
-                <p>Norint rašyti komentarą prisijunkite.</p>
+
+                <><div>
+                        <h2>Komentarai:</h2>
+                        {comments.length > 0 ? (
+                            renderComments(comments, likes)
+                        ) : (
+                            <div style={{ border: '1px solid #ccc', padding: '10px', marginTop: '10px' }}>
+                                Komentarų dar nėra.
+                            </div>
+                        )}
+                    </div><h3>Palikite komentarą:</h3>
+
+                    {userRole !== "Svečias" ? (
+                        problem?.isClosed ? (
+                            <p>Projektas uždarytas</p>
+                        ) : (
+                            <form onSubmit={handleCommentSubmit}>
+                                <textarea
+                                    value={newCommentText}
+                                    onChange={handleNewCommentChange}
+                                    placeholder="Write your comment here..."
+                                    style={{ width: '100%', height: '100px' }}
+                                />
+                                <input type="url"
+                                    value={newUrl}
+                                    onChange={handleNewUrlChange}
+                                    id="websiteInput"
+                                    placeholder="Enter website URL" />
+                                <button type="submit">Submit Comment</button>
+                            </form>
+                            )
+                    ) : (
+                        <p>Norint rašyti komentarą prisijunkite.</p>
+                    )}</>
             )}
+            
         </div></>
     );
 }
