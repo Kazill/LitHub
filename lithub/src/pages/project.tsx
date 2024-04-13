@@ -467,24 +467,31 @@ function Project(this: any) {
         }
     };
     const renderMarkButton = () => {
-        if (selectedRole === "Prisiregistravęs" && !problem?.isClosed && problem?.isPrivate) {
+        if (selectedRole === "Prisiregistravęs" && !problem?.isClosed) {
             return <MarkProject />;
         }
         return null;
     };
 
     const renderChosen = () => {
-        if(problem?.isPrivate)
-        {
-            return(
-                <><select id="id" value="Pasižymėją programuotojai" >
-                    <option value="start" hidden>Pasižymėją programuotojai</option>
-                    {marks.map(mark => (
-                        <option value="Vardas" disabled>{mark.userName}</option>
-                    ))}
-                </select></>
-            )
-        }
+        const redirectToProfile = (userName: string) => {
+            window.location.href = `/profile/${userName}`;
+        };
+    
+
+            return (
+                <>
+                    <select id="id" onChange={(e) => redirectToProfile(e.target.value)}>
+                        <option value="start" hidden>Pasižymėję programuotojai</option>
+                        {marks.map(mark => (
+                            <option value={mark.userName} key={mark.id}>
+                                {mark.userName}
+                            </option>
+                        ))}
+                    </select>
+                </>
+            );
+
         return null;
     }
 
