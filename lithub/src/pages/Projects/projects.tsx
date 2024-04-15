@@ -134,7 +134,7 @@ function ProjectList({ selectedLanguages }: { selectedLanguages: string[] }) {
     useEffect(() => {
         async function fetchData() {
             try {
-                const response = await axios.get('https://localhost:7054/api/Problem');
+                const response = await axios.get('https://localhost:7054/api/Problem/SortedByDate');
                 setProblems(response.data);
             } catch (error) {
                 // Handle the error or log it

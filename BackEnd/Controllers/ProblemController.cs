@@ -25,7 +25,16 @@ namespace BackEnd.Controllers
             var problem = _context.Problem.ToList();
             return problem;
         }
-
+        // GET: api/<UserController>
+        [HttpGet("SortedByDate")]
+        public IActionResult GetSortedByDate()
+        {
+            var problems = _context.Problem
+                .OrderByDescending(p => !p.IsClosed) // Sort by IsClosed in descending order (true first)
+                .ThenBy(p => p.lastUpdate) // Then sort by lastUpdate within each group of IsClosed
+                .ToList();
+            return Ok(problems);
+        }
         // GET api/<UserController>/5
         [HttpGet("{id}")]
         public Problem Get(int id)
