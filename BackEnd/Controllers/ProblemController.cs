@@ -33,6 +33,17 @@ namespace BackEnd.Controllers
             return _context.Problem.ToList().Find(x => x.Id == id);
         }
 
+        // GET: api/<UserController>
+        [HttpGet("SortedByDate")]
+        public List<Problem> GetSortedByDate()
+        {
+            var problems = _context.Problem
+                .OrderBy(p => (p.IsClosed ?? false) || (p.IsPrivate ?? false)) // Sort by IsClosed or IsPrivate being true (true first in descending order)
+                .ThenByDescending(p => p.lastUpdate) // Then sort by lastUpdate within each group
+                .ToList();
+            return problems;
+        }
+
         // POST api/<UserController>
         [HttpPost]
         public void Post(Problem model)
