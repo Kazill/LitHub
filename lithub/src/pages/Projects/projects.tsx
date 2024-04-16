@@ -147,7 +147,7 @@ function ProjectList({ selectedLanguages }: { selectedLanguages: string[] }) {
     const filteredProblems = problems.filter(problem => {
         if (selectedLanguages.length > 0) {
             const problemLanguages = problem.languages.split(',').map(lang => lang.trim());
-            return selectedLanguages.every(lang => problemLanguages.includes(lang));
+            return selectedLanguages.some(lang => problemLanguages.includes(lang));
         }
         return true; // If no languages are selected, return all problems
     });
