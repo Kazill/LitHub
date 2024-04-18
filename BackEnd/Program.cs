@@ -24,9 +24,10 @@ builder.Services.AddCors(options =>
 
     options.AddDefaultPolicy(builder =>
     {
-        builder.WithOrigins(frontendURL).AllowAnyMethod().AllowAnyHeader();
+        builder./*WithOrigins(frontendURL).*/AllowAnyMethod().AllowAnyHeader().SetIsOriginAllowed(origin => true).AllowCredentials(); // allow credentials;
     });
 });
+
 
 var app = builder.Build();
 
@@ -39,7 +40,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseCors();
+//app.UseCors();
 
 app.UseStaticFiles();
 
