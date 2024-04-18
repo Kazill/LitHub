@@ -467,18 +467,18 @@ function Project(this: any) {
         }
     };
     const renderMarkButton = () => {
-        if (selectedRole === "Prisiregistravęs" && !problem?.isClosed) {
-            return <MarkProject />;
+        if (selectedRole === "Prisiregistravęs" && problem && !problem.isClosed) {
+            return <MarkProject isPrivate={problem.isPrivate} />;
         }
         return null;
     };
 
     const renderChosen = () => {
-        const redirectToProfile = (userName: string) => {
+        const redirectToProfile = (userName : string) => {
             window.location.href = `/profile/${userName}`;
         };
     
-
+        if (problem?.isPrivate) {
             return (
                 <>
                     <select id="id" onChange={(e) => redirectToProfile(e.target.value)}>
@@ -491,7 +491,21 @@ function Project(this: any) {
                     </select>
                 </>
             );
-
+        }
+        else{
+            return (
+                <>
+                    <select id="id" onChange={(e) => redirectToProfile(e.target.value)}>
+                        <option value="start" hidden>Pasižymėję programuotojai viešame projekte</option>
+                        {marks.map(mark => (
+                            <option value={mark.userName} key={mark.id}>
+                                {mark.userName}
+                            </option>
+                        ))}
+                    </select>
+                </>
+            );
+        }
         return null;
     }
 
@@ -585,7 +599,7 @@ function IsMarked() {
     }
 }
 
-function MarkProject() {
+function MarkProject({ isPrivate }: { isPrivate: boolean }) {
     const id = useQuery().get('id');
     const marks = SetMarks(Number(id));
     const handleMark = async (name: string) => {
@@ -626,14 +640,26 @@ function MarkProject() {
         default:
             const data: CustomJwtPayload = jwtDecode(token);
             const userMark = marks.find(x => x.userName === data.username);
-            if (!userMark) {
-                return (<button onClick={() => handleMark(data.username)}>Planuoju padėti</button>);
+            if (isPrivate) {
+                if (!userMark) {
+                    return (<button onClick={() => handleMark(data.username)}>Planuoju padėti</button>);
+                } else {
+                    return (
+                        <div>
+                            <button onClick={() => handleUnmark(data.username)}>Atšaukti pasižymėjimą</button>
+                        </div>
+                    );
+                }
             } else {
-                return (
-                    <div>
-                        <button onClick={() => handleUnmark(data.username)}>Atšaukti pasižymėjimą</button>
-                    </div>
-                );
+                if (!userMark) {
+                    return (<button onClick={() => handleMark(data.username)}>Dirbu prie projekto</button>);
+                } else {
+                    return (
+                        <div>
+                            <button onClick={() => handleUnmark(data.username)}>Atšaukti pasižymėjimą</button>
+                        </div>
+                    );
+                }
             }
     }
 }
