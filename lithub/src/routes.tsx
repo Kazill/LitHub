@@ -11,6 +11,7 @@ import LoginPage from './pages/Login'
 import {jwtDecode} from "jwt-decode";
 import Profile from './pages/profile';
 import RegisterPage from './pages/Register';
+import ApprovalPage from './pages/approval';
 
 function loadUserProfile() {
     try {
@@ -41,6 +42,7 @@ const Main = () => {
             <Route path='/example' element={<Example/>}></Route>
             <Route path='/login' element={<LoginPage/>}></Route>
             <Route path='/register' element={<RegisterPage/>}></Route>
+            <Route path='/approval-list' element={<ApprovalPage/>}></Route>
             <Route path='/profile/:username' element={<Profile/>}></Route>
         </Routes>
     );

@@ -60,7 +60,12 @@ function OptionsForDesktop(role: string){
             </Button></div>);
         default:
             const data :CustomJwtPayload=jwtDecode(token)
+            let approval
+            if(data.role==="Administratorius"){
+                approval=<Button href='/approval-list' sx={{ color: 'black' }}>Prašymai</Button>
+            }
             return(<div>
+                {approval}
                 <IconButton
                     size="large"
                     aria-label="account of current user"
@@ -141,7 +146,12 @@ function OptionsForMobile(role: string){
             </div>);
         default:
             const data :CustomJwtPayload=jwtDecode(token)
+            let approval
+            if(data.role==="Administratorius"){
+                approval=<Button href='/approval-list' sx={{ color: 'black' }}>Prašymai</Button>
+            }
             return(<div>
+                {approval}
                 <MenuItem>
                     <Button href='' sx={{ color: 'black' }}>{data.username}</Button>
                 </MenuItem>

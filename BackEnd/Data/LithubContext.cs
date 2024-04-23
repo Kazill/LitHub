@@ -16,5 +16,6 @@ namespace BackEnd.Data
         public DbSet<Marked> Marked { get; set; }
         public DbSet<Comment> Comment { get; set; }
         public DbSet<Like> Like { get; set; }
+        public DbSet<WaitingForApproval> Waiting { get; set; }
     }
 }

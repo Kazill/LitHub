@@ -111,6 +111,9 @@ namespace BackEnd.Migrations
                     b.Property<bool?>("IsClosed")
                         .HasColumnType("tinyint(1)");
 
+                    b.Property<bool?>("IsPrivate")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<string>("Languages")
                         .HasMaxLength(100)
                         .HasColumnType("varchar(100)");
@@ -141,10 +144,22 @@ namespace BackEnd.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<string>("Company")
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("varchar(100)");
+
+                    b.Property<string>("GithubProfile")
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("ImageLink")
+                        .HasMaxLength(1000)
+                        .HasColumnType("varchar(1000)");
 
                     b.Property<string>("Password")
                         .IsRequired()
@@ -171,11 +186,43 @@ namespace BackEnd.Migrations
                     b.ToTable("User");
                 });
 
+            modelBuilder.Entity("BackEnd.Models.WaitingForApproval", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("varchar(20)");
+
+                    b.Property<int>("userId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("userId");
+
+                    b.ToTable("Waiting");
+                });
+
             modelBuilder.Entity("BackEnd.Models.Comment", b =>
                 {
                     b.HasOne("BackEnd.Models.Comment", null)
                         .WithMany("Replies")
                         .HasForeignKey("CommentId");
+                });
+
+            modelBuilder.Entity("BackEnd.Models.WaitingForApproval", b =>
+                {
+                    b.HasOne("BackEnd.Models.User", "user")
+                        .WithMany()
+                        .HasForeignKey("userId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("user");
                 });
 
             modelBuilder.Entity("BackEnd.Models.Comment", b =>
