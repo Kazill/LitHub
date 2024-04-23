@@ -465,3 +465,5 @@ C:\Users\robot\Documents\LitHub\BackEnd\obj\Debug\net6.0\scopedcss\bundle\BackEn
 C:\Users\robot\Documents\LitHub\BackEnd\obj\Debug\net6.0\BackEnd.csproj.CopyComplete
 C:\Users\robot\Documents\LitHub\BackEnd\obj\Debug\net6.0\BackEnd.genruntimeconfig.cache
 C:\Users\robot\Documents\LitHub\BackEnd\obj\Debug\net6.0\ref\BackEnd.dll
+C:\Users\robot\Documents\LitHub\BackEnd\bin\Debug\net6.0\Firebase.Storage.dll
+C:\Users\robot\Documents\LitHub\BackEnd\bin\Debug\net6.0\Newtonsoft.Json.dll
