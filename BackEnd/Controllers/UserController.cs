@@ -95,7 +95,8 @@ namespace BackEnd.Controllers
         {
             List<Claim> claims = new List<Claim> {
                 new Claim("username", user.UserName),
-                new Claim("role", user.Role)
+                new Claim("role", user.Role),
+                new Claim("userid", user.Id.ToString())
             };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(

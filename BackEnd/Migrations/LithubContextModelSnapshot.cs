@@ -126,6 +126,9 @@ namespace BackEnd.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("varchar(100)");
 
+                    b.Property<int?>("SourceId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Title")
                         .HasMaxLength(100)
                         .HasColumnType("varchar(100)");
@@ -134,6 +137,8 @@ namespace BackEnd.Migrations
                         .HasColumnType("date");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("SourceId");
 
                     b.ToTable("Problem");
                 });
@@ -212,6 +217,16 @@ namespace BackEnd.Migrations
                     b.HasOne("BackEnd.Models.Comment", null)
                         .WithMany("Replies")
                         .HasForeignKey("CommentId");
+                });
+
+            modelBuilder.Entity("BackEnd.Models.Problem", b =>
+                {
+                    b.HasOne("BackEnd.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("SourceId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("BackEnd.Models.WaitingForApproval", b =>

@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BackEnd.Models
 {
@@ -19,5 +21,9 @@ namespace BackEnd.Models
         public string? Source { get; set; }
         public bool? IsClosed { get; set; }
         public bool? IsPrivate { get; set; }
+        public int? SourceId { get; set; }
+        [ForeignKey("SourceId")]
+        [DeleteBehavior(DeleteBehavior.SetNull)]
+        public User? User { get; set; }
     }
 }

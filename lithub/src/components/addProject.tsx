@@ -3,6 +3,16 @@ import { TextField, Button, Autocomplete, FormControlLabel, Checkbox } from "@mu
 import axios from "axios";
 import dayjs from "dayjs";
 import { useNavigate } from "react-router-dom";
+import { JwtPayload, jwtDecode } from 'jwt-decode';
+
+interface CustomJwtPayload extends JwtPayload {
+    username: string;
+    role: string;
+    userid: number
+    // Add other custom properties if needed
+}
+
+
 
 const languagesList = ["JavaScript", "Python", "Java", "C++", "C#", "Ruby", "Go", "TypeScript", "Swift", "PHP"];
 
@@ -13,6 +23,17 @@ function getDate() {
 
 function Project() {
     const navigate = useNavigate();
+
+    const token = localStorage.getItem('accessToken');
+    let userid = 0;
+    if (token) {
+        const decoded: CustomJwtPayload = jwtDecode(token);
+        userid = decoded.userid;
+        console.log(userid);
+        console.log(decoded);
+        console.log(token);
+    }
+
     const [formData, setFormData] = useState({
         id: 0,
         title: "",
@@ -22,7 +43,8 @@ function Project() {
         link: "",
         source: "user",
         isClosed: false,
-        isPrivate: false
+        isPrivate: false,
+        sourceId: userid
     });
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
