@@ -123,9 +123,9 @@ namespace BackEnd.Controllers
 
         // GET api/<UserController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public User Get(int id)
         {
-            return _context.User.Select(x => x.Id == id).ToString();
+            return _context.User.ToList().Find(x => x.Id == id);
         }
 
         // GET api/<UserController>/5

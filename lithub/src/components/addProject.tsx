@@ -26,12 +26,11 @@ function Project() {
 
     const token = localStorage.getItem('accessToken');
     let userid = 0;
+    let username = "user";
     if (token) {
         const decoded: CustomJwtPayload = jwtDecode(token);
         userid = decoded.userid;
-        console.log(userid);
-        console.log(decoded);
-        console.log(token);
+        username = decoded.username;
     }
 
     const [formData, setFormData] = useState({
@@ -41,7 +40,7 @@ function Project() {
         lastUpdate: getDate(),
         languages: [] as string[], // Initialize languages as an array of strings
         link: "",
-        source: "user",
+        source: username,
         isClosed: false,
         isPrivate: false,
         sourceId: userid

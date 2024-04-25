@@ -8,6 +8,7 @@ import { FaStar } from "react-icons/fa";
 interface CustomJwtPayload extends JwtPayload {
     username: string;
     role: string;
+    userid: number
     // Add other custom properties if needed
 }
 
@@ -24,7 +25,13 @@ interface problemData {
     description: string | undefined,
     link: string | undefined,
     isClosed: boolean,
-    isPrivate: boolean
+    isPrivate: boolean,
+    sourceId: number | undefined
+}
+
+interface userData {
+    username: string,
+    id: number
 }
 
 interface markedData {
@@ -103,7 +110,8 @@ function Project(this: any) {
     const navigate = useNavigate();
 
     const fetchData = async () => {
-        try {
+  
+      try {
             const response = await axios.get(`https://localhost:7054/api/Problem/${id}`);
             setProblem(response.data);
             await fetchComments(); // Call a separated fetch function
@@ -112,6 +120,7 @@ function Project(this: any) {
             console.error(error);
         }
     };
+   
 
     const fetchComments = async () => {
         const commentsResponse = await axios.get(`https://localhost:7054/api/Comment/problem/${id}`);
@@ -137,6 +146,7 @@ function Project(this: any) {
         fetchData();
     }, [id]);
 
+
     const handleDelete = async () => {
         try {
             await axios.delete(`https://localhost:7054/api/Problem/${id}`);
@@ -155,6 +165,7 @@ function Project(this: any) {
         problem.link = undefined;
         problem.source = undefined;
         problem.isClosed = true;
+        problem.sourceId = undefined;
 
         try {
             const response = await axios.put(`https://localhost:7054/api/Problem/${id}`, problem, {
@@ -256,11 +267,13 @@ function Project(this: any) {
     };
     let userRole = "Svečias"; // Default to guest if no token or role found
     let userName = "Svečias";
+    let userId = -1;
     const token = localStorage.getItem('accessToken');
     if (token) {
         const decoded: CustomJwtPayload = jwtDecode(token);
         userRole = decoded.role;
         userName = decoded.username;
+        userId = decoded.userid;
     }
     const handleCommentSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
