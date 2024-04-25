@@ -26,12 +26,24 @@ interface markedData {
     problemId: number
 }
 
+interface user {
+    id: number,
+    UserName: string
+}
+
 function Projects() {
     const [selectedRole, setSelectedRole] = useState('');
     const [showLanguageFilter, setShowLanguageFilter] = useState(false);
     const [selectedLanguages, setSelectedLanguages] = useState<string[]>([]);
     const [availableLanguages, setAvailableLanguages] = useState<string[]>([]);
     const [filterText, setFilterText] = useState('');
+
+    const [usernameFilter, setUsernameFilter] = useState('');
+    const [showUserFilter, setShowUserFilter] = useState(false);
+
+    const toggleUserFilter = () => {
+        setShowUserFilter(!showUserFilter);
+      };    
 
     useEffect(() => {
         // Fetch initial role when component mounts
@@ -49,6 +61,18 @@ function Projects() {
             })
             .catch(error => console.error('Error fetching role:', error));
     };
+
+    useEffect(() => {
+        async function fetchUsers() {
+          try {
+            const response = await axios.get('https://localhost:7054/api/Users'); // Adjust your API endpoint
+          } catch (error) {
+            console.error('Error fetching users:', error);
+          }
+        }
+      
+        fetchUsers(); 
+      }, []);
 
     const toggleLanguageFilter = () => {
         setShowLanguageFilter(!showLanguageFilter);
@@ -77,6 +101,17 @@ function Projects() {
             <div>
                 <center><h1>Projektų sąrašas</h1></center>
                 <button onClick={toggleLanguageFilter}>Filtravimas pagal kalba</button>
+                <button onClick={toggleUserFilter}>Filtruoti pagal vartotoją</button> 
+                {showUserFilter && (
+                <div className="user-filter">
+                    <input 
+                    type="text" 
+                    placeholder="Vartotojo vardas..." 
+                    value={usernameFilter} 
+                    onChange={(e) => setUsernameFilter(e.target.value)} 
+                    />
+                </div>
+                )}
                 <LanguageFilterOverlay
                     show={showLanguageFilter}
                     onClose={handleOverlayClose}
@@ -87,7 +122,10 @@ function Projects() {
                     onFilterTextChange={setFilterText}
                 />
                 <AddProject />
-                <ProjectList selectedLanguages={selectedLanguages} />
+                <ProjectList 
+                    selectedLanguages={selectedLanguages} 
+                    usernameFilter={usernameFilter} 
+                /> 
             </div>
         );
     } else {
@@ -95,6 +133,17 @@ function Projects() {
             <div>
                 <center><h1>Projektų sąrašas</h1></center>
                 <button onClick={toggleLanguageFilter}>Filtravimas pagal kalba</button>
+                <button onClick={toggleUserFilter}>Filtruoti pagal vartotoją</button> 
+                {showUserFilter && (
+                <div className="user-filter">
+                    <input 
+                    type="text" 
+                    placeholder="Vartotojo vardas..." 
+                    value={usernameFilter} 
+                    onChange={(e) => setUsernameFilter(e.target.value)} 
+                    />
+                </div>
+                )}
                 <LanguageFilterOverlay
                     show={showLanguageFilter}
                     onClose={handleOverlayClose}
@@ -104,7 +153,10 @@ function Projects() {
                     filterText={filterText}
                     onFilterTextChange={setFilterText}
                 />
-                <ProjectList selectedLanguages={selectedLanguages} />
+                <ProjectList 
+                    selectedLanguages={selectedLanguages} 
+                    usernameFilter={usernameFilter} 
+                />
             </div>
         );
     }
@@ -118,7 +170,7 @@ function AddProject() {
     );
 }
 
-function ProjectList({ selectedLanguages }: { selectedLanguages: string[] }) {
+function ProjectList({ selectedLanguages, usernameFilter }: { selectedLanguages: string[], usernameFilter: string }) {
     const [problems, setProblems] = useState<ProblemData[]>([]);
     const [startDate, setStartDate] = useState<string>('');
     const [endDate, setEndDate] = useState<string>('');
@@ -145,12 +197,20 @@ function ProjectList({ selectedLanguages }: { selectedLanguages: string[] }) {
     }, []);
 
     const filteredProblems = problems.filter(problem => {
-        if (selectedLanguages.length > 0) {
-            const problemLanguages = problem.languages.split(',').map(lang => lang.trim());
-            return selectedLanguages.some(lang => problemLanguages.includes(lang));
-        }
-        return true; // If no languages are selected, return all problems
-    });
+  // Filter by Language
+  if (selectedLanguages.length > 0) {
+    const problemLanguages = problem.languages.split(',').map(lang => lang.trim());
+    return selectedLanguages.some(lang => problemLanguages.includes(lang));
+  }
+
+  // Filter by Username
+  if (usernameFilter) { 
+    return problem.source.toLowerCase().includes(usernameFilter.toLowerCase());
+  }
+
+  // If no filters, return all projects
+  return true;
+});
 
     const isClosed = (closed:boolean) =>{
         if(closed){
