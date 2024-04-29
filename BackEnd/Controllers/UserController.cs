@@ -1,6 +1,7 @@
 ﻿using BackEnd.Data;
 using BackEnd.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -169,6 +170,84 @@ namespace BackEnd.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+        }
+        // DELETE api/<UserController>/Approve/5
+        [HttpPost("Approve/{id}")]
+        public async Task<IActionResult> ApproveUser(int id)
+        {
+            var user = await _context.User.FindAsync(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            if (user.Role != "Prisiregistravęs")
+            {
+                return BadRequest("User cannot be approved.");
+            }
+
+            user.Role = "Patvirtinas"; // Assume "Patvirtinas" is the role for approved users.
+            _context.Entry(user).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!UserExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent(); // Or return Ok(user); if you want to send back the updated user data.
+        }
+
+        // POST: api/<UserController>/Revoke/5
+        [HttpPost("Revoke/{id}")]
+        public async Task<IActionResult> RevokeUser(int id)
+        {
+            var user = await _context.User.FindAsync(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            if (user.Role != "Patvirtinas")
+            {
+                return BadRequest("User is not approved, or cannot have approval revoked.");
+            }
+
+            user.Role = "Prisiregistravęs"; // Revert to initial unapproved role.
+            _context.Entry(user).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!UserExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent(); // Or return Ok(user); if you want to send back the updated user data.
+        }
+        private bool UserExists(int id)
+        {
+            Console.WriteLine(_context.User.Any(e => e.Id == id));
+            return _context.User.Any(e => e.Id == id);
         }
     }
 }
