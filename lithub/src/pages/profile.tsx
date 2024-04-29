@@ -121,6 +121,25 @@ const Profile: React.FC = () => {
     } catch (error) {
       console.error('Error approving user:', error);
     }
+    try {
+      const response = await fetch(`https://localhost:7054/api/Admin/ApproveUser/${userId}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          // Include other headers as needed, like authorization tokens
+        },
+      });
+  
+      if (!response.ok) {
+        throw new Error(`HTTP error ${response.status}`);
+      }
+  
+      console.log('User approved');
+      // Update local state to reflect the change in role
+      setUserProfile(prev => prev ? { ...prev, role: "Patvirtinas" } : null);
+    } catch (error) {
+      console.error('Error approving user:', error);
+    }
   };
 
   // Define the method to handle revocation of an approved user
@@ -154,6 +173,25 @@ const Profile: React.FC = () => {
       }
     } catch (error) {
       console.error('Error revoking approval user:', error);
+    }
+    try {
+      const response = await fetch(`https://localhost:7054/api/Admin/RevokeUser/${userId}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          // Include other headers as needed, like authorization tokens
+        },
+      });
+  
+      if (!response.ok) {
+        throw new Error(`HTTP error ${response.status}`);
+      }
+  
+      console.log('User approval revoked');
+      // Update local state to revert the role change
+      setUserProfile(prev => prev ? { ...prev, role: "Prisiregistravęs" } : null);
+    } catch (error) {
+      console.error('Error revoking user:', error);
     }
   };
 
