@@ -20,6 +20,7 @@ const Profile: React.FC = () => {
   const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
   const { username } = useParams<{ username: string }>();
   const [selectedRole, setSelectedRole] = useState('');
+  const [flag, setflag] = useState<boolean>();
 
   useEffect(() => {
     const fetchUserProfile = async () => {
@@ -48,10 +49,34 @@ const Profile: React.FC = () => {
       })
       .catch(error => console.error('Error fetching role:', error));
   };
-
+  const handleConfirmation = async (userId: string)=>{
+    await axios.post(`https://localhost:7054/api/User/AskConf/${username}`);
+    window.location.reload()
+  }
+  const getStatus=async (username: string | undefined)=>{
+    if(typeof username=="string") {
+      const response = await axios.get(`https://localhost:7054/api/User/Waitting/${username}`);
+      console.log(response)
+      setflag(response.data)
+    }
+  }
+  useEffect(()=>{
+    getStatus(username)
+  },[username])
   const handleConfirmationRequest = () => {
     if (selectedRole === "Prisiregistravęs") {
-      return <button>Prašyti patvirtinti paskyrą</button>
+      let token = localStorage.getItem('accessToken')
+      switch (token) {
+        case null:
+          return null
+        default:
+          const data: CustomJwtPayload = jwtDecode(token)
+          if (data.username === username) {
+            if (flag == true) {
+              return <button onClick={() => handleConfirmation(data.username)}>Prašyti patvirtinti paskyrą</button>
+            }
+          }
+      }
     }
     return null;
   };

@@ -249,5 +249,37 @@ namespace BackEnd.Controllers
             Console.WriteLine(_context.User.Any(e => e.Id == id));
             return _context.User.Any(e => e.Id == id);
         }
+
+        [HttpPost("AskConf/{username}")]
+        public async void AskConfirmation(string username)
+        {
+            var user = await _context.User.FirstAsync(x => x.UserName == username);
+            var newApproval = new WaitingForApproval
+            {
+                user = user,
+                Status = "Laukia"
+            };
+            var waitting = _context.Waiting.FirstOrDefault(x => x.user == user);
+            if (waitting == null)
+            {
+                _context.Waiting.Add(newApproval);
+                _context.SaveChanges();
+            }
+        }
+        [HttpGet("Waitting/{username}")]
+        public Boolean Waiting(string username)
+        {
+            var user = _context.User.FirstOrDefault(x => x.UserName == username);
+            if (user == null)
+            {
+                return false;
+            }
+            var waitting = _context.Waiting.FirstOrDefault(x=>x.user== user);
+            if(waitting == null)
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }
