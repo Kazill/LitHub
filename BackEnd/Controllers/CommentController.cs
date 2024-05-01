@@ -2,6 +2,8 @@
 using Microsoft.EntityFrameworkCore;
 using BackEnd.Data;
 using BackEnd.Models;
+using System.Threading.Tasks;
+using System;
 
 namespace BackEnd.Controllers
 {
@@ -107,7 +109,7 @@ namespace BackEnd.Controllers
 
         // POST: api/Comment
         [HttpPost]
-        public async Task<ActionResult<Comment>> PostComment([FromBody] Comment comment)
+        public async Task<ActionResult<Comment>> PostComment([FromBody] CommentDto commentDto)
         {
             if (!ModelState.IsValid)
             {
@@ -116,19 +118,29 @@ namespace BackEnd.Controllers
                 return BadRequest(ModelState);
             }
 
+            var comment = new Comment
+            {
+                Author = commentDto.Author,
+                Text = commentDto.Text,
+                Url = commentDto.Url,
+                ProblemId = commentDto.ProblemId,
+                ParentCommentId = commentDto.ParentCommentId,
+                PostedDate = commentDto.PostedDate
+            };
 
-            Console.WriteLine($"Received comment: {System.Text.Json.JsonSerializer.Serialize(comment)}");
+            Console.WriteLine($"Received comment: {System.Text.Json.JsonSerializer.Serialize(commentDto)}");
+
             // Optionally, check if the referenced problem exists
-            var problemExists = await _context.Problem.AnyAsync(p => p.Id == comment.ProblemId);
+            var problemExists = await _context.Problem.AnyAsync(p => p.Id == commentDto.ProblemId);
             if (!problemExists)
             {
                 return BadRequest("Problem does not exist.");
             }
 
             // If ParentCommentId has value, optionally check if the parent comment exists
-            if (comment.ParentCommentId.HasValue)
+            if (commentDto.ParentCommentId.HasValue)
             {
-                var parentCommentExists = await _context.Comment.AnyAsync(c => c.Id == comment.ParentCommentId.Value);
+                var parentCommentExists = await _context.Comment.AnyAsync(c => c.Id == commentDto.ParentCommentId.Value);
                 if (!parentCommentExists)
                 {
                     return BadRequest("Parent comment does not exist.");

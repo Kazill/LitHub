@@ -4,7 +4,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { jwtDecode, JwtPayload } from "jwt-decode";
 import { FaStar } from "react-icons/fa";
-
+import GithubCodeDisplay from '../components/githubCodeDisplay';
 interface CustomJwtPayload extends JwtPayload {
     username: string;
     role: string;
@@ -84,10 +84,24 @@ function Project(this: any) {
     const [newUrl, setNewUrl] = useState('');
     const [replyingTo, setReplyingTo] = useState<number | null>(null);
     const [selectedRole, setSelectedRole] = useState('');
+    const [isCollapsed, setIsCollapsed] = useState(true); // State to track collapse/expand
+
 
     useEffect(() => {
         // Fetch initial role when component mounts
         fetchRole();
+        const handleKeyPress = (event: KeyboardEvent) => {
+            // Check for key combination Ctrl + /
+            if ((event.ctrlKey || event.metaKey) && event.key === '/') {
+                event.preventDefault();
+                toggleCollapse();
+            }
+        };
+        document.addEventListener('keydown', handleKeyPress);
+
+        return () => {
+            document.removeEventListener('keydown', handleKeyPress);
+        };
     }, []);
 
     const fetchRole = () => {
@@ -110,8 +124,8 @@ function Project(this: any) {
     const navigate = useNavigate();
 
     const fetchData = async () => {
-  
-      try {
+
+        try {
             const response = await axios.get(`https://localhost:7054/api/Problem/${id}`);
             setProblem(response.data);
             await fetchComments(); // Call a separated fetch function
@@ -120,7 +134,7 @@ function Project(this: any) {
             console.error(error);
         }
     };
-   
+
 
     const fetchComments = async () => {
         const commentsResponse = await axios.get(`https://localhost:7054/api/Comment/problem/${id}`);
@@ -157,7 +171,7 @@ function Project(this: any) {
         }
     };
 
-    const handleDeleteForCreator = async (problem: problemData) =>{
+    const handleDeleteForCreator = async (problem: problemData) => {
 
         problem.description = undefined;
         problem.lastUpdate = undefined;
@@ -277,22 +291,22 @@ function Project(this: any) {
     }
     const handleCommentSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        //const allowedDomains = ["github.com", "bitbucket.org"];
+        const allowedDomains = ["github.com"];
         if (!newUrl) {
             console.error("URL cannot be empty");
             return;
         }
-        /*try {
+        try {
             const urlObj = new URL(newUrl); // Tries to create a URL object, which will throw if the URL is invalid
             if (!allowedDomains.includes(urlObj.hostname)) {
                 console.error("URL from this domain is not allowed");
                 return;
-              }
+            }
             // Proceed with form submission or AJAX request here
-          } catch (error) {
+        } catch (error) {
             console.error('Please enter a valid URL.');
             return; // Stop the form submission
-          }*/
+        }
         if (!newCommentText.trim()) return;
         // Ensure `id` is not null and is a string before attempting to parse it
         if (id === null) {
@@ -309,7 +323,7 @@ function Project(this: any) {
                 author: userName, // Dynamic author name
                 text: newCommentText, // User input from state
                 problemId: problemId,
-                parentCommentId: replyingTo,  // This could be dynamic too if you're implementing reply functionality
+                parentCommentId: replyingTo,
                 url: newUrl
             });
 
@@ -320,6 +334,7 @@ function Project(this: any) {
             console.error("Failed to submit comment", error);
         }
     };
+
     interface ReplyComponentProps {
         commentId: number;
         onSubmit: (replyText: string, commentId: number) => void;
@@ -352,6 +367,10 @@ function Project(this: any) {
         );
     }
 
+    const toggleCollapse = () => {
+        setIsCollapsed(prevIsCollapsed => !prevIsCollapsed);
+    };
+
     // Function to render comments and their replies recursively
     const renderComments = (comments: CommentData[], likes: LikeData[], parentCommentId?: number) => {
         return comments.map((comment) => {
@@ -362,8 +381,8 @@ function Project(this: any) {
                 <div key={comment.id}>
                     <p><strong><Link to={`/profile/${comment.author}`}>{comment.author}</Link></strong> at {new Date(comment.postedDate).toLocaleString()}:</p>
                     {/* {problem?.source === userName && ( */}
-                        <p>Likes: {commentLikes.length}</p>
-                     {/* )} */}
+                    <p>Likes: {commentLikes.length}</p>
+                    {/* )} */}
                     {userRole === "Prisiregistravęs" && (
                         <button className="like-button" onClick={() => handleLikeClick(comment.id, likes)}>
                             Like
@@ -371,7 +390,12 @@ function Project(this: any) {
                     )}
 
                     <p>{comment.text}</p>
-                    <a href={comment.url} target="_blank" rel="noreferrer">{comment.url}</a>
+                    {comment.url && comment.url !== "null" && (
+                        <a href={comment.url} target="_blank" rel="noreferrer">{comment.url}</a>
+                    )}
+                    <div style={{ display: isCollapsed ? 'none' : 'block' }}>
+                        {<GithubCodeDisplay url={comment.url} />}
+                    </div>
                     <br></br>
                     {
                         userRole !== "Svečias" && !problem?.isClosed && (comment.parentCommentId === null || comment.parentCommentId === undefined) && (
@@ -395,7 +419,8 @@ function Project(this: any) {
                                         author: userName,
                                         text: replyText,
                                         problemId: problemId,
-                                        parentCommentId: parentCommentId // This links the reply to its parent comment
+                                        parentCommentId: parentCommentId, // This links the reply to its parent comment
+                                        url: "null"
                                     }, {
                                         headers: {
                                             'Content-Type': 'application/json',
@@ -419,17 +444,17 @@ function Project(this: any) {
         if (selectedRole === "Administratorius") {
             return <button onClick={() => handleDelete()}>Šalinti</button>;
         }
-        else if (selectedRole === "Patvirtinas"){
+        else if (selectedRole === "Patvirtinas") {
             let token = localStorage.getItem('accessToken')
             switch (token) {
-            case null:
-                return (null);
-            default:
-                const data: CustomJwtPayload = jwtDecode(token)
-                if (problem?.source === data.username) {
+                case null:
+                    return (null);
+                default:
+                    const data: CustomJwtPayload = jwtDecode(token)
+                    if (problem?.source === data.username) {
 
-                    return <button onClick={() => handleDeleteForCreator(problem)}>Šalinti</button>;
-                }
+                        return <button onClick={() => handleDeleteForCreator(problem)}>Šalinti</button>;
+                    }
             }
         }
         return null;
@@ -487,10 +512,10 @@ function Project(this: any) {
     };
 
     const renderChosen = () => {
-        const redirectToProfile = (userName : string) => {
+        const redirectToProfile = (userName: string) => {
             window.location.href = `/profile/${userName}`;
         };
-    
+
         if (problem?.isPrivate) {
             return (
                 <>
@@ -505,7 +530,7 @@ function Project(this: any) {
                 </>
             );
         }
-        else{
+        else {
             return (
                 <>
                     <select id="id" onChange={(e) => redirectToProfile(e.target.value)}>
@@ -538,33 +563,39 @@ function Project(this: any) {
                 <p><b>Kalbos: </b>{problem?.languages}</p>
                 <p><b>Paskutinis atnaujinimas: </b>{problem?.lastUpdate}</p>
                 {renderChosen()}
+                <br></br>
+                <button onClick={toggleCollapse}>
+                    {isCollapsed ? 'Atslėpti kodą' : 'Paslėpti kodą'}
+                </button>
                 <div>
                     <h2>Failai:</h2>
                     <a href={problem?.link}>{problem?.link}</a>
+                    <div style={{ display: isCollapsed ? 'none' : 'block' }}>
+                        {problem?.link && <GithubCodeDisplay url={problem?.link} />}
+                    </div>
                 </div>
-
                 {renderDeleteButton()}
                 {renderEditButton()}
                 {renderCloseButton()}
                 {renderMarkButton()}
             </div>
 
-            
+
 
             {problem?.isPrivate ? (
                 <p>Projektas privatus</p>
             ) : (
 
                 <><div>
-                        <h2>Komentarai:</h2>
-                        {comments.length > 0 ? (
-                            renderComments(comments, likes)
-                        ) : (
-                            <div style={{ border: '1px solid #ccc', padding: '10px', marginTop: '10px' }}>
-                                Komentarų dar nėra.
-                            </div>
-                        )}
-                    </div><h3>Palikite komentarą:</h3>
+                    <h2>Komentarai:</h2>
+                    {comments.length > 0 ? (
+                        renderComments(comments, likes)
+                    ) : (
+                        <div style={{ border: '1px solid #ccc', padding: '10px', marginTop: '10px' }}>
+                            Komentarų dar nėra.
+                        </div>
+                    )}
+                </div><h3>Palikite komentarą:</h3>
 
                     {userRole !== "Svečias" ? (
                         problem?.isClosed ? (
@@ -584,12 +615,12 @@ function Project(this: any) {
                                     placeholder="Enter website URL" />
                                 <button type="submit">Submit Comment</button>
                             </form>
-                            )
+                        )
                     ) : (
                         <p>Norint rašyti komentarą prisijunkite.</p>
                     )}</>
             )}
-            
+
         </div></>
     );
 }
