@@ -57,4 +57,51 @@ public class AdminController: ControllerBase
             .ToList();
         return dataList;
     }
+    // POST: api/Admin/ApproveUser/5
+    [HttpPost("ApproveUser/{userId}")]
+    public async Task<IActionResult> ApproveUser(int userId)
+    {
+        var user = await _context.User.FindAsync(userId);
+        if (user == null)
+        {
+            return NotFound("User not found");
+        }
+
+        var waitingApproval = await _context.Waiting.FirstOrDefaultAsync(w => w.user.Id == userId);
+        if (waitingApproval != null)
+        {
+            waitingApproval.Status = "patvirtintas";
+            _context.Update(waitingApproval);
+        }
+
+        user.Role = "Patvirtinas";
+        _context.Update(user);
+
+        await _context.SaveChangesAsync();
+        return Ok("User approved and status updated to patvirtintas");
+    }
+
+    // POST: api/Admin/RevokeUser/5
+    [HttpPost("RevokeUser/{userId}")]
+    public async Task<IActionResult> RevokeUser(int userId)
+    {
+        var user = await _context.User.FindAsync(userId);
+        if (user == null)
+        {
+            return NotFound("User not found");
+        }
+
+        var waitingApproval = await _context.Waiting.FirstOrDefaultAsync(w => w.user.Id == userId);
+        if (waitingApproval != null)
+        {
+            waitingApproval.Status = "atšauktas";
+            _context.Update(waitingApproval);
+        }
+
+        user.Role = "Prisiregistravęs";
+        _context.Update(user);
+
+        await _context.SaveChangesAsync();
+        return Ok("User revoked and status updated to atšauktas");
+    }
 }

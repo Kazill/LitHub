@@ -4,6 +4,10 @@
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@mui/icons-material": "^5.15.11",
     "create-react-app": "^5.0.1",
-    "dayjs": "^1.11.10"
+    "dayjs": "^1.11.10",
+    "react-syntax-highlighter": "^15.5.0"
+  },
+  "devDependencies": {
+    "@types/react-syntax-highlighter": "^15.5.11"
   }
 }
