@@ -33,18 +33,20 @@ function loadUserProfile() {
 const Main = () => {
     loadUserProfile()
     return (
-        <Routes>
-            <Route path='/' element={<MainPage />} />
-            <Route path='/projects' element={<Projects/>}></Route>
-            <Route path='/project' element={<Project/>}></Route>
-            <Route path='/addProject' element={<AddProject/>}></Route>
-            <Route path='/editProject' element={<EditProject/>}></Route>
-            <Route path='/example' element={<Example/>}></Route>
-            <Route path='/login' element={<LoginPage/>}></Route>
-            <Route path='/register' element={<RegisterPage/>}></Route>
-            <Route path='/approval-list' element={<ApprovalPage/>}></Route>
-            <Route path='/profile/:username' element={<Profile/>}></Route>
-        </Routes>
+        <div className="main">
+            <Routes>
+                <Route path='/' element={<MainPage />} />
+                <Route path='/projects' element={<Projects/>}></Route>
+                <Route path='/project' element={<Project/>}></Route>
+                <Route path='/addProject' element={<AddProject/>}></Route>
+                <Route path='/editProject' element={<EditProject/>}></Route>
+                <Route path='/example' element={<Example/>}></Route>
+                <Route path='/login' element={<LoginPage/>}></Route>
+                <Route path='/register' element={<RegisterPage/>}></Route>
+                <Route path='/approval-list' element={<ApprovalPage/>}></Route>
+                <Route path='/profile/:username' element={<Profile/>}></Route>
+            </Routes>
+        </div>
     );
 }
 

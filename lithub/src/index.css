@@ -11,3 +11,18 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.containerIndex {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+.content {
+  display: flex;
+  /*flex-grow: 1; /* Allow the content to take up remaining space */
+}
+.main{
+  flex-wrap: wrap; /* Allow items to wrap onto multiple lines */
+  display: block;
+  flex: 1; /* Allow the main content area to take up remaining space */
+}

@@ -5,33 +5,43 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="664ef725-6020-414a-b03b-b548f3de4bdf" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../BackEnd/.vs/BackEnd/FileContentIndex/00a87b85-4ee3-4f9f-a1d9-6b1cc0d95b75.vsidx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BackEnd/.vs/BackEnd/FileContentIndex/18a7b275-6ce7-4e78-901c-791d5118aa50.vsidx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BackEnd/.vs/BackEnd/FileContentIndex/4be9d971-1bc6-4e06-91d2-6fa083817146.vsidx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BackEnd/.vs/BackEnd/FileContentIndex/read.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BackEnd/.idea/.idea.BackEnd/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/.idea/.idea.BackEnd/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../BackEnd/bin/Debug/net6.0/BackEnd.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/bin/Debug/net6.0/BackEnd.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../BackEnd/bin/Debug/net6.0/BackEnd.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/bin/Debug/net6.0/BackEnd.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../BackEnd/bin/Debug/net6.0/BackEnd.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/bin/Debug/net6.0/BackEnd.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../BackEnd/obj/BackEnd.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/obj/BackEnd.csproj.nuget.dgspec.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../BackEnd/obj/BackEnd.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/obj/BackEnd.csproj.nuget.g.props" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BackEnd/obj/Debug/net6.0/BackEnd.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/obj/Debug/net6.0/BackEnd.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BackEnd/obj/Debug/net6.0/BackEnd.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/obj/Debug/net6.0/BackEnd.AssemblyInfoInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../BackEnd/obj/Debug/net6.0/BackEnd.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/obj/Debug/net6.0/BackEnd.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BackEnd/obj/Debug/net6.0/BackEnd.MvcApplicationPartsAssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/obj/Debug/net6.0/BackEnd.MvcApplicationPartsAssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../BackEnd/obj/Debug/net6.0/BackEnd.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/obj/Debug/net6.0/BackEnd.assets.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../BackEnd/obj/Debug/net6.0/BackEnd.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/obj/Debug/net6.0/BackEnd.csproj.AssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../BackEnd/obj/Debug/net6.0/BackEnd.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/obj/Debug/net6.0/BackEnd.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BackEnd/obj/Debug/net6.0/BackEnd.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/obj/Debug/net6.0/BackEnd.csproj.FileListAbsolute.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../BackEnd/obj/Debug/net6.0/BackEnd.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/obj/Debug/net6.0/BackEnd.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BackEnd/obj/Debug/net6.0/BackEnd.genruntimeconfig.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/obj/Debug/net6.0/BackEnd.genruntimeconfig.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../BackEnd/obj/Debug/net6.0/BackEnd.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/obj/Debug/net6.0/BackEnd.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BackEnd/obj/Debug/net6.0/BackEnd.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/obj/Debug/net6.0/BackEnd.sourcelink.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../BackEnd/obj/Debug/net6.0/apphost.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/obj/Debug/net6.0/apphost.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../BackEnd/obj/Debug/net6.0/ref/BackEnd.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/obj/Debug/net6.0/ref/BackEnd.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../BackEnd/obj/Debug/net6.0/refint/BackEnd.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/obj/Debug/net6.0/refint/BackEnd.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../BackEnd/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/obj/project.assets.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../BackEnd/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BackEnd/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/obj/rider.project.model.nuget.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BackEnd/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/obj/rider.project.restore.info" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/node_modules/.cache/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/node_modules/.cache/default-development/index.pack" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/default-development/index.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/node_modules/.cache/default-development/index.pack.old" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/default-development/index.pack.old" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/node_modules/.cache/tsconfig.tsbuildinfo" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/tsconfig.tsbuildinfo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/profile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/profile.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Nav.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nav.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/MainPage/MainPage.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MainPage/MainPage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,8 +51,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="TypeScript JSX File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -61,23 +71,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "aproval",
-    "last_opened_file_path": "C:/Users/robot/Documents/LitHub/lithub",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "C:\\Users\\robot\\Documents\\GitHub\\LitHub\\lithub\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;sidebar&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/robot/Documents/LitHub/lithub/src/components&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\robot\\Documents\\LitHub\\lithub\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\robot\Documents\LitHub\lithub\src\components" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\robot\Documents\LitHub\lithub\src\components" />
+      <recent name="C:\Users\robot\Documents\LitHub\lithub\src\components\Nav" />
+      <recent name="C:\Users\robot\Documents\LitHub\lithub\src\components\Sidebar" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
@@ -114,6 +134,10 @@
       <workItem from="1713525077288" duration="1570000" />
       <workItem from="1713884841022" duration="4925000" />
       <workItem from="1714499579849" duration="4516000" />
+      <workItem from="1714645305297" duration="1752000" />
+      <workItem from="1714679238420" duration="316000" />
+      <workItem from="1715101918418" duration="3919000" />
+      <workItem from="1715152389312" duration="5933000" />
     </task>
     <servers />
   </component>

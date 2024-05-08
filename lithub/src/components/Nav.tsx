@@ -4,6 +4,8 @@ import {Link, useNavigate} from "react-router-dom";
 import MenuIcon from '@mui/icons-material/Menu';
 import {AccountCircle} from "@mui/icons-material";
 import {jwtDecode, JwtPayload} from "jwt-decode";
+import LogoutIcon from '@mui/icons-material/Logout';
+import DisplaySettingsIcon from '@mui/icons-material/DisplaySettings';
 
 interface CustomJwtPayload extends JwtPayload {
     username: string;
@@ -49,23 +51,10 @@ function OptionsForDesktop(role: string){
     let token=localStorage.getItem('accessToken')
     switch (token){
         case null:
-            return(<div><Button href='/register' sx={{color: 'black'}}>Registruotis</Button>
-                <Button href='/login'
-                    sx={{
-                    color: 'white',
-                    background: 'green',
-                    ":hover": {background: '#00a600'}                 }}
-            >
-                Prisijungti
-            </Button></div>);
+            return(<></>);
         default:
             const data :CustomJwtPayload=jwtDecode(token)
-            let approval
-            if(data.role==="Administratorius"){
-                approval=<Button href='/approval-list' sx={{ color: 'black' }}>Prašymai</Button>
-            }
             return(<div>
-                {approval}
                 <IconButton
                     size="large"
                     aria-label="account of current user"
@@ -74,7 +63,7 @@ function OptionsForDesktop(role: string){
                     onClick={handleMenu}
                     color="inherit"
                 >
-                    <AccountCircle />
+                    <AccountCircle sx={{color:'white'}}/>
                 </IconButton>
                 <Menu
                     id="menu-appbar"
@@ -95,8 +84,8 @@ function OptionsForDesktop(role: string){
     {data.username}
 </MenuItem>
                     {/*<MenuItem onClick={handleClose}>Paskyra</MenuItem>*/}
-                    <MenuItem onClick={handleLogout}>Atsijungti</MenuItem>
                 </Menu>
+                <Button onClick={handleLogout} sx={{color: 'white'}}><LogoutIcon/></Button>
             </div>);
     }
 }
@@ -129,41 +118,15 @@ function OptionsForMobile(role: string){
     let token=localStorage.getItem('accessToken')
     switch (token){
         case null:
-            return(<div>
-                <MenuItem>
-                    <Button href='/register' sx={{ color: 'black' }}>Registruotis</Button>
-                </MenuItem>
-                <MenuItem>
-                    <Button href='/login'
-                            sx={{
-                                color: 'white', background: 'green',
-                             ":hover": { background: '#00a600' }
-                            }}
-                    >
-                        Prisijungti
-                    </Button>
-                </MenuItem>
-            </div>);
+            return(<></>);
         default:
             const data :CustomJwtPayload=jwtDecode(token)
-            let approval
-            if(data.role==="Administratorius"){
-                approval=<Button href='/approval-list' sx={{ color: 'black' }}>Prašymai</Button>
-            }
             return(<div>
-                {approval}
                 <MenuItem>
                     <Button href='' sx={{ color: 'black' }}>{data.username}</Button>
                 </MenuItem>
                 <MenuItem>
-                <Button href=''
-                        sx={{
-                            color: 'white',
-                            background: 'green',
-                            ":hover": {background: '#00a600'}                 }}
-                onClick={handleLogout}>
-                    Atsijungti
-                </Button>
+                    <Button onClick={handleLogout} sx={{color: 'black'}}><LogoutIcon/></Button>
                 </MenuItem>
             </div>);
     }
@@ -267,32 +230,32 @@ const Nav: React.FC<{}> = () => {
                     <option value="Patvirtinas">Patvirtinas</option>
                 </select>
             </MenuItem>
-            <MenuItem>
-                <Button href='/' sx={{ color: 'black' }}>Pagrindinis</Button>
-            </MenuItem>
-            <MenuItem>
-                <Button href='/projects' sx={{ color: 'black' }}>Projektai</Button>
-            </MenuItem>
-            <MenuItem>
-                <Button href='' sx={{ color: 'black' }}>Kas tai?</Button>
-            </MenuItem>
             {OptionsForMobile(selectedRole)}
         </Menu>
     );
 
     return (
         <Box sx={{ flexGrow: 1 }}>
-            <AppBar position='static' color='default'>
+            <AppBar position='static' sx={{bgcolor: '#335285'}}>
                 <Toolbar>
-                    <Typography
-                        variant="h6"
-                        component={Link}
-                        color='green'
-                        to="/"
-                        sx={{ textDecoration: 'none', display: { xs: 'block', sm: 'block' } }}
-                    >
-                        Neatlyginta IT sistema
-                    </Typography>
+                    <div style={{ display: 'flex', alignItems: 'center',marginTop:'10px',marginBottom:'10px' }}>
+                        <DisplaySettingsIcon sx={{ marginRight: '8px',fontSize: 40 }} />
+                        <Typography
+                            variant="h6"
+                            component={Link}
+                            color='white'
+                            to="/"
+                            sx={{
+                                fontSize:20,
+                                textDecoration: 'none',
+                                display: { xs: 'block', sm: 'block' },
+                                wordBreak: 'break-word' // Allow text to wrap at any point
+                            }}
+                        >
+                            IT PROJEKTŲ IR NEATLYGINTINŲ<br />
+                            IT SPECIALISTŲ PLATFORMA
+                        </Typography>
+                    </div>
                     <Box sx={{ flexGrow: 1 }} />
                     <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                         <select id="roleSelect" value={selectedRole} onChange={handleRoleChange}>
@@ -301,9 +264,6 @@ const Nav: React.FC<{}> = () => {
                             <option value="Prisiregistravęs">Prisiregistravęs</option>
                             <option value="Patvirtinas">Patvirtinas</option>
                         </select>
-                        <Button href='/' sx={{ color: 'black' }}>Pagrindinis</Button>
-                        <Button href='/projects' sx={{ color: 'black' }}>Projektai</Button>
-                        <Button href='' sx={{ color: 'black' }}>Kas tai?</Button>
                         {OptionsForDesktop(selectedRole)}
                     </Box>
                     <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
@@ -313,9 +273,8 @@ const Nav: React.FC<{}> = () => {
                             aria-controls={mobileMenuId}
                             aria-haspopup="true"
                             onClick={handleMobileMenuOpen}
-                            color="inherit"
                         >
-                            <MenuIcon />
+                            <MenuIcon sx={{color: 'white'}} />
                         </IconButton>
                     </Box>
                 </Toolbar>
