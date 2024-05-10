@@ -54,3 +54,51 @@
 .close-btn:hover {
     background-color: #f0f0f0;
 }
+
+.title {
+    text-align: left;
+    padding-left: 57px;
+}
+
+.project {
+    background-color: #6E83AC;
+    text-align: left;
+    align-self: center;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-top: 2px;
+    border-radius: 10px;
+}
+
+.projects {
+    width: 100%;
+}
+
+.projectTitle {
+    font-size: 20px;
+}
+
+.languageBox {
+    background-color:  rgba(255, 255, 255, 0.3);
+    width: max-content;
+    padding-left: 5px;
+    padding-right: 30px;
+    padding-top: 5px;
+    padding-bottom: 2px;
+    border-radius: 10px;
+    
+}
+
+.languages {
+    vertical-align: top;
+}
+
+a {
+    color: inherit;
+    text-decoration-line: none;
+}
+
+img {
+    height: 30px;
+    width: 30px;
+}

@@ -66,7 +66,7 @@ function Project() {
         try {
             const response = await axios.post('https://localhost:7054/api/Problem', {
                 ...formData,
-                languages: formData.languages.join(', ') // Convert array of languages to a comma-separated string
+                languages: formData.languages.join(' ') // Convert array of languages to a comma-separated string
             }, {
                 headers: {
                     'Content-Type': 'application/json',

@@ -6,6 +6,7 @@ import { FaStar } from "react-icons/fa";
 import {Container, Grid, Pagination, Typography} from '@mui/material';
 import { AiOutlineClose } from 'react-icons/ai';
 import './projects.css';
+import { Margin, Padding } from '@mui/icons-material';
 
 interface CustomJwtPayload extends JwtPayload {
     username: string;
@@ -99,7 +100,7 @@ function Projects() {
     if (selectedRole === "Patvirtinas") {
         return (
             <div>
-                <center><h1>Projektų sąrašas</h1></center>
+                <h1 className='title'>PROJEKTAI</h1>
                 <button onClick={toggleLanguageFilter}>Filtravimas pagal kalba</button>
                 <button onClick={toggleUserFilter}>Filtruoti pagal vartotoją</button> 
                 {showUserFilter && (
@@ -131,7 +132,7 @@ function Projects() {
     } else {
         return (
             <div>
-                <center><h1>Projektų sąrašas</h1></center>
+                <h1 className='title'>PROJEKTAI</h1>
                 <button onClick={toggleLanguageFilter}>Filtravimas pagal kalba</button>
                 <button onClick={toggleUserFilter}>Filtruoti pagal vartotoją</button> 
                 {showUserFilter && (
@@ -220,7 +221,7 @@ function ProjectList({ selectedLanguages, usernameFilter }: { selectedLanguages:
     }
 
     return (
-        <div>
+        <div className='projects'>
         <div style={{ marginBottom: '10px' }}>
             <label htmlFor="startDate" style={{ marginRight: '10px' }}>Nuo:</label>
             <input type="date" id="startDate" value={startDate} onChange={e => setStartDate(e.target.value)} />
@@ -229,18 +230,22 @@ function ProjectList({ selectedLanguages, usernameFilter }: { selectedLanguages:
             <label htmlFor="endDate" style={{ marginRight: '10px' }}>Iki:</label>
             <input type="date" id="endDate" value={endDate} onChange={e => setEndDate(e.target.value)} />
         </div>
-            <Container maxWidth="sm">
+            <Container /*maxWidth="sm"*/>
                 <Grid container spacing={2}>
                 {filteredProblems.slice((page-1)*per_page, page*per_page).map(problem => (
                     <Grid item xs={12} key={problem.id}>
-                    <div>
-                        <h2><Link to={`/Project?id=${problem.id}`}>
+                        <Link to={`/Project?id=${problem.id}`}>
+                        <div className='project'>
+                        <p className='projectTitle'>
                             {problem.title}
-                        </Link>{isClosed(problem?.isClosed)}{IsMarked(marks, problem.id)}</h2>
-                        <p>Įkėlėjas: <Link to={`/profile/${problem.source}`}>{problem.source}</Link></p>
-                        <p>Kalbos: {problem.languages}</p>
-                        <p>Paskutinis atnaujinimas: {problem.lastUpdate}</p>
-                    </div>
+                        {isClosed(problem?.isClosed)}{IsMarked(marks, problem.id)}</p>
+                        <p>Paskelbė: <Link to={`/profile/${problem.source}`}>{problem.source}</Link></p>
+                        <div className='languageBox'>
+                        <img src='https://www.startpage.com/av/proxy-image?piurl=https%3A%2F%2Fres.cloudinary.com%2Fdpuo6sogj%2Fimage%2Fupload%2Fw_auto%2Cdpr_auto%2Cc_scale%2Cf_auto%2Cq_auto%2Fv1622837948%2Fsite%2FLanguage-Icon-Fireworks.png&sp=1715342831Tacc2601b579cc697f77d9e1406e4c06dcf20a700257656e70989579c23d28b4a' alt="languege" />
+                        <text className='languages'> {problem.languages} </text>
+                        </div>
+                        {/* <p>Paskutinis atnaujinimas: {problem.lastUpdate}</p> */}
+                    </div></Link>
                     </Grid>
                 ))}
                 </Grid>
