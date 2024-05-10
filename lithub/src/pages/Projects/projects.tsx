@@ -6,6 +6,13 @@ import { FaStar } from "react-icons/fa";
 import {Container, Grid, Pagination, Typography} from '@mui/material';
 import { AiOutlineClose } from 'react-icons/ai';
 import './projects.css';
+import { Margin, Padding } from '@mui/icons-material';
+
+const  langImg = 'https://www.startpage.com/av/proxy-image?piurl=https%3A%2F%2Fres.cloudinary.com%2Fdpuo6sogj%2Fimage%2Fupload%2Fw_auto%2Cdpr_auto%2Cc_scale%2Cf_auto%2Cq_auto%2Fv1622837948%2Fsite%2FLanguage-Icon-Fireworks.png&sp=1715342831Tacc2601b579cc697f77d9e1406e4c06dcf20a700257656e70989579c23d28b4a'
+const check = 'https://www.startpage.com/av/proxy-image?piurl=https%3A%2F%2Fcdn1.iconfinder.com%2Fdata%2Ficons%2Fui-glynh-03-of-5%2F100%2FUI_Glyph_05_-20-512.png&sp=1715357143Te768b8412d892a6cb11f957df4285b8dd641a5033a13839d32a18c29eb5a5849'
+const noCheck = 'https://www.startpage.com/av/proxy-image?piurl=https%3A%2F%2Fcdn4.iconfinder.com%2Fdata%2Ficons%2Ffinance-and-business-set2%2F32%2Ffin32px079-1024.png&sp=1715357342T8335192565268d1ce1a2d1722dc2893649a8ea5242cf59863933a1183c8f5d15'
+const lock = 'https://www.startpage.com/av/proxy-image?piurl=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F1%2F1d%2FBlack_Lock.png&sp=1715357512Td9cc97323891c0d8ed7ef83d42dd051b72385db406bb2d00396940990f139132'
+const unlock = 'https://www.startpage.com/av/proxy-image?piurl=https%3A%2F%2Fpluspng.com%2Fimg-png%2Funlocked-padlock-png-pin-lock-clipart-unlocked-padlock-2-256.png&sp=1715357546T91122ac0c630647e8b67638348eeb85d35abf3d094bb9dee41d98b6f7b734580'
 
 interface CustomJwtPayload extends JwtPayload {
     username: string;
@@ -19,7 +26,8 @@ interface ProblemData {
     lastUpdate: string,
     languages: string,
     source: string,
-    isClosed: boolean
+    isClosed: boolean,
+    isPrivate: boolean
 }
 
 interface markedData {
@@ -99,7 +107,7 @@ function Projects() {
     if (selectedRole === "Patvirtinas") {
         return (
             <div>
-                <center><h1>Projektų sąrašas</h1></center>
+                <h1 className='title'>PROJEKTAI</h1>
                 <button onClick={toggleLanguageFilter}>Filtravimas pagal kalba</button>
                 <button onClick={toggleUserFilter}>Filtruoti pagal vartotoją</button> 
                 {showUserFilter && (
@@ -131,7 +139,7 @@ function Projects() {
     } else {
         return (
             <div>
-                <center><h1>Projektų sąrašas</h1></center>
+                <h1 className='title'>PROJEKTAI</h1>
                 <button onClick={toggleLanguageFilter}>Filtravimas pagal kalba</button>
                 <button onClick={toggleUserFilter}>Filtruoti pagal vartotoją</button> 
                 {showUserFilter && (
@@ -214,13 +222,27 @@ function ProjectList({ selectedLanguages, usernameFilter }: { selectedLanguages:
 
     const isClosed = (closed:boolean) =>{
         if(closed){
-            return("(Uždarytas)");
+            return(
+                <>Uždarytas <span><img src={noCheck} alt='noCheck'/></span></>);
         }
-        return "(Aktyvus)";
+        return (
+        <>Aktyvus <span><img src={check} alt='checkmark'/></span></>
+        );
+    }
+    const isPrivate = (priv:boolean) =>{
+        if(priv){
+            return(
+            <>Privatus <span><img src={lock} alt='lock'/></span></>
+        );
+        }
+        return (
+            <>Viešas <span><img src={unlock} alt='unlock'/></span></>
+        );
     }
 
+
     return (
-        <div>
+        <div >
         <div style={{ marginBottom: '10px' }}>
             <label htmlFor="startDate" style={{ marginRight: '10px' }}>Nuo:</label>
             <input type="date" id="startDate" value={startDate} onChange={e => setStartDate(e.target.value)} />
@@ -229,18 +251,29 @@ function ProjectList({ selectedLanguages, usernameFilter }: { selectedLanguages:
             <label htmlFor="endDate" style={{ marginRight: '10px' }}>Iki:</label>
             <input type="date" id="endDate" value={endDate} onChange={e => setEndDate(e.target.value)} />
         </div>
-            <Container maxWidth="sm">
-                <Grid container spacing={2}>
+            <Container /*maxWidth="sm"*/ >
+                <Grid container spacing={2} className='projects'>
                 {filteredProblems.slice((page-1)*per_page, page*per_page).map(problem => (
                     <Grid item xs={12} key={problem.id}>
-                    <div>
-                        <h2><Link to={`/Project?id=${problem.id}`}>
-                            {problem.title}
-                        </Link>{isClosed(problem?.isClosed)}{IsMarked(marks, problem.id)}</h2>
-                        <p>Įkėlėjas: <Link to={`/profile/${problem.source}`}>{problem.source}</Link></p>
-                        <p>Kalbos: {problem.languages}</p>
-                        <p>Paskutinis atnaujinimas: {problem.lastUpdate}</p>
-                    </div>
+                        <Link to={`/Project?id=${problem.id}`}>
+                        <div className='project'>
+                            <div className='projectInfo'>
+                                <p className='largerText'>{problem.title}</p>
+                                {/*IsMarked(marks, problem.id)*/}
+                                <p>Paskelbė: <Link to={`/profile/${problem.source}`}>{problem.source}</Link></p>
+                                <div className='languageBox'>
+                                <img src={langImg} alt="languege" />
+                                <text className='languages'> {problem.languages} </text>
+                                </div>
+                            </div>
+                            <div className='projectState'>
+                                <p className='largerText'>{isClosed(problem?.isClosed)}</p>
+                                <p className='largerText'>{isPrivate(problem?.isPrivate)}</p>
+                            </div>
+                        
+                        
+                        {/* <p>Paskutinis atnaujinimas: {problem.lastUpdate}</p> */}
+                    </div></Link>
                     </Grid>
                 ))}
                 </Grid>

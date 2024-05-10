@@ -47,7 +47,7 @@ const EditProject: React.FC = () => {
     };
 
     const handleTagsChange = (_: any, values: string[]) => {
-        setFormData({ ...formData, languages: values.join(', ') });
+        setFormData({ ...formData, languages: values.join(' ') });
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
