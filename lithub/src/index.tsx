@@ -5,6 +5,7 @@ import App from './App';
 import Projects from './pages/Projects/projects';
 import reportWebVitals from './reportWebVitals';
 import Nav from "./components/Nav";
+import Side from "./components/Sidebar/Sidebar";
 import Footer from "./components/Footer/Footer"; // Import the Footer component
 
 import Main from './routes';
@@ -13,11 +14,14 @@ import { BrowserRouter } from 'react-router-dom';
 ReactDOM.render((
 
   <BrowserRouter>
-    <div className="container">
+    <div className="containerIndex">
       <Nav />
-      <Main /> {/* The various pages will be displayed by the `Main` component. */}
+        <div className="content">
+            <Side/>
+            <Main /> {/* The various pages will be displayed by the `Main` component. */}
+        </div>
+      <Footer />
     </div>
-    <Footer />
 </BrowserRouter>
         ), document.getElementById('root')
         );
