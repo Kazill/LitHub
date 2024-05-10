@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { jwtDecode, JwtPayload } from "jwt-decode";
-import { TextField } from '@mui/material';
+import { Button, TextField } from '@mui/material';
 
 interface UserProfile {
   id: number;
@@ -74,7 +74,7 @@ const Profile: React.FC = () => {
           const data: CustomJwtPayload = jwtDecode(token)
           if (data.username === username) {
             if (flag == true) {
-              return <button onClick={() => handleConfirmation(data.username)}>Prašyti patvirtinti paskyrą</button>
+              return <div style={{ background: '#6E83AC', padding: '5px' }}><Button variant="contained" onClick={() => handleConfirmation(data.username)} style={{ background: '#3f5581' }}>Prašyti patvirtinti paskyrą</Button></div>
             }
           }
       }
@@ -83,13 +83,13 @@ const Profile: React.FC = () => {
   };
   const handleGithubLink = () => {
     if (selectedRole === "Prisiregistravęs") {
-      return <p>Github: www.github.com/naudotojas</p>
+      return <div style={{ background: '#6E83AC', padding: '5px' }}><p>Github: www.github.com/naudotojas</p></div>
     }
     return null;
   };
   const handleCompanyName = () => {
     if (selectedRole === "Patvirtinas") {
-      return <p>Atstovaujama įmonė: Seimas</p>
+      return <div style={{ background: '#6E83AC', padding: '5px' }}><p>Atstovaujama įmonė: Seimas</p></div>
     }
     return null;
   };
@@ -102,11 +102,11 @@ const Profile: React.FC = () => {
         const data: CustomJwtPayload = jwtDecode(token)
         if (selectedRole === "Administratorius" && userProfile?.role === "Prisiregistravęs") {
           return (
-            <button onClick={() => handleApproveUser(userProfile?.id)}>Patvirtinti naudotoją</button>
+            <div style={{ background: '#6E83AC', padding: '5px' }}><Button variant="contained" onClick={() => handleApproveUser(userProfile?.id)} style={{ background: '#3f5581'}}>Patvirtinti naudotoją</Button></div>
           );
         } else if (selectedRole === "Administratorius" && userProfile?.role === "Patvirtinas") {
           return (
-            <button onClick={() => handleRevokeUser(userProfile?.id)}>Panaikinti patvirtinto naudotojo statusą</button>
+            <div style={{ background: '#6E83AC', padding: '5px' }}><Button variant="contained" onClick={() => handleRevokeUser(userProfile?.id)} style={{ background: '#3f5581' }}>Panaikinti patvirtinto naudotojo statusą</Button></div>
           );
         }
         else {
@@ -234,8 +234,8 @@ const Profile: React.FC = () => {
         <div style={{ width: '50%', padding: '20px', marginBottom: '20px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
           <p style={{ marginBottom: '20px' }}>El. paštas:</p>
           <TextField fullWidth name="email" style={{ background: '#6E83AC' }} value={userProfile.email} />
-          <p style={{ marginBottom: '10px' }}>Tel. nr.: +37060000000</p>
-          <TextField fullWidth name="number" style={{ background: '#6E83AC' }} value='37060000000' />
+          <p style={{ marginBottom: '10px' }}>Tel. nr.:</p>
+          <TextField fullWidth name="number" style={{ background: '#6E83AC' }} value='+37060000000' />
         </div>
         <div style={{ width: '50%' }}>
           <h2 style={{ marginBottom: '20px' }}>{userProfile.userName}</h2>
@@ -247,12 +247,10 @@ const Profile: React.FC = () => {
         </div>
       </div>
       <div style={{ width: '50%', padding: '20px', marginBottom: '20px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>Aprašymas:
-        <div style={{ background: '#6E83AC', padding: '5px' }}>
           {handleGithubLink()}
           {handleConfirmationRequest()}
           {handleCompanyName()}
           {handleAdminPrivileges()}
-        </div>
       </div>
     </div>
   );
