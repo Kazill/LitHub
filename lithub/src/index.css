@@ -15,7 +15,7 @@ code {
 .containerIndex {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh; /*pakeista i min-height is height*/
 }
 .content {
   display: flex;
@@ -25,4 +25,15 @@ code {
   flex-wrap: wrap; /* Allow items to wrap onto multiple lines */
   display: block;
   flex: 1; /* Allow the main content area to take up remaining space */
+}
+.link-as-text {
+  color: inherit; /* Inherits the color from the parent element */
+  text-decoration: none; /* No underline */
+  cursor: default; /* Default cursor instead of the pointer */
+}
+
+.link-as-text:hover {
+  color: blue; /* Change to any color that indicates it's a link */
+  text-decoration: underline; /* Typical link indication */
+  cursor: pointer; /* Changes cursor to pointer to indicate clickable */
 }
