@@ -589,26 +589,41 @@ function Project(this: any) {
                         <p><IsMarked /></p>
                     </div>
                 </div>
-                <p>{problem?.description}</p>
+
+                <div className='project-description'>
+                    <div className='info'>
+                        <p>{problem?.description}</p>
                 
-                <p><b>Kalbos: </b>{problem?.languages}</p>
-                <p><b>Paskutinis atnaujinimas: </b>{problem?.lastUpdate}</p>
-                {renderChosen()}
-                <br></br>
-                <button onClick={toggleCollapse}>
-                    {isCollapsed ? 'Atslėpti kodą' : 'Paslėpti kodą'}
-                </button>
-                <div>
-                    <h2>Failai:</h2>
-                    <a href={problem?.link}>{problem?.link}</a>
-                    <div style={{ display: isCollapsed ? 'none' : 'block' }}>
-                        {problem?.link && <GithubCodeDisplay url={problem?.link} />}
+                
+                        
+                        
+                        
+                    </div>
+                    <div className='language'>
+                        <div className='language-box'>
+                            <img src={langImg} alt='lang'/><br></br>{problem?.languages}
+                        </div>
+                    </div>
+                    <div className='other-info'>
+                            <p>Kodas:</p>
+                            <a href={problem?.link}>{problem?.link}</a>
+                            <div style={{ display: isCollapsed ? 'none' : 'block' }}>
+                                {problem?.link && <GithubCodeDisplay url={problem?.link} />}
+                            </div>
+                            <br></br>
+                            <button onClick={toggleCollapse}>
+                            {isCollapsed ? 'Atslėpti kodą' : 'Paslėpti kodą'}
+                        </button>
+                        
+                        <p>{renderChosen()}
+                        {renderDeleteButton()}
+                        {renderEditButton()}
+                        {renderCloseButton()}
+                        {renderMarkButton()}
+                        </p>
+                        <p>Paskutinis atnaujinimas: {problem?.lastUpdate}</p>
                     </div>
                 </div>
-                {renderDeleteButton()}
-                {renderEditButton()}
-                {renderCloseButton()}
-                {renderMarkButton()}
             </div>
 
 

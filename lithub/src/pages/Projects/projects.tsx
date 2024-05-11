@@ -265,6 +265,7 @@ function ProjectList({ selectedLanguages, usernameFilter }: { selectedLanguages:
                                 <img src={langImg} alt="languege" />
                                 <text className='languages'> {problem.languages} </text>
                                 </div>
+                                {<p>Paskutinis atnaujinimas: {problem.lastUpdate}</p>}
                             </div>
                             <div className='projectState'>
                                 <p className='largerText'>{isClosed(problem?.isClosed)}</p>
@@ -272,7 +273,7 @@ function ProjectList({ selectedLanguages, usernameFilter }: { selectedLanguages:
                             </div>
                         
                         
-                        {/* <p>Paskutinis atnaujinimas: {problem.lastUpdate}</p> */}
+                        
                     </div></Link>
                     </Grid>
                 ))}
