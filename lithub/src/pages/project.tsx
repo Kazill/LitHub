@@ -5,6 +5,13 @@ import { Link } from "react-router-dom";
 import { jwtDecode, JwtPayload } from "jwt-decode";
 import { FaStar } from "react-icons/fa";
 import GithubCodeDisplay from '../components/githubCodeDisplay';
+import './design.css';
+import check from './img/check.png'
+import langImg from './img/lang.png'
+import noCheck from './img/nocheck.png'
+import lock from './img/lock.png'
+import unlock from './img/unlocked.png'
+import check2 from './img/check.jpg'
 interface CustomJwtPayload extends JwtPayload {
     username: string;
     role: string;
@@ -547,19 +554,43 @@ function Project(this: any) {
         return null;
     }
 
-    const isClosed = () => {
-        if (problem?.isClosed) {
-            return ("(Uždarytas)");
+    const isClosed = () =>{
+        if(problem?.isClosed){
+            return(
+                <><text className='state-name'>Uždarytas</text> &nbsp;  &nbsp; &nbsp; <img src={noCheck} alt='noCheck'/></>);
         }
-        return "(Aktyvus)";
+        return (
+        <><text className='state-name'>Aktyvus</text> &nbsp;  &nbsp; &nbsp;<img src={check} alt='checkmark'/></>
+        );
+    }
+    const isPrivate = () =>{
+        if(problem?.isPrivate){
+            return(
+            <><text className='state-name'>Uždaras projekto tipas</text>  &nbsp;  &nbsp; &nbsp; <img src={lock} alt='lock'/></>
+        );
+        }
+        return (
+            <><text className='state-name'>Atviras projekto tipas</text>  &nbsp;  &nbsp; &nbsp;<img src={unlock} alt='unlock'/></>
+        );
     }
 
     return (
-        <><div>
+        <><div className='body'>
             <div>
-                <center><h1>{problem?.title} {isClosed()} <IsMarked /></h1></center>
+                <p className='align-left'><Link to={`/`}>Pagrindinis</Link> / <Link to={`/projects`}> Projektai </Link>/ <Link to={`/Project?id=${id}`}>{problem?.title}</Link></p>
+                <div className='project-details'>
+                    <div className='project-info'>
+                        <h1>{problem?.title} </h1>
+                        <p>Paskelbė: <Link to={`/profile/${problem?.source}`}>{problem?.source}</Link></p>
+                    </div>
+                    <div className='project-state'>
+                        <p>{isClosed()}</p>
+                        <p>{isPrivate()}</p>
+                        <p><IsMarked /></p>
+                    </div>
+                </div>
                 <p>{problem?.description}</p>
-                <p><b>Įkėlėjas: </b><Link to={`/profile/${problem?.source}`}>{problem?.source}</Link></p>
+                
                 <p><b>Kalbos: </b>{problem?.languages}</p>
                 <p><b>Paskutinis atnaujinimas: </b>{problem?.lastUpdate}</p>
                 {renderChosen()}
@@ -638,7 +669,7 @@ function IsMarked() {
                 return (null);
             }
             else {
-                return (<FaStar />);
+                return (<><text className='state-name'>Dirbu prie projekto</text> &nbsp;  &nbsp; &nbsp; <img src={check2} alt='check2'/></>);
             }
     }
 }

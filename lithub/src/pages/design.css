@@ -1,0 +1,36 @@
+.align-left {
+    text-align: left;
+    padding-left: 57px;
+}
+
+.project-details {
+    align-self: center;
+    padding-bottom: 10px;
+    padding-left: 55px;
+    padding-top: 2px;
+    padding-right: 70px;
+}
+
+.project-info {
+    width: 80%;
+    text-align: left;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.project-state {
+    width: 20%;
+    text-align: right;
+    display: inline-block;
+    vertical-align: center;
+}
+
+.state-name {
+    vertical-align: top;
+}
+
+
+
+.body {
+    width: 100%;
+}
