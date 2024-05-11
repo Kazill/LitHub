@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { jwtDecode, JwtPayload } from "jwt-decode";
+import { Button, TextField } from '@mui/material';
 
 interface UserProfile {
   id: number;
@@ -49,20 +50,20 @@ const Profile: React.FC = () => {
       })
       .catch(error => console.error('Error fetching role:', error));
   };
-  const handleConfirmation = async (userId: string)=>{
+  const handleConfirmation = async (userId: string) => {
     await axios.post(`https://localhost:7054/api/User/AskConf/${username}`);
     window.location.reload()
   }
-  const getStatus=async (username: string | undefined)=>{
-    if(typeof username=="string") {
+  const getStatus = async (username: string | undefined) => {
+    if (typeof username == "string") {
       const response = await axios.get(`https://localhost:7054/api/User/Waitting/${username}`);
       console.log(response)
       setflag(response.data)
     }
   }
-  useEffect(()=>{
+  useEffect(() => {
     getStatus(username)
-  },[username])
+  }, [username])
   const handleConfirmationRequest = () => {
     if (selectedRole === "Prisiregistravęs") {
       let token = localStorage.getItem('accessToken')
@@ -73,7 +74,7 @@ const Profile: React.FC = () => {
           const data: CustomJwtPayload = jwtDecode(token)
           if (data.username === username) {
             if (flag == true) {
-              return <button onClick={() => handleConfirmation(data.username)}>Prašyti patvirtinti paskyrą</button>
+              return <div style={{ background: '#6E83AC', padding: '5px' }}><Button variant="contained" onClick={() => handleConfirmation(data.username)} style={{ background: '#3f5581' }}>Prašyti patvirtinti paskyrą</Button></div>
             }
           }
       }
@@ -82,13 +83,13 @@ const Profile: React.FC = () => {
   };
   const handleGithubLink = () => {
     if (selectedRole === "Prisiregistravęs") {
-      return <p>Github: www.github.com/naudotojas</p>
+      return <div style={{ background: '#6E83AC', padding: '5px' }}><p>Github: www.github.com/naudotojas</p></div>
     }
     return null;
   };
   const handleCompanyName = () => {
     if (selectedRole === "Patvirtinas") {
-      return <p>Atstovaujama įmonė: Seimas</p>
+      return <div style={{ background: '#6E83AC', padding: '5px' }}><p>Atstovaujama įmonė: Seimas</p></div>
     }
     return null;
   };
@@ -101,11 +102,11 @@ const Profile: React.FC = () => {
         const data: CustomJwtPayload = jwtDecode(token)
         if (selectedRole === "Administratorius" && userProfile?.role === "Prisiregistravęs") {
           return (
-            <button onClick={() => handleApproveUser(userProfile?.id)}>Patvirtinti naudotoją</button>
+            <div style={{ background: '#6E83AC', padding: '5px' }}><Button variant="contained" onClick={() => handleApproveUser(userProfile?.id)} style={{ background: '#3f5581'}}>Patvirtinti naudotoją</Button></div>
           );
         } else if (selectedRole === "Administratorius" && userProfile?.role === "Patvirtinas") {
           return (
-            <button onClick={() => handleRevokeUser(userProfile?.id)}>Panaikinti patvirtinto naudotojo statusą</button>
+            <div style={{ background: '#6E83AC', padding: '5px' }}><Button variant="contained" onClick={() => handleRevokeUser(userProfile?.id)} style={{ background: '#3f5581' }}>Panaikinti patvirtinto naudotojo statusą</Button></div>
           );
         }
         else {
@@ -154,11 +155,11 @@ const Profile: React.FC = () => {
           // Include other headers as needed, like authorization tokens
         },
       });
-  
+
       if (!response.ok) {
         throw new Error(`HTTP error ${response.status}`);
       }
-  
+
       console.log('User approved');
       // Update local state to reflect the change in role
       setUserProfile(prev => prev ? { ...prev, role: "Patvirtinas" } : null);
@@ -207,11 +208,11 @@ const Profile: React.FC = () => {
           // Include other headers as needed, like authorization tokens
         },
       });
-  
+
       if (!response.ok) {
         throw new Error(`HTTP error ${response.status}`);
       }
-  
+
       console.log('User approval revoked');
       // Update local state to revert the role change
       setUserProfile(prev => prev ? { ...prev, role: "Prisiregistravęs" } : null);
@@ -227,25 +228,34 @@ const Profile: React.FC = () => {
   }
 
   return (
-    <div>
-      <div>
-        <h2>{userProfile.userName}</h2>
-        <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT550iCbL2jq7s7PMi3ikSNrvX1zpZYiZ_BTsQ9EUk4-Q&s"
-          style={{ width: '100px', height: '100px' }}
-          alt="Nuotrauka"
-        />
-        <p>Tel. nr.: +37060000000</p>
-        <p>El. paštas: {userProfile.email}</p>
-        {handleGithubLink()}
-        {handleConfirmationRequest()}
-        {handleCompanyName()}
-        {handleAdminPrivileges()}
-
+    <div style={{ display: 'flex', flexDirection: 'column', padding: 30 }}>
+      <div><h1>Profilis</h1></div>
+      <div style={{ display: 'flex', justifyContent: 'space-around', width: '100%', marginBottom: '20px' }}>
+        <div style={{ width: '50%', padding: '20px', marginBottom: '20px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+          <p style={{ marginBottom: '20px' }}>El. paštas:</p>
+          <TextField fullWidth name="email" style={{ background: '#6E83AC' }} value={userProfile.email} />
+          <p style={{ marginBottom: '10px' }}>Tel. nr.:</p>
+          <TextField fullWidth name="number" style={{ background: '#6E83AC' }} value='+37060000000' />
+        </div>
+        <div style={{ width: '50%' }}>
+          <h2 style={{ marginBottom: '20px' }}>{userProfile.userName}</h2>
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT550iCbL2jq7s7PMi3ikSNrvX1zpZYiZ_BTsQ9EUk4-Q&s"
+            style={{ width: '100px', height: '100px', marginBottom: '20px' }}
+            alt="Nuotrauka"
+          />
+        </div>
       </div>
-
+      <div style={{ width: '50%', padding: '20px', marginBottom: '20px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>Aprašymas:
+          {handleGithubLink()}
+          {handleConfirmationRequest()}
+          {handleCompanyName()}
+          {handleAdminPrivileges()}
+      </div>
     </div>
   );
+
+
 };
 
 export default Profile;
