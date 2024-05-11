@@ -12,6 +12,7 @@ import noCheck from './img/nocheck.png'
 import lock from './img/lock.png'
 import unlock from './img/unlocked.png'
 import check2 from './img/check.jpg'
+import arrow from './img/arrow.png'
 interface CustomJwtPayload extends JwtPayload {
     username: string;
     role: string;
@@ -374,7 +375,7 @@ function Project(this: any) {
                 />
                 </div>
                 </div>
-                <button type="submit">Pateikti</button>
+                <button type="submit" className='com-button'>Pateikti <img src={arrow} alt='arrow'/></button>
             </form>
         );
     }
@@ -412,17 +413,18 @@ function Project(this: any) {
                     </div>
                     </div>
                     </div>
-                    <br></br>
+                    
+                    {comment.replies && comment.replies.length > 0 && (
+                        <><br></br><div style={{ marginLeft: '20px' }}>
+                            {renderComments(comment.replies, likes, comment.id)}
+                        </div></>
+                    )}
                     {
                         userRole !== "Svečias" && !problem?.isClosed && (comment.parentCommentId === null || comment.parentCommentId === undefined) && (
-                            <button onClick={() => handleReplyClick(comment.id)}>Atsakyti</button>
+                            <button onClick={() => handleReplyClick(comment.id)} className='com-button'>Atsakyti <img src={arrow} alt='arrow'/></button>
                         )
                     }
-                    {comment.replies && comment.replies.length > 0 && (
-                        <div style={{ marginLeft: '20px' }}>
-                            {renderComments(comment.replies, likes, comment.id)}
-                        </div>
-                    )}
+                    <br></br>
                     {replyingTo === comment.id && (
                         <ReplyComponent
                             commentId={comment.id}
@@ -451,6 +453,8 @@ function Project(this: any) {
                             }}
                         />
                     )}
+                    
+                    
                 </div>
             );
         });
@@ -610,14 +614,17 @@ function Project(this: any) {
                     </div>
                     <div className='other-info'>
                             <p>Kodas:</p>
-                            <a href={problem?.link}>{problem?.link}</a>
-                            <div style={{ display: isCollapsed ? 'none' : 'block' }}>
-                                {problem?.link && <GithubCodeDisplay url={problem?.link} />}
-                            </div>
-                            <br></br>
+                            <p>
                             <button onClick={toggleCollapse}>
                             {isCollapsed ? 'Atslėpti kodą' : 'Paslėpti kodą'}
                         </button>
+                                <a href={problem?.link}>{problem?.link}</a>
+                            
+                            
+                        <div style={{ display: isCollapsed ? 'none' : 'block' }}>
+                                {problem?.link && <GithubCodeDisplay url={problem?.link} />}
+                            </div>
+                        </p>
                         
                         <p>{renderChosen()}
                         {renderDeleteButton()}
@@ -683,7 +690,7 @@ function Project(this: any) {
                                     />
                                     
                                     </div></div>
-                                <button type="submit">Pateikti</button>
+                                <button type="submit" className='com-button'>Pateikti <img src={arrow} alt='arrow'/></button>
                             </form>
                         )
                     ) : (
@@ -759,9 +766,7 @@ function MarkProject({ isPrivate }: { isPrivate: boolean }) {
                     return (<button onClick={() => handleMark(data.username)}>Planuoju padėti</button>);
                 } else {
                     return (
-                        <div>
                             <button onClick={() => handleUnmark(data.username)}>Atšaukti pasižymėjimą</button>
-                        </div>
                     );
                 }
             } else {

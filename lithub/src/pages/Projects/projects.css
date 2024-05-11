@@ -123,3 +123,8 @@ img {
     height: 30px;
     width: 30px;
 }
+
+button {
+    padding: 10px;
+    margin-right: 5px;
+}

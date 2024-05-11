@@ -50,6 +50,7 @@
     border-radius: 5px;
     margin-left: 55px;
     margin-bottom: 10px;
+    overflow: hidden; 
 }
 
 .info {
@@ -96,3 +97,18 @@
     display: inline-block;
     text-align: center;
 } 
+
+.com-button {
+    margin-bottom: 10px;
+    float: right;
+    margin-right: 40px;
+}
+
+.com-button img {
+    height: 15px;
+}
+
+select {
+    padding: 10px;
+    margin-right: 5px;
+}

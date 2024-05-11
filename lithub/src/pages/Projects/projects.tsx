@@ -107,7 +107,8 @@ function Projects() {
     if (selectedRole === "Patvirtinas") {
         return (
             <div>
-                <h1 className='title'>PROJEKTAI</h1>
+                <h1 className='title'>PROJEKTAI <AddProject /></h1>
+                
                 <button onClick={toggleLanguageFilter}>Filtravimas pagal kalba</button>
                 <button onClick={toggleUserFilter}>Filtruoti pagal vartotoją</button> 
                 {showUserFilter && (
@@ -129,7 +130,7 @@ function Projects() {
                     filterText={filterText}
                     onFilterTextChange={setFilterText}
                 />
-                <AddProject />
+                
                 <ProjectList 
                     selectedLanguages={selectedLanguages} 
                     usernameFilter={usernameFilter} 
@@ -173,7 +174,7 @@ function Projects() {
 function AddProject() {
     return (
         <Link to="/addProject">
-            <button>Pridėti Projekta</button>
+            <button >Pridėti Projektą</button>
         </Link>
     );
 }
