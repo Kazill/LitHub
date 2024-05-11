@@ -694,7 +694,10 @@ function Project(this: any) {
                             </form>
                         )
                     ) : (
+                        <div className='background'>
+                                <div className='pref'></div>
                         <p className='comments-content'>Norint rašyti komentarą prisijunkite.</p>
+                        </div>
                     )}</>
             )}
 
