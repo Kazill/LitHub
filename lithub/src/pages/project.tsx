@@ -181,7 +181,7 @@ function Project(this: any) {
     const handleDeleteForCreator = async (problem: problemData) => {
 
         problem.description = undefined;
-        problem.lastUpdate = undefined;
+        //problem.lastUpdate = undefined;
         problem.languages = undefined;
         problem.link = undefined;
         problem.source = undefined;
@@ -363,13 +363,18 @@ function Project(this: any) {
 
         return (
             <form onSubmit={handleReplySubmit}>
+                <div className='background'>
+                    <div className='pref'> </div>
+                    <div className='comments-content'>
                 <textarea
                     value={replyText}
                     onChange={handleReplyChange}
-                    placeholder="Write your reply here..."
-                    style={{ width: '100%', height: '100px' }}
+                    placeholder="Rašyti atsakymą..."
+                    style={{ width: '100%', height: '100px', background: 6E83, border: 6E83 }}
                 />
-                <button type="submit">Submit Reply</button>
+                </div>
+                </div>
+                <button type="submit">Pateikti</button>
             </form>
         );
     }
@@ -386,15 +391,17 @@ function Project(this: any) {
 
             return (
                 <div key={comment.id}>
-                    <p><strong><Link to={`/profile/${comment.author}`}>{comment.author}</Link></strong> at {new Date(comment.postedDate).toLocaleString()}:</p>
+                    <div className='background'>
+                    <p className='pref'><strong><Link to={`/profile/${comment.author}`}>{comment.author}</Link></strong><br></br> <br></br> {new Date(comment.postedDate).toLocaleDateString()}</p>
                     {/* {problem?.source === userName && ( */}
-                    <p>Likes: {commentLikes.length}</p>
+                    {/* <p>Likes: {commentLikes.length}</p> */}
                     {/* )} */}
-                    {userRole === "Prisiregistravęs" && (
+                    {/* {userRole === "Prisiregistravęs" && (
                         <button className="like-button" onClick={() => handleLikeClick(comment.id, likes)}>
                             Like
                         </button>
-                    )}
+                    )} */}
+                    <div className='comments-content'>
 
                     <p>{comment.text}</p>
                     {comment.url && comment.url !== "null" && (
@@ -403,10 +410,12 @@ function Project(this: any) {
                     <div style={{ display: isCollapsed ? 'none' : 'block' }}>
                         {<GithubCodeDisplay url={comment.url} />}
                     </div>
+                    </div>
+                    </div>
                     <br></br>
                     {
                         userRole !== "Svečias" && !problem?.isClosed && (comment.parentCommentId === null || comment.parentCommentId === undefined) && (
-                            <button onClick={() => handleReplyClick(comment.id)}>Reply</button>
+                            <button onClick={() => handleReplyClick(comment.id)}>Atsakyti</button>
                         )
                     }
                     {comment.replies && comment.replies.length > 0 && (
@@ -590,14 +599,9 @@ function Project(this: any) {
                     </div>
                 </div>
 
-                <div className='project-description'>
+                <div className='background'>
                     <div className='info'>
                         <p>{problem?.description}</p>
-                
-                
-                        
-                        
-                        
                     </div>
                     <div className='language'>
                         <div className='language-box'>
@@ -626,44 +630,64 @@ function Project(this: any) {
                 </div>
             </div>
 
-
+            
 
             {problem?.isPrivate ? (
-                <p>Projektas privatus</p>
+                <div className='background'>
+                    <div className='pref'></div>
+                    <p className='comments-content'>Projektas privatus</p>
+                </div>
             ) : (
 
                 <><div>
-                    <h2>Komentarai:</h2>
+                    <h2 className='align-left'>Komentarai:</h2>
                     {comments.length > 0 ? (
                         renderComments(comments, likes)
                     ) : (
-                        <div style={{ border: '1px solid #ccc', padding: '10px', marginTop: '10px' }}>
+                        <div className='background'>
+                            <div className='pref'></div>
+                        <div /*style={{ border: '1px solid #ccc', padding: '10px', marginTop: '10px' }}*/className='comments-content'>
                             Komentarų dar nėra.
                         </div>
+                        </div>
                     )}
-                </div><h3>Palikite komentarą:</h3>
-
+                </div>
+                {/* <h3>Palikite komentarą:</h3> */}
+                
+                    
                     {userRole !== "Svečias" ? (
                         problem?.isClosed ? (
-                            <p>Projektas uždarytas</p>
+                            <div className='background'>
+                                <div className='pref'></div>
+                            <p className='comments-content'>Projektas uždarytas</p>
+                            </div>
                         ) : (
                             <form onSubmit={handleCommentSubmit}>
+                                <div className='background'>
+                                <div className='pref'> </div>
+                                <div className='comments-content'>
                                 <textarea
+                                    
                                     value={newCommentText}
                                     onChange={handleNewCommentChange}
-                                    placeholder="Write your comment here..."
-                                    style={{ width: '100%', height: '100px' }}
+                                    placeholder="Rašyti komentarą..."
+                                    style={{ width: '100%', height: '50px', background: 6E83, border: 6E83}}
+
                                 />
                                 <input type="url"
                                     value={newUrl}
                                     onChange={handleNewUrlChange}
                                     id="websiteInput"
-                                    placeholder="Enter website URL" />
-                                <button type="submit">Submit Comment</button>
+                                    placeholder="Įdėti nuorodą..." 
+                                    style={{ width: '100%', height: '50px', background: 6E83, border: 6E83}}
+                                    />
+                                    
+                                    </div></div>
+                                <button type="submit">Pateikti</button>
                             </form>
                         )
                     ) : (
-                        <p>Norint rašyti komentarą prisijunkite.</p>
+                        <p className='comments-content'>Norint rašyti komentarą prisijunkite.</p>
                     )}</>
             )}
 

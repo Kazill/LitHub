@@ -39,16 +39,17 @@
     width: 100%;
 }
 
-.project-description {
+.background {
     width: 90%;
     background-color: #6E83AC;
     align-items: start;
-    padding-bottom: 100px;
+    padding-bottom: 20px;
     padding-left: 10px;
     padding-top: 20px;
     padding-right: 20px;
     border-radius: 5px;
     margin-left: 55px;
+    margin-bottom: 10px;
 }
 
 .info {
@@ -83,3 +84,15 @@
     word-spacing: 9999999px; 
     width: min-content;
 }
+
+.comments-content {
+    width: 85%;
+    display: inline-block;
+    text-align: left;
+}
+
+.pref {
+    width: 15%;
+    display: inline-block;
+    text-align: center;
+} 
