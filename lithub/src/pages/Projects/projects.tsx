@@ -6,13 +6,13 @@ import { FaStar } from "react-icons/fa";
 import {Container, Grid, Pagination, Typography} from '@mui/material';
 import { AiOutlineClose } from 'react-icons/ai';
 import './projects.css';
+import check from '../img/check.png'
+import langImg from '../img/lang.png'
+import noCheck from '../img/nocheck.png'
+import lock from '../img/lock.png'
+import unlock from '../img/unlocked.png'
 import { Margin, Padding } from '@mui/icons-material';
 
-const  langImg = 'https://www.startpage.com/av/proxy-image?piurl=https%3A%2F%2Fres.cloudinary.com%2Fdpuo6sogj%2Fimage%2Fupload%2Fw_auto%2Cdpr_auto%2Cc_scale%2Cf_auto%2Cq_auto%2Fv1622837948%2Fsite%2FLanguage-Icon-Fireworks.png&sp=1715342831Tacc2601b579cc697f77d9e1406e4c06dcf20a700257656e70989579c23d28b4a'
-const check = 'https://www.startpage.com/av/proxy-image?piurl=https%3A%2F%2Fcdn1.iconfinder.com%2Fdata%2Ficons%2Fui-glynh-03-of-5%2F100%2FUI_Glyph_05_-20-512.png&sp=1715357143Te768b8412d892a6cb11f957df4285b8dd641a5033a13839d32a18c29eb5a5849'
-const noCheck = 'https://www.startpage.com/av/proxy-image?piurl=https%3A%2F%2Fcdn4.iconfinder.com%2Fdata%2Ficons%2Ffinance-and-business-set2%2F32%2Ffin32px079-1024.png&sp=1715357342T8335192565268d1ce1a2d1722dc2893649a8ea5242cf59863933a1183c8f5d15'
-const lock = 'https://www.startpage.com/av/proxy-image?piurl=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F1%2F1d%2FBlack_Lock.png&sp=1715357512Td9cc97323891c0d8ed7ef83d42dd051b72385db406bb2d00396940990f139132'
-const unlock = 'https://www.startpage.com/av/proxy-image?piurl=https%3A%2F%2Fpluspng.com%2Fimg-png%2Funlocked-padlock-png-pin-lock-clipart-unlocked-padlock-2-256.png&sp=1715357546T91122ac0c630647e8b67638348eeb85d35abf3d094bb9dee41d98b6f7b734580'
 
 interface CustomJwtPayload extends JwtPayload {
     username: string;
@@ -107,7 +107,8 @@ function Projects() {
     if (selectedRole === "Patvirtinas") {
         return (
             <div>
-                <h1 className='title'>PROJEKTAI</h1>
+                <h1 className='title'>PROJEKTAI <AddProject /></h1>
+                
                 <button onClick={toggleLanguageFilter}>Filtravimas pagal kalba</button>
                 <button onClick={toggleUserFilter}>Filtruoti pagal vartotoją</button> 
                 {showUserFilter && (
@@ -129,7 +130,7 @@ function Projects() {
                     filterText={filterText}
                     onFilterTextChange={setFilterText}
                 />
-                <AddProject />
+                
                 <ProjectList 
                     selectedLanguages={selectedLanguages} 
                     usernameFilter={usernameFilter} 
@@ -173,7 +174,7 @@ function Projects() {
 function AddProject() {
     return (
         <Link to="/addProject">
-            <button>Pridėti Projekta</button>
+            <button >Pridėti Projektą</button>
         </Link>
     );
 }
@@ -265,6 +266,7 @@ function ProjectList({ selectedLanguages, usernameFilter }: { selectedLanguages:
                                 <img src={langImg} alt="languege" />
                                 <text className='languages'> {problem.languages} </text>
                                 </div>
+                                {<p>Paskutinis atnaujinimas: {problem.lastUpdate}</p>}
                             </div>
                             <div className='projectState'>
                                 <p className='largerText'>{isClosed(problem?.isClosed)}</p>
@@ -272,7 +274,7 @@ function ProjectList({ selectedLanguages, usernameFilter }: { selectedLanguages:
                             </div>
                         
                         
-                        {/* <p>Paskutinis atnaujinimas: {problem.lastUpdate}</p> */}
+                        
                     </div></Link>
                     </Grid>
                 ))}

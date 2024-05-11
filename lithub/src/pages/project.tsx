@@ -5,6 +5,14 @@ import { Link } from "react-router-dom";
 import { jwtDecode, JwtPayload } from "jwt-decode";
 import { FaStar } from "react-icons/fa";
 import GithubCodeDisplay from '../components/githubCodeDisplay';
+import './design.css';
+import check from './img/check.png'
+import langImg from './img/lang.png'
+import noCheck from './img/nocheck.png'
+import lock from './img/lock.png'
+import unlock from './img/unlocked.png'
+import check2 from './img/check.jpg'
+import arrow from './img/arrow.png'
 interface CustomJwtPayload extends JwtPayload {
     username: string;
     role: string;
@@ -174,7 +182,7 @@ function Project(this: any) {
     const handleDeleteForCreator = async (problem: problemData) => {
 
         problem.description = undefined;
-        problem.lastUpdate = undefined;
+        //problem.lastUpdate = undefined;
         problem.languages = undefined;
         problem.link = undefined;
         problem.source = undefined;
@@ -356,13 +364,18 @@ function Project(this: any) {
 
         return (
             <form onSubmit={handleReplySubmit}>
+                <div className='background'>
+                    <div className='pref'> </div>
+                    <div className='comments-content'>
                 <textarea
                     value={replyText}
                     onChange={handleReplyChange}
-                    placeholder="Write your reply here..."
-                    style={{ width: '100%', height: '100px' }}
+                    placeholder="Rašyti atsakymą..."
+                    style={{ width: '100%', height: '100px', background: 6E83, border: 6E83 }}
                 />
-                <button type="submit">Submit Reply</button>
+                </div>
+                </div>
+                <button type="submit" className='com-button'>Pateikti <img src={arrow} alt='arrow'/></button>
             </form>
         );
     }
@@ -379,15 +392,17 @@ function Project(this: any) {
 
             return (
                 <div key={comment.id}>
-                    <p><strong><Link to={`/profile/${comment.author}`}>{comment.author}</Link></strong> at {new Date(comment.postedDate).toLocaleString()}:</p>
+                    <div className='background'>
+                    <p className='pref'><strong><Link to={`/profile/${comment.author}`}>{comment.author}</Link></strong><br></br> <br></br> {new Date(comment.postedDate).toLocaleDateString()}</p>
                     {/* {problem?.source === userName && ( */}
-                    <p>Likes: {commentLikes.length}</p>
+                    {/* <p>Likes: {commentLikes.length}</p> */}
                     {/* )} */}
-                    {userRole === "Prisiregistravęs" && (
+                    {/* {userRole === "Prisiregistravęs" && (
                         <button className="like-button" onClick={() => handleLikeClick(comment.id, likes)}>
                             Like
                         </button>
-                    )}
+                    )} */}
+                    <div className='comments-content'>
 
                     <p>{comment.text}</p>
                     {comment.url && comment.url !== "null" && (
@@ -396,17 +411,20 @@ function Project(this: any) {
                     <div style={{ display: isCollapsed ? 'none' : 'block' }}>
                         {<GithubCodeDisplay url={comment.url} />}
                     </div>
-                    <br></br>
+                    </div>
+                    </div>
+                    
+                    {comment.replies && comment.replies.length > 0 && (
+                        <><br></br><div style={{ marginLeft: '20px' }}>
+                            {renderComments(comment.replies, likes, comment.id)}
+                        </div></>
+                    )}
                     {
                         userRole !== "Svečias" && !problem?.isClosed && (comment.parentCommentId === null || comment.parentCommentId === undefined) && (
-                            <button onClick={() => handleReplyClick(comment.id)}>Reply</button>
+                            <button onClick={() => handleReplyClick(comment.id)} className='com-button'>Atsakyti <img src={arrow} alt='arrow'/></button>
                         )
                     }
-                    {comment.replies && comment.replies.length > 0 && (
-                        <div style={{ marginLeft: '20px' }}>
-                            {renderComments(comment.replies, likes, comment.id)}
-                        </div>
-                    )}
+                    <br></br>
                     {replyingTo === comment.id && (
                         <ReplyComponent
                             commentId={comment.id}
@@ -435,6 +453,8 @@ function Project(this: any) {
                             }}
                         />
                     )}
+                    
+                    
                 </div>
             );
         });
@@ -547,77 +567,134 @@ function Project(this: any) {
         return null;
     }
 
-    const isClosed = () => {
-        if (problem?.isClosed) {
-            return ("(Uždarytas)");
+    const isClosed = () =>{
+        if(problem?.isClosed){
+            return(
+                <><text className='state-name'>Uždarytas</text> &nbsp;  &nbsp; &nbsp; <img src={noCheck} alt='noCheck'/></>);
         }
-        return "(Aktyvus)";
+        return (
+        <><text className='state-name'>Aktyvus</text> &nbsp;  &nbsp; &nbsp;<img src={check} alt='checkmark'/></>
+        );
+    }
+    const isPrivate = () =>{
+        if(problem?.isPrivate){
+            return(
+            <><text className='state-name'>Uždaras projekto tipas</text>  &nbsp;  &nbsp; &nbsp; <img src={lock} alt='lock'/></>
+        );
+        }
+        return (
+            <><text className='state-name'>Atviras projekto tipas</text>  &nbsp;  &nbsp; &nbsp;<img src={unlock} alt='unlock'/></>
+        );
     }
 
     return (
-        <><div>
+        <><div className='body'>
             <div>
-                <center><h1>{problem?.title} {isClosed()} <IsMarked /></h1></center>
-                <p>{problem?.description}</p>
-                <p><b>Įkėlėjas: </b><Link to={`/profile/${problem?.source}`}>{problem?.source}</Link></p>
-                <p><b>Kalbos: </b>{problem?.languages}</p>
-                <p><b>Paskutinis atnaujinimas: </b>{problem?.lastUpdate}</p>
-                {renderChosen()}
-                <br></br>
-                <button onClick={toggleCollapse}>
-                    {isCollapsed ? 'Atslėpti kodą' : 'Paslėpti kodą'}
-                </button>
-                <div>
-                    <h2>Failai:</h2>
-                    <a href={problem?.link}>{problem?.link}</a>
-                    <div style={{ display: isCollapsed ? 'none' : 'block' }}>
-                        {problem?.link && <GithubCodeDisplay url={problem?.link} />}
+                <p className='align-left'><Link to={`/`}>Pagrindinis</Link> / <Link to={`/projects`}> Projektai </Link>/ <Link to={`/Project?id=${id}`}>{problem?.title}</Link></p>
+                <div className='project-details'>
+                    <div className='project-info'>
+                        <h1>{problem?.title} </h1>
+                        <p>Paskelbė: <Link to={`/profile/${problem?.source}`}>{problem?.source}</Link></p>
+                    </div>
+                    <div className='project-state'>
+                        <p>{isClosed()}</p>
+                        <p>{isPrivate()}</p>
+                        <p><IsMarked /></p>
                     </div>
                 </div>
-                {renderDeleteButton()}
-                {renderEditButton()}
-                {renderCloseButton()}
-                {renderMarkButton()}
+
+                <div className='background'>
+                    <div className='info'>
+                        <p>{problem?.description}</p>
+                    </div>
+                    <div className='language'>
+                        <div className='language-box'>
+                            <img src={langImg} alt='lang'/><br></br>{problem?.languages}
+                        </div>
+                    </div>
+                    <div className='other-info'>
+                            <p>Kodas:</p>
+                            <p>
+                            <button onClick={toggleCollapse}>
+                            {isCollapsed ? 'Atslėpti kodą' : 'Paslėpti kodą'}
+                        </button>
+                                <a href={problem?.link}>{problem?.link}</a>
+                            
+                            
+                        <div style={{ display: isCollapsed ? 'none' : 'block' }}>
+                                {problem?.link && <GithubCodeDisplay url={problem?.link} />}
+                            </div>
+                        </p>
+                        
+                        <p>{renderChosen()}
+                        {renderDeleteButton()}
+                        {renderEditButton()}
+                        {renderCloseButton()}
+                        {renderMarkButton()}
+                        </p>
+                        <p>Paskutinis atnaujinimas: {problem?.lastUpdate}</p>
+                    </div>
+                </div>
             </div>
 
-
+            
 
             {problem?.isPrivate ? (
-                <p>Projektas privatus</p>
+                <div className='background'>
+                    <div className='pref'></div>
+                    <p className='comments-content'>Projektas privatus</p>
+                </div>
             ) : (
 
                 <><div>
-                    <h2>Komentarai:</h2>
+                    <h2 className='align-left'>Komentarai:</h2>
                     {comments.length > 0 ? (
                         renderComments(comments, likes)
                     ) : (
-                        <div style={{ border: '1px solid #ccc', padding: '10px', marginTop: '10px' }}>
+                        <div className='background'>
+                            <div className='pref'></div>
+                        <div /*style={{ border: '1px solid #ccc', padding: '10px', marginTop: '10px' }}*/className='comments-content'>
                             Komentarų dar nėra.
                         </div>
+                        </div>
                     )}
-                </div><h3>Palikite komentarą:</h3>
-
+                </div>
+                {/* <h3>Palikite komentarą:</h3> */}
+                
+                    
                     {userRole !== "Svečias" ? (
                         problem?.isClosed ? (
-                            <p>Projektas uždarytas</p>
+                            <div className='background'>
+                                <div className='pref'></div>
+                            <p className='comments-content'>Projektas uždarytas</p>
+                            </div>
                         ) : (
                             <form onSubmit={handleCommentSubmit}>
+                                <div className='background'>
+                                <div className='pref'> </div>
+                                <div className='comments-content'>
                                 <textarea
+                                    
                                     value={newCommentText}
                                     onChange={handleNewCommentChange}
-                                    placeholder="Write your comment here..."
-                                    style={{ width: '100%', height: '100px' }}
+                                    placeholder="Rašyti komentarą..."
+                                    style={{ width: '100%', height: '50px', background: 6E83, border: 6E83}}
+
                                 />
                                 <input type="url"
                                     value={newUrl}
                                     onChange={handleNewUrlChange}
                                     id="websiteInput"
-                                    placeholder="Enter website URL" />
-                                <button type="submit">Submit Comment</button>
+                                    placeholder="Įdėti nuorodą..." 
+                                    style={{ width: '100%', height: '50px', background: 6E83, border: 6E83}}
+                                    />
+                                    
+                                    </div></div>
+                                <button type="submit" className='com-button'>Pateikti <img src={arrow} alt='arrow'/></button>
                             </form>
                         )
                     ) : (
-                        <p>Norint rašyti komentarą prisijunkite.</p>
+                        <p className='comments-content'>Norint rašyti komentarą prisijunkite.</p>
                     )}</>
             )}
 
@@ -638,7 +715,7 @@ function IsMarked() {
                 return (null);
             }
             else {
-                return (<FaStar />);
+                return (<><text className='state-name'>Dirbu prie projekto</text> &nbsp;  &nbsp; &nbsp; <img src={check2} alt='check2'/></>);
             }
     }
 }
@@ -689,9 +766,7 @@ function MarkProject({ isPrivate }: { isPrivate: boolean }) {
                     return (<button onClick={() => handleMark(data.username)}>Planuoju padėti</button>);
                 } else {
                     return (
-                        <div>
                             <button onClick={() => handleUnmark(data.username)}>Atšaukti pasižymėjimą</button>
-                        </div>
                     );
                 }
             } else {
