@@ -1,17 +1,18 @@
+import { jwtDecode } from 'jwt-decode';
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
-import Projects from './pages/Projects/projects';
-import Project from './pages/project';
-import MainPage from './pages/MainPage/MainPage';
-import EditProject from './components/editProject';
 import AddProject from './components/addProject';
-import Example from './pages/comWithBackEx';
-import LoginPage from './pages/Login'
-import {jwtDecode} from "jwt-decode";
-import Profile from './pages/profile';
-import RegisterPage from './pages/Register';
+import EditProject from './components/editProject';
 import ApprovalPage from './pages/approval';
+import Example from './pages/comWithBackEx';
+import Duk from './pages/Duk';
+import LoginPage from './pages/Login';
+import MainPage from './pages/MainPage/MainPage';
+import Profile from './pages/profile';
+import Project from './pages/project';
+import Projects from './pages/Projects/projects';
+import RegisterPage from './pages/Register';
 
 function loadUserProfile() {
     try {
@@ -44,6 +45,7 @@ const Main = () => {
                 <Route path='/login' element={<LoginPage/>}></Route>
                 <Route path='/register' element={<RegisterPage/>}></Route>
                 <Route path='/approval-list' element={<ApprovalPage/>}></Route>
+                <Route path='/duk' element={<Duk/>}></Route>
                 <Route path='/profile/:username' element={<Profile/>}></Route>
             </Routes>
         </div>

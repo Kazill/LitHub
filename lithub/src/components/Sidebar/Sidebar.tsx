@@ -1,28 +1,21 @@
-import {
-    AppBar,
-    Toolbar,
-    IconButton,
-    Typography,
-    Button,
-    Box,
-    Menu,
-    MenuItem,
-    Drawer,
-    List,
-    ListItem, ListItemText
-} from "@mui/material";
-import React, { useState, useEffect } from 'react';
-import {Link, useNavigate} from "react-router-dom";
-import MenuIcon from '@mui/icons-material/Menu';
-import {AccountCircle} from "@mui/icons-material";
-import {jwtDecode, JwtPayload} from "jwt-decode";
-import "./sidebar.css";
-import HomeIcon from '@mui/icons-material/Home';
-import StorageIcon from '@mui/icons-material/Storage';
-import InfoIcon from '@mui/icons-material/Info';
-import CheckBoxIcon from '@mui/icons-material/CheckBox';
-import LoginIcon from '@mui/icons-material/Login';
+import './sidebar.css';
+
+import { jwtDecode, JwtPayload } from 'jwt-decode';
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+
+import { AccountCircle } from '@mui/icons-material';
 import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
+import CheckBoxIcon from '@mui/icons-material/CheckBox';
+import HomeIcon from '@mui/icons-material/Home';
+import InfoIcon from '@mui/icons-material/Info';
+import LoginIcon from '@mui/icons-material/Login';
+import MenuIcon from '@mui/icons-material/Menu';
+import StorageIcon from '@mui/icons-material/Storage';
+import {
+    AppBar, Box, Button, Drawer, IconButton, List, ListItem, ListItemText, Menu, MenuItem, Toolbar,
+    Typography
+} from '@mui/material';
 
 interface CustomJwtPayload extends JwtPayload {
     username: string;
@@ -273,7 +266,7 @@ const Sidebar: React.FC<{}> = () => {
                     borderRadius: 0,
                     justifyContent: "flex-start" }}
                 ><StorageIcon/>Projektai</Button>
-                <Button href='' sx={{
+                <Button href='/duk' sx={{
                     bgcolor: 'rgba(255, 255, 255, 0.3)',
                     color: 'black',
                     border: '1px solid black',
