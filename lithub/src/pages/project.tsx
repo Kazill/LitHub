@@ -91,13 +91,21 @@ function Project(this: any) {
     const [newCommentText, setNewCommentText] = useState(''); // New state for the comment text
     const [newUrl, setNewUrl] = useState('');
     const [replyingTo, setReplyingTo] = useState<number | null>(null);
-    const [selectedRole, setSelectedRole] = useState('');
     const [isCollapsed, setIsCollapsed] = useState(true); // State to track collapse/expand
 
+    const [userRole, setUserRole] = useState('Svečias');
+    useEffect(() => {
+        let token=localStorage.getItem('accessToken')
+        if (token === null) {
+            setUserRole("Svečias")
+        } else {
+            const data: CustomJwtPayload = jwtDecode(token)
+            setUserRole(data.role)
+        }
+    }, []);
 
     useEffect(() => {
         // Fetch initial role when component mounts
-        fetchRole();
         const handleKeyPress = (event: KeyboardEvent) => {
             // Check for key combination Ctrl + /
             if ((event.ctrlKey || event.metaKey) && event.key === '/') {
@@ -111,16 +119,6 @@ function Project(this: any) {
             document.removeEventListener('keydown', handleKeyPress);
         };
     }, []);
-
-    const fetchRole = () => {
-        fetch('https://localhost:7054/api/Roles')
-            .then(response => response.json())
-            .then(role => {
-                // Process the data received from the backend
-                setSelectedRole(role ? role.name : 'error in role format');
-            })
-            .catch(error => console.error('Error fetching role:', error));
-    };
 
 
     const id = useQuery().get('id');
@@ -287,13 +285,11 @@ function Project(this: any) {
         setReplyingTo(commentId);
         // Optionally, scroll to the reply input or focus it for better user experience
     };
-    let userRole = "Svečias"; // Default to guest if no token or role found
     let userName = "Svečias";
     let userId = -1;
     const token = localStorage.getItem('accessToken');
     if (token) {
         const decoded: CustomJwtPayload = jwtDecode(token);
-        userRole = decoded.role;
         userName = decoded.username;
         userId = decoded.userid;
     }
@@ -461,10 +457,10 @@ function Project(this: any) {
     };
 
     const renderDeleteButton = () => {
-        if (selectedRole === "Administratorius") {
+        if (userRole === "Administratorius") {
             return <button onClick={() => handleDelete()}>Šalinti</button>;
         }
-        else if (selectedRole === "Patvirtinas") {
+        else if (userRole === "Patvirtinas") {
             let token = localStorage.getItem('accessToken')
             switch (token) {
                 case null:
@@ -490,7 +486,7 @@ function Project(this: any) {
                 return (null);
             default:
                 const data: CustomJwtPayload = jwtDecode(token)
-                if (problem?.source === data.username && selectedRole === "Patvirtinas" && !problem?.isClosed) {
+                if (problem?.source === data.username && data.role === "Patvirtinas" && !problem?.isClosed) {
 
                     return (
                         <Link to={`/editProject?id=${id}`}>
@@ -511,7 +507,7 @@ function Project(this: any) {
                 return (null);
             default:
                 const data: CustomJwtPayload = jwtDecode(token)
-                if (problem?.source === data.username && selectedRole === "Patvirtinas") {
+                if (problem?.source === data.username && userRole === "Patvirtinas") {
                     if (!problem?.isClosed) {
                         return (<button onClick={() => handleClose(problem)}>Uždaryti</button>);
                     }
@@ -525,7 +521,7 @@ function Project(this: any) {
         }
     };
     const renderMarkButton = () => {
-        if (selectedRole === "Prisiregistravęs" && problem && !problem.isClosed) {
+        if (userRole === "Prisiregistravęs" && problem && !problem.isClosed) {
             return <MarkProject isPrivate={problem.isPrivate} />;
         }
         return null;

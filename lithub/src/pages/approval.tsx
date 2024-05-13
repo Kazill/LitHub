@@ -8,11 +8,18 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import {Button, Chip, Container} from "@mui/material";
 import axios from "axios";
+import {useNavigate} from "react-router-dom";
+import {jwtDecode, JwtPayload} from "jwt-decode";
 
 interface ApprovalData {
     id: number,
     username:string,
     status: string,
+}
+interface CustomJwtPayload extends JwtPayload {
+    username: string;
+    role: string;
+    // Add other custom properties if needed
 }
 
 const getStatusColor = (status:string) => {
@@ -29,6 +36,18 @@ const getStatusColor = (status:string) => {
 };
 
 const Approval: React.FC = () => {
+    const navigate = useNavigate();
+    useEffect(() => {
+        let token=localStorage.getItem('accessToken')
+        if (token === null) {
+            navigate("/");
+        } else {
+            const data: CustomJwtPayload = jwtDecode(token)
+            if(data.role!=="Administratorius"){
+                navigate("/");
+            }
+        }
+    }, []);
     const [approvals, setApprovals] = useState<ApprovalData[]>([]);
     useEffect(() => {
         async function fetchData() {

@@ -18,25 +18,6 @@ function OptionsForDesktop(role: string){
     const navigate = useNavigate()
     const handleLogout = () => {
         localStorage.removeItem('accessToken');
-        fetch('https://localhost:7054/api/Roles/update', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ Name: "Svečias" }),
-        })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Failed to update role');
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log('Role updated successfully:', data);
-            })
-            .catch(error => {
-                console.error('Error updating role:', error);
-            });
         navigate('/');
     };
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -94,25 +75,6 @@ function OptionsForMobile(role: string){
     const navigate = useNavigate()
     const handleLogout = () => {
         localStorage.removeItem('accessToken');
-        fetch('https://localhost:7054/api/Roles/update', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ Name: "Svečias" }),
-        })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Failed to update role');
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log('Role updated successfully:', data);
-            })
-            .catch(error => {
-                console.error('Error updating role:', error);
-            });
         navigate('/');
     };
     let token=localStorage.getItem('accessToken')
@@ -134,54 +96,6 @@ function OptionsForMobile(role: string){
 }
 const Nav: React.FC<{}> = () => {
     const [selectedRole, setSelectedRole] = useState('');
-
-    useEffect(() => {
-        // Fetch initial role when component mounts
-        fetchRole();
-    }, []);
-
-    const fetchRole = () => {
-        fetch('https://localhost:7054/api/Roles')
-            .then(response => response.json())
-            .then(role => {
-                // Process the data received from the backend
-                setSelectedRole(role ? role.name : 'error in role format');
-            })
-            .catch(error => console.error('Error fetching role:', error));
-    };
-    const handleRoleChange = async (event: React.ChangeEvent<HTMLSelectElement>) => {
-        const newRole = event.target.value;
-        // Update selected role in the backend
-        await updateRoleInBackend(newRole);
-
-        // Update selected role in the frontend
-        setSelectedRole(newRole);
-
-        window.location.reload();
-    };
-
-    const updateRoleInBackend = (newRole: string) => {
-        // Send request to update role in the backend
-        fetch('https://localhost:7054/api/Roles/update', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ Name: newRole }),
-        })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Failed to update role');
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log('Role updated successfully:', data);
-            })
-            .catch(error => {
-                console.error('Error updating role:', error);
-            });
-    };
 
 
 
@@ -222,14 +136,6 @@ const Nav: React.FC<{}> = () => {
             open={isMobileMenuOpen}
             onClose={handleMobileMenuClose}
         >
-           <MenuItem>
-                <select id="roleSelect" value={selectedRole} onChange={handleRoleChange}>
-                    <option value="Administratorius">Administratorius</option>
-                    <option value="Svečias">Svečias</option>
-                    <option value="Prisiregistravęs">Prisiregistravęs</option>
-                    <option value="Patvirtinas">Patvirtinas</option>
-                </select>
-            </MenuItem>
             {OptionsForMobile(selectedRole)}
         </Menu>
     );
@@ -258,12 +164,6 @@ const Nav: React.FC<{}> = () => {
                     </div>
                     <Box sx={{ flexGrow: 1 }} />
                     <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-                        <select id="roleSelect" value={selectedRole} onChange={handleRoleChange}>
-                            <option value="Administratorius">Administratorius</option>
-                            <option value="Svečias">Svečias</option>
-                            <option value="Prisiregistravęs">Prisiregistravęs</option>
-                            <option value="Patvirtinas">Patvirtinas</option>
-                        </select>
                         {OptionsForDesktop(selectedRole)}
                     </Box>
                     <Box sx={{ display: { xs: 'flex', md: 'none' } }}>

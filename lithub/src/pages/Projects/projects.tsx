@@ -40,7 +40,6 @@ interface user {
 }
 
 function Projects() {
-    const [selectedRole, setSelectedRole] = useState('');
     const [showLanguageFilter, setShowLanguageFilter] = useState(false);
     const [selectedLanguages, setSelectedLanguages] = useState<string[]>([]);
     const [availableLanguages, setAvailableLanguages] = useState<string[]>([]);
@@ -49,26 +48,25 @@ function Projects() {
     const [usernameFilter, setUsernameFilter] = useState('');
     const [showUserFilter, setShowUserFilter] = useState(false);
 
+    const [userRole, setUserRole] = useState('Svečias');
+    useEffect(() => {
+        let token=localStorage.getItem('accessToken')
+        if (token === null) {
+            setUserRole("Svečias")
+        } else {
+            const data: CustomJwtPayload = jwtDecode(token)
+            setUserRole(data.role)
+        }
+    }, []);
+    
     const toggleUserFilter = () => {
         setShowUserFilter(!showUserFilter);
       };    
 
     useEffect(() => {
-        // Fetch initial role when component mounts
-        fetchRole();
         // Set sample available languages
         setAvailableLanguages(["JavaScript", "Python", "Java", "C++", "C#", "Ruby", "Go", "TypeScript", "Swift", "PHP"]);
     }, []);
-
-    const fetchRole = () => {
-        fetch('https://localhost:7054/api/Roles')
-            .then(response => response.json())
-            .then(role => {
-                // Process the data received from the backend
-                setSelectedRole(role ? role.name : 'error in role format');
-            })
-            .catch(error => console.error('Error fetching role:', error));
-    };
 
     useEffect(() => {
         async function fetchUsers() {
@@ -104,7 +102,7 @@ function Projects() {
         );
     };
 
-    if (selectedRole === "Patvirtinas") {
+    if (userRole === "Patvirtinas") {
         return (
             <div>
                 <h1 className='title'>PROJEKTAI <AddProject /></h1>
@@ -208,7 +206,7 @@ function ProjectList({ selectedLanguages, usernameFilter }: { selectedLanguages:
     const filteredProblems = problems.filter(problem => {
   // Filter by Language
   if (selectedLanguages.length > 0) {
-    const problemLanguages = problem.languages.split(',').map(lang => lang.trim());
+    const problemLanguages = problem.languages.split(' ').map(lang => lang.trim());
     return selectedLanguages.some(lang => problemLanguages.includes(lang));
   }
 
