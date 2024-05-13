@@ -82,7 +82,7 @@ namespace BackEnd.Controllers
             var user = _context.User
                 .AsEnumerable() 
                 .FirstOrDefault(x => 
-                    x.UserName == request.UserName && 
+                    x.Email == request.Email && 
                     x.Password == request.Password);
             if (user == null)
             {

@@ -3,12 +3,12 @@ import {
     Button,
     Box,
     Container,
-    Checkbox, FormControlLabel, TextField
+    Checkbox, FormControlLabel, TextField, InputAdornment, IconButton
 } from "@mui/material";
 import React, { useState, useEffect } from 'react';
 import {Link, useNavigate} from "react-router-dom";
 import MenuIcon from '@mui/icons-material/Menu';
-import {AccountCircle} from "@mui/icons-material";
+import {AccountCircle, Visibility, VisibilityOff} from "@mui/icons-material";
 import axios from "axios";
 const Login = () => {
     const navigate = useNavigate();
@@ -20,23 +20,27 @@ const Login = () => {
 
 
     const [formData, setFormData] = useState({
-        UserName: '',
+        Email: '',
         Password: '',
         Role: ''
     });
 
     const [errorMessages, setErrorMessages] = useState({
-        UserName: '',
+        Email: '',
         Password: '',
         login: ''
     });
+    const [showPassword, setShowPassword] = useState(false);
+    const handleClickShowPassword = () => {
+        setShowPassword(!showPassword);
+    };
 
     const validateForm = () => {
         let isValid = true;
-        let errors = { UserName: '', Password: '', login: '' };
+        let errors = { Email: '', Password: '', login: '' };
 
-        if (!formData.UserName) {
-            errors.UserName = 'Vartotojo vardas yra privalomas.';
+        if (!formData.Email) {
+            errors.Email = 'El. paštas yra privalomas.';
             isValid = false;
         }
 
@@ -48,28 +52,7 @@ const Login = () => {
         setErrorMessages(errors);
         return isValid;
     };
-    const updateRoleInBackend = (newRole: string) => {
-        // Send request to update role in the backend
-        fetch('https://localhost:7054/api/Roles/update', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ Name: newRole }),
-        })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Failed to update role');
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log('Role updated successfully:', data);
-            })
-            .catch(error => {
-                console.error('Error updating role:', error);
-            });
-    };
+
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
@@ -91,12 +74,11 @@ const Login = () => {
             });
 
             localStorage.setItem('accessToken', response.data)
-            await updateRoleInBackend(formData.Role);
             navigate('/');
         }catch (e) {
             if (axios.isAxiosError(e)) {
                 if (e.response && e.response.status === 400) {
-                    setErrorMessages({ ...errorMessages, login: 'Neteisingas vartotojo vardas arba slaptažodis.' });
+                    setErrorMessages({ ...errorMessages, login: 'Neteisingas el. paštas arba slaptažodis.' });
                     console.log("400 Error Message: ", e.response.data);
                 } else {
                     console.error('Error submitting form:', e);
@@ -107,10 +89,6 @@ const Login = () => {
         }
 
     };
-    const handleRoleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        const newRole = event.target.value;
-        setFormData({...formData,"Role":newRole})
-    };
 
     return(
         <Container maxWidth="xs">
@@ -120,32 +98,56 @@ const Login = () => {
                 flexDirection: "column",
                 alignItems: "center",
             }}>
-              <Typography variant="h5">Prisijungimas</Typography>
+              <Typography variant="h4">Prisijungimas</Typography>
             </Box>
             <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+            <Typography sx={{textAlign: "left", fontSize: 22}}>El. paštas</Typography>
                 <TextField
                     margin="normal"
                     required
                     fullWidth
-                    id="UserName"
-                    label="Vartotojo vardas"
-                    name="UserName"
-                    autoComplete="username"
+                    id="Email"
+                    name="Email"
+                    autoComplete="email"
                     autoFocus
-                    error={Boolean(errorMessages.UserName)}
+                    error={Boolean(errorMessages.Email)}
                     onChange={handleInputChange}
+                    InputProps={{ sx: { borderRadius: 0 } }}
+                    sx={{
+                        mt: 0,
+                        bgcolor: '#6E83AC',
+                        border: '5px solid #335285',
+                        borderRadius: 0,
+                    }}
                 />
+                <Typography sx={{mt: 3,textAlign: "left", fontSize: 22}}>Slaptažodis</Typography>
                 <TextField
                     margin="normal"
                     required
                     fullWidth
                     name="Password"
-                    label="Slaptažodis"
-                    type="Password"
+                    type={showPassword ? "text" : "password"}
                     id="Password"
                     autoComplete="current-password"
                     error={Boolean(errorMessages.Password)}
                     onChange={handleInputChange}
+                    InputProps={{endAdornment: (
+                            <InputAdornment position="end">
+                                <IconButton
+                                    aria-label="toggle password visibility"
+                                    onClick={handleClickShowPassword}
+                                    edge="end"
+                                >
+                                    {showPassword ? <Visibility /> : <VisibilityOff />}
+                                </IconButton>
+                            </InputAdornment>
+                        ), sx: { borderRadius: 0 } }}
+                    sx={{
+                        mt: 0,
+                        bgcolor: '#6E83AC',
+                        border: '5px solid #335285',
+                        borderRadius: 0,
+                    }}
                 />
                 {/*<FormControlLabel*/}
                 {/*    control={<Checkbox value="remember" color="primary" />}*/}
@@ -154,21 +156,27 @@ const Login = () => {
                 {errorMessages.login && (
                     <Typography color="error" align="center">{errorMessages.login}</Typography>
                 )}
-                <Typography>Rolė:</Typography>
-                <select id="role" onChange={handleRoleChange}>
-                    <option value=""></option>
-                    <option value="Administratorius">Administratorius</option>
-                    <option value="Prisiregistravęs">Prisiregistravęs</option>
-                    <option value="Patvirtinas">Patvirtinas</option>
-                </select>
                 <Button
                     type="submit"
-                    fullWidth
                     variant="contained"
-                    sx={{ mt: 3, mb: 2 }}
+                    sx={{ mt: 3, mb: 2,
+                        bgcolor: '#335285',
+                        border: '2px solid #797979',
+                        borderRadius: 0,
+                        width: 245,
+                        }}
                 >
                     Prisijungti
                 </Button>
+            </Box>
+            <Box sx={{ mt: 10 }}>
+                <Typography variant="h5">Neturi paskyros?</Typography>
+                <Button href="/register" variant="contained" className="loginButton" sx={{ mt: 1, mb: 2,
+                    bgcolor: '#335285',
+                    border: '2px solid #797979',
+                    borderRadius: 0,
+                    width: 245
+                }}> Registracija</Button>
             </Box>
         </Container>
     )
