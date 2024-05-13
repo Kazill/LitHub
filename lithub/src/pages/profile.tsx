@@ -20,8 +20,18 @@ interface CustomJwtPayload extends JwtPayload {
 const Profile: React.FC = () => {
   const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
   const { username } = useParams<{ username: string }>();
-  const [selectedRole, setSelectedRole] = useState('');
   const [flag, setflag] = useState<boolean>();
+
+  const [userRole, setUserRole] = useState('Svečias');
+  useEffect(() => {
+    let token=localStorage.getItem('accessToken')
+    if (token === null) {
+      setUserRole("Svečias")
+    } else {
+      const data: CustomJwtPayload = jwtDecode(token)
+      setUserRole(data.role)
+    }
+  }, []);
 
   useEffect(() => {
     const fetchUserProfile = async () => {
@@ -36,20 +46,6 @@ const Profile: React.FC = () => {
     fetchUserProfile();
   }, [username]);
 
-  useEffect(() => {
-    // Fetch initial role when component mounts
-    fetchRole();
-  }, []);
-
-  const fetchRole = () => {
-    fetch('https://localhost:7054/api/Roles')
-      .then(response => response.json())
-      .then(role => {
-        // Process the data received from the backend
-        setSelectedRole(role ? role.name : 'error in role format');
-      })
-      .catch(error => console.error('Error fetching role:', error));
-  };
   const handleConfirmation = async (userId: string) => {
     await axios.post(`https://localhost:7054/api/User/AskConf/${username}`);
     window.location.reload()
@@ -65,7 +61,7 @@ const Profile: React.FC = () => {
     getStatus(username)
   }, [username])
   const handleConfirmationRequest = () => {
-    if (selectedRole === "Prisiregistravęs") {
+    if (userRole === "Prisiregistravęs") {
       let token = localStorage.getItem('accessToken')
       switch (token) {
         case null:
@@ -82,13 +78,13 @@ const Profile: React.FC = () => {
     return null;
   };
   const handleGithubLink = () => {
-    if (selectedRole === "Prisiregistravęs") {
+    if (userProfile?.role === "Prisiregistravęs") {
       return <div style={{ background: '#6E83AC', padding: '5px' }}><p>Github: www.github.com/naudotojas</p></div>
     }
     return null;
   };
   const handleCompanyName = () => {
-    if (selectedRole === "Patvirtinas") {
+    if (userProfile?.role === "Patvirtinas") {
       return <div style={{ background: '#6E83AC', padding: '5px' }}><p>Atstovaujama įmonė: Seimas</p></div>
     }
     return null;
@@ -100,11 +96,11 @@ const Profile: React.FC = () => {
         return (null);
       default:
         const data: CustomJwtPayload = jwtDecode(token)
-        if (selectedRole === "Administratorius" && userProfile?.role === "Prisiregistravęs") {
+        if (userRole === "Administratorius" && userProfile?.role === "Prisiregistravęs") {
           return (
             <div style={{ background: '#6E83AC', padding: '5px' }}><Button variant="contained" onClick={() => handleApproveUser(userProfile?.id)} style={{ background: '#3f5581'}}>Patvirtinti naudotoją</Button></div>
           );
-        } else if (selectedRole === "Administratorius" && userProfile?.role === "Patvirtinas") {
+        } else if (userRole === "Administratorius" && userProfile?.role === "Patvirtinas") {
           return (
             <div style={{ background: '#6E83AC', padding: '5px' }}><Button variant="contained" onClick={() => handleRevokeUser(userProfile?.id)} style={{ background: '#3f5581' }}>Panaikinti patvirtinto naudotojo statusą</Button></div>
           );

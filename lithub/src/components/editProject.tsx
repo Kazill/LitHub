@@ -77,7 +77,7 @@ const EditProject: React.FC = () => {
                     <Autocomplete
                         multiple
                         options={["JavaScript", "Python", "Java", "C++", "C#", "Ruby", "Go", "TypeScript", "Swift", "PHP"]}
-                        value={formData.languages.split(', ')}
+                        value={formData.languages.split(' ')}
                         onChange={handleTagsChange}
                         renderInput={(params) => <TextField {...params} />}
                     />
