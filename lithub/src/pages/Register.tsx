@@ -3,6 +3,7 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
 import { MuiTelInput, MuiTelInputInfo, matchIsValidTel } from 'mui-tel-input';
+import testImage from './test.png';
 
 const Register = () => {
     const navigate = useNavigate();
@@ -104,77 +105,108 @@ const Register = () => {
         setErrorMessages({ ...errorMessages, Phone: ''});
     }
 
-    return (<Container maxWidth="xs">
+    return (
+        <div style={{ position: 'relative', overflow: 'hidden', height: '100vh' }}>
+            <img src={testImage} alt="Guy" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: -1, opacity: 0.1 }} /> 
+        <Container maxWidth="xs">
         <Box sx={{
             marginTop: 8,
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
         }}>
-            <Typography variant="h5">Registracija</Typography>
         </Box>
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
             <TextField
                 margin="normal"
+                style={{ background: '#6E83AC'}}
                 required
                 fullWidth
                 id="UserName"
-                label="Vartotojo vardas"
+                placeholder="Naudotojo vardas"
                 name="UserName"
                 autoComplete="username"
                 autoFocus
                 error={Boolean(errorMessages.UserName)}
                 onChange={handleInputChange}
+                InputLabelProps={{
+                    style: { color: '#b1b2b4', fontWeight: 'bold'  } 
+                }}
+                InputProps={{
+                    style: { color: '#b1b2b4', fontWeight: 'bold'  } 
+            }}
             />
             {errorMessages.UserName && (
                 <Typography color="error" >{errorMessages.UserName}</Typography>
             )}
             <TextField
                 margin="normal"
+                style={{ background: '#6E83AC' }} 
                 required
                 fullWidth
                 id="Email"
-                label="El. paštas"
+                placeholder="El. paštas"
                 name="Email"
                 autoComplete="email"
                 error={Boolean(errorMessages.Email)}
                 onChange={handleInputChange}
+                InputLabelProps={{
+                    style: { color: '#b1b2b4', fontWeight: 'bold'  } 
+                }}
+                InputProps={{
+                    style: { color: '#b1b2b4', fontWeight: 'bold'  } 
+            }}
             />
             {errorMessages.Email && (
                 <Typography color="error" >{errorMessages.Email}</Typography>
             )}
             <TextField
                 margin="normal"
+                style={{ background: '#6E83AC' }} 
                 required
                 fullWidth
                 name="Password"
-                label="Slaptažodis"
+                placeholder="Slaptažodis"
                 type="Password"
                 id="Password"
                 autoComplete="password"
                 error={Boolean(errorMessages.Password)}
                 onChange={handleInputChange}
+                InputLabelProps={{
+                    style: { color: '#b1b2b4', fontWeight: 'bold'  } 
+                }}
+                InputProps={{
+                    style: { color: '#b1b2b4', fontWeight: 'bold'  } 
+            }}
             />
             {errorMessages.Password && (
                 <Typography color="error"> {errorMessages.Password}</Typography>
             )}
             <TextField
                 margin="normal"
+                style={{ background: '#6E83AC' }} 
                 required
                 fullWidth
                 name="PasswordConfirm"
-                label="Pakartoti slaptažodį"
+                placeholder="Pakartoti slaptažodį"
                 type="Password"
                 id="PasswordConfirm"
                 autoComplete="password"
                 error={Boolean(errorMessages.PasswordConfirm)}
                 onChange={handleInputChange}
+                InputLabelProps={{
+                    style: { color: '#b1b2b4', fontWeight: 'bold'  } 
+                }}
+                InputProps={{
+                    style: { color: '#b1b2b4', fontWeight: 'bold'  } 
+            }}
             />
             {errorMessages.PasswordConfirm && (
                 <Typography color="error"> {errorMessages.PasswordConfirm}</Typography>
             )}
             <MuiTelInput
                 margin="normal"
+                style={{ background: '#6E83AC' }} 
                 required
                 fullWidth
                 label="Tel. nr"
@@ -182,6 +214,12 @@ const Register = () => {
                 defaultCountry='LT'
                 error={Boolean(errorMessages.Phone)}
                 onChange={handleChange}
+                InputLabelProps={{
+                    style: { color: '#b1b2b4' } 
+                }}
+                InputProps={{
+                    style: { color: '#b1b2b4', fontWeight: 'bold'  } 
+            }}
             />
             {/*<FormControlLabel*/}
             {/*    control={<Checkbox value="remember" color="primary" />}*/}
@@ -193,16 +231,19 @@ const Register = () => {
             {errorMessages.Error && (
                 <Typography color="error" >{errorMessages.Error}</Typography>
             )}
-            <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                sx={{ mt: 3, mb: 2 }}
-            >
-                Registruotis
-            </Button>
+        <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            sx={{ mt: 3, mb: 2 }}
+            onClick={handleSubmit}
+            style={{ background: '#3f5581' }}
+        >
+        Registruotis
+        </Button>
         </Box>
     </Container>
+    </div>
     )
 }
 export default Register;

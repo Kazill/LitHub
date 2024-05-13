@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -6,25 +6,25 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import {Button, Chip, Container} from "@mui/material";
+import { Button, Chip, Container } from "@mui/material";
 import axios from "axios";
 
 interface ApprovalData {
     id: number,
-    username:string,
+    username: string,
     status: string,
 }
 
-const getStatusColor = (status:string) => {
+const getStatusColor = (status: string) => {
     switch (status.toLowerCase()) {
         case 'patvirtintas':
-            return 'success'; // Change color to primary for approved status
+            return '#6177a3'; // Change color to primary for approved status
         case 'laukia':
-            return 'primary'; // Keep default color for waiting status
+            return '#6177a3'; // Keep default color for waiting status
         case 'atšauktas':
-            return 'error'; // Change color to secondary for denied status
+            return '#6177a3'; // Change color to secondary for denied status
         default:
-            return 'default'; // Default color for other status values
+            return '#6177a3'; // Default color for other status values
     }
 };
 
@@ -43,31 +43,35 @@ const Approval: React.FC = () => {
         fetchData();
     }, []);
 
-    return(<Container>
-        <center><h1>Prašymų sąrašas</h1></center>
-        <TableContainer component={Paper}>
-            <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                <TableHead>
-                    <TableRow>
-                        <TableCell>Vartotojas</TableCell>
-                        <TableCell align="right">Statusas</TableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {approvals.map((approval) => (
-                        <TableRow
-                            key={approval.username}
-                            sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                        >
-                            <TableCell component="th" scope="row">
-                                <Button href={`/profile/${approval.username}`}>{approval.username}</Button>
-                            </TableCell>
-                            <TableCell align="right"><Chip label={approval.status} color={getStatusColor(approval.status)}/></TableCell>
-                        </TableRow>
-                    ))}
-                </TableBody>
-            </Table>
-        </TableContainer>
-    </Container>)
+    return (
+        <Container>
+            <center><h1>Prašymų patvirtinimo sąrašas</h1></center>
+            <TableContainer component={Paper}>
+                <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                    <TableHead>
+
+                    </TableHead>
+                    <TableBody>
+                        {approvals.map((approval) => (
+                            <TableRow
+                                key={approval.username}
+                                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                            >
+                                <TableCell component="th" scope="row">
+                                    <Button href={`/profile/${approval.username}`} style={{ color: '#000000' }}>{approval.username}</Button>
+                                </TableCell>
+                                <TableCell align="right">
+                                    <Button href={`/profile/${approval.username}`} variant="contained" style={{ backgroundColor: '#6177a3', color: '#ffffff' }}>Profilis</Button>
+                                </TableCell>
+                                <TableCell align="right">
+                                    <Chip label={approval.status} style={{ backgroundColor: getStatusColor(approval.status), color: '#ffffff', boxShadow: 'none', padding: '6px 12px', borderRadius: '5px' }} />
+                                </TableCell>
+                            </TableRow>
+                        ))}
+                    </TableBody>
+                </Table>
+            </TableContainer>
+        </Container>
+    );
 }
 export default Approval;
