@@ -405,7 +405,7 @@ function Project(this: any) {
                         <a href={comment.url} target="_blank" rel="noreferrer">{comment.url}</a>
                     )}
                     <div style={{ display: isCollapsed ? 'none' : 'block' }}>
-                        {<GithubCodeDisplay url={comment.url} />}
+                        {<GithubCodeDisplay initialUrl={comment.url} />}
                     </div>
                     </div>
                     </div>
@@ -618,7 +618,7 @@ function Project(this: any) {
                             
                             
                         <div style={{ display: isCollapsed ? 'none' : 'block' }}>
-                                {problem?.link && <GithubCodeDisplay url={problem?.link} />}
+                                {problem?.link && <GithubCodeDisplay initialUrl={problem?.link} />}
                             </div>
                         </p>
                         
