@@ -7,7 +7,7 @@ const styles = [
     'synthwave84', 'vs', 'xonokai',
 ];
 interface GithubCodeDisplayProps {
-    url: string;
+    initialUrl: string;
 }
 const extensionToLanguageMap: { [key: string]: string } = {
     'js': 'javascript',
@@ -58,21 +58,36 @@ const extensionToLanguageMap: { [key: string]: string } = {
 
 // Function to validate GitHub URLs
 const isValidGithubUrl = (url: string): boolean => {
-    const pattern = /^(https?:\/\/github\.com\/[\w.-]+\/[\w.-]+)\/blob\/(.+)$/i;
+    const pattern = /^(https?:\/\/github\.com\/[\w.-]+\/[\w.-]+)(\/blob\/.+|\/tree\/.+)?$/i;
     return pattern.test(url);
 };
 
 // Function to transform GitHub URL to API URL
 const transformToApiUrl = (url: string): string => {
-    const pathRegex = /github\.com\/([^\/]+\/[^\/]+)\/blob\/([^\/]+)\/(.+)/;
-    const match = url.match(pathRegex);
+    const repoPathRegex = /github\.com\/([^\/]+\/[^\/]+)/;
+    const blobPathRegex = /github\.com\/([^\/]+\/[^\/]+)\/blob\/([^\/]+)\/(.+)/;
+    const treePathRegex = /github\.com\/([^\/]+\/[^\/]+)\/tree\/([^\/]+)\/(.+)/;
+
+    let match = url.match(blobPathRegex);
     if (match) {
         const [_, repoPath, branch, filePath] = match;
         return `https://api.github.com/repos/${repoPath}/contents/${filePath}?ref=${branch}`;
-    } else {
-        console.error('Invalid GitHub URL:', url);
-        return ''; // Handle this case appropriately.
     }
+
+    match = url.match(treePathRegex);
+    if (match) {
+        const [_, repoPath, branch, dirPath] = match;
+        return `https://api.github.com/repos/${repoPath}/contents/${dirPath}?ref=${branch}`;
+    }
+
+    match = url.match(repoPathRegex);
+    if (match) {
+        const [_, repoPath] = match;
+        return `https://api.github.com/repos/${repoPath}/contents?ref=main`; // Default branch is assumed to be main
+    }
+
+    console.error('Invalid GitHub URL:', url);
+    return ''; // Handle this case appropriately.
 };
 
 // Function to extract file extension
@@ -84,30 +99,44 @@ const inferLanguageFromExtension = (extension: string): string => {
     const ext = extension.toLowerCase();
     return extensionToLanguageMap[ext] || 'javascript'; // Default to 'javascript' if no mapping found
 };
-const GithubCodeDisplay: React.FC<GithubCodeDisplayProps> = ({ url }) => {
+const GithubCodeDisplay: React.FC<GithubCodeDisplayProps> = ({ initialUrl }) => {
+    const [currentGithubUrl, setCurrentGithubUrl] = useState<string>(initialUrl);
     const [codeContent, setCodeContent] = useState<string>('');
     const [language, setLanguage] = useState<string>('javascript'); // Default language
-    const [selectedStyle, setSelectedStyle] = useState('okaidia');
+    const [selectedStyle, setSelectedStyle] = useState('tomorrow');
     const [highlightStyle, setHighlightStyle] = useState({});
+    const [isDirectory, setIsDirectory] = useState<boolean>(false);
+    const [directoryContents, setDirectoryContents] = useState<any[]>([]);
+    const [history, setHistory] = useState<string[]>([]);
+
     useEffect(() => {
-        if (isValidGithubUrl(url)) {
-            const apiUrl = transformToApiUrl(url);
+        if (isValidGithubUrl(currentGithubUrl)) {
+            const apiUrl = transformToApiUrl(currentGithubUrl);
             axios.get(apiUrl, {
                 headers: { 'Accept': 'application/vnd.github.v3.raw' }
             })
                 .then(response => {
-                    // Extract file extension from the URL
-                    const fileExtension = getFileExtension(url);
-                    if (fileExtension) {
-                        setLanguage(inferLanguageFromExtension(fileExtension));
+                    if (Array.isArray(response.data)) {
+                        // If the response is an array, it's a directory
+                        setIsDirectory(true);
+                        setDirectoryContents(response.data);
+                    } else {
+                        // Otherwise, it's a file
+                        setIsDirectory(false);
+                        // Extract file extension from the URL
+                        const fileExtension = getFileExtension(currentGithubUrl);
+                        if (fileExtension) {
+                            setLanguage(inferLanguageFromExtension(fileExtension));
+                        }
+                        setCodeContent(response.data);
                     }
-                    setCodeContent(response.data);
                 })
                 .catch(error => {
                     console.error('Error fetching GitHub content:', error);
                 });
         }
-    }, [url]);
+    }, [currentGithubUrl]);
+
     useEffect(() => {
         import(`react-syntax-highlighter/dist/esm/styles/prism/${selectedStyle}`).then(styleModule => {
             setHighlightStyle(styleModule.default || {});
@@ -119,18 +148,54 @@ const GithubCodeDisplay: React.FC<GithubCodeDisplayProps> = ({ url }) => {
     const handleStyleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         setSelectedStyle(event.target.value);
     };
-    if (!codeContent) return null;
+
+    const handleItemClick = (item: any) => {
+        const newUrl = `https://github.com/Kazill/LitHub/${item.type === 'dir' ? 'tree' : 'blob'}/main/${item.path}`;
+        setHistory([...history, currentGithubUrl]);
+        setCurrentGithubUrl(newUrl);
+        setCodeContent('');
+        setDirectoryContents([]);
+    };
+
+    const handleGoBack = () => {
+        const previousUrl = history.pop();
+        if (previousUrl) {
+            setCurrentGithubUrl(previousUrl);
+            setCodeContent('');
+            setDirectoryContents([]);
+            setHistory([...history]);
+        }
+    };
+
+    if (!codeContent && !isDirectory) return null;
 
     return (
         <div>
-            <select value={selectedStyle} onChange={handleStyleChange}>
-                {styles.map(style => (
-                    <option key={style} value={style}>{style}</option>
-                ))}
-            </select>
-            <SyntaxHighlighter language={language} style={highlightStyle} showLineNumbers>
-                {codeContent}
-            </SyntaxHighlighter>
+            <button onClick={handleGoBack} disabled={history.length === 0}>Atgal</button>
+            {!isDirectory && (
+                <select value={selectedStyle} onChange={handleStyleChange}>
+                    {styles.map(style => (
+                        <option key={style} value={style}>{style}</option>
+                    ))}
+                </select>
+            )}
+            <div style={{ maxHeight: '400px', maxWidth: '80vw', overflow: 'auto' }}>
+                {isDirectory ? (
+                    <ul>
+                        {directoryContents.map((item) => (
+                            <li key={item.path}>
+                                <button onClick={() => handleItemClick(item)}>
+                                    {item.type === 'dir' ? '📁' : '📄'} {item.name}
+                                </button>
+                            </li>
+                        ))}
+                    </ul>
+                ) : (
+                    <SyntaxHighlighter language={language} style={highlightStyle} showLineNumbers>
+                        {codeContent}
+                    </SyntaxHighlighter>
+                )}
+            </div>
         </div>
     );
 };

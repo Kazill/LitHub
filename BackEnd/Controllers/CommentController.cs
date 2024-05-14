@@ -55,7 +55,7 @@ namespace BackEnd.Controllers
                         Id = reply.Id,
                         Author = reply.Author,
                         Text = reply.Text,
-                        Url = comment.Url,
+                        Url = reply.Url,
                         PostedDate = reply.PostedDate,
                         ProblemId = reply.ProblemId,
                         ParentCommentId = reply.ParentCommentId
