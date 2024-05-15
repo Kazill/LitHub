@@ -14,9 +14,9 @@ import { BrowserRouter } from 'react-router-dom';
 ReactDOM.render((
 
   <BrowserRouter>
-    <div className="containerIndex">
+    <div className="containerIndex" style={{display: 'flex', flexDirection: 'column'}}>
       <Nav />
-        <div className="content">
+        <div className="content" style={{flexGrow: 1}}>
             <Side/>
             <Main /> {/* The various pages will be displayed by the `Main` component. */}
         </div>
