@@ -13,7 +13,7 @@ import Profile from './pages/profile';
 import Project from './pages/project';
 import Projects from './pages/Projects/projects';
 import RegisterPage from './pages/Register';
-
+import AdminPage from './pages/Admin'
 function loadUserProfile() {
     try {
         const Token = localStorage.getItem('accessToken')
@@ -47,6 +47,7 @@ const Main = () => {
                 <Route path='/approval-list' element={<ApprovalPage/>}></Route>
                 <Route path='/duk' element={<Duk/>}></Route>
                 <Route path='/profile/:username' element={<Profile/>}></Route>
+                <Route path='/admin-creation' element={<AdminPage/>}></Route>
             </Routes>
         </div>
     );

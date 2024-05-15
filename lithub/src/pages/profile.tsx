@@ -69,7 +69,7 @@ const Profile: React.FC = () => {
         default:
           const data: CustomJwtPayload = jwtDecode(token)
           if (data.username === username) {
-            if (flag == true) {
+            if (flag === true) {
               return <Button variant="contained" onClick={() => handleConfirmation(data.username)} style={{ background: '#3f5581' }}>Prašyti patvirtinti paskyrą</Button>
             }
           }
