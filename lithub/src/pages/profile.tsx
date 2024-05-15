@@ -70,7 +70,7 @@ const Profile: React.FC = () => {
           const data: CustomJwtPayload = jwtDecode(token)
           if (data.username === username) {
             if (flag == true) {
-              return <div style={{ background: '#6E83AC', padding: '5px' }}><Button variant="contained" onClick={() => handleConfirmation(data.username)} style={{ background: '#3f5581' }}>Prašyti patvirtinti paskyrą</Button></div>
+              return <Button variant="contained" onClick={() => handleConfirmation(data.username)} style={{ background: '#3f5581' }}>Prašyti patvirtinti paskyrą</Button>
             }
           }
       }
@@ -98,11 +98,11 @@ const Profile: React.FC = () => {
         const data: CustomJwtPayload = jwtDecode(token)
         if (userRole === "Administratorius" && userProfile?.role === "Prisiregistravęs") {
           return (
-            <div style={{ background: '#6E83AC', padding: '5px' }}><Button variant="contained" onClick={() => handleApproveUser(userProfile?.id)} style={{ background: '#3f5581'}}>Patvirtinti naudotoją</Button></div>
+            <Button variant="contained" onClick={() => handleApproveUser(userProfile?.id)} style={{ background: '#3f5581'}}>Patvirtinti naudotoją</Button>
           );
         } else if (userRole === "Administratorius" && userProfile?.role === "Patvirtinas") {
           return (
-            <div style={{ background: '#6E83AC', padding: '5px' }}><Button variant="contained" onClick={() => handleRevokeUser(userProfile?.id)} style={{ background: '#3f5581' }}>Panaikinti patvirtinto naudotojo statusą</Button></div>
+            <Button variant="contained" onClick={() => handleRevokeUser(userProfile?.id)} style={{ background: '#3f5581' }}>Panaikinti patvirtinto naudotojo statusą</Button>
           );
         }
         else {
@@ -240,13 +240,14 @@ const Profile: React.FC = () => {
             style={{ width: '100px', height: '100px', marginBottom: '20px' }}
             alt="Nuotrauka"
           />
+          <br></br>
+          {handleConfirmationRequest()}
+          {handleAdminPrivileges()}
         </div>
       </div>
       <div style={{ width: '50%', padding: '20px', marginBottom: '20px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>Aprašymas:
           {handleGithubLink()}
-          {handleConfirmationRequest()}
           {handleCompanyName()}
-          {handleAdminPrivileges()}
       </div>
     </div>
   );
