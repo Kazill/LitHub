@@ -72,10 +72,14 @@ function OptionsForDesktop(){
             const data :CustomJwtPayload=jwtDecode(token)
             let approval
             if(data.role==="Administratorius"){
-                approval=<Button href='/approval-list'
+                approval=[<Button href='/approval-list'
                                  sx={{ bgcolor: 'rgba(255, 255, 255, 0.3)', color: 'black', border: '1px solid black', borderRadius: 0,
                                      justifyContent: "flex-start"  }}
-                ><CheckBoxIcon/>Prašymai patvirtinti</Button>
+                ><CheckBoxIcon/>Prašymai patvirtinti</Button>,
+                    <Button href='/admin-creation'
+                            sx={{ bgcolor: 'rgba(255, 255, 255, 0.3)', color: 'black', border: '1px solid black', borderRadius: 0,
+                                justifyContent: "flex-start"  }}
+                    >Administratorių kūrimas</Button>]
             }
             return(<Box display="flex"  flexDirection="column">
                 {approval}

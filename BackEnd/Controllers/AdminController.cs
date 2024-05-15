@@ -5,6 +5,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 
 namespace BackEnd.Controllers;
@@ -42,6 +43,19 @@ public class AdminController: ControllerBase
             default:
                 return 4; // If there are other status values not covered, they'll be sorted last
         }
+    }
+    
+    [HttpGet("Admins")]
+    public List<AdminDto> GetAdmins()
+    {
+        List<AdminDto> admin = _context.User.Where(x=>x.Role=="Administratorius").Select(admin => new AdminDto
+        {
+            Id=admin.Id,
+            UserName = admin.UserName,
+            Email = admin.Email,
+            PhoneNumber = admin.PhoneNumber
+        }).OrderByDescending(admin=>admin.Id).ToList();
+        return admin;
     }
     
     // GET: api/<UserController>
@@ -104,4 +118,58 @@ public class AdminController: ControllerBase
         await _context.SaveChangesAsync();
         return Ok("User revoked and status updated to atšauktas");
     }
+    
+    public class ErrorInfo
+    {
+        public string error { get; set; }
+        public string message { get; set; }
+    }
+    
+    [HttpPost("register")]
+    [Authorize(Roles = "Administratorius")]
+    public IActionResult Register(RegisterDto post)
+    {
+        try
+        {
+            List<ErrorInfo> errors = new List<ErrorInfo>();
+            if (_context.User.Any(x => x.UserName == post.UserName))
+            {
+                errors.Add(new ErrorInfo{ error = "UserName", message = "Vartotojo vardas jau egzistuoja."});
+            }
+
+            if (_context.User.Any(x => x.Email == post.Email))
+            {
+                errors.Add(new ErrorInfo{ error = "Email", message = "El. paštas jau egzistuoja."});
+            }
+
+            if (post.Password != post.PasswordConfirm)
+            {
+                errors.Add(new ErrorInfo{ error = "PasswordConfirm", message = "Slaptažodžiai nesutampa."});
+            }
+
+            if (errors.Count() != 0)
+            {
+                return BadRequest(errors);
+            }
+
+            var newUser = new User
+            {
+                UserName = post.UserName,
+                Email = post.Email,
+                Password = post.Password,
+                PhoneNumber = post.PhoneNumber,
+                Role = "Administratorius"
+            };
+            _context.User.Add(newUser);
+            _context.SaveChanges();
+            return Ok("User registered successfully.");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Klaida registracijoje: {ex.Message}");
+
+            return StatusCode(500, "Įvyko klaida.");
+        }
+    }
+    
 }

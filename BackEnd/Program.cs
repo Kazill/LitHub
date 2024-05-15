@@ -1,5 +1,8 @@
+using System.Text;
 using BackEnd.Data;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,6 +31,32 @@ builder.Services.AddCors(options =>
     });
 });
 
+builder.Services.AddControllers();
+
+var key = Encoding.ASCII.GetBytes(builder.Configuration["AppSettings:Token"]);
+
+builder.Services.AddAuthentication(options =>
+    {
+        options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+        options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    })
+    .AddJwtBearer(options =>
+    {
+        options.RequireHttpsMetadata = false;
+        options.SaveToken = true;
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(key),
+            ValidateIssuer = false,
+            ValidateAudience = false
+        };
+    });
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("AdministratorPolicy", policy => policy.RequireRole("Administratorius"));
+});
 
 var app = builder.Build();
 
@@ -45,6 +74,7 @@ app.UseCors();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseAuthentication(); 
 app.UseAuthorization();
 
 app.MapControllers();
