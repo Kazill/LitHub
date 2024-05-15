@@ -206,6 +206,10 @@ function ProjectList({ selectedLanguages, usernameFilter }: { selectedLanguages:
     const filteredProblems = problems.filter(problem => {
   // Filter by Language
   if (selectedLanguages.length > 0) {
+    if(problem.languages == null)
+        {
+            return false;
+        }
     const problemLanguages = problem.languages.split(' ').map(lang => lang.trim());
     return selectedLanguages.some(lang => problemLanguages.includes(lang));
   }
