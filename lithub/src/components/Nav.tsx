@@ -141,7 +141,7 @@ const Nav: React.FC<{}> = () => {
     );
 
     return (
-        <Box sx={{ flexGrow: 1 }}>
+        <Box>
             <AppBar position='static' sx={{bgcolor: '#335285'}}>
                 <Toolbar>
                     <div style={{ display: 'flex', alignItems: 'center',marginTop:'10px',marginBottom:'10px' }}>
