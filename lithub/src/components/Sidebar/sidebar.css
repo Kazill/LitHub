@@ -4,4 +4,5 @@
     left: 0;
     background-color: #6177a3;
     transition: left 0.3s ease;
+    z-index: 999;
 }

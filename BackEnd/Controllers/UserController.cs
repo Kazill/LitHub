@@ -1,5 +1,6 @@
 ﻿using BackEnd.Data;
 using BackEnd.Models;
+using Firebase.Storage;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -17,10 +18,12 @@ namespace BackEnd.Controllers
     {
         private readonly LithubContext _context;
         private readonly IConfiguration _configuration;
-        public UserController(LithubContext context, IConfiguration configuration)
+        private readonly ImagesController _imagesController;
+        public UserController(LithubContext context, IConfiguration configuration, ImagesController imagesController)
         {
             _context = context;
             _configuration = configuration;
+            _imagesController = imagesController;
         }
         
         public class ErrorInfo
@@ -61,7 +64,8 @@ namespace BackEnd.Controllers
                     Email = post.Email,
                     Password = post.Password,
                     PhoneNumber = post.PhoneNumber,
-                    Role = "Prisiregistravęs"
+                    Role = "Prisiregistravęs",
+                    ImageLink = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT550iCbL2jq7s7PMi3ikSNrvX1zpZYiZ_BTsQ9EUk4-Q&s"
                 };
                 _context.User.Add(newUser);
                 _context.SaveChanges();
@@ -73,6 +77,20 @@ namespace BackEnd.Controllers
 
                 return StatusCode(500, "Įvyko klaida.");
             }
+        }
+
+        [HttpPost("upload")]
+        public async Task<string> UploadImage([FromBody] string imageBase64, int id)
+        {
+            User user = _context.User.ToList().Find(x => x.Id == id);
+
+            string link = await _imagesController.PostImage(imageBase64, Guid.NewGuid().ToString());
+
+            user.ImageLink = link;
+            _context.Update(user);
+            _context.SaveChanges();
+
+            return link;
         }
 
         [HttpPost("login")]
