@@ -3,7 +3,6 @@
     justify-content: center;
     align-items: center;
     min-height: 100%; /* Use min-height instead of height */
-    background: linear-gradient(135deg, #41a048, #85d695); /* Shades of green */
 }
 
 .content {

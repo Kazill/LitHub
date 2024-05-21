@@ -1,15 +1,16 @@
-import {
-    Typography,
-    Button,
-    Box,
-    Container,
-    Checkbox, FormControlLabel, TextField, InputAdornment, IconButton
-} from "@mui/material";
-import React, { useState, useEffect } from 'react';
-import {Link, useNavigate} from "react-router-dom";
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+
+import { AccountCircle, Visibility, VisibilityOff } from '@mui/icons-material';
 import MenuIcon from '@mui/icons-material/Menu';
-import {AccountCircle, Visibility, VisibilityOff} from "@mui/icons-material";
-import axios from "axios";
+import {
+    Box, Button, Checkbox, Container, FormControlLabel, IconButton, InputAdornment, TextField,
+    Typography
+} from '@mui/material';
+
+import testImage from './test.png';
+
 const Login = () => {
     const navigate = useNavigate();
     useEffect(() => {
@@ -91,7 +92,23 @@ const Login = () => {
     };
 
     return(
+        <div style={{ position: 'relative', overflow: 'hidden', height: '100vh' }}>
+    <img 
+        src={testImage} 
+        alt="Guy" 
+        style={{ 
+            position: 'absolute', 
+            top: 0, 
+            left: 0, 
+            width: '100%', 
+            height: '100%', 
+            objectFit: 'cover', 
+            zIndex: -1, 
+            opacity: 0.1 
+        }} 
+    /> 
         <Container maxWidth="xs">
+            
             <Box sx={{
                 marginTop: 8,
                 display: "flex",
@@ -101,31 +118,33 @@ const Login = () => {
               <Typography variant="h4">Prisijungimas</Typography>
             </Box>
             <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-            <Typography sx={{textAlign: "left", fontSize: 22}}>El. paštas</Typography>
                 <TextField
                     margin="normal"
+                    style={{ background: '#6E83AC'}}
                     required
                     fullWidth
                     id="Email"
+                    placeholder="El. paštas"
                     name="Email"
                     autoComplete="email"
                     autoFocus
                     error={Boolean(errorMessages.Email)}
                     onChange={handleInputChange}
-                    InputProps={{ sx: { borderRadius: 0 } }}
-                    sx={{
+                    InputProps={{ style: { color: '#b1b2b4', fontWeight: 'bold'  } }}
+                    /*sx={{
                         mt: 0,
                         bgcolor: '#6E83AC',
                         border: '5px solid #335285',
                         borderRadius: 0,
-                    }}
+                    }}*/
                 />
-                <Typography sx={{mt: 3,textAlign: "left", fontSize: 22}}>Slaptažodis</Typography>
                 <TextField
                     margin="normal"
+                    style={{ background: '#6E83AC' }}
                     required
                     fullWidth
                     name="Password"
+                    placeholder="Slaptažodis"
                     type={showPassword ? "text" : "password"}
                     id="Password"
                     autoComplete="current-password"
@@ -141,13 +160,8 @@ const Login = () => {
                                     {showPassword ? <Visibility /> : <VisibilityOff />}
                                 </IconButton>
                             </InputAdornment>
-                        ), sx: { borderRadius: 0 } }}
-                    sx={{
-                        mt: 0,
-                        bgcolor: '#6E83AC',
-                        border: '5px solid #335285',
-                        borderRadius: 0,
-                    }}
+                        ), style: { color: '#b1b2b4', fontWeight: 'bold'  } }}
+                    
                 />
                 {/*<FormControlLabel*/}
                 {/*    control={<Checkbox value="remember" color="primary" />}*/}
@@ -179,6 +193,7 @@ const Login = () => {
                 }}> Registracija</Button>
             </Box>
         </Container>
+        </div>
     )
 }
 export default Login;

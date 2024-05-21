@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { TextField, Autocomplete } from "@mui/material";
-import axios from "axios";
-import { useNavigate, useLocation } from "react-router-dom";
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+
+import { Autocomplete, Box, Button, Container, Grid, Pagination, TextField } from '@mui/material';
 
 interface ProblemData {
     id: number;
@@ -68,6 +69,141 @@ const EditProject: React.FC = () => {
     };
 
     return (
+        <div style={{ display: 'flex', flexDirection: 'column', padding: 30 }}>
+            
+            <center><h1 style={{ margin: '20px 0' }}>Redaguoti projektą</h1></center>
+            <form onSubmit={handleSubmit}>
+                <div style={{ background: '#335285', borderRadius: '4px', padding: '20px', marginBottom: '5px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+                    <label style={{ color: '#fff', marginBottom: '8px' }}>Pavadinimas:</label>
+                    <TextField 
+                        fullWidth 
+                        value={formData.title} 
+                        onChange={handleInputChange} 
+                        name="title" 
+                        variant="outlined" 
+                        size="small" 
+                        sx={{
+                            mt: 1,
+                            bgcolor: 'rgba(255, 255, 255, 0.9)',
+                            borderRadius: '4px',
+                            '& .MuiOutlinedInput-root': {
+                                '& fieldset': {
+                                    borderColor: 'transparent',
+                                },
+                                '&:hover fieldset': {
+                                    borderColor: '#344955',
+                                },
+                                '&.Mui-focused fieldset': {
+                                    borderColor: '#344955',
+                                },
+                            },
+                        }}
+                        
+                    />
+                </div>
+                <div style={{ background: '#335285', borderRadius: '4px', padding: '20px', marginBottom: '5px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+                    <label style={{ color: '#fff', marginBottom: '8px' }}>Aprašymas:</label>
+                    <TextField 
+                        fullWidth 
+                        multiline 
+                        rows={4} 
+                        value={formData.description} 
+                        onChange={handleInputChange} 
+                        name="description" 
+                        variant="outlined" 
+                        size="small" 
+                        sx={{
+                            mt: 1,
+                            bgcolor: 'rgba(255, 255, 255, 0.9)',
+                            borderRadius: '4px',
+                            '& .MuiOutlinedInput-root': {
+                                '& fieldset': {
+                                    borderColor: 'transparent',
+                                },
+                                '&:hover fieldset': {
+                                    borderColor: '#344955',
+                                },
+                                '&.Mui-focused fieldset': {
+                                    borderColor: '#344955',
+                                },
+                            },
+                        }}
+                    />
+                </div>
+                <div style={{ background: '#335285', borderRadius: '4px', padding: '20px', marginBottom: '5px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+                    <label style={{ color: '#fff', marginBottom: '8px' }}>Kalbos:</label>
+                    <Autocomplete
+                        fullWidth
+                        multiple
+                        options={["JavaScript", "Python", "Java", "C++", "C#", "Ruby", "Go", "TypeScript", "Swift", "PHP"]}
+                        value={formData.languages.split(' ')}
+                        onChange={handleTagsChange}
+                        renderInput={(params) => (
+                            <TextField 
+                                {...params} 
+                                variant="outlined" 
+                                size="small" 
+                                sx={{
+                                    mt: 1,
+                                    bgcolor: 'rgba(255, 255, 255, 0.9)',
+                                    borderRadius: '4px',
+                                    '& .MuiOutlinedInput-root': {
+                                        '& fieldset': {
+                                            borderColor: 'transparent',
+                                        },
+                                        '&:hover fieldset': {
+                                            borderColor: '#344955',
+                                        },
+                                        '&.Mui-focused fieldset': {
+                                            borderColor: '#344955',
+                                        },
+                                    },
+                                }}
+                            />
+                        )}
+                    />
+                </div>
+                <div style={{ background: '#335285', borderRadius: '4px', padding: '20px', marginBottom: '5px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+                    <label style={{ color: '#fff', marginBottom: '8px' }}>GitHub nuoroda:</label>
+                    <TextField 
+                        fullWidth 
+                        value={formData.link} 
+                        onChange={handleInputChange} 
+                        name="link" 
+                        variant="outlined" 
+                        size="small" 
+                        sx={{
+                            mt: 1,
+                            bgcolor: 'rgba(255, 255, 255, 0.9)',
+                            borderRadius: '4px',
+                            '& .MuiOutlinedInput-root': {
+                                '& fieldset': {
+                                    borderColor: 'transparent',
+                                },
+                                '&:hover fieldset': {
+                                    borderColor: '#344955',
+                                },
+                                '&.Mui-focused fieldset': {
+                                    borderColor: '#344955',
+                                },
+                            },
+                        }}
+                    />
+                </div>
+                <Button 
+                    variant="contained" 
+                    type="submit" 
+                    sx={{ background: '#3f5581', color: '#fff', '&:hover': { background: '#2e3d6d' } }}
+                >
+                    Išsaugoti
+                </Button>
+            </form>
+        </div>
+    );
+    
+
+    /*
+    return (
         <div>
             <center><h1>Redaguoti projektą</h1></center>
             <form onSubmit={handleSubmit}>
@@ -87,6 +223,10 @@ const EditProject: React.FC = () => {
             </form>
         </div>
     );
+**/
+
+
+
 }
 
 export default EditProject;
