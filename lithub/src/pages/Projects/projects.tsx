@@ -109,7 +109,7 @@ function Projects() {
             <div style={{ padding: '10px', minHeight: '100vh' }}>
                 <h1 className='title' style={{ marginLeft: '20px' }}> PROJEKTAI </h1>
                 
-                <div style={{padding: '10px', background: '#335285'  }}> 
+                <div style={{padding: '10px', background: '#335285', display: 'flex', gap: '10px', borderRadius: '4px'}}> 
                 <AddProject />
                 <button onClick={toggleLanguageFilter}>Filtravimas pagal kalba</button>
                 <button onClick={toggleUserFilter}>Filtruoti pagal vartotoją</button> 
@@ -145,24 +145,24 @@ function Projects() {
         );
     } else {
         return (
-            <div style={{padding: '10px', minHeight: '100vh'  }}>
+            <div style={{padding: '10px', minHeight: '100vh'}}>
                 <h1 className='title' style={{ marginLeft: '20px' }}>PROJEKTAI</h1>
 
-                <div style={{padding: '10px', background: '#335285'  }}> 
-                <button onClick={toggleLanguageFilter}>Filtravimas pagal kalba</button>
-                <button onClick={toggleUserFilter}>Filtruoti pagal vartotoją</button> 
-                
-                {showUserFilter && (
-                <div className="user-filter">
-                    <input 
-                    type="text" 
-                    placeholder="Vartotojo vardas..." 
-                    value={usernameFilter} 
-                    onChange={(e) => setUsernameFilter(e.target.value)} 
-                    />
+                <div style={{padding: '10px', background: '#335285', display: 'flex', gap: '10px'}}> 
+                    <button onClick={toggleLanguageFilter}>Filtravimas pagal kalba</button>
+                    <button onClick={toggleUserFilter}>Filtruoti pagal vartotoją</button> 
+                    
+                    {showUserFilter && (
+                    <div className="user-filter">
+                        <input 
+                        type="text" 
+                        placeholder="Vartotojo vardas..." 
+                        value={usernameFilter} 
+                        onChange={(e) => setUsernameFilter(e.target.value)} 
+                        />
+                    </div>
+                    )}
                 </div>
-                )}
-            </div>
                 
                 <LanguageFilterOverlay
                     show={showLanguageFilter}
@@ -258,62 +258,60 @@ function ProjectList({ selectedLanguages, usernameFilter }: { selectedLanguages:
 
 //
     return (
-
-        <Box p={2} sx={{ backgroundColor: '#335285', color: '#fff', borderRadius: '4px' }}>
-
-            
-
-            <Box mb={2} display="flex" alignItems="center">
-                <label htmlFor="startDate" style={{ marginRight: '10px' }}>Nuo:</label>
-                <TextField
-                    type="date"
-                    id="startDate"
-                    value={startDate}
-                    onChange={e => setStartDate(e.target.value)}
-                    variant="outlined"
-                    size="small"
-                    sx={{
-                        backgroundColor: '#fff',
-                        borderRadius: '4px',
-                        '& .MuiOutlinedInput-root': {
-                            '& fieldset': {
-                                borderColor: 'transparent',
+        <Box p={3} sx={{ backgroundColor: '#335285', color: '#fff', borderRadius: '4px' }}>
+            <Box style={{display: 'flex', gap: '30px'}}>
+                <Box mb={2} display="flex" alignItems="center" marginLeft = '30px'>
+                    <label htmlFor="startDate" style={{ marginRight: '10px'}}>Nuo:</label>
+                    <TextField
+                        type="date"
+                        id="startDate"
+                        value={startDate}
+                        onChange={e => setStartDate(e.target.value)}
+                        variant="outlined"
+                        size="small"
+                        sx={{
+                            backgroundColor: '#fff',
+                            borderRadius: '4px',
+                            '& .MuiOutlinedInput-root': {
+                                '& fieldset': {
+                                    borderColor: 'transparent',
+                                },
+                                '&:hover fieldset': {
+                                    borderColor: '#344955',
+                                },
+                                '&.Mui-focused fieldset': {
+                                    borderColor: '#344955',
+                                },
                             },
-                            '&:hover fieldset': {
-                                borderColor: '#344955',
+                        }}
+                    />
+                </Box>
+                <Box mb={2} display="flex" alignItems="center">
+                    <label htmlFor="endDate" style={{ marginRight: '10px' }}>Iki:</label>
+                    <TextField
+                        type="date"
+                        id="endDate"
+                        value={endDate}
+                        onChange={e => setEndDate(e.target.value)}
+                        variant="outlined"
+                        size="small"
+                        sx={{
+                            backgroundColor: '#fff',
+                            borderRadius: '4px',
+                            '& .MuiOutlinedInput-root': {
+                                '& fieldset': {
+                                    borderColor: 'transparent',
+                                },
+                                '&:hover fieldset': {
+                                    borderColor: '#344955',
+                                },
+                                '&.Mui-focused fieldset': {
+                                    borderColor: '#344955',
+                                },
                             },
-                            '&.Mui-focused fieldset': {
-                                borderColor: '#344955',
-                            },
-                        },
-                    }}
-                />
-            </Box>
-            <Box mb={2} display="flex" alignItems="center">
-                <label htmlFor="endDate" style={{ marginRight: '10px' }}>Iki:</label>
-                <TextField
-                    type="date"
-                    id="endDate"
-                    value={endDate}
-                    onChange={e => setEndDate(e.target.value)}
-                    variant="outlined"
-                    size="small"
-                    sx={{
-                        backgroundColor: '#fff',
-                        borderRadius: '4px',
-                        '& .MuiOutlinedInput-root': {
-                            '& fieldset': {
-                                borderColor: 'transparent',
-                            },
-                            '&:hover fieldset': {
-                                borderColor: '#344955',
-                            },
-                            '&.Mui-focused fieldset': {
-                                borderColor: '#344955',
-                            },
-                        },
-                    }}
-                />
+                        }}
+                    />
+                </Box>
             </Box>
             <Container>
                 <Grid container spacing={2} className='projects'>

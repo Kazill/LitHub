@@ -460,69 +460,79 @@ function Project(this: any) {
 
     const renderDeleteButton = () => {
         if (userRole === "Administratorius") {
-            return <button onClick={() => handleDelete()}>Šalinti</button>;
-        }
-        else if (userRole === "Patvirtinas") {
-            let token = localStorage.getItem('accessToken')
+            return <button onClick={() => handleDelete()} style={buttonStyle}>Šalinti</button>;
+        } else if (userRole === "Patvirtinas") {
+            let token = localStorage.getItem('accessToken');
             switch (token) {
                 case null:
-                    return (null);
+                    return null;
                 default:
-                    const data: CustomJwtPayload = jwtDecode(token)
+                    const data: CustomJwtPayload = jwtDecode(token);
                     if (problem?.source === data.username) {
-
-                        return <div> <button onClick={() => handleDeleteForCreator(problem)}>Šalinti</button> </div>;
+                        return <button onClick={() => handleDeleteForCreator(problem)} style={buttonStyle}>Šalinti</button>;
                     }
             }
         }
         return null;
     };
-
+    
     const renderEditButton = () => {
-        console.log();
-
-        let token = localStorage.getItem('accessToken')
+        let token = localStorage.getItem('accessToken');
         switch (token) {
             case null:
-                return (null);
+                return null;
             default:
-                const data: CustomJwtPayload = jwtDecode(token)
+                const data: CustomJwtPayload = jwtDecode(token);
                 if (problem?.source === data.username && data.role === "Patvirtinas" && !problem?.isClosed) {
-
                     return (
-                        <div>
-                            <Link to={`/editProject?id=${id}`}>
-                                <button>Redaguoti</button>
-                            </Link>
-                        </div>
+                        <Link to={`/editProject?id=${id}`}>
+                            <button style={buttonStyle}>Redaguoti</button>
+                        </Link>
                     );
-                }
-                else {
-                    return (null);
+                } else {
+                    return null;
                 }
         }
     };
+    
     const renderCloseButton = () => {
-        console.log();
-        let token = localStorage.getItem('accessToken')
+        let token = localStorage.getItem('accessToken');
         switch (token) {
             case null:
-                return (null);
+                return null;
             default:
-                const data: CustomJwtPayload = jwtDecode(token)
+                const data: CustomJwtPayload = jwtDecode(token);
                 if (problem?.source === data.username && userRole === "Patvirtinas") {
                     if (!problem?.isClosed) {
-                        return (<button onClick={() => handleClose(problem)}>Uždaryti</button>);
+                        return <button onClick={() => handleClose(problem)} style={buttonStyle}>Uždaryti</button>;
+                    } else {
+                        return <button onClick={() => handleOpen(problem)} style={buttonStyle}>Atidaryti</button>;
                     }
-                    else {
-                        return (<button onClick={() => handleOpen(problem)}>Atidaryti</button>);
-                    }
-                }
-                else {
-                    return (null);
+                } else {
+                    return null;
                 }
         }
     };
+    
+    const buttonStyle = {
+        padding: '10px',
+        borderRadius: '4px',
+        border: '1px solid #ccc',
+        margin: '0 15px 0 0', // 15px gap between buttons
+        display: 'inline-block'
+    };
+    
+    const renderButtons = () => {
+        return (
+            <div style={{ display: 'flex', gap: '15px' }}>
+                {renderDeleteButton()}
+                {renderEditButton()}
+                {renderCloseButton()}
+            </div>
+        );
+    };
+
+    
     
     const renderMarkButton = () => {
         if (userRole === "Prisiregistravęs" && problem && !problem.isClosed) {
@@ -540,7 +550,7 @@ function Project(this: any) {
             return (
                 <>
                     <select id="id" onChange={(e) => redirectToProfile(e.target.value)}>
-                        <option value="start" hidden>Pasižymėję programuotojai</option>
+                        <option value="start" hidden >Pasižymėję programuotojai</option>
                         {marks.map(mark => (
                             <option value={mark.userName} key={mark.id}>
                                 {mark.userName}
@@ -554,7 +564,7 @@ function Project(this: any) {
             return (
                 <>
                     <select id="id" onChange={(e) => redirectToProfile(e.target.value)}>
-                        <option value="start" hidden>Pasižymėję programuotojai viešame projekte</option>
+                        <option value="start" hidden >Pasižymėję programuotojai viešame projekte</option>
                         {marks.map(mark => (
                             <option value={mark.userName} key={mark.id}>
                                 {mark.userName}
@@ -612,19 +622,22 @@ function Project(this: any) {
                             <img src={langImg} alt='lang'/><br></br>{problem?.languages}
                         </div>
                     </div>
-                    <div className='other-info'>
-                            <p>Kodas:</p>
+                    <div className='other-info' style={{ background: '#fff', padding: '10px', marginTop: '20px', borderRadius: '4px' }}>
+                        
                             <p>
-                            <button onClick={toggleCollapse}>
-                            {isCollapsed ? 'Atslėpti kodą' : 'Paslėpti kodą'}
-                        </button>
+                                <p style={{ color: '#335285', marginBottom: '10px' }}>Nuoroda:</p>
                                 <a href={problem?.link}>{problem?.link}</a>
-                            
-                            
-                        <div style={{ display: isCollapsed ? 'none' : 'block' }}>
-                                {problem?.link && <GithubCodeDisplay initialUrl={problem?.link} />}
-                            </div>
-                        </p>
+                                <p style={{ color: '#335285', marginBottom: '10px' }}>Kodas:</p>
+                                <button onClick={toggleCollapse} style={{ padding:'10px',borderRadius: '4px', width:'fixed', border: '1px solid #ccc', margin: '0 10px 10px 0px', display: 'block'}}>
+                                    {isCollapsed ? 'Atslėpti kodą' : 'Paslėpti kodą'}
+                                </button>
+                                
+
+                                <div style={{ display: isCollapsed ? 'none' : 'block' }}>
+                                    
+                                    {problem?.link && <GithubCodeDisplay initialUrl={problem?.link} />}
+                                </div>
+                            </p>
                         
                         <p>{renderChosen()}
                         {renderDeleteButton()}

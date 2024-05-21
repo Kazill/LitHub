@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import { jwtDecode, JwtPayload } from "jwt-decode";
+import { jwtDecode, JwtPayload } from 'jwt-decode';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+
 import { Button, TextField } from '@mui/material';
 
 interface UserProfile {
@@ -224,33 +225,74 @@ const Profile: React.FC = () => {
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', padding: 30 }}>
-      <div><h1>Profilis</h1></div>
-      <div style={{ display: 'flex', justifyContent: 'space-around', width: '100%', marginBottom: '20px' }}>
-        <div style={{ width: '50%', padding: '20px', marginBottom: '20px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-          <p style={{ marginBottom: '20px' }}>El. paštas:</p>
-          <TextField fullWidth name="email" style={{ background: '#6E83AC' }} value={userProfile.email} />
-          <p style={{ marginBottom: '10px' }}>Tel. nr.:</p>
-          <TextField fullWidth name="number" style={{ background: '#6E83AC' }} value='+37060000000' />
+    <div style={{ display: 'flex', flexDirection: 'column', padding: '30px', minHeight: '100vh' }}>
+        <div><h1>Profilis</h1></div>
+        <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', marginBottom: '20px' }}>
+            <div style={{ width: '45%', padding: '20px', background: '#335285', borderRadius: '4px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+                <p style={{ marginBottom: '10px' }}>El. paštas:</p>
+                <TextField 
+                    fullWidth 
+                    name="email" 
+                    value={userProfile.email}
+                    sx={{
+                        bgcolor: 'rgba(255, 255, 255, 0.3)',
+                        mt: 1,
+                        '& .MuiOutlinedInput-root': {
+                            '& fieldset': {
+                                borderColor: 'transparent',
+                            },
+                            '&:hover fieldset': {
+                                borderColor: '#344955',
+                            },
+                            '&.Mui-focused fieldset': {
+                                borderColor: '#344955',
+                            },
+                        },
+                    }}
+                />
+                <p style={{ marginBottom: '10px' }}>Tel. nr.:</p>
+                <TextField 
+                    fullWidth 
+                    name="number" 
+                    value='+37060000000'
+                    sx={{
+                        bgcolor: 'rgba(255, 255, 255, 0.3)',
+                        mt: 1,
+                        '& .MuiOutlinedInput-root': {
+                            '& fieldset': {
+                                borderColor: 'transparent',
+                            },
+                            '&:hover fieldset': {
+                                borderColor: '#344955',
+                            },
+                            '&.Mui-focused fieldset': {
+                                borderColor: '#344955',
+                            },
+                        },
+                    }}
+                />
+            </div>
+            <div style={{ width: '45%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <h2 style={{ marginBottom: '20px' }}>{userProfile.userName}</h2>
+                <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT550iCbL2jq7s7PMi3ikSNrvX1zpZYiZ_BTsQ9EUk4-Q&s"
+                    style={{ width: '100px', height: '100px', marginBottom: '20px', borderRadius: '50%' }}
+                    alt="Nuotrauka"
+                />
+                <div>
+                    {handleConfirmationRequest()}
+                    {handleAdminPrivileges()}
+                </div>
+            </div>
         </div>
-        <div style={{ width: '50%' }}>
-          <h2 style={{ marginBottom: '20px' }}>{userProfile.userName}</h2>
-          <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT550iCbL2jq7s7PMi3ikSNrvX1zpZYiZ_BTsQ9EUk4-Q&s"
-            style={{ width: '100px', height: '100px', marginBottom: '20px' }}
-            alt="Nuotrauka"
-          />
-          <br></br>
-          {handleConfirmationRequest()}
-          {handleAdminPrivileges()}
+        <div style={{ width: '90%', padding: '20px', background: '#335285', borderRadius: '4px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+            <p>Aprašymas:</p>
+            {handleGithubLink()}
+            {handleCompanyName()}
         </div>
-      </div>
-      <div style={{ width: '50%', padding: '20px', marginBottom: '20px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>Aprašymas:
-          {handleGithubLink()}
-          {handleCompanyName()}
-      </div>
     </div>
-  );
+);
+
 
 
 };
