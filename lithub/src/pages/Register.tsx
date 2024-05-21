@@ -1,8 +1,10 @@
-import {Box, Button, Container, TextField, Typography} from "@mui/material";
-import React, {useEffect, useState} from "react";
-import axios from "axios";
-import {useNavigate} from "react-router-dom";
-import { MuiTelInput, MuiTelInputInfo, matchIsValidTel } from 'mui-tel-input';
+import axios from 'axios';
+import { matchIsValidTel, MuiTelInput, MuiTelInputInfo } from 'mui-tel-input';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+import { Box, Button, Container, TextField, Typography } from '@mui/material';
+
 import testImage from './test.png';
 
 const Register = () => {
@@ -107,15 +109,30 @@ const Register = () => {
 
     return (
         <div style={{ position: 'relative', overflow: 'hidden', height: '100vh' }}>
-            <img src={testImage} alt="Guy" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: -1, opacity: 0.1 }} /> 
-        <Container maxWidth="xs">
+    <img 
+        src={testImage} 
+        alt="Guy" 
+        style={{ 
+            position: 'absolute', 
+            top: 0, 
+            left: 0, 
+            width: '100%', 
+            height: '100%', 
+            objectFit: 'cover', 
+            zIndex: -1, 
+            opacity: 0.1 
+        }} 
+    /> 
+    <Container maxWidth="xs">
         <Box sx={{
             marginTop: 8,
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
         }}>
+              <Typography variant="h4">Registracija</Typography>            
         </Box>
+        
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
             <TextField
                 margin="normal"

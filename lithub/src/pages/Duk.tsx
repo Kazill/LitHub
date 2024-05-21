@@ -40,7 +40,7 @@ const Duk = () => {
             <div className="content">
                 <h1 className='title' style={{ marginLeft: '0px' }}> Dažniausiai užduodami klausimai </h1>
             </div>
-            <div style={{ background: '#6E83AC', borderRadius: '4px', padding: '8px', textAlign: 'center', marginLeft: '20px', marginBottom: '16px', marginRight: '30px' }}>
+            <div style={{ background: '#335285', borderRadius: '4px', padding: '8px', textAlign: 'center', marginLeft: '20px', marginBottom: '16px', marginRight: '30px' }}>
                 <iframe 
                     width="100%" 
                     height="auto" 
@@ -59,13 +59,13 @@ const Duk = () => {
                     {faqList.map((faq, index) => (
                         <div key={index} className="faq-item" style={{ marginBottom: '16px' }}>
                             {/* Rodyti klausimo tekstą */}
-                            <div className="question" onClick={() => toggleQuestion(index)} style={{ background: '#6E83AC', borderRadius: '4px', padding: '8px', cursor: 'pointer', textAlign: 'left', marginLeft: '20px' }}>
+                            <div className="question" onClick={() => toggleQuestion(index)} style={{ background: '#335285', color: '#e1e5ed', borderRadius: '4px', padding: '8px', cursor: 'pointer', textAlign: 'left', marginLeft: '20px' }}>
                                 <h3 style={{ margin: 0, fontSize: '20px'  }}>{faq.question}</h3>
                             </div>
                             {/* Rodyti atsakymą, jei klausimas išskleistas */}
                             {expandedQuestion === index && (
-                                <div className="answer" style={{ background: '#8E9BB6', borderRadius: '4px', padding: '8px', textAlign: 'left', marginLeft: '20px' }}>
-                                    <p style={{ margin: 0, fontSize: '18px' }}>{faq.answer}</p>
+                                <div className="answer" style={{ background: '#335285', borderRadius: '4px', color: '#e1e5ed', padding: '8px', textAlign: 'left', marginLeft: '20px' }}>
+                                    <p style={{ margin: 0, fontSize: '16px' }}>{faq.answer}</p>
                                 </div>
                             )}
                         </div>

@@ -1,18 +1,20 @@
-import { useNavigate, useLocation } from 'react-router-dom';
-import React, { useEffect, useState } from 'react';
-import axios from "axios";
-import { Link } from "react-router-dom";
-import { jwtDecode, JwtPayload } from "jwt-decode";
-import { FaStar } from "react-icons/fa";
-import GithubCodeDisplay from '../components/githubCodeDisplay';
 import './design.css';
-import check from './img/check.png'
-import langImg from './img/lang.png'
-import noCheck from './img/nocheck.png'
-import lock from './img/lock.png'
-import unlock from './img/unlocked.png'
-import check2 from './img/check.jpg'
-import arrow from './img/arrow.png'
+
+import axios from 'axios';
+import { jwtDecode, JwtPayload } from 'jwt-decode';
+import React, { useEffect, useState } from 'react';
+import { FaStar } from 'react-icons/fa';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+
+import GithubCodeDisplay from '../components/githubCodeDisplay';
+import arrow from './img/arrow.png';
+import check2 from './img/check.jpg';
+import check from './img/check.png';
+import langImg from './img/lang.png';
+import lock from './img/lock.png';
+import noCheck from './img/nocheck.png';
+import unlock from './img/unlocked.png';
+
 interface CustomJwtPayload extends JwtPayload {
     username: string;
     role: string;
@@ -469,13 +471,12 @@ function Project(this: any) {
                     const data: CustomJwtPayload = jwtDecode(token)
                     if (problem?.source === data.username) {
 
-                        return <button onClick={() => handleDeleteForCreator(problem)}>Šalinti</button>;
+                        return <div> <button onClick={() => handleDeleteForCreator(problem)}>Šalinti</button> </div>;
                     }
             }
         }
         return null;
     };
-
 
     const renderEditButton = () => {
         console.log();
@@ -489,9 +490,11 @@ function Project(this: any) {
                 if (problem?.source === data.username && data.role === "Patvirtinas" && !problem?.isClosed) {
 
                     return (
-                        <Link to={`/editProject?id=${id}`}>
-                            <button>Redaguoti</button>
-                        </Link>
+                        <div>
+                            <Link to={`/editProject?id=${id}`}>
+                                <button>Redaguoti</button>
+                            </Link>
+                        </div>
                     );
                 }
                 else {
@@ -520,6 +523,7 @@ function Project(this: any) {
                 }
         }
     };
+    
     const renderMarkButton = () => {
         if (userRole === "Prisiregistravęs" && problem && !problem.isClosed) {
             return <MarkProject isPrivate={problem.isPrivate} />;

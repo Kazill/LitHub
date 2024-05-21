@@ -1,9 +1,10 @@
+import axios from 'axios';
+import dayjs from 'dayjs';
+import { jwtDecode, JwtPayload } from 'jwt-decode';
 import React, { SyntheticEvent, useState } from 'react';
-import { TextField, Button, Autocomplete, FormControlLabel, Checkbox } from "@mui/material";
-import axios from "axios";
-import dayjs from "dayjs";
-import { Link, useNavigate } from "react-router-dom";
-import { JwtPayload, jwtDecode } from 'jwt-decode';
+import { Link, useNavigate } from 'react-router-dom';
+
+import { Autocomplete, Button, Checkbox, FormControlLabel, TextField } from '@mui/material';
 
 interface CustomJwtPayload extends JwtPayload {
     username: string;
@@ -95,19 +96,19 @@ function Project() {
             <h1 style={{ margin: '20px 0' }}>Naujas projektas</h1>
             {/* </div> */}
             {/* Other fields aligned flex-start or default */}
-            <div style={{ background: '#6E83AC', padding: '20px', marginBottom: '20px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+            <div style={{ background: '#335285', borderRadius: '4px', padding: '20px', marginBottom: '5px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
                 <label>
                     Pavadinimas:
                 </label>
                 <TextField fullWidth onChange={handleInputChange} name="title" style={{ marginTop: 8 }} />
             </div>
-            <div style={{ background: '#6E83AC', padding: '20px', marginBottom: '20px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+            <div style={{ background: '#335285', borderRadius: '4px', padding: '20px', marginBottom: '5px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
                 <label>
                     Aprašymas:
                 </label>
                 <TextField multiline fullWidth rows={4} onChange={handleInputChange} name="description" style={{ marginTop: 8 }} />
             </div>
-            <div style={{ background: '#6E83AC', padding: '20px', marginBottom: '20px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+            <div style={{ background: '#335285', borderRadius: '4px', padding: '20px', marginBottom: '5px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
                 <label>
                     Kalbos:
                 </label>
@@ -119,12 +120,12 @@ function Project() {
                     renderInput={(params) => <TextField {...params} style={{ marginTop: 8 }} />}
                 />
             </div>
-            <div style={{ display: 'flex', padding: '20px 0', marginBottom: '20px' }}>
-                <div style={{ background: '#6E83AC', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', padding: '20px', flexGrow: 0 }}>
+            <div style={{ display: 'flex', padding: '0px 0', marginBottom: '5px' }}>
+                <div style={{ background: '#335285', borderRadius: '4px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', padding: '20px', flexGrow: 0 }}>
                     <FormControlLabel required control={<Checkbox onChange={handleCheckboxChange} name="isPrivate" />} label="Privatus projektas" />
                 </div>
-                <div style={{ padding: '10px' }}></div>
-                <div style={{ background: '#6E83AC', flexGrow: 1, display: 'flex', flexDirection: 'column', alignItems: 'flex-start', padding: '20px' }}>
+                <div style={{ padding: '5px' }}></div>
+                <div style={{ background: '#335285', borderRadius: '4px', flexGrow: 1, display: 'flex', flexDirection: 'column', alignItems: 'flex-start', padding: '5px' }}>
                     <label style={{ marginLeft: 20 }}>GitHub nuoroda:</label>
                     <TextField fullWidth onChange={handleInputChange} name="link" style={{ marginTop: 8 }} />
                 </div>
