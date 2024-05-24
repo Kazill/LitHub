@@ -382,81 +382,81 @@ function Project(this: any) {
         setIsCollapsed(prevIsCollapsed => !prevIsCollapsed);
     };
 
-    // Function to render comments and their replies recursively
-    const renderComments = (comments: CommentData[], likes: LikeData[], parentCommentId?: number) => {
-        return comments.map((comment) => {
-            // Filter likes for the current comment
-            const commentLikes = likes.filter(like => like.commentId === comment.id);
+// Function to render comments and their replies recursively
+const renderComments = (comments: CommentData[], likes: LikeData[], parentCommentId?: number) => {
+    return comments.map((comment) => {
+        // Filter likes for the current comment
+        const commentLikes = likes.filter(like => like.commentId === comment.id);
 
-            return (
-                <div key={comment.id}>
-                    <div className='background'>
-                    <p className='pref'><strong><Link to={`/profile/${comment.author}`}>{comment.author}</Link></strong><br></br> <br></br> {new Date(comment.postedDate).toLocaleDateString()}</p>
-                    {/* {problem?.source === userName && ( */}
-                    {/* <p>Likes: {commentLikes.length}</p> */}
-                    {/* )} */}
-                    {/* {userRole === "Prisiregistravęs" && (
-                        <button className="like-button" onClick={() => handleLikeClick(comment.id, likes)}>
-                            Like
-                        </button>
-                    )} */}
+        // Check if the comment is a reply or a top-level comment
+        const isReply = parentCommentId !== undefined;
+
+        return (
+            <div key={comment.id} className={isReply ? 'reply' : 'comment'}>
+                <div className={isReply ? 'background-reply' : 'background-comment'}>
+                    <p className='pref'>
+                        <strong><Link to={`/profile/${comment.author}`}>{comment.author}</Link></strong><br></br> <br></br> 
+                        {new Date(comment.postedDate).toLocaleDateString()}
+                    </p>
                     <div className='comments-content'>
-
-                    <p>{comment.text}</p>
-                    {comment.url && comment.url !== "null" && (
-                        <a href={comment.url} target="_blank" rel="noreferrer">{comment.url}</a>
-                    )}
-                    <div style={{ display: isCollapsed ? 'none' : 'block' }}>
-                        {<GithubCodeDisplay initialUrl={comment.url} />}
+                        <p>{comment.text}</p>
+                        {comment.url && comment.url !== "null" && (
+                            <a href={comment.url} target="_blank" rel="noreferrer">{comment.url}</a>
+                        )}
+                        <div style={{ display: isCollapsed ? 'none' : 'block' }}>
+                            {<GithubCodeDisplay initialUrl={comment.url} />}
+                        </div>
                     </div>
-                    </div>
-                    </div>
-                    
-                    {comment.replies && comment.replies.length > 0 && (
-                        <><br></br><div style={{ marginLeft: '20px' }}>
-                            {renderComments(comment.replies, likes, comment.id)}
-                        </div></>
-                    )}
-                    {
-                        userRole !== "Svečias" && !problem?.isClosed && (comment.parentCommentId === null || comment.parentCommentId === undefined) && (
-                            <button onClick={() => handleReplyClick(comment.id)} className='com-button'>Atsakyti <img src={arrow} alt='arrow'/></button>
-                        )
-                    }
-                    <br></br>
-                    {replyingTo === comment.id && (
-                        <ReplyComponent
-                            commentId={comment.id}
-                            onSubmit={async (replyText, parentCommentId) => {
-                                const problemId = Number(id); // Assuming `id` is the problem's ID from URL
-                                if (!replyText.trim()) return;
-                                console.log(parentCommentId);
-                                try {
-                                    await axios.post(`https://localhost:7054/api/Comment`, {
-                                        author: userName,
-                                        text: replyText,
-                                        problemId: problemId,
-                                        parentCommentId: parentCommentId, // This links the reply to its parent comment
-                                        url: "null"
-                                    }, {
-                                        headers: {
-                                            'Content-Type': 'application/json',
-                                            // Include any other necessary headers, like authorization tokens
-                                        }
-                                    });
-
-                                    await fetchComments(); // Refresh comments to show the new reply
-                                } catch (error) {
-                                    console.error("Failed to submit reply", error);
-                                }
-                            }}
-                        />
-                    )}
-                    
-                    
                 </div>
-            );
-        });
-    };
+                
+                {comment.replies && comment.replies.length > 0 && (
+                    <div className="reply-container">
+                    <div className="reply-line"></div>
+                    <div style={{ marginLeft: '20px' }}>
+                        {renderComments(comment.replies, likes, comment.id)}
+                    </div>
+                    </div>
+                )}
+                
+                {userRole !== "Svečias" && !problem?.isClosed && (comment.parentCommentId === null || comment.parentCommentId === undefined) && (
+                    <button onClick={() => handleReplyClick(comment.id)} className='com-button'>
+                        Atsakyti <img src={arrow} alt='arrow'/>
+                    </button>
+                )}
+
+                {replyingTo === comment.id && (
+                    <ReplyComponent
+                        commentId={comment.id}
+                        onSubmit={async (replyText, parentCommentId) => {
+                            const problemId = Number(id); // Assuming `id` is the problem's ID from URL
+                            if (!replyText.trim()) return;
+                            console.log(parentCommentId);
+                            try {
+                                await axios.post(`https://localhost:7054/api/Comment`, {
+                                    author: userName,
+                                    text: replyText,
+                                    problemId: problemId,
+                                    parentCommentId: parentCommentId, // This links the reply to its parent comment
+                                    url: "null"
+                                }, {
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                        // Include any other necessary headers, like authorization tokens
+                                    }
+                                });
+
+                                await fetchComments(); // Refresh comments to show the new reply
+                            } catch (error) {
+                                console.error("Failed to submit reply", error);
+                            }
+                        }}
+                    />
+                )}
+            </div>
+        );
+    });
+};
+
 
     const renderDeleteButton = () => {
         if (userRole === "Administratorius") {
