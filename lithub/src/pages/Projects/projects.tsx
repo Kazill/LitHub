@@ -42,6 +42,8 @@ interface user {
 }
 
 function Projects() {
+
+    
     const [showLanguageFilter, setShowLanguageFilter] = useState(false);
     const [selectedLanguages, setSelectedLanguages] = useState<string[]>([]);
     const [availableLanguages, setAvailableLanguages] = useState<string[]>([]);
@@ -178,8 +180,11 @@ function Projects() {
                     usernameFilter={usernameFilter} 
                 />
             </div>
+
+
         );
     }
+    
 }
 
 function AddProject() {
@@ -195,6 +200,9 @@ function ProjectList({ selectedLanguages, usernameFilter }: { selectedLanguages:
     const [startDate, setStartDate] = useState<string>('');
     const [endDate, setEndDate] = useState<string>('');
     const [page, setPage] = useState(1);
+    const [showLanguageFilter, setShowLanguageFilter] = useState(false);
+    const [showUserFilter, setShowUserFilter] = useState(false);
+    const [availableLanguages, setAvailableLanguages] = useState<string[]>([]);
 
     const marks = SetMarked();
     const per_page = 5;
@@ -203,6 +211,13 @@ function ProjectList({ selectedLanguages, usernameFilter }: { selectedLanguages:
         setPage(p);
 
     }
+
+
+
+
+
+
+
     useEffect(() => {
         async function fetchData() {
             try {
@@ -257,6 +272,7 @@ function ProjectList({ selectedLanguages, usernameFilter }: { selectedLanguages:
     }
 
 //
+
     return (
         <Box p={3} sx={{ backgroundColor: '#335285', color: '#fff', borderRadius: '4px' }}>
             <Box style={{display: 'flex', gap: '30px'}}>
@@ -313,6 +329,8 @@ function ProjectList({ selectedLanguages, usernameFilter }: { selectedLanguages:
                     />
                 </Box>
             </Box>
+
+
             <Container>
                 <Grid container spacing={2} className='projects'>
                     {filteredProblems.slice((page - 1) * per_page, page * per_page).map(problem => (

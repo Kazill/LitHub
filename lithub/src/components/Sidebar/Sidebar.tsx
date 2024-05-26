@@ -7,13 +7,12 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AccountCircle } from '@mui/icons-material';
 import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
+import EditIcon from '@mui/icons-material/EditNote';
 import HomeIcon from '@mui/icons-material/Home';
 import InfoIcon from '@mui/icons-material/Info';
 import LoginIcon from '@mui/icons-material/Login';
 import MenuIcon from '@mui/icons-material/Menu';
 import StorageIcon from '@mui/icons-material/Storage';
-import EditIcon from '@mui/icons-material/EditNote';
-
 import {
     AppBar, Box, Button, Drawer, IconButton, List, ListItem, ListItemText, Menu, MenuItem, Toolbar,
     Typography
@@ -92,12 +91,24 @@ function OptionsForDesktop(){
             let myProj
             if(data.role==="Administratorius"){
                 approval=[<Button href='/approval-list'
-                                 sx={{ bgcolor: 'rgba(255, 255, 255, 0.3)', color: 'black', border: '1px solid black', borderRadius: 0,
-                                     justifyContent: "flex-start"  }}
+                                 sx={{ color: 'white',
+                                 justifyContent: "flex-start",
+                                 textTransform: 'none',
+                                 padding: '10px 20px',
+                                 marginBottom: '10px',
+                                 '&:hover': {
+                                     backgroundColor: '#344955'
+                                 }  }}
                 ><CheckBoxIcon/>Prašymai patvirtinti</Button>,
                     <Button href='/admin-creation'
-                            sx={{ bgcolor: 'rgba(255, 255, 255, 0.3)', color: 'black', border: '1px solid black', borderRadius: 0,
-                                justifyContent: "flex-start"  }}
+                            sx={{ color: 'white',
+                            justifyContent: "flex-start",
+                            textTransform: 'none',
+                            padding: '10px 20px',
+                            marginBottom: '10px',
+                            '&:hover': {
+                                backgroundColor: '#344955'
+                            }  }}
                     >Administratorių kūrimas</Button>]
             }
             if(data.role==="Patvirtinas"){

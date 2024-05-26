@@ -622,7 +622,7 @@ const renderComments = (comments: CommentData[], likes: LikeData[], parentCommen
                             <img src={langImg} alt='lang'/><br></br>{problem?.languages}
                         </div>
                     </div>
-                    <div className='other-info' style={{ background: '#fff', padding: '10px', marginTop: '20px', borderRadius: '4px' }}>
+                    <div className='other-info'>
                         
                             <p>
                                 <p style={{ color: '#335285', marginBottom: '10px' }}>Nuoroda:</p>
@@ -684,25 +684,37 @@ const renderComments = (comments: CommentData[], likes: LikeData[], parentCommen
                         ) : (
                             <form onSubmit={handleCommentSubmit}>
                                 <div className='background'>
-                                <div className='pref'> </div>
-                                <div className='comments-content'>
+                                
                                 <textarea
-                                    
                                     value={newCommentText}
                                     onChange={handleNewCommentChange}
                                     placeholder="Rašyti komentarą..."
-                                    style={{ width: '100%', height: '50px', background: 6E83, border: 6E83}}
-
+                                    style={{ 
+                                        borderRadius: '4px',
+                                        width: '95%', 
+                                        height: '20px', 
+                                        background: '#6E83AC', 
+                                        border: '1px solid #6E83AC', 
+                                        padding: '20px',
+                                       // color: 'rgb(255, 255, 255)'
+                                    }}
                                 />
+
                                 <input type="url"
                                     value={newUrl}
                                     onChange={handleNewUrlChange}
                                     id="websiteInput"
                                     placeholder="Įdėti nuorodą..." 
-                                    style={{ width: '100%', height: '50px', background: 6E83, border: 6E83}}
+                                    style={{
+                                    borderRadius: '4px',
+                                    width: '95%', 
+                                    height: '20px', 
+                                    background: '#6E83AC', 
+                                    border: '1px solid #6E83AC', 
+                                    padding: '20px'}}
                                     />
                                     
-                                    </div></div>
+                                    </div>
                                 <button type="submit" className='com-button'>Pateikti <img src={arrow} alt='arrow'/></button>
                             </form>
                         )
