@@ -599,3 +599,6 @@ C:\Users\robot\Documents\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.IdentityModel
 C:\Users\ACER\Desktop\3 Metai\2 pusmetis\PVP\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\ACER\Desktop\3 Metai\2 pusmetis\PVP\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
 C:\Users\ACER\Desktop\3 Metai\2 pusmetis\PVP\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\sera\Desktop\pvp\git\t3\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\sera\Desktop\pvp\git\t3\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\sera\Desktop\pvp\git\t3\LitHub\BackEnd\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
