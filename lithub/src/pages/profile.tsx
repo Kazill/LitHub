@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import axios from 'axios';
-import { jwtDecode, JwtPayload } from "jwt-decode";
 import { Button, TextField } from '@mui/material';
+import axios from 'axios';
+import { JwtPayload, jwtDecode } from "jwt-decode";
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 interface UserProfile {
   id: number;
@@ -98,15 +98,25 @@ const Profile: React.FC = () => {
   };
 
   const handleUploadImage = () => {
-    if (userRole === "Prisiregistravęs") {
-      return (
-        <div>
-          <input type="file" accept="image/*" onChange={handleFileChange} />
-          <br/>
-          <br/>
-          <Button variant="contained" onClick={handleUpload} style={{ background: '#3f5581' }}>Įkelti nuotrauką</Button>
-        </div>
-      );
+    if (userRole) {
+      let token = localStorage.getItem('accessToken')
+      switch (token) {
+        case null:
+          return null
+        default:
+          const data: CustomJwtPayload = jwtDecode(token)
+          if (data.username === username) {
+            return (
+              <div>
+                <input type="file" accept="image/*" onChange={handleFileChange} />
+                <br/>
+                <br/>
+                <Button variant="contained" onClick={handleUpload} style={{ background: '#3f5581' }}>Įkelti nuotrauką</Button>
+              </div>
+            );
+          
+          }
+      }
     }
     return null;
   };
@@ -123,12 +133,18 @@ const Profile: React.FC = () => {
     if (selectedFile) {      
       try {
         const base64String = await fileToBase64(selectedFile);
+        const formattedBase64String = base64String.split(',')[1] || base64String;
 
-        const response = await axios.put(`https://localhost:7054/api/User/upload?id=${userProfile?.id}`, base64String, {
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            })
+        const url = `https://localhost:7054/api/User/upload?id=${userProfile?.id}`;
+        const headers = {
+          'Content-Type': 'application/json',
+        };
+
+        console.log('Request URL:', url);
+        console.log('Request Headers:', headers);
+        console.log('Request Body:', formattedBase64String);
+
+        const response = await axios.post(url, formattedBase64String, { headers });
     
         return response.data;
       } catch (error) {
