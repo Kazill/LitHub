@@ -12,6 +12,8 @@ import InfoIcon from '@mui/icons-material/Info';
 import LoginIcon from '@mui/icons-material/Login';
 import MenuIcon from '@mui/icons-material/Menu';
 import StorageIcon from '@mui/icons-material/Storage';
+import EditIcon from '@mui/icons-material/EditNote';
+
 import {
     AppBar, Box, Button, Drawer, IconButton, List, ListItem, ListItemText, Menu, MenuItem, Toolbar,
     Typography
@@ -87,6 +89,7 @@ function OptionsForDesktop(){
         default:
             const data :CustomJwtPayload=jwtDecode(token)
             let approval
+            let myProj
             if(data.role==="Administratorius"){
                 approval=[<Button href='/approval-list'
                                  sx={{ bgcolor: 'rgba(255, 255, 255, 0.3)', color: 'black', border: '1px solid black', borderRadius: 0,
@@ -97,8 +100,21 @@ function OptionsForDesktop(){
                                 justifyContent: "flex-start"  }}
                     >Administratorių kūrimas</Button>]
             }
+            if(data.role==="Patvirtinas"){
+                myProj=[<Button href='/myProjects' sx={{
+                    color: 'white',
+                    justifyContent: "flex-start",
+                    textTransform: 'none',
+                    padding: '10px 20px',
+                    marginBottom: '10px',
+                    '&:hover': {
+                        backgroundColor: '#344955'
+                    }
+                }}
+                ><EditIcon sx={{ marginRight: '10px' }} />Mano Projektai</Button>]
+            }
             return(<Box display="flex"  flexDirection="column">
-                {approval}
+                {approval}{myProj}
             </Box>);
     }
 }
