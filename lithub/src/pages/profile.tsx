@@ -1,15 +1,15 @@
+import { Button, TextField } from '@mui/material';
 import axios from 'axios';
-import { jwtDecode, JwtPayload } from 'jwt-decode';
+import { JwtPayload, jwtDecode } from "jwt-decode";
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-
-import { Button, TextField } from '@mui/material';
 
 interface UserProfile {
   id: number;
   userName: string;
   email: string;
   role: string;
+  imageLink: string;
   // Add other fields as needed
 }
 interface CustomJwtPayload extends JwtPayload {
@@ -22,10 +22,11 @@ const Profile: React.FC = () => {
   const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
   const { username } = useParams<{ username: string }>();
   const [flag, setflag] = useState<boolean>();
-
   const [userRole, setUserRole] = useState('Svečias');
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+
   useEffect(() => {
-    let token=localStorage.getItem('accessToken')
+    let token = localStorage.getItem('accessToken')
     if (token === null) {
       setUserRole("Svečias")
     } else {
@@ -51,6 +52,7 @@ const Profile: React.FC = () => {
     await axios.post(`https://localhost:7054/api/User/AskConf/${username}`);
     window.location.reload()
   }
+
   const getStatus = async (username: string | undefined) => {
     if (typeof username == "string") {
       const response = await axios.get(`https://localhost:7054/api/User/Waitting/${username}`);
@@ -58,9 +60,11 @@ const Profile: React.FC = () => {
       setflag(response.data)
     }
   }
+
   useEffect(() => {
     getStatus(username)
   }, [username])
+
   const handleConfirmationRequest = () => {
     if (userRole === "Prisiregistravęs") {
       let token = localStorage.getItem('accessToken')
@@ -78,18 +82,92 @@ const Profile: React.FC = () => {
     }
     return null;
   };
+
   const handleGithubLink = () => {
     if (userProfile?.role === "Prisiregistravęs") {
       return <div style={{ background: '#6E83AC', padding: '5px' }}><p>Github: www.github.com/naudotojas</p></div>
     }
     return null;
   };
+
   const handleCompanyName = () => {
     if (userProfile?.role === "Patvirtinas") {
       return <div style={{ background: '#6E83AC', padding: '5px' }}><p>Atstovaujama įmonė: Seimas</p></div>
     }
     return null;
   };
+
+  const handleUploadImage = () => {
+    if (userRole) {
+      let token = localStorage.getItem('accessToken')
+      switch (token) {
+        case null:
+          return null
+        default:
+          const data: CustomJwtPayload = jwtDecode(token)
+          if (data.username === username) {
+            return (
+              <div>
+                <input type="file" accept="image/*" onChange={handleFileChange} />
+                <br/>
+                <br/>
+                <Button variant="contained" onClick={handleUpload} style={{ background: '#3f5581' }}>Įkelti nuotrauką</Button>
+              </div>
+            );
+          
+          }
+      }
+    }
+    return null;
+  };
+
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const files = event.target.files;
+    if (files && files.length > 0) {
+      const file = files[0];
+      setSelectedFile(file);
+    }
+  };
+
+  const handleUpload = async () => {
+    if (selectedFile) {      
+      try {
+        const base64String = await fileToBase64(selectedFile);
+        const formattedBase64String = base64String.split(',')[1] || base64String;
+
+        const url = `https://localhost:7054/api/User/upload?id=${userProfile?.id}`;
+        const headers = {
+          'Content-Type': 'application/json',
+        };
+
+        console.log('Request URL:', url);
+        console.log('Request Headers:', headers);
+        console.log('Request Body:', formattedBase64String);
+
+        const response = await axios.post(url, formattedBase64String, { headers });
+    
+        return response.data;
+      } catch (error) {
+        // Handle error
+        console.error('Error uploading image:', error);
+        throw error;
+      }
+    }
+  };
+  
+
+  const fileToBase64 = (file: File): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        const base64String = reader.result?.toString().split(',')[1];
+        resolve(base64String || "");
+      };
+      reader.onerror = (error) => reject(error);
+    });
+  };
+
   const handleAdminPrivileges = () => {
     let token = localStorage.getItem('accessToken')
     switch (token) {
@@ -99,7 +177,7 @@ const Profile: React.FC = () => {
         const data: CustomJwtPayload = jwtDecode(token)
         if (userRole === "Administratorius" && userProfile?.role === "Prisiregistravęs") {
           return (
-            <Button variant="contained" onClick={() => handleApproveUser(userProfile?.id)} style={{ background: '#3f5581'}}>Patvirtinti naudotoją</Button>
+            <Button variant="contained" onClick={() => handleApproveUser(userProfile?.id)} style={{ background: '#3f5581' }}>Patvirtinti naudotoją</Button>
           );
         } else if (userRole === "Administratorius" && userProfile?.role === "Patvirtinas") {
           return (
@@ -112,7 +190,6 @@ const Profile: React.FC = () => {
     }
   };
 
-  // Define the method to handle user approval
   const handleApproveUser = async (userId: number) => {
     // Logic to approve the user
     console.log("Approving user...");
@@ -165,7 +242,6 @@ const Profile: React.FC = () => {
     }
   };
 
-  // Define the method to handle revocation of an approved user
   const handleRevokeUser = async (userId: number) => {
     // Logic to revoke the user
     console.log("Revoking user approval...");
@@ -217,8 +293,6 @@ const Profile: React.FC = () => {
       console.error('Error revoking user:', error);
     }
   };
-
-
 
   if (!userProfile) {
     return <div>Loading...</div>;
@@ -285,16 +359,28 @@ const Profile: React.FC = () => {
                 </div>
             </div>
         </div>
-        <div style={{ width: '90%', padding: '20px', background: '#335285', borderRadius: '4px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-            <p>Aprašymas:</p>
-            {handleGithubLink()}
-            {handleCompanyName()}
+        <div style={{ width: '50%' }}>
+          <h2 style={{ marginBottom: '20px' }}>{userProfile.userName}</h2>
+          <img
+            src={userProfile.imageLink}
+            style={{ width: '100px', height: '100px', marginBottom: '20px' }}
+            alt="Profilio nuotrauka"
+          />
+          <br></br>
+          {handleConfirmationRequest()}
+          <br/>
+          {handleAdminPrivileges()}
+          <br/>
+          {handleUploadImage()}
         </div>
+      </div>
+      <div style={{ width: '50%', padding: '20px', background: '#335285',marginBottom: '20px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+          <p>Aprašymas:</p>
+          {handleGithubLink()}
+          {handleCompanyName()}
+      </div>
     </div>
-);
-
-
-
+  );
 };
 
 export default Profile;

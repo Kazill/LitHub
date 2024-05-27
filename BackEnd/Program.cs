@@ -1,4 +1,5 @@
 using System.Text;
+using BackEnd.Controllers;
 using BackEnd.Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -17,6 +18,8 @@ var connectionString = builder.Configuration.GetConnectionString("DBConnection")
 builder.Services.AddDbContext<LithubContext>(option => {
     option.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
 });
+
+builder.Services.AddTransient<ImagesController>();
 
 
 var provider = builder.Services.BuildServiceProvider();

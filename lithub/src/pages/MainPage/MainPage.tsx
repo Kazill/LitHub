@@ -2,7 +2,6 @@ import './MainPage.css'; // Import CSS file for styling
 
 // MainPage.tsx
 import React from 'react';
-
 import testImage from '../test.png';
 
 const MainPage: React.FC = () => {

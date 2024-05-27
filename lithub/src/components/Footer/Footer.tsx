@@ -4,16 +4,21 @@ import './Footer.css'; // Import the CSS file for styling
 
 const Footer: React.FC = () => {
     return (
-        <AppBar position="static" color="default" className="footer">
+        <AppBar position="static" sx={{bgcolor: '#335285'}} className="footer">
             <Toolbar>
-                <Typography variant="h6" color="black" sx={{ flexGrow: 1 }}>
-                    &copy; 2024 Lithub. All rights reserved.
+                <Typography color="white" sx={{ flexGrow: 1 }}>
+                    IT PROJEKTŲ IR NEATLYGINTINŲ
+                    <br/>
+                    IT SPECIALISTŲ PLATFORMA
                 </Typography>
-                <Box sx={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}>
-                    <Button href="" sx={{ color: 'black', mx: 1 }}>Slapukų politika</Button>
-                    <Button href="" sx={{ color: 'black', mx: 1 }}>Privatumo politika</Button>
-                    <Button href="" sx={{ color: 'black', mx: 1 }}>Kontaktai</Button>
-                </Box>
+                <Typography color="white" sx={{ flexGrow: 1 }}>
+                    El. pašto adresas: lithub@ktu.lt
+                </Typography>
+                <Typography color="white" sx={{ flexGrow: 1 }}>
+                    &copy; Visos teisės saugomos
+                </Typography>
+                
+                
             </Toolbar>
         </AppBar>
     );
