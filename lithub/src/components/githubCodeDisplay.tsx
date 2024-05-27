@@ -150,10 +150,9 @@ const GithubCodeDisplay: React.FC<GithubCodeDisplayProps> = ({ initialUrl }) => 
     };
 
     const handleItemClick = (item: any) => {
-        console.log(item)
         const newUrl = `https://github.com/Kazill/LitHub/${item.type === 'dir' ? 'tree' : 'blob'}/main/${item.path}`;
         setHistory([...history, currentGithubUrl]);
-        setCurrentGithubUrl(item.url);
+        setCurrentGithubUrl(item.html_url);
         setCodeContent('');
         setDirectoryContents([]);
     };
