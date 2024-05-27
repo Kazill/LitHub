@@ -373,7 +373,6 @@ const Profile: React.FC = () => {
           <br/>
           {handleUploadImage()}
         </div>
-      </div>
       <div style={{ width: '50%', padding: '20px', background: '#335285',marginBottom: '20px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
           <p>Aprašymas:</p>
           {handleGithubLink()}

@@ -302,7 +302,34 @@ namespace BackEnd.Controllers
         [HttpGet("Users")]
         public IActionResult getUsers()
         {
-            return Ok();
+            List<object> usersList = new List<object>();
+            var users = _context.User.Select(x=>new
+            {
+                x.UserName,
+                x.Email,x.Role,x.Company,x.GithubProfile
+            }).ToList();
+
+            foreach (var user in users)
+            {
+                if (user.Role == "Patvirtinas")
+                {
+                    var projectCount = _context.Problem.Where(x => x.User.UserName == user.UserName).Count();
+                    usersList.Add(new
+                    {
+                        user.UserName,
+                        user.Email,
+                        user.Role,
+                        user.Company,
+                        user.GithubProfile,
+                        projectCount
+                    });
+                }
+                else
+                {
+                    usersList.Add(user);
+                }
+            }
+            return Ok(usersList);
         }
     }
 }

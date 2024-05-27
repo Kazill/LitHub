@@ -46,10 +46,16 @@ function Project() {
         isPrivate: false,
         sourceId: userid
     });
-
+    const [errors, setErrors] = useState({
+        title: '',
+        description: '',
+        languages: '',
+        link: ''
+    });
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
+        setErrors({ ...errors, [name]: '' });
     };
 
     const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>, checked: boolean) => {
@@ -59,11 +65,37 @@ function Project() {
 
     const handleLanguagesChange = (_: any, values: string[]) => {
         setFormData({ ...formData, languages: values });
+        setErrors({ ...errors, languages: '' });
     };
+    const validate = () => {
+        let valid = true;
+        let newErrors = { title: '', description: '', languages: '', link: '' };
 
+        if (!formData.title) {
+            newErrors.title = 'Pavadinimas yra privalomas.';
+            valid = false;
+        }
+        if (!formData.description) {
+            newErrors.description = 'Aprašymas yra privalomas.';
+            valid = false;
+        }
+        if (formData.languages.length === 0) {
+            newErrors.languages = 'Bent viena kalba yra privaloma.';
+            valid = false;
+        }
+        if (!formData.link) {
+            newErrors.link = 'GitHub nuoroda yra privaloma.';
+            valid = false;
+        }
+
+        setErrors(newErrors);
+        return valid;
+    };
     const handleSubmit = async (e: React.FormEvent<HTMLButtonElement>) => {
         e.preventDefault();
-
+        if (!validate()) {
+            return;
+        }
         try {
             const response = await axios.post('https://localhost:7054/api/Problem', {
                 ...formData,
@@ -100,13 +132,15 @@ function Project() {
                 <label>
                     Pavadinimas:
                 </label>
-                <TextField fullWidth onChange={handleInputChange} name="title" style={{ marginTop: 8 }} />
+                <TextField fullWidth onChange={handleInputChange} name="title" style={{ marginTop: 8 }} error={!!errors.title}
+                           helperText={errors.title}/>
             </div>
             <div style={{ background: '#335285', borderRadius: '4px', padding: '20px', marginBottom: '5px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
                 <label>
                     Aprašymas:
                 </label>
-                <TextField multiline fullWidth rows={4} onChange={handleInputChange} name="description" style={{ marginTop: 8 }} />
+                <TextField multiline fullWidth rows={4} onChange={handleInputChange} name="description" style={{ marginTop: 8 }} error={!!errors.description}
+                           helperText={errors.description}/>
             </div>
             <div style={{ background: '#335285', borderRadius: '4px', padding: '20px', marginBottom: '5px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
                 <label>
@@ -117,7 +151,7 @@ function Project() {
                     multiple
                     options={languagesList}
                     onChange={handleLanguagesChange}
-                    renderInput={(params) => <TextField {...params} style={{ marginTop: 8 }} />}
+                    renderInput={(params) => <TextField {...params} style={{ marginTop: 8 }} error={!!errors.languages} helperText={errors.languages} />}
                 />
             </div>
             <div style={{ display: 'flex', padding: '0px 0', marginBottom: '5px' }}>
@@ -127,7 +161,8 @@ function Project() {
                 <div style={{ padding: '5px' }}></div>
                 <div style={{ background: '#335285', borderRadius: '4px', flexGrow: 1, display: 'flex', flexDirection: 'column', alignItems: 'flex-start', padding: '5px' }}>
                     <label style={{ marginLeft: 20 }}>GitHub nuoroda:</label>
-                    <TextField fullWidth onChange={handleInputChange} name="link" style={{ marginTop: 8 }} />
+                    <TextField fullWidth onChange={handleInputChange} name="link" style={{ marginTop: 8 }} error={!!errors.link}
+                               helperText={errors.link}/>
                 </div>
             </div>
 
