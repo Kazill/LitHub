@@ -47,9 +47,9 @@
     width: 90%;
     background-color: #335285;
     align-items: start;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
     padding-left: 10px;
-    padding-top: 20px;
+    padding-top: 10px;
     padding-right: 20px;
     border-radius: 5px;
     margin-left: 55px;
@@ -97,6 +97,15 @@
     color: rgb(255, 255, 255);
 }
 
+.replay-content{
+    border-radius: 4px;
+    width: 95%;
+    height: 20px;
+    background: rgb(110, 131, 172);
+    border: 1px solid rgb(110, 131, 172);
+    padding: 20px;
+}
+
 .pref {
     width: 15%;
     display: inline-block;
@@ -111,7 +120,7 @@
     border-radius: 4px;
     border: 1px solid #ccc;
     
-    background-color: #6E83AC; /* Pridėta, jei norite naudoti tą pačią fono spalvą */
+    background-color: #6E83AC;
     margin-left: 89%;
 }
 
@@ -130,13 +139,14 @@ select {
 .reply-container {
     position: relative;
     margin-left: 10px;
+    
 }
 
 
 /* Styles for replies */
 .background-reply {
     width: 90%;
-    background-color: #365c99;
+    background-color: #335285;
     align-items: start;
     padding-bottom: 20px;
     padding-left: 10px;
@@ -146,10 +156,9 @@ select {
     margin-left: 55px;
     margin-bottom: 10px;
     overflow: hidden; 
-    opacity: 0.9; /* Slight difference */
+    opacity: 0.9; 
 }
 
-/* Styles for top-level comments */
 .background-comment {
     width: 90%;
     background-color: #335285;
@@ -162,4 +171,5 @@ select {
     margin-left: 55px;
     margin-bottom: 10px;
     overflow: hidden; 
+    opacity: 0.9;
 }
