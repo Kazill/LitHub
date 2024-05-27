@@ -281,5 +281,10 @@ namespace BackEnd.Controllers
             }
             return false;
         }
+        [HttpGet("Users")]
+        public IActionResult getUsers()
+        {
+            return Ok();
+        }
     }
 }
