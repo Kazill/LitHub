@@ -1,18 +1,20 @@
-import { useNavigate, useLocation } from 'react-router-dom';
-import React, { useEffect, useState } from 'react';
-import axios from "axios";
-import { Link } from "react-router-dom";
-import { jwtDecode, JwtPayload } from "jwt-decode";
-import { FaStar } from "react-icons/fa";
-import GithubCodeDisplay from '../components/githubCodeDisplay';
 import './design.css';
-import check from './img/check.png'
-import langImg from './img/lang.png'
-import noCheck from './img/nocheck.png'
-import lock from './img/lock.png'
-import unlock from './img/unlocked.png'
-import check2 from './img/check.jpg'
-import arrow from './img/arrow.png'
+
+import axios from 'axios';
+import { jwtDecode, JwtPayload } from 'jwt-decode';
+import React, { useEffect, useState } from 'react';
+import { FaStar } from 'react-icons/fa';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+
+import GithubCodeDisplay from '../components/githubCodeDisplay';
+import arrow from './img/arrow.png';
+import check2 from './img/check.jpg';
+import check from './img/check.png';
+import langImg from './img/lang.png';
+import lock from './img/lock.png';
+import noCheck from './img/nocheck.png';
+import unlock from './img/unlocked.png';
+
 interface CustomJwtPayload extends JwtPayload {
     username: string;
     role: string;
@@ -380,146 +382,158 @@ function Project(this: any) {
         setIsCollapsed(prevIsCollapsed => !prevIsCollapsed);
     };
 
-    // Function to render comments and their replies recursively
-    const renderComments = (comments: CommentData[], likes: LikeData[], parentCommentId?: number) => {
-        return comments.map((comment) => {
-            // Filter likes for the current comment
-            const commentLikes = likes.filter(like => like.commentId === comment.id);
+// Function to render comments and their replies recursively
+const renderComments = (comments: CommentData[], likes: LikeData[], parentCommentId?: number) => {
+    return comments.map((comment) => {
+        // Filter likes for the current comment
+        const commentLikes = likes.filter(like => like.commentId === comment.id);
 
-            return (
-                <div key={comment.id}>
-                    <div className='background'>
-                    <p className='pref'><strong><Link to={`/profile/${comment.author}`}>{comment.author}</Link></strong><br></br> <br></br> {new Date(comment.postedDate).toLocaleDateString()}</p>
-                    {/* {problem?.source === userName && ( */}
-                    {/* <p>Likes: {commentLikes.length}</p> */}
-                    {/* )} */}
-                    {/* {userRole === "Prisiregistravęs" && (
-                        <button className="like-button" onClick={() => handleLikeClick(comment.id, likes)}>
-                            Like
-                        </button>
-                    )} */}
+        // Check if the comment is a reply or a top-level comment
+        const isReply = parentCommentId !== undefined;
+
+        return (
+            <div key={comment.id} className={isReply ? 'reply' : 'comment'}>
+                <div className={isReply ? 'background-reply' : 'background-comment'}>
+                    <p className='pref'>
+                        <strong><Link to={`/profile/${comment.author}`}>{comment.author}</Link></strong><br></br> <br></br> 
+                        {new Date(comment.postedDate).toLocaleDateString()}
+                    </p>
                     <div className='comments-content'>
-
-                    <p>{comment.text}</p>
-                    {comment.url && comment.url !== "null" && (
-                        <a href={comment.url} target="_blank" rel="noreferrer">{comment.url}</a>
-                    )}
-                    <div style={{ display: isCollapsed ? 'none' : 'block' }}>
-                        {<GithubCodeDisplay initialUrl={comment.url} />}
+                        <p>{comment.text}</p>
+                        {comment.url && comment.url !== "null" && (
+                            <a href={comment.url} target="_blank" rel="noreferrer">{comment.url}</a>
+                        )}
+                        <div style={{ display: isCollapsed ? 'none' : 'block' }}>
+                            {<GithubCodeDisplay initialUrl={comment.url} />}
+                        </div>
                     </div>
-                    </div>
-                    </div>
-                    
-                    {comment.replies && comment.replies.length > 0 && (
-                        <><br></br><div style={{ marginLeft: '20px' }}>
-                            {renderComments(comment.replies, likes, comment.id)}
-                        </div></>
-                    )}
-                    {
-                        userRole !== "Svečias" && !problem?.isClosed && (comment.parentCommentId === null || comment.parentCommentId === undefined) && (
-                            <button onClick={() => handleReplyClick(comment.id)} className='com-button'>Atsakyti <img src={arrow} alt='arrow'/></button>
-                        )
-                    }
-                    <br></br>
-                    {replyingTo === comment.id && (
-                        <ReplyComponent
-                            commentId={comment.id}
-                            onSubmit={async (replyText, parentCommentId) => {
-                                const problemId = Number(id); // Assuming `id` is the problem's ID from URL
-                                if (!replyText.trim()) return;
-                                console.log(parentCommentId);
-                                try {
-                                    await axios.post(`https://localhost:7054/api/Comment`, {
-                                        author: userName,
-                                        text: replyText,
-                                        problemId: problemId,
-                                        parentCommentId: parentCommentId, // This links the reply to its parent comment
-                                        url: "null"
-                                    }, {
-                                        headers: {
-                                            'Content-Type': 'application/json',
-                                            // Include any other necessary headers, like authorization tokens
-                                        }
-                                    });
-
-                                    await fetchComments(); // Refresh comments to show the new reply
-                                } catch (error) {
-                                    console.error("Failed to submit reply", error);
-                                }
-                            }}
-                        />
-                    )}
-                    
-                    
                 </div>
-            );
-        });
-    };
+                
+                {comment.replies && comment.replies.length > 0 && (
+                    <div className="reply-container">
+                    <div className="reply-line"></div>
+                    <div style={{ marginLeft: '20px' }}>
+                        {renderComments(comment.replies, likes, comment.id)}
+                    </div>
+                    </div>
+                )}
+                
+                {userRole !== "Svečias" && !problem?.isClosed && (comment.parentCommentId === null || comment.parentCommentId === undefined) && (
+                    <button onClick={() => handleReplyClick(comment.id)} className='com-button'>
+                        Atsakyti <img src={arrow} alt='arrow'/>
+                    </button>
+                )}
+
+                {replyingTo === comment.id && (
+                    <ReplyComponent
+                        commentId={comment.id}
+                        onSubmit={async (replyText, parentCommentId) => {
+                            const problemId = Number(id); // Assuming `id` is the problem's ID from URL
+                            if (!replyText.trim()) return;
+                            console.log(parentCommentId);
+                            try {
+                                await axios.post(`https://localhost:7054/api/Comment`, {
+                                    author: userName,
+                                    text: replyText,
+                                    problemId: problemId,
+                                    parentCommentId: parentCommentId, // This links the reply to its parent comment
+                                    url: "null"
+                                }, {
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                        // Include any other necessary headers, like authorization tokens
+                                    }
+                                });
+
+                                await fetchComments(); // Refresh comments to show the new reply
+                            } catch (error) {
+                                console.error("Failed to submit reply", error);
+                            }
+                        }}
+                    />
+                )}
+            </div>
+        );
+    });
+};
+
 
     const renderDeleteButton = () => {
         if (userRole === "Administratorius") {
-            return <button onClick={() => handleDelete()}>Šalinti</button>;
-        }
-        else if (userRole === "Patvirtinas") {
-            let token = localStorage.getItem('accessToken')
+            return <button onClick={() => handleDelete()} style={buttonStyle}>Šalinti</button>;
+        } else if (userRole === "Patvirtinas") {
+            let token = localStorage.getItem('accessToken');
             switch (token) {
                 case null:
-                    return (null);
+                    return null;
                 default:
-                    const data: CustomJwtPayload = jwtDecode(token)
+                    const data: CustomJwtPayload = jwtDecode(token);
                     if (problem?.source === data.username) {
-
-                        return <button onClick={() => handleDeleteForCreator(problem)}>Šalinti</button>;
+                        return <button onClick={() => handleDeleteForCreator(problem)} style={buttonStyle}>Šalinti</button>;
                     }
             }
         }
         return null;
     };
-
-
+    
     const renderEditButton = () => {
-        console.log();
-
-        let token = localStorage.getItem('accessToken')
+        let token = localStorage.getItem('accessToken');
         switch (token) {
             case null:
-                return (null);
+                return null;
             default:
-                const data: CustomJwtPayload = jwtDecode(token)
+                const data: CustomJwtPayload = jwtDecode(token);
                 if (problem?.source === data.username && data.role === "Patvirtinas" && !problem?.isClosed) {
-
                     return (
                         <Link to={`/editProject?id=${id}`}>
-                            <button>Redaguoti</button>
+                            <button style={buttonStyle}>Redaguoti</button>
                         </Link>
                     );
-                }
-                else {
-                    return (null);
+                } else {
+                    return null;
                 }
         }
     };
+    
     const renderCloseButton = () => {
-        console.log();
-        let token = localStorage.getItem('accessToken')
+        let token = localStorage.getItem('accessToken');
         switch (token) {
             case null:
-                return (null);
+                return null;
             default:
-                const data: CustomJwtPayload = jwtDecode(token)
+                const data: CustomJwtPayload = jwtDecode(token);
                 if (problem?.source === data.username && userRole === "Patvirtinas") {
                     if (!problem?.isClosed) {
-                        return (<button onClick={() => handleClose(problem)}>Uždaryti</button>);
+                        return <button onClick={() => handleClose(problem)} style={buttonStyle}>Uždaryti</button>;
+                    } else {
+                        return <button onClick={() => handleOpen(problem)} style={buttonStyle}>Atidaryti</button>;
                     }
-                    else {
-                        return (<button onClick={() => handleOpen(problem)}>Atidaryti</button>);
-                    }
-                }
-                else {
-                    return (null);
+                } else {
+                    return null;
                 }
         }
     };
+    
+    const buttonStyle = {
+        padding: '10px',
+        borderRadius: '4px',
+        border: '1px solid #ccc',
+        margin: '0 15px 0 0', // 15px gap between buttons
+        display: 'inline-block'
+    };
+    
+    const renderButtons = () => {
+        return (
+            <div style={{ display: 'flex', gap: '15px' }}>
+                {renderDeleteButton()}
+                {renderEditButton()}
+                {renderCloseButton()}
+            </div>
+        );
+    };
+
+    
+    
     const renderMarkButton = () => {
         if (userRole === "Prisiregistravęs" && problem && !problem.isClosed) {
             return <MarkProject isPrivate={problem.isPrivate} />;
@@ -536,7 +550,7 @@ function Project(this: any) {
             return (
                 <>
                     <select id="id" onChange={(e) => redirectToProfile(e.target.value)}>
-                        <option value="start" hidden>Pasižymėję programuotojai</option>
+                        <option value="start" hidden >Pasižymėję programuotojai</option>
                         {marks.map(mark => (
                             <option value={mark.userName} key={mark.id}>
                                 {mark.userName}
@@ -550,7 +564,7 @@ function Project(this: any) {
             return (
                 <>
                     <select id="id" onChange={(e) => redirectToProfile(e.target.value)}>
-                        <option value="start" hidden>Pasižymėję programuotojai viešame projekte</option>
+                        <option value="start" hidden >Pasižymėję programuotojai viešame projekte</option>
                         {marks.map(mark => (
                             <option value={mark.userName} key={mark.id}>
                                 {mark.userName}
@@ -609,18 +623,21 @@ function Project(this: any) {
                         </div>
                     </div>
                     <div className='other-info'>
-                            <p>Kodas:</p>
+                        
                             <p>
-                            <button onClick={toggleCollapse}>
-                            {isCollapsed ? 'Atslėpti kodą' : 'Paslėpti kodą'}
-                        </button>
+                                <p style={{ color: '#335285', marginBottom: '10px' }}>Nuoroda:</p>
                                 <a href={problem?.link}>{problem?.link}</a>
-                            
-                            
-                        <div style={{ display: isCollapsed ? 'none' : 'block' }}>
-                                {problem?.link && <GithubCodeDisplay initialUrl={problem?.link} />}
-                            </div>
-                        </p>
+                                <p style={{ color: '#335285', marginBottom: '10px' }}>Kodas:</p>
+                                <button onClick={toggleCollapse} style={{ padding:'10px',borderRadius: '4px', width:'fixed', border: '1px solid #ccc', margin: '0 10px 10px 0px', display: 'block'}}>
+                                    {isCollapsed ? 'Atslėpti kodą' : 'Paslėpti kodą'}
+                                </button>
+                                
+
+                                <div style={{ display: isCollapsed ? 'none' : 'block' }}>
+                                    
+                                    {problem?.link && <GithubCodeDisplay initialUrl={problem?.link} />}
+                                </div>
+                            </p>
                         
                         <p>{renderChosen()}
                         {renderDeleteButton()}
@@ -667,25 +684,37 @@ function Project(this: any) {
                         ) : (
                             <form onSubmit={handleCommentSubmit}>
                                 <div className='background'>
-                                <div className='pref'> </div>
-                                <div className='comments-content'>
+                                
                                 <textarea
-                                    
                                     value={newCommentText}
                                     onChange={handleNewCommentChange}
                                     placeholder="Rašyti komentarą..."
-                                    style={{ width: '100%', height: '50px', background: 6E83, border: 6E83}}
-
+                                    style={{ 
+                                        borderRadius: '4px',
+                                        width: '95%', 
+                                        height: '20px', 
+                                        background: '#6E83AC', 
+                                        border: '1px solid #6E83AC', 
+                                        padding: '20px',
+                                       // color: 'rgb(255, 255, 255)'
+                                    }}
                                 />
+
                                 <input type="url"
                                     value={newUrl}
                                     onChange={handleNewUrlChange}
                                     id="websiteInput"
                                     placeholder="Įdėti nuorodą..." 
-                                    style={{ width: '100%', height: '50px', background: 6E83, border: 6E83}}
+                                    style={{
+                                    borderRadius: '4px',
+                                    width: '95%', 
+                                    height: '20px', 
+                                    background: '#6E83AC', 
+                                    border: '1px solid #6E83AC', 
+                                    padding: '20px'}}
                                     />
                                     
-                                    </div></div>
+                                    </div>
                                 <button type="submit" className='com-button'>Pateikti <img src={arrow} alt='arrow'/></button>
                             </form>
                         )

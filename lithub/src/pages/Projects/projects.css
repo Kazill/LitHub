@@ -60,10 +60,34 @@
     padding-left: 57px;
 }
 
+.user-filter {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+}
 
+.user-filter label {
+    margin-right: 10px;
+}
+
+.user-filter input {
+    background-color: #fff;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    padding: 8px;
+}
+
+.user-filter input:focus {
+    border-color: #344955;
+}
+
+.user-filter input:hover {
+    border-color: #344955;
+}
 
 .largerText {
-    font-size: 20px;
+    font-size: 10px;
+    size: 10px;
 }
 
 .languageBox {
@@ -120,14 +144,37 @@ a {
 }
 
 img {
-    height: 30px;
-    width: 30px;
+    height: 25px;
+    width: 25px;
+    padding-right: 20px;
 }
 
-button {
+/*button {
     padding: 10px;
     margin-right: 5px;
     background-color: #335285;
     border: 2px solid #797979;
     width: 245
+}*/
+/*button {
+    background-color: #4A6572;
+    color: #fff;
+    padding: 10px 20px;
+    margin: 0 10px 10px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}*/
+button {
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    width: fixed;
+    margin: 0 10px 10px 30px;
+    display: block;
+}
+
+button:hover {
+    background-color: #344955;
 }

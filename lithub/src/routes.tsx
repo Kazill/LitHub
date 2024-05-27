@@ -13,7 +13,8 @@ import Profile from './pages/profile';
 import Project from './pages/project';
 import Projects from './pages/Projects/projects';
 import RegisterPage from './pages/Register';
-import AdminPage from './pages/Admin'
+import AdminPage from './pages/Admin';
+import MyProjects from './pages/myProjects';
 function loadUserProfile() {
     try {
         const Token = localStorage.getItem('accessToken')
@@ -38,6 +39,7 @@ const Main = () => {
             <Routes>
                 <Route path='/' element={<MainPage />} />
                 <Route path='/projects' element={<Projects/>}></Route>
+                <Route path='/myProjects' element={<MyProjects/>}></Route>
                 <Route path='/project' element={<Project/>}></Route>
                 <Route path='/addProject' element={<AddProject/>}></Route>
                 <Route path='/editProject' element={<EditProject/>}></Route>

@@ -67,8 +67,10 @@ const Approval: React.FC = () => {
             <center><h1>Prašymų patvirtinimo sąrašas</h1></center>
             <TableContainer component={Paper}>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                    <TableHead>
-
+                    <TableHead style={{ backgroundColor: '#335285'}}>
+                    <TableCell component="th" scope="row" style={{color: '#ffffff'}}>Naudotojas</TableCell>
+                                <TableCell align="right" style={{color: '#ffffff'}}>Profilio nuoroda</TableCell>
+                                <TableCell align="right" style={{color: '#ffffff'}}>Būsena</TableCell>
                     </TableHead>
                     <TableBody>
                         {approvals.map((approval) => (

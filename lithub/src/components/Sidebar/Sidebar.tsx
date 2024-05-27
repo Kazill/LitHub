@@ -7,6 +7,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AccountCircle } from '@mui/icons-material';
 import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
+import EditIcon from '@mui/icons-material/EditNote';
 import HomeIcon from '@mui/icons-material/Home';
 import InfoIcon from '@mui/icons-material/Info';
 import LoginIcon from '@mui/icons-material/Login';
@@ -60,29 +61,71 @@ function OptionsForDesktop(){
     let token=localStorage.getItem('accessToken')
     switch (token){
         case null:
-            return(<Box display="flex" flexDirection="column"><Button href='/register' sx={{ bgcolor: 'rgba(255, 255, 255, 0.3)', color: 'black', border: '1px solid black', borderRadius: 0,
-                justifyContent: "flex-start"  }}><AppRegistrationIcon/>Registruotis</Button>
+            return(<Box display="flex" flexDirection="column"><Button href='/register' sx={{
+                color: 'white',
+                justifyContent: "flex-start",
+                textTransform: 'none',
+                padding: '10px 20px',
+                marginBottom: '10px',
+                '&:hover': {
+                    backgroundColor: '#344955'
+                }
+            }}><AppRegistrationIcon sx={{ marginRight: '10px' }}/> Registruotis</Button>
                 <Button href='/login'
-                        sx={{ bgcolor: 'rgba(255, 255, 255, 0.3)', color: 'black', border: '1px solid black', borderRadius: 0,
-                            justifyContent: "flex-start"  }}
+                        sx={{
+                            color: 'white',
+                            justifyContent: "flex-start",
+                            textTransform: 'none',
+                            padding: '10px 20px',
+                            marginBottom: '10px',
+                            '&:hover': {
+                                backgroundColor: '#344955'
+                            }
+                        }}
             >
-                <LoginIcon/>Prisijungti
+                <LoginIcon sx={{ marginRight: '10px' }}/>Prisijungti
                 </Button></Box>);
         default:
             const data :CustomJwtPayload=jwtDecode(token)
             let approval
+            let myProj
             if(data.role==="Administratorius"){
                 approval=[<Button href='/approval-list'
-                                 sx={{ bgcolor: 'rgba(255, 255, 255, 0.3)', color: 'black', border: '1px solid black', borderRadius: 0,
-                                     justifyContent: "flex-start"  }}
+                                 sx={{ color: 'white',
+                                 justifyContent: "flex-start",
+                                 textTransform: 'none',
+                                 padding: '10px 20px',
+                                 marginBottom: '10px',
+                                 '&:hover': {
+                                     backgroundColor: '#344955'
+                                 }  }}
                 ><CheckBoxIcon/>Prašymai patvirtinti</Button>,
                     <Button href='/admin-creation'
-                            sx={{ bgcolor: 'rgba(255, 255, 255, 0.3)', color: 'black', border: '1px solid black', borderRadius: 0,
-                                justifyContent: "flex-start"  }}
+                            sx={{ color: 'white',
+                            justifyContent: "flex-start",
+                            textTransform: 'none',
+                            padding: '10px 20px',
+                            marginBottom: '10px',
+                            '&:hover': {
+                                backgroundColor: '#344955'
+                            }  }}
                     >Administratorių kūrimas</Button>]
             }
+            if(data.role==="Patvirtinas"){
+                myProj=[<Button href='/myProjects' sx={{
+                    color: 'white',
+                    justifyContent: "flex-start",
+                    textTransform: 'none',
+                    padding: '10px 20px',
+                    marginBottom: '10px',
+                    '&:hover': {
+                        backgroundColor: '#344955'
+                    }
+                }}
+                ><EditIcon sx={{ marginRight: '10px' }} />Mano Projektai</Button>]
+            }
             return(<Box display="flex"  flexDirection="column">
-                {approval}
+                {approval}{myProj}
             </Box>);
     }
 }
@@ -254,29 +297,41 @@ const Sidebar: React.FC<{}> = () => {
     );*/
 
     return (
-        <div className="sidebar">
-            <Box display="flex" flexDirection="column">
+        <div className="sidebar" style={{ width: '250px', backgroundColor: '#335285', height: 'fixed', color: '#fff', position: 'sticky', top: 0 }}>
+            <Box display="flex" flexDirection="column" p={2}>
                 <Button href='/' sx={{
-                    bgcolor: 'rgba(255, 255, 255, 0.3)',
-                    color: 'black',
-                    border: '1px solid black',
-                    borderRadius: 0,
-                    justifyContent: "flex-start"}}
-                ><HomeIcon/>Pradžia</Button>
+                    color: 'white',
+                    justifyContent: "flex-start",
+                    textTransform: 'none',
+                    padding: '10px 20px',
+                    marginBottom: '10px',
+                    '&:hover': {
+                        backgroundColor: '#344955'
+                    }
+                }}
+                ><HomeIcon sx={{ marginRight: '10px' }} />Pradžia</Button>
                 <Button href='/projects' sx={{
-                    bgcolor: 'rgba(255, 255, 255, 0.3)',
-                    color: 'black' ,
-                    border: '1px solid black',
-                    borderRadius: 0,
-                    justifyContent: "flex-start" }}
-                ><StorageIcon/>Projektai</Button>
+                    color: 'white',
+                    justifyContent: "flex-start",
+                    textTransform: 'none',
+                    padding: '10px 20px',
+                    marginBottom: '10px',
+                    '&:hover': {
+                        backgroundColor: '#344955'
+                    }
+                }}
+                ><StorageIcon sx={{ marginRight: '10px' }} />Projektai</Button>
                 <Button href='/duk' sx={{
-                    bgcolor: 'rgba(255, 255, 255, 0.3)',
-                    color: 'black',
-                    border: '1px solid black',
-                    borderRadius: 0,
-                    justifyContent: "flex-start"  }}
-                ><InfoIcon/>D.U.K</Button>
+                    color: 'white',
+                    justifyContent: "flex-start",
+                    textTransform: 'none',
+                    padding: '10px 20px',
+                    marginBottom: '10px',
+                    '&:hover': {
+                        backgroundColor: '#344955'
+                    }
+                }}
+                ><InfoIcon sx={{ marginRight: '10px' }} />D.U.K</Button>
                 {OptionsForDesktop()}
             </Box>
         </div>

@@ -5,6 +5,10 @@
 
 .other-info {
     text-align: left;
+    background-color: #ffffffea;;
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 4px;
 }
 
 .project-details {
@@ -41,7 +45,7 @@
 
 .background {
     width: 90%;
-    background-color: #6E83AC;
+    background-color: #335285;
     align-items: start;
     padding-bottom: 20px;
     padding-left: 10px;
@@ -90,19 +94,27 @@
     width: 85%;
     display: inline-block;
     text-align: left;
+    color: rgb(255, 255, 255);
 }
 
 .pref {
     width: 15%;
     display: inline-block;
     text-align: center;
+    color: rgb(255, 255, 255);
 } 
 
 .com-button {
-    margin-bottom: 10px;
-    float: right;
-    margin-right: 40px;
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    
+    background-color: #6E83AC; /* Pridėta, jei norite naudoti tą pačią fono spalvą */
+    margin-left: 89%;
 }
+
 
 .com-button img {
     height: 15px;
@@ -111,4 +123,43 @@
 select {
     padding: 10px;
     margin-right: 5px;
+}
+.comment{
+    padding-bottom: 5px;
+}
+.reply-container {
+    position: relative;
+    margin-left: 10px;
+}
+
+
+/* Styles for replies */
+.background-reply {
+    width: 90%;
+    background-color: #365c99;
+    align-items: start;
+    padding-bottom: 20px;
+    padding-left: 10px;
+    padding-top: 20px;
+    padding-right: 20px;
+    border-radius: 5px;
+    margin-left: 55px;
+    margin-bottom: 10px;
+    overflow: hidden; 
+    opacity: 0.9; /* Slight difference */
+}
+
+/* Styles for top-level comments */
+.background-comment {
+    width: 90%;
+    background-color: #335285;
+    align-items: start;
+    padding-bottom: 20px;
+    padding-left: 10px;
+    padding-top: 20px;
+    padding-right: 20px;
+    border-radius: 5px;
+    margin-left: 55px;
+    margin-bottom: 10px;
+    overflow: hidden; 
 }
