@@ -5,10 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="664ef725-6020-414a-b03b-b548f3de4bdf" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../BackEnd/.idea/.idea.BackEnd/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/.idea/.idea.BackEnd/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BackEnd/bin/Debug/net6.0/BackEnd.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/bin/Debug/net6.0/BackEnd.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BackEnd/bin/Debug/net6.0/BackEnd.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/bin/Debug/net6.0/BackEnd.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BackEnd/bin/Debug/net6.0/BackEnd.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/bin/Debug/net6.0/BackEnd.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BackEnd/obj/Debug/net6.0/BackEnd.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/obj/Debug/net6.0/BackEnd.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BackEnd/obj/Debug/net6.0/BackEnd.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/obj/Debug/net6.0/BackEnd.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BackEnd/obj/Debug/net6.0/BackEnd.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/obj/Debug/net6.0/BackEnd.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BackEnd/obj/Debug/net6.0/BackEnd.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/obj/Debug/net6.0/BackEnd.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BackEnd/obj/Debug/net6.0/BackEnd.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/obj/Debug/net6.0/BackEnd.sourcelink.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BackEnd/obj/Debug/net6.0/apphost.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/obj/Debug/net6.0/apphost.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BackEnd/obj/Debug/net6.0/ref/BackEnd.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/obj/Debug/net6.0/ref/BackEnd.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BackEnd/obj/Debug/net6.0/refint/BackEnd.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../BackEnd/obj/Debug/net6.0/refint/BackEnd.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/node_modules/.cache/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/.eslintcache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/default-development/index.pack" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/default-development/index.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/default-development/index.pack.old" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/default-development/index.pack.old" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/node_modules/.cache/tsconfig.tsbuildinfo" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/tsconfig.tsbuildinfo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/githubCodeDisplay.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/githubCodeDisplay.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Users.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Users.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +59,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "user-search",
-    "last_opened_file_path": "C:/Users/robot/Documents/LitHub/lithub/src/components",
+    "last_opened_file_path": "C:/Users/robot/Documents/LitHub/lithub/src/pages",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -57,6 +72,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\robot\Documents\LitHub\lithub\src\pages" />
       <recent name="C:\Users\robot\Documents\LitHub\lithub\src\components" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -109,7 +125,8 @@
       <workItem from="1715152389312" duration="5933000" />
       <workItem from="1715594294393" duration="5612000" />
       <workItem from="1715778865268" duration="4678000" />
-      <workItem from="1716793751024" duration="6310000" />
+      <workItem from="1716793751024" duration="8999000" />
+      <workItem from="1716900440141" duration="3157000" />
     </task>
     <servers />
   </component>

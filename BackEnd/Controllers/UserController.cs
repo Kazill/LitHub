@@ -324,9 +324,18 @@ namespace BackEnd.Controllers
                         projectCount
                     });
                 }
-                else
+                else if(user.Role=="Prisiregistravęs")
                 {
-                    usersList.Add(user);
+                    var workCount = _context.Marked.Where(x => x.userName == user.UserName).Count();
+                    usersList.Add(new
+                    {
+                        user.UserName,
+                        user.Email,
+                        user.Role,
+                        user.Company,
+                        user.GithubProfile,
+                        workCount
+                    });
                 }
             }
             return Ok(usersList);
