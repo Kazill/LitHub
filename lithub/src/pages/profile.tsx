@@ -8,6 +8,9 @@ interface UserProfile {
   id: number;
   userName: string;
   email: string;
+  company: string;
+  githubProfile: string;
+  phoneNumber: string;
   role: string;
   imageLink: string;
   // Add other fields as needed
@@ -56,7 +59,6 @@ const Profile: React.FC = () => {
   const getStatus = async (username: string | undefined) => {
     if (typeof username == "string") {
       const response = await axios.get(`https://localhost:7054/api/User/Waitting/${username}`);
-      console.log(response)
       setflag(response.data)
     }
   }
@@ -85,14 +87,38 @@ const Profile: React.FC = () => {
 
   const handleGithubLink = () => {
     if (userProfile?.role === "Prisiregistravęs") {
-      return <div style={{ background: '#6E83AC', padding: '5px' }}><p>Github: www.github.com/naudotojas</p></div>
+      if (userProfile?.githubProfile !== null) {
+        return (
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+            <p style={{ marginBottom: '5px' }}>Github adresas:</p>
+            <div style={{ background: '#6E83AC', padding: '5px', width: '100%' }}>
+              <p style={{ margin: 0 }}>{userProfile?.githubProfile}</p>
+            </div>
+          </div>
+        );
+      }
+      else {
+        return null;
+      }
     }
     return null;
   };
 
   const handleCompanyName = () => {
     if (userProfile?.role === "Patvirtinas") {
-      return <div style={{ background: '#6E83AC', padding: '5px' }}><p>Atstovaujama įmonė: Seimas</p></div>
+      if (userProfile?.company !== null) {
+        return (
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+            <p style={{ marginBottom: '5px' }}>Įmonė:</p>
+            <div style={{ background: '#6E83AC', padding: '5px', width: '100%' }}>
+              <p style={{ margin: 0 }}>{userProfile?.company}</p>
+            </div>
+          </div>
+        );
+      }
+      else {
+        return null;
+      }
     }
     return null;
   };
@@ -109,12 +135,12 @@ const Profile: React.FC = () => {
             return (
               <div>
                 <input type="file" accept="image/*" onChange={handleFileChange} />
-                <br/>
-                <br/>
-                <Button variant="contained" onClick={handleUpload} style={{ background: '#3f5581' }}>Įkelti nuotrauką</Button>
+                <br />
+                <br />
+                <Button variant="contained" onClick={handleUpload} style={{ background: '#3f5581' }}>Atnaujinti nuotrauką</Button>
               </div>
             );
-          
+
           }
       }
     }
@@ -130,7 +156,7 @@ const Profile: React.FC = () => {
   };
 
   const handleUpload = async () => {
-    if (selectedFile) {      
+    if (selectedFile) {
       try {
         const base64String = await fileToBase64(selectedFile);
         const formattedBase64String = base64String.split(',')[1] || base64String;
@@ -145,7 +171,10 @@ const Profile: React.FC = () => {
         console.log('Request Body:', formattedBase64String);
 
         const response = await axios.post(url, formattedBase64String, { headers });
-    
+
+        // Update the userProfile state with the new image link
+        setUserProfile(prevProfile => prevProfile ? { ...prevProfile, imageLink: response.data } : prevProfile);
+
         return response.data;
       } catch (error) {
         // Handle error
@@ -154,7 +183,7 @@ const Profile: React.FC = () => {
       }
     }
   };
-  
+
 
   const fileToBase64 = (file: File): Promise<string> => {
     return new Promise((resolve, reject) => {
@@ -300,83 +329,73 @@ const Profile: React.FC = () => {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', padding: '30px', minHeight: '100vh' }}>
-        <div><h1>Profilis</h1></div>
-        <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', marginBottom: '20px' }}>
-            <div style={{ width: '45%', padding: '20px', background: '#335285', borderRadius: '4px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-                <p style={{ marginBottom: '10px' }}>El. paštas:</p>
-                <TextField 
-                    fullWidth 
-                    name="email" 
-                    value={userProfile.email}
-                    sx={{
-                        bgcolor: 'rgba(255, 255, 255, 0.3)',
-                        mt: 1,
-                        '& .MuiOutlinedInput-root': {
-                            '& fieldset': {
-                                borderColor: 'transparent',
-                            },
-                            '&:hover fieldset': {
-                                borderColor: '#344955',
-                            },
-                            '&.Mui-focused fieldset': {
-                                borderColor: '#344955',
-                            },
-                        },
-                    }}
-                />
-                <p style={{ marginBottom: '10px' }}>Tel. nr.:</p>
-                <TextField 
-                    fullWidth 
-                    name="number" 
-                    value='+37060000000'
-                    sx={{
-                        bgcolor: 'rgba(255, 255, 255, 0.3)',
-                        mt: 1,
-                        '& .MuiOutlinedInput-root': {
-                            '& fieldset': {
-                                borderColor: 'transparent',
-                            },
-                            '&:hover fieldset': {
-                                borderColor: '#344955',
-                            },
-                            '&.Mui-focused fieldset': {
-                                borderColor: '#344955',
-                            },
-                        },
-                    }}
-                />
-            </div>
-            <div style={{ width: '45%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                <h2 style={{ marginBottom: '20px' }}>{userProfile.userName}</h2>
-                <img
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT550iCbL2jq7s7PMi3ikSNrvX1zpZYiZ_BTsQ9EUk4-Q&s"
-                    style={{ width: '100px', height: '100px', marginBottom: '20px', borderRadius: '50%' }}
-                    alt="Nuotrauka"
-                />
-                <div>
-                    {handleConfirmationRequest()}
-                    {handleAdminPrivileges()}
-                </div>
-            </div>
+      <div><h1>Profilis</h1></div>
+      <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', marginBottom: '20px' }}>
+        <div style={{ width: '45%', padding: '20px', background: '#335285', borderRadius: '4px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+          <p style={{ marginBottom: '10px' }}>El. paštas:</p>
+          <TextField
+            fullWidth
+            name="email"
+            value={userProfile.email}
+            sx={{
+              bgcolor: 'rgba(255, 255, 255, 0.3)',
+              mt: 1,
+              '& .MuiOutlinedInput-root': {
+                '& fieldset': {
+                  borderColor: 'transparent',
+                },
+                '&:hover fieldset': {
+                  borderColor: '#344955',
+                },
+                '&.Mui-focused fieldset': {
+                  borderColor: '#344955',
+                },
+              },
+            }}
+          />
+          <p style={{ marginBottom: '10px' }}>Tel. nr.:</p>
+          <TextField
+            fullWidth
+            name="number"
+            value={userProfile?.phoneNumber}
+            sx={{
+              bgcolor: 'rgba(255, 255, 255, 0.3)',
+              mt: 1,
+              '& .MuiOutlinedInput-root': {
+                '& fieldset': {
+                  borderColor: 'transparent',
+                },
+                '&:hover fieldset': {
+                  borderColor: '#344955',
+                },
+                '&.Mui-focused fieldset': {
+                  borderColor: '#344955',
+                },
+              },
+            }}
+          />
         </div>
-        <div style={{ width: '50%' }}>
+        <div style={{ width: '45%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <h2 style={{ marginBottom: '20px' }}>{userProfile.userName}</h2>
           <img
             src={userProfile.imageLink}
             style={{ width: '100px', height: '100px', marginBottom: '20px' }}
             alt="Profilio nuotrauka"
           />
-          <br></br>
-          {handleConfirmationRequest()}
-          <br/>
-          {handleAdminPrivileges()}
-          <br/>
-          {handleUploadImage()}
+          <div>
+            <br></br>
+            {handleConfirmationRequest()}
+            <br />
+            {handleAdminPrivileges()}
+            <br />
+            {handleUploadImage()}
+          </div>
         </div>
-      <div style={{ width: '50%', padding: '20px', background: '#335285',marginBottom: '20px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-          <p>Aprašymas:</p>
-          {handleGithubLink()}
-          {handleCompanyName()}
+      </div>
+      <div style={{ width: '50%', padding: '20px', background: '#335285', marginBottom: '20px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+        {handleGithubLink()}
+        {handleCompanyName()}
+        <p>Aprašymas:</p>
       </div>
     </div>
   );
