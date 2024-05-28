@@ -299,5 +299,46 @@ namespace BackEnd.Controllers
             }
             return false;
         }
+        [HttpGet("Users")]
+        public IActionResult getUsers()
+        {
+            List<object> usersList = new List<object>();
+            var users = _context.User.Select(x=>new
+            {
+                x.UserName,
+                x.Email,x.Role,x.Company,x.GithubProfile
+            }).ToList();
+
+            foreach (var user in users)
+            {
+                if (user.Role == "Patvirtinas")
+                {
+                    var projectCount = _context.Problem.Where(x => x.User.UserName == user.UserName).Count();
+                    usersList.Add(new
+                    {
+                        user.UserName,
+                        user.Email,
+                        user.Role,
+                        user.Company,
+                        user.GithubProfile,
+                        projectCount
+                    });
+                }
+                else if(user.Role=="Prisiregistravęs")
+                {
+                    var workCount = _context.Marked.Where(x => x.userName == user.UserName).Count();
+                    usersList.Add(new
+                    {
+                        user.UserName,
+                        user.Email,
+                        user.Role,
+                        user.Company,
+                        user.GithubProfile,
+                        workCount
+                    });
+                }
+            }
+            return Ok(usersList);
+        }
     }
 }

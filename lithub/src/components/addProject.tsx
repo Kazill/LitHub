@@ -46,10 +46,16 @@ function Project() {
         isPrivate: false,
         sourceId: userid
     });
-
+    const [errors, setErrors] = useState({
+        title: '',
+        description: '',
+        languages: '',
+        link: ''
+    });
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
+        setErrors({ ...errors, [name]: '' });
     };
 
     const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>, checked: boolean) => {
@@ -59,11 +65,37 @@ function Project() {
 
     const handleLanguagesChange = (_: any, values: string[]) => {
         setFormData({ ...formData, languages: values });
+        setErrors({ ...errors, languages: '' });
     };
+    const validate = () => {
+        let valid = true;
+        let newErrors = { title: '', description: '', languages: '', link: '' };
 
+        if (!formData.title) {
+            newErrors.title = 'Pavadinimas yra privalomas.';
+            valid = false;
+        }
+        if (!formData.description) {
+            newErrors.description = 'Aprašymas yra privalomas.';
+            valid = false;
+        }
+        if (formData.languages.length === 0) {
+            newErrors.languages = 'Bent viena kalba yra privaloma.';
+            valid = false;
+        }
+        if (!formData.link) {
+            newErrors.link = 'GitHub nuoroda yra privaloma.';
+            valid = false;
+        }
+
+        setErrors(newErrors);
+        return valid;
+    };
     const handleSubmit = async (e: React.FormEvent<HTMLButtonElement>) => {
         e.preventDefault();
-
+        if (!validate()) {
+            return;
+        }
         try {
             const response = await axios.post('https://localhost:7054/api/Problem', {
                 ...formData,
@@ -116,7 +148,9 @@ function Project() {
                                 borderColor: '#344955',
                             },
                         },
-                    }}
+                    }} 
+                    error={!!errors.title} 
+                    helperText={errors.title}
                 />
             </div>
             <div style={{ background: '#335285', borderRadius: '4px', padding: '20px', marginBottom: '5px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
@@ -146,6 +180,8 @@ function Project() {
                             },
                         },
                     }}
+                    error={!!errors.description}
+                    helperText={errors.description}
                 />
             </div>
             <div style={{ background: '#335285', borderRadius: '4px', padding: '20px', marginBottom: '5px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
@@ -157,7 +193,7 @@ function Project() {
                     multiple
                     options={languagesList}
                     onChange={handleLanguagesChange}
-                    renderInput={(params) => <TextField {...params} style={{ marginTop: 8 }} />}
+                    renderInput={(params) => <TextField {...params} style={{ marginTop: 8 }} error={!!errors.languages} helperText={errors.languages}/>}
                     sx={{
                         mt: 1,
                         bgcolor: 'rgba(255, 255, 255, 0.8)',
@@ -207,6 +243,8 @@ function Project() {
                                 },
                             },
                         }}
+                        error={!!errors.link}
+                        helperText={errors.link}
                     />
                 </div>
             </div>

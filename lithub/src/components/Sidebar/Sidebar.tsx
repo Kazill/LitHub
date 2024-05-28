@@ -13,6 +13,7 @@ import InfoIcon from '@mui/icons-material/Info';
 import LoginIcon from '@mui/icons-material/Login';
 import MenuIcon from '@mui/icons-material/Menu';
 import StorageIcon from '@mui/icons-material/Storage';
+import PeopleIcon from '@mui/icons-material/People';
 import {
     AppBar, Box, Button, Drawer, IconButton, List, ListItem, ListItemText, Menu, MenuItem, Toolbar,
     Typography
@@ -321,6 +322,17 @@ const Sidebar: React.FC<{}> = () => {
                     }
                 }}
                 ><StorageIcon sx={{ marginRight: '10px' }} />Projektai</Button>
+                <Button href='/users' sx={{
+                    color: 'white',
+                    justifyContent: "flex-start",
+                    textTransform: 'none',
+                    padding: '10px 20px',
+                    marginBottom: '10px',
+                    '&:hover': {
+                        backgroundColor: '#344955'
+                    }
+                }}
+                ><PeopleIcon sx={{ marginRight: '10px' }} />Vartotojai</Button>
                 <Button href='/duk' sx={{
                     color: 'white',
                     justifyContent: "flex-start",
@@ -337,4 +349,5 @@ const Sidebar: React.FC<{}> = () => {
         </div>
     );
 }
+// @ts-ignore
 export default Sidebar;
