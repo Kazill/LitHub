@@ -47,6 +47,9 @@ function MyProjects() {
     const [availableLanguages, setAvailableLanguages] = useState<string[]>([]);
     const [filterText, setFilterText] = useState('');
 
+    const [startDate, setStartDate] = useState<string>('');
+    const [endDate, setEndDate] = useState<string>('');
+
     const [usernameFilter, setUsernameFilter] = useState('');
     const [showUserFilter, setShowUserFilter] = useState(false);
 
@@ -112,124 +115,7 @@ function MyProjects() {
                 <div style={{padding: '10px', background: '#335285', display: 'flex', gap: '10px', borderRadius: '4px'}}> 
                 <AddProject />
                 <button onClick={toggleLanguageFilter}>Filtravimas pagal kalba</button>
-                
-
-            </div>
-
-                <LanguageFilterOverlay
-                    show={showLanguageFilter}
-                    onClose={handleOverlayClose}
-                    selectedLanguages={selectedLanguages}
-                    availableLanguages={filterAvailableLanguages()}
-                    onSelectLanguage={handleLanguageSelection}
-                    filterText={filterText}
-                    onFilterTextChange={setFilterText}
-                />
-                
-                <ProjectList 
-                    selectedLanguages={selectedLanguages} 
-                    usernameFilter={usernameFilter} 
-                /> 
-            </div>
-        );
-    } else {
-        return(null);
-    }
-}
-
-function AddProject() {
-    return (
-        <Link to="/addProject">
-            <button >Pridėti Projektą</button>
-        </Link>
-    );
-}
-
-function ProjectList({ selectedLanguages, usernameFilter }: { selectedLanguages: string[], usernameFilter: string }) {
-    const [problems, setProblems] = useState<ProblemData[]>([]);
-    const [startDate, setStartDate] = useState<string>('');
-    const [endDate, setEndDate] = useState<string>('');
-    const [page, setPage] = useState(1);
-
-    const marks = SetMarked();
-    const per_page = 5;
-
-    const hangleChange = (e: any, p: React.SetStateAction<number>) =>{
-        setPage(p);
-
-    }
-    useEffect(() => {
-        async function fetchData() {
-            try {
-                const response = await axios.get('https://localhost:7054/api/Problem/SortedByDate');
-                setProblems(response.data);
-            } catch (error) {
-                // Handle the error or log it
-                console.error(error);
-            }
-        }
-        fetchData();
-    }, []);
-
-    const filteredProblems = problems.filter(problem => {
-  // Filter by Language
-  if (selectedLanguages.length > 0) {
-    if(problem.languages == null)
-        {
-            return false;
-        }
-    const problemLanguages = problem.languages.split(' ').map(lang => lang.trim());
-    return selectedLanguages.some(lang => problemLanguages.includes(lang));
-  }
-
-  // Filter by Username
-//   if (usernameFilter) { 
-//     return problem.source.toLowerCase().includes(usernameFilter.toLowerCase());
-//   }
-
-  let token = localStorage.getItem('accessToken');
-  switch (token) {
-      case null:
-          return null;
-      default:
-        if(problem.source == null)
-            {
-                return false;
-            }
-        const data: CustomJwtPayload = jwtDecode(token);
-        return problem.source.toLowerCase().includes(data.username.toLowerCase());
-  }
-
-
-
-  // If no filters, return all projects
-  return true;
-});
-
-    const isClosed = (closed:boolean) =>{
-        if(closed){
-            return(
-                <>Uždarytas <span><img src={noCheck} alt='noCheck'/></span></>);
-        }
-        return (
-        <>Aktyvus <span><img src={check} alt='checkmark'/></span></>
-        );
-    }
-    const isPrivate = (priv:boolean) =>{
-        if(priv){
-            return(
-            <>Privatus <span><img src={lock} alt='lock'/></span></>
-        );
-        }
-        return (
-            <>Viešas <span><img src={unlock} alt='unlock'/></span></>
-        );
-    }
-
-//
-    return (
-        <Box p={3} sx={{ backgroundColor: '#335285', color: '#fff', borderRadius: '4px' }}>
-            <Box style={{display: 'flex', gap: '30px'}}>
+                <Box style={{display: 'flex', gap: '30px'}}>
                 <Box mb={2} display="flex" alignItems="center" marginLeft = '30px'>
                     <label htmlFor="startDate" style={{ marginRight: '10px'}}>Nuo:</label>
                     <TextField
@@ -283,6 +169,151 @@ function ProjectList({ selectedLanguages, usernameFilter }: { selectedLanguages:
                     />
                 </Box>
             </Box>
+                
+
+            </div>
+
+                <LanguageFilterOverlay
+                    show={showLanguageFilter}
+                    onClose={handleOverlayClose}
+                    selectedLanguages={selectedLanguages}
+                    availableLanguages={filterAvailableLanguages()}
+                    onSelectLanguage={handleLanguageSelection}
+                    filterText={filterText}
+                    onFilterTextChange={setFilterText}
+                />
+                
+                <ProjectList 
+                    selectedLanguages={selectedLanguages} 
+                    startDate={startDate}
+                    endDate={endDate}
+                /> 
+            </div>
+        );
+    } else {
+        return(null);
+    }
+}
+
+function AddProject() {
+    return (
+        <Link to="/addProject">
+            <button >Pridėti Projektą</button>
+        </Link>
+    );
+}
+
+function ProjectList({ selectedLanguages, startDate, endDate}: { selectedLanguages: string[], startDate: string, endDate: string }) {
+    const [problems, setProblems] = useState<ProblemData[]>([]);
+
+    const [page, setPage] = useState(1);
+
+    const marks = SetMarked();
+    const per_page = 5;
+
+    const hangleChange = (e: any, p: React.SetStateAction<number>) =>{
+        setPage(p);
+
+    }
+    useEffect(() => {
+        async function fetchData() {
+            try {
+                const response = await axios.get('https://localhost:7054/api/Problem/SortedByDate');
+                setProblems(response.data);
+            } catch (error) {
+                // Handle the error or log it
+                console.error(error);
+            }
+        }
+        fetchData();
+    }, []);
+
+    const filteredProblems = problems.filter(problem => {
+        var lang = true;
+        var stdate = true;
+        var endate = true;
+        var user = true;
+  // Filter by Language
+  if (selectedLanguages.length > 0) {
+    if(problem.languages == null)
+        {
+            lang = false;
+        }
+    else{
+    const problemLanguages = problem.languages.split(' ').map(lang => lang.trim());
+    lang = selectedLanguages.some(lang => problemLanguages.includes(lang));
+    }
+  }
+
+
+  let token = localStorage.getItem('accessToken');
+  switch (token) {
+      case null:
+          return null;
+      default:
+        if(problem.source == null)
+            {
+                user = false;
+            }
+        else{
+        const data: CustomJwtPayload = jwtDecode(token);
+        user = problem.source.toLowerCase().includes(data.username.toLowerCase());
+        }
+  }
+
+  if(startDate){
+    if(problem.lastUpdate == null){
+        stdate = false;
+    }
+    else if(startDate > problem.lastUpdate){
+        stdate = false;
+    }
+    else{
+        stdate = true;
+    }
+  }
+  if(endDate){
+    if(problem.lastUpdate == null){
+        endate = false;
+    }
+    else if(problem.lastUpdate> endDate){
+        endate = false;
+    }
+    else{
+        endate = true;
+    }
+  }
+
+
+
+  // If no filters, return all projects
+  return lang && user && stdate && endate;
+});
+
+    const isClosed = (closed:boolean) =>{
+        if(closed){
+            return(
+                <>Uždarytas <span><img src={noCheck} alt='noCheck'/></span></>);
+        }
+        return (
+        <>Aktyvus <span><img src={check} alt='checkmark'/></span></>
+        );
+    }
+    const isPrivate = (priv:boolean) =>{
+        if(priv){
+            return(
+            <>Privatus <span><img src={lock} alt='lock'/></span></>
+        );
+        }
+        return (
+            <>Viešas <span><img src={unlock} alt='unlock'/></span></>
+        );
+    }
+
+//
+    return (
+        <Box p={3} sx={{ backgroundColor: '#335285', color: '#fff', borderRadius: '4px' }}>
+            
             <Container>
                 <Grid container spacing={2} className='projects'>
                     {filteredProblems.slice((page - 1) * per_page, page * per_page).map(problem => (

@@ -355,8 +355,8 @@ function Project(this: any) {
 
         const handleReplySubmit = (event: React.FormEvent<HTMLFormElement>) => {
             event.preventDefault();
-            onSubmit(replyText, commentId); // Pass the reply text and comment ID back to the parent
-            setReplyText(''); // Reset the reply input after submission
+            onSubmit(replyText, commentId);
+            setReplyText('');
             setReplyingTo(null)
         };
 
@@ -364,14 +364,14 @@ function Project(this: any) {
             <form onSubmit={handleReplySubmit}>
                 <div className='background'>
                     <div className='pref'> </div>
-                    <div className='comments-content'>
-                <textarea
-                    value={replyText}
-                    onChange={handleReplyChange}
-                    placeholder="Rašyti atsakymą..."
-                    style={{ width: '100%', height: '100px', background: 6E83, border: 6E83 }}
-                />
-                </div>
+                        <div className='replay-content'>
+                            <textarea
+                                value={replyText}
+                                onChange={handleReplyChange}
+                                placeholder="Rašyti atsakymą..."
+                                style={{ width: '100%', background: 6E83, border: 6E83 }}
+                            />
+                        </div>
                 </div>
                 <button type="submit" className='com-button'>Pateikti <img src={arrow} alt='arrow'/></button>
             </form>

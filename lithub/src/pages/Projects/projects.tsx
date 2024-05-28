@@ -52,6 +52,9 @@ function Projects() {
     const [usernameFilter, setUsernameFilter] = useState('');
     const [showUserFilter, setShowUserFilter] = useState(false);
 
+    const [startDate, setStartDate] = useState<string>('');
+    const [endDate, setEndDate] = useState<string>('');
+
     const [userRole, setUserRole] = useState('Svečias');
     useEffect(() => {
         let token=localStorage.getItem('accessToken')
@@ -115,7 +118,6 @@ function Projects() {
                 <AddProject />
                 <button onClick={toggleLanguageFilter}>Filtravimas pagal kalba</button>
                 <button onClick={toggleUserFilter}>Filtruoti pagal vartotoją</button> 
-                
                 {showUserFilter && (
                 <div className="user-filter">
                     <input 
@@ -126,156 +128,7 @@ function Projects() {
                     />
                 </div>
                 )}
-
-            </div>
-
-                <LanguageFilterOverlay
-                    show={showLanguageFilter}
-                    onClose={handleOverlayClose}
-                    selectedLanguages={selectedLanguages}
-                    availableLanguages={filterAvailableLanguages()}
-                    onSelectLanguage={handleLanguageSelection}
-                    filterText={filterText}
-                    onFilterTextChange={setFilterText}
-                />
-                
-                <ProjectList 
-                    selectedLanguages={selectedLanguages} 
-                    usernameFilter={usernameFilter} 
-                /> 
-            </div>
-        );
-    } else {
-        return (
-            <div style={{padding: '10px', minHeight: '100vh'}}>
-                <h1 className='title' style={{ marginLeft: '20px' }}>PROJEKTAI</h1>
-
-                <div style={{padding: '10px', background: '#335285', display: 'flex', gap: '10px'}}> 
-                    <button onClick={toggleLanguageFilter}>Filtravimas pagal kalba</button>
-                    <button onClick={toggleUserFilter}>Filtruoti pagal vartotoją</button> 
-                    
-                    {showUserFilter && (
-                    <div className="user-filter">
-                        <input 
-                        type="text" 
-                        placeholder="Vartotojo vardas..." 
-                        value={usernameFilter} 
-                        onChange={(e) => setUsernameFilter(e.target.value)} 
-                        />
-                    </div>
-                    )}
-                </div>
-                
-                <LanguageFilterOverlay
-                    show={showLanguageFilter}
-                    onClose={handleOverlayClose}
-                    selectedLanguages={selectedLanguages}
-                    availableLanguages={filterAvailableLanguages()}
-                    onSelectLanguage={handleLanguageSelection}
-                    filterText={filterText}
-                    onFilterTextChange={setFilterText}
-                />
-                <ProjectList 
-                    selectedLanguages={selectedLanguages} 
-                    usernameFilter={usernameFilter} 
-                />
-            </div>
-
-
-        );
-    }
-    
-}
-
-function AddProject() {
-    return (
-        <Link to="/addProject">
-            <button >Pridėti Projektą</button>
-        </Link>
-    );
-}
-
-function ProjectList({ selectedLanguages, usernameFilter }: { selectedLanguages: string[], usernameFilter: string }) {
-    const [problems, setProblems] = useState<ProblemData[]>([]);
-    const [startDate, setStartDate] = useState<string>('');
-    const [endDate, setEndDate] = useState<string>('');
-    const [page, setPage] = useState(1);
-    const [showLanguageFilter, setShowLanguageFilter] = useState(false);
-    const [showUserFilter, setShowUserFilter] = useState(false);
-    const [availableLanguages, setAvailableLanguages] = useState<string[]>([]);
-
-    const marks = SetMarked();
-    const per_page = 5;
-
-    const hangleChange = (e: any, p: React.SetStateAction<number>) =>{
-        setPage(p);
-
-    }
-
-
-
-
-
-
-
-    useEffect(() => {
-        async function fetchData() {
-            try {
-                const response = await axios.get('https://localhost:7054/api/Problem/SortedByDate');
-                setProblems(response.data);
-            } catch (error) {
-                // Handle the error or log it
-                console.error(error);
-            }
-        }
-        fetchData();
-    }, []);
-
-    const filteredProblems = problems.filter(problem => {
-  // Filter by Language
-  if (selectedLanguages.length > 0) {
-    if(problem.languages == null)
-        {
-            return false;
-        }
-    const problemLanguages = problem.languages.split(' ').map(lang => lang.trim());
-    return selectedLanguages.some(lang => problemLanguages.includes(lang));
-  }
-
-  // Filter by Username
-  if (usernameFilter) { 
-    return problem.source.toLowerCase().includes(usernameFilter.toLowerCase());
-  }
-
-  // If no filters, return all projects
-  return true;
-});
-
-    const isClosed = (closed:boolean) =>{
-        if(closed){
-            return(
-                <>Uždarytas <span><img src={noCheck} alt='noCheck'/></span></>);
-        }
-        return (
-        <>Aktyvus <span><img src={check} alt='checkmark'/></span></>
-        );
-    }
-    const isPrivate = (priv:boolean) =>{
-        if(priv){
-            return(
-            <>Privatus <span><img src={lock} alt='lock'/></span></>
-        );
-        }
-        return (
-            <>Viešas <span><img src={unlock} alt='unlock'/></span></>
-        );
-    }
-
-//
-
-    return (
-        <Box p={3} sx={{ backgroundColor: '#335285', color: '#fff', borderRadius: '4px' }}>
-            <Box style={{display: 'flex', gap: '30px'}}>
+                <Box style={{display: 'flex', gap: '30px'}}>
                 <Box mb={2} display="flex" alignItems="center" marginLeft = '30px'>
                     <label htmlFor="startDate" style={{ marginRight: '10px'}}>Nuo:</label>
                     <TextField
@@ -329,6 +182,252 @@ function ProjectList({ selectedLanguages, usernameFilter }: { selectedLanguages:
                     />
                 </Box>
             </Box>
+                
+                
+
+            </div>
+
+                <LanguageFilterOverlay
+                    show={showLanguageFilter}
+                    onClose={handleOverlayClose}
+                    selectedLanguages={selectedLanguages}
+                    availableLanguages={filterAvailableLanguages()}
+                    onSelectLanguage={handleLanguageSelection}
+                    filterText={filterText}
+                    onFilterTextChange={setFilterText}
+                />
+
+                <ProjectList 
+                    selectedLanguages={selectedLanguages} 
+                    usernameFilter={usernameFilter} 
+                    startDate={startDate}
+                    endDate={endDate}
+                /> 
+            </div>
+        );
+    } else {
+        return (
+            <div style={{padding: '10px', minHeight: '100vh'}}>
+                <h1 className='title' style={{ marginLeft: '20px' }}>PROJEKTAI</h1>
+
+                <div style={{padding: '10px', background: '#335285', display: 'flex', gap: '10px'}}> 
+                    <button onClick={toggleLanguageFilter}>Filtravimas pagal kalba</button>
+                    <button onClick={toggleUserFilter}>Filtruoti pagal vartotoją</button> 
+                    {showUserFilter && (
+                    <div className="user-filter">
+                        <input 
+                        type="text" 
+                        placeholder="Vartotojo vardas..." 
+                        value={usernameFilter} 
+                        onChange={(e) => setUsernameFilter(e.target.value)} 
+                        />
+                    </div>
+                    )}
+                    <Box style={{display: 'flex', gap: '30px'}}>
+                <Box mb={2} display="flex" alignItems="center" marginLeft = '30px'>
+                    <label htmlFor="startDate" style={{ marginRight: '10px'}}>Nuo:</label>
+                    <TextField
+                        type="date"
+                        id="startDate"
+                        value={startDate}
+                        onChange={e => setStartDate(e.target.value)}
+                        variant="outlined"
+                        size="small"
+                        sx={{
+                            backgroundColor: '#fff',
+                            borderRadius: '4px',
+                            '& .MuiOutlinedInput-root': {
+                                '& fieldset': {
+                                    borderColor: 'transparent',
+                                },
+                                '&:hover fieldset': {
+                                    borderColor: '#344955',
+                                },
+                                '&.Mui-focused fieldset': {
+                                    borderColor: '#344955',
+                                },
+                            },
+                        }}
+                    />
+                </Box>
+                <Box mb={2} display="flex" alignItems="center">
+                    <label htmlFor="endDate" style={{ marginRight: '10px' }}>Iki:</label>
+                    <TextField
+                        type="date"
+                        id="endDate"
+                        value={endDate}
+                        onChange={e => setEndDate(e.target.value)}
+                        variant="outlined"
+                        size="small"
+                        sx={{
+                            backgroundColor: '#fff',
+                            borderRadius: '4px',
+                            '& .MuiOutlinedInput-root': {
+                                '& fieldset': {
+                                    borderColor: 'transparent',
+                                },
+                                '&:hover fieldset': {
+                                    borderColor: '#344955',
+                                },
+                                '&.Mui-focused fieldset': {
+                                    borderColor: '#344955',
+                                },
+                            },
+                        }}
+                    />
+                </Box>
+            </Box>
+                    
+                    
+                </div>
+                
+                <LanguageFilterOverlay
+                    show={showLanguageFilter}
+                    onClose={handleOverlayClose}
+                    selectedLanguages={selectedLanguages}
+                    availableLanguages={filterAvailableLanguages()}
+                    onSelectLanguage={handleLanguageSelection}
+                    filterText={filterText}
+                    onFilterTextChange={setFilterText}
+                />
+                
+                <ProjectList 
+                    selectedLanguages={selectedLanguages} 
+                    usernameFilter={usernameFilter} 
+                    startDate={startDate}
+                    endDate={endDate}
+                />
+            </div>
+
+
+        );
+    }
+    
+}
+
+function AddProject() {
+    return (
+        <Link to="/addProject">
+            <button >Pridėti Projektą</button>
+        </Link>
+    );
+}
+
+function ProjectList({ selectedLanguages, usernameFilter, startDate, endDate }: { selectedLanguages: string[], usernameFilter: string, startDate: string, endDate: string}) {
+    const [problems, setProblems] = useState<ProblemData[]>([]);
+    // const [startDate, setStartDate] = useState<string>('');
+    // const [endDate, setEndDate] = useState<string>('');
+    const [page, setPage] = useState(1);
+    const [showLanguageFilter, setShowLanguageFilter] = useState(false);
+    const [showUserFilter, setShowUserFilter] = useState(false);
+    const [availableLanguages, setAvailableLanguages] = useState<string[]>([]);
+
+    const marks = SetMarked();
+    const per_page = 5;
+
+    const hangleChange = (e: any, p: React.SetStateAction<number>) =>{
+        setPage(p);
+
+    }
+
+
+
+
+
+
+
+    useEffect(() => {
+        async function fetchData() {
+            try {
+                const response = await axios.get('https://localhost:7054/api/Problem/SortedByDate');
+                setProblems(response.data);
+            } catch (error) {
+                // Handle the error or log it
+                console.error(error);
+            }
+        }
+        fetchData();
+    }, []);
+
+    const filteredProblems = problems.filter(problem => {
+        var lang = true;
+        var user = true;
+        var stdate = true;
+        var endate = true;
+
+  // Filter by Language
+  if (selectedLanguages.length > 0) {
+    if(problem.languages == null)
+        {
+            lang = false;
+        }
+    else{
+    const problemLanguages = problem.languages.split(' ').map(lang => lang.trim());
+    lang = selectedLanguages.some(lang => problemLanguages.includes(lang));
+    }
+  }
+
+  // Filter by Username
+  if (usernameFilter) { 
+    if(problem.source == null){
+        user = false;
+    }
+    else{
+    user = problem.source.toLowerCase().includes(usernameFilter.toLowerCase());
+    }
+  }
+
+  if(startDate){
+    if(problem.lastUpdate == null){
+        stdate = false;
+    }
+    else if(startDate > problem.lastUpdate){
+        stdate = false;
+    }
+    else{
+        stdate = true;
+    }
+  }
+  if(endDate){
+    if(problem.lastUpdate == null){
+        endate = false;
+    }
+    else if(problem.lastUpdate> endDate){
+        endate = false;
+    }
+    else{
+        endate = true;
+    }
+  }
+
+  // If no filters, return all projects
+  return lang && user && stdate && endate
+});
+
+    const isClosed = (closed:boolean) =>{
+        if(closed){
+            return(
+                <>Uždarytas <span><img src={noCheck} alt='noCheck'/></span></>);
+        }
+        return (
+        <>Aktyvus <span><img src={check} alt='checkmark'/></span></>
+        );
+    }
+    const isPrivate = (priv:boolean) =>{
+        if(priv){
+            return(
+            <>Privatus <span><img src={lock} alt='lock'/></span></>
+        );
+        }
+        return (
+            <>Viešas <span><img src={unlock} alt='unlock'/></span></>
+        );
+    }
+
+//
+
+    return (
+        <Box p={3} sx={{ backgroundColor: '#335285', color: '#fff', borderRadius: '4px' }}>
 
 
             <Container>

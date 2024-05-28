@@ -132,15 +132,57 @@ function Project() {
                 <label>
                     Pavadinimas:
                 </label>
-                <TextField fullWidth onChange={handleInputChange} name="title" style={{ marginTop: 8 }} error={!!errors.title}
-                           helperText={errors.title}/>
+                <TextField fullWidth onChange={handleInputChange} name="title" style={{ marginTop: 8 }} 
+                    sx={{
+                        mt: 1,
+                        bgcolor: 'rgba(255, 255, 255, 0.8)',
+                        borderRadius: '4px',
+                        '& .MuiOutlinedInput-root': {
+                            '& fieldset': {
+                                borderColor: 'transparent',
+                            },
+                            '&:hover fieldset': {
+                                borderColor: '#344955',
+                            },
+                            '&.Mui-focused fieldset': {
+                                borderColor: '#344955',
+                            },
+                        },
+                    }} 
+                    error={!!errors.title} 
+                    helperText={errors.title}
+                />
             </div>
             <div style={{ background: '#335285', borderRadius: '4px', padding: '20px', marginBottom: '5px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
                 <label>
                     Aprašymas:
                 </label>
-                <TextField multiline fullWidth rows={4} onChange={handleInputChange} name="description" style={{ marginTop: 8 }} error={!!errors.description}
-                           helperText={errors.description}/>
+                <TextField 
+                    multiline 
+                    fullWidth 
+                    rows={4} 
+                    onChange={handleInputChange} 
+                    name="description" 
+                    style={{ marginTop: 8 }} 
+                    sx={{
+                        mt: 1,
+                        bgcolor: 'rgba(255, 255, 255, 0.8)',
+                        borderRadius: '4px',
+                        '& .MuiOutlinedInput-root': {
+                            '& fieldset': {
+                                borderColor: 'transparent',
+                            },
+                            '&:hover fieldset': {
+                                borderColor: '#344955',
+                            },
+                            '&.Mui-focused fieldset': {
+                                borderColor: '#344955',
+                            },
+                        },
+                    }}
+                    error={!!errors.description}
+                    helperText={errors.description}
+                />
             </div>
             <div style={{ background: '#335285', borderRadius: '4px', padding: '20px', marginBottom: '5px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
                 <label>
@@ -151,18 +193,59 @@ function Project() {
                     multiple
                     options={languagesList}
                     onChange={handleLanguagesChange}
-                    renderInput={(params) => <TextField {...params} style={{ marginTop: 8 }} error={!!errors.languages} helperText={errors.languages} />}
+                    renderInput={(params) => <TextField {...params} style={{ marginTop: 8 }} error={!!errors.languages} helperText={errors.languages}/>}
+                    sx={{
+                        mt: 1,
+                        bgcolor: 'rgba(255, 255, 255, 0.8)',
+                        borderRadius: '4px',
+                        '& .MuiOutlinedInput-root': {
+                            '& fieldset': {
+                                borderColor: 'transparent',
+                            },
+                            '&:hover fieldset': {
+                                borderColor: '#344955',
+                            },
+                            '&.Mui-focused fieldset': {
+                                borderColor: '#344955',
+                            },
+                        },
+                    }}
                 />
             </div>
             <div style={{ display: 'flex', padding: '0px 0', marginBottom: '5px' }}>
                 <div style={{ background: '#335285', borderRadius: '4px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', padding: '20px', flexGrow: 0 }}>
-                    <FormControlLabel required control={<Checkbox onChange={handleCheckboxChange} name="isPrivate" />} label="Privatus projektas" />
+                    <FormControlLabel 
+                        required control={<Checkbox onChange={handleCheckboxChange} name="isPrivate" />} 
+                        label="Privatus projektas" 
+                    />
                 </div>
                 <div style={{ padding: '5px' }}></div>
                 <div style={{ background: '#335285', borderRadius: '4px', flexGrow: 1, display: 'flex', flexDirection: 'column', alignItems: 'flex-start', padding: '5px' }}>
                     <label style={{ marginLeft: 20 }}>GitHub nuoroda:</label>
-                    <TextField fullWidth onChange={handleInputChange} name="link" style={{ marginTop: 8 }} error={!!errors.link}
-                               helperText={errors.link}/>
+                    <TextField 
+                        fullWidth 
+                        onChange={handleInputChange} 
+                        name="link" 
+                        style={{ marginTop: 8 }} 
+                        sx={{
+                            mt: 1,
+                            bgcolor: 'rgba(255, 255, 255, 0.8)',
+                            borderRadius: '4px',
+                            '& .MuiOutlinedInput-root': {
+                                '& fieldset': {
+                                    borderColor: 'transparent',
+                                },
+                                '&:hover fieldset': {
+                                    borderColor: '#344955',
+                                },
+                                '&.Mui-focused fieldset': {
+                                    borderColor: '#344955',
+                                },
+                            },
+                        }}
+                        error={!!errors.link}
+                        helperText={errors.link}
+                    />
                 </div>
             </div>
 

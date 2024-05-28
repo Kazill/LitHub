@@ -84,7 +84,7 @@ const EditProject: React.FC = () => {
                         size="small" 
                         sx={{
                             mt: 1,
-                            bgcolor: 'rgba(255, 255, 255, 0.9)',
+                            bgcolor: 'rgba(255, 255, 255, 0.8)',
                             borderRadius: '4px',
                             '& .MuiOutlinedInput-root': {
                                 '& fieldset': {
@@ -114,7 +114,7 @@ const EditProject: React.FC = () => {
                         size="small" 
                         sx={{
                             mt: 1,
-                            bgcolor: 'rgba(255, 255, 255, 0.9)',
+                            bgcolor: 'rgba(255, 255, 255, 0.8)',
                             borderRadius: '4px',
                             '& .MuiOutlinedInput-root': {
                                 '& fieldset': {
@@ -145,7 +145,7 @@ const EditProject: React.FC = () => {
                                 size="small" 
                                 sx={{
                                     mt: 1,
-                                    bgcolor: 'rgba(255, 255, 255, 0.9)',
+                                    bgcolor: 'rgba(255, 255, 255, 0.8)',
                                     borderRadius: '4px',
                                     '& .MuiOutlinedInput-root': {
                                         '& fieldset': {
@@ -174,7 +174,7 @@ const EditProject: React.FC = () => {
                         size="small" 
                         sx={{
                             mt: 1,
-                            bgcolor: 'rgba(255, 255, 255, 0.9)',
+                            bgcolor: 'rgba(255, 255, 255, 0.8)',
                             borderRadius: '4px',
                             '& .MuiOutlinedInput-root': {
                                 '& fieldset': {
