@@ -44,7 +44,7 @@ const Duk = () => {
                 <iframe 
                     width="100%" 
                     height="auto" 
-                    src="https://www.youtube.com/watch?v=AjZQqlIJ9m8" 
+                    src="https://www.youtube.com/embed/AjZQqlIJ9m8" 
                     title="Video"
                     frameBorder="0" 
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
