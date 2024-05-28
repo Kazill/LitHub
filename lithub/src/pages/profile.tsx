@@ -10,6 +10,9 @@ interface UserProfile {
   email: string;
   role: string;
   imageLink: string;
+  phoneNumber: string;
+  githubProfile: string;
+  company: string;
   // Add other fields as needed
 }
 interface CustomJwtPayload extends JwtPayload {
@@ -85,16 +88,31 @@ const Profile: React.FC = () => {
 
   const handleGithubLink = () => {
     if (userProfile?.role === "Prisiregistravęs") {
-      return <div style={{ background: '#6E83AC', padding: '5px' }}><p>Github: www.github.com/naudotojas</p></div>
+      return <div style={{ background: '#6E83AC', padding: '5px' }}><p>Github: {userProfile.githubProfile}</p></div>
     }
     return null;
   };
 
   const handleCompanyName = () => {
     if (userProfile?.role === "Patvirtinas") {
-      return <div style={{ background: '#6E83AC', padding: '5px' }}><p>Atstovaujama įmonė: Seimas</p></div>
+      return <div style={{ background: '#6E83AC', padding: '5px' }}><p>Atstovaujama įmonė: {userProfile.company}</p></div>
     }
     return null;
+  };
+
+  const handleImage = () => {
+    if (userProfile?.imageLink === null) {
+      return <img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT550iCbL2jq7s7PMi3ikSNrvX1zpZYiZ_BTsQ9EUk4-Q&s"
+        style={{ width: '100px', height: '100px', marginBottom: '20px', borderRadius: '50%' }}
+        alt="Nuotrauka"
+      />
+    }
+      return <img
+        src={userProfile?.imageLink}
+        style={{ width: '100px', height: '100px', marginBottom: '20px', borderRadius: '50%' }}
+        alt="Nuotrauka"
+      />
   };
 
   const handleUploadImage = () => {
@@ -328,7 +346,7 @@ const Profile: React.FC = () => {
                 <TextField 
                     fullWidth 
                     name="number" 
-                    value='+37060000000'
+                    value={userProfile.phoneNumber}
                     sx={{
                         bgcolor: 'rgba(255, 255, 255, 0.3)',
                         mt: 1,
@@ -348,11 +366,7 @@ const Profile: React.FC = () => {
             </div>
             <div style={{ width: '45%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                 <h2 style={{ marginBottom: '20px' }}>{userProfile.userName}</h2>
-                <img
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT550iCbL2jq7s7PMi3ikSNrvX1zpZYiZ_BTsQ9EUk4-Q&s"
-                    style={{ width: '100px', height: '100px', marginBottom: '20px', borderRadius: '50%' }}
-                    alt="Nuotrauka"
-                />
+                {handleImage()}
                 <div>
                     {handleConfirmationRequest()}
                     {handleAdminPrivileges()}
@@ -361,11 +375,7 @@ const Profile: React.FC = () => {
         </div>
         <div style={{ width: '50%' }}>
           <h2 style={{ marginBottom: '20px' }}>{userProfile.userName}</h2>
-          <img
-            src={userProfile.imageLink}
-            style={{ width: '100px', height: '100px', marginBottom: '20px' }}
-            alt="Profilio nuotrauka"
-          />
+          {handleImage()}
           <br></br>
           {handleConfirmationRequest()}
           <br/>
