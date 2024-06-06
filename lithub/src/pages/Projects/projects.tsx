@@ -318,23 +318,12 @@ function ProjectList({ selectedLanguages, usernameFilter, startDate, endDate }: 
     // const [startDate, setStartDate] = useState<string>('');
     // const [endDate, setEndDate] = useState<string>('');
     const [page, setPage] = useState(1);
-    const [showLanguageFilter, setShowLanguageFilter] = useState(false);
-    const [showUserFilter, setShowUserFilter] = useState(false);
-    const [availableLanguages, setAvailableLanguages] = useState<string[]>([]);
-
     const marks = SetMarked();
     const per_page = 5;
 
-    const hangleChange = (e: any, p: React.SetStateAction<number>) =>{
+    const handlePageChange = (e: any, p: React.SetStateAction<number>) =>{
         setPage(p);
-
     }
-
-
-
-
-
-
 
     useEffect(() => {
         async function fetchData() {
@@ -342,7 +331,6 @@ function ProjectList({ selectedLanguages, usernameFilter, startDate, endDate }: 
                 const response = await axios.get('https://localhost:7054/api/Problem/SortedByDate');
                 setProblems(response.data);
             } catch (error) {
-                // Handle the error or log it
                 console.error(error);
             }
         }
@@ -355,81 +343,70 @@ function ProjectList({ selectedLanguages, usernameFilter, startDate, endDate }: 
         var stdate = true;
         var endate = true;
 
-  // Filter by Language
-  if (selectedLanguages.length > 0) {
-    if(problem.languages == null)
-        {
-            lang = false;
+        if (selectedLanguages.length > 0) {
+            if(problem.languages == null) {
+                lang = false;
+            } else {
+                const problemLanguages = problem.languages.split(' ').map(lang => lang.trim());
+                lang = selectedLanguages.some(lang => problemLanguages.includes(lang));
+            }
         }
-    else{
-    const problemLanguages = problem.languages.split(' ').map(lang => lang.trim());
-    lang = selectedLanguages.some(lang => problemLanguages.includes(lang));
-    }
-  }
 
-  // Filter by Username
-  if (usernameFilter) { 
-    if(problem.source == null){
-        user = false;
-    }
-    else{
-    user = problem.source.toLowerCase().includes(usernameFilter.toLowerCase());
-    }
-  }
+        if (usernameFilter) { 
+            if(problem.source == null) {
+                user = false;
+            } else {
+                user = problem.source.toLowerCase().includes(usernameFilter.toLowerCase());
+            }
+        }
 
-  if(startDate){
-    if(problem.lastUpdate == null){
-        stdate = false;
-    }
-    else if(startDate > problem.lastUpdate){
-        stdate = false;
-    }
-    else{
-        stdate = true;
-    }
-  }
-  if(endDate){
-    if(problem.lastUpdate == null){
-        endate = false;
-    }
-    else if(problem.lastUpdate> endDate){
-        endate = false;
-    }
-    else{
-        endate = true;
-    }
-  }
+        if(startDate) {
+            if(problem.lastUpdate == null || startDate > problem.lastUpdate) {
+                stdate = false;
+            }
+        }
 
-  // If no filters, return all projects
-  return lang && user && stdate && endate
-});
+        if(endDate) {
+            if(problem.lastUpdate == null || problem.lastUpdate > endDate) {
+                endate = false;
+            }
+        }
 
-    const isClosed = (closed:boolean) =>{
-        if(closed){
-            return(
-                <>Uždarytas <span><img src={noCheck} alt='noCheck'/></span></>);
+        return lang && user && stdate && endate;
+    }).sort((a, b) => {
+        if (a.isClosed !== b.isClosed) {
+            return a.isClosed ? 1 : -1; // Closed projects last
+        } 
+        if (a.isPrivate !== b.isPrivate) {
+            return a.isPrivate ? 1 : -1; // Private projects after public ones
+        }
+        return 0;
+    });
+
+    const isClosed = (closed: boolean) => {
+        if (closed) {
+            return (
+                <>Uždarytas <span><img src={noCheck} alt='noCheck'/></span></>
+            );
         }
         return (
-        <>Aktyvus <span><img src={check} alt='checkmark'/></span></>
+            <>Aktyvus <span><img src={check} alt='checkmark'/></span></>
         );
     }
-    const isPrivate = (priv:boolean) =>{
-        if(priv){
-            return(
-            <>Privatus <span><img src={lock} alt='lock'/></span></>
-        );
+
+    const isPrivate = (priv: boolean) => {
+        if (priv) {
+            return (
+                <>Privatus <span><img src={lock} alt='lock'/></span></>
+            );
         }
         return (
             <>Viešas <span><img src={unlock} alt='unlock'/></span></>
         );
     }
 
-//
-
     return (
         <Box p={3} sx={{ backgroundColor: '#335285', color: '#fff', borderRadius: '4px' }}>
-
-
             <Container>
                 <Grid container spacing={2} className='projects'>
                     {filteredProblems.slice((page - 1) * per_page, page * per_page).map(problem => (
@@ -451,14 +428,14 @@ function ProjectList({ selectedLanguages, usernameFilter, startDate, endDate }: 
                                         <p className='largerText' style={{ fontSize: '1.25rem', fontWeight: 'bold' }}>{problem.title}</p>
                                         <p>Paskelbė: <Link to={`/profile/${problem.source}`} style={{ color: '#335285' }}>{problem.source}</Link></p>
                                         <Box className='languageBox' display="flex" alignItems="center">
-                                            <img src={langImg} alt="languege" />
+                                            <img src={langImg} alt="language" />
                                             <span className='languages' style={{ marginLeft: '8px' }}>{problem.languages}</span>
                                         </Box>
                                         <p>Paskutinis atnaujinimas: {problem.lastUpdate}</p>
                                     </Box>
                                     <Box className='projectState'>
-                                        <p className='largerText' style={{ fontSize: '1.25rem' }}>{isClosed(problem?.isClosed)}</p>
-                                        <p className='largerText' style={{ fontSize: '1.25rem' }}>{isPrivate(problem?.isPrivate)}</p>
+                                        <p className='largerText' style={{ fontSize: '1.25rem' }}>{isClosed(problem.isClosed)}</p>
+                                        <p className='largerText' style={{ fontSize: '1.25rem' }}>{isPrivate(problem.isPrivate)}</p>
                                     </Box>
                                 </Box>
                             </Link>
@@ -468,13 +445,11 @@ function ProjectList({ selectedLanguages, usernameFilter, startDate, endDate }: 
                 <Pagination
                     count={Math.max(1, Math.ceil(filteredProblems.length / per_page))}
                     page={page}
-                    onChange={hangleChange}
+                    onChange={handlePageChange}
                     sx={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}
                 />
-                
             </Container>
         </Box>
-        
     );
 }
 
