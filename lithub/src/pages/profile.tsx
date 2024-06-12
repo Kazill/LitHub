@@ -1,4 +1,4 @@
-import { Button, TextField } from '@mui/material';
+import {Button, TextField, Typography} from '@mui/material';
 import axios from 'axios';
 import { JwtPayload, jwtDecode } from "jwt-decode";
 import React, { useEffect, useState } from 'react';
@@ -90,12 +90,12 @@ const Profile: React.FC = () => {
     if (userProfile?.role === "Prisiregistravęs") {
       if (userProfile?.githubProfile !== null) {
         return (
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+            <>
             <p style={{ marginBottom: '5px', color: "white" }}>Github adresas:</p>
             <div style={{ background: '#6E83AC', padding: '5px', width: '100%' }}>
-              <p style={{ margin: 0 }}>{userProfile?.githubProfile}</p>
+              <Typography style={{ margin: 0,textAlign:"left" }}><a href={userProfile?.githubProfile}>{userProfile?.githubProfile}</a></Typography>
             </div>
-          </div>
+            </>
         );
       }
       else {
@@ -109,12 +109,12 @@ const Profile: React.FC = () => {
     if (userProfile?.role === "Patvirtinas") {
       if (userProfile?.company !== null) {
         return (
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+            <>
             <p style={{ marginBottom: '5px', color: "white" }}>Įmonė:</p>
             <div style={{ background: '#6E83AC', padding: '5px', width: '100%' }}>
-              <p style={{ margin: 0 }}>{userProfile?.company}</p>
+              <Typography style={{ margin: 0,textAlign:"left" }}>{userProfile?.company}</Typography>
             </div>
-          </div>
+          </>
         );
       }
       else {
@@ -274,35 +274,18 @@ const Profile: React.FC = () => {
         <div style={{ width: '45%', padding: '20px', background: '#335285', borderRadius: '4px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
           <p style={{ marginBottom: '10px', color: "white" }}>El. paštas:</p>
           <div style={{ background: '#6E83AC', padding: '5px', width: '100%' }}>
-            <p style={{ margin: 0, textAlign: 'left' }}>{userProfile?.email}</p>
+            <Typography style={{ margin: 0, textAlign: 'left' }}>{userProfile?.email}</Typography>
           </div>
           <p style={{ marginBottom: '10px', color: "white" }}>Tel. nr.:</p>
-          <TextField
-            fullWidth
-            name="number"
-            value={userProfile?.phoneNumber}
-            sx={{
-              bgcolor: 'rgba(255, 255, 255, 0.3)',
-              mt: 1,
-              '& .MuiOutlinedInput-root': {
-                '& fieldset': {
-                  borderColor: 'transparent',
-                },
-                '&:hover fieldset': {
-                  borderColor: '#344955',
-                },
-                '&.Mui-focused fieldset': {
-                  borderColor: '#344955',
-                },
-              },
-            }}
-          />
+          <div style={{ background: '#6E83AC', padding: '5px', width: '100%' }}>
+            <Typography style={{ margin: 0, textAlign: 'left' }}>{userProfile?.phoneNumber}</Typography>
+          </div>
         </div>
         <div style={{ width: '45%', padding: '20px', background: '#335285', borderRadius: '4px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <h2 style={{ marginBottom: '20px', color: "white" }}>{userProfile.userName}</h2>
             <img
               src={userProfile.imageLink}
-              style={{ width: '100px', height: '100px', marginBottom: '20px',borderRadius: '50%'  }}
+              style={{ width: '100px', height: '100px', marginBottom: '20px' }}
               alt="Profilio nuotrauka"
             />
             <div>
@@ -318,7 +301,7 @@ const Profile: React.FC = () => {
         {handleCompanyName()}
         <p style={{color: "white"}}>Aprašymas:</p>
         <div style={{ background: '#6E83AC', padding: '5px', width: '100%' }}>
-          <p style={{ margin: 0, textAlign: 'left' }}>{userProfile?.about}</p>
+          <Typography style={{ margin: 0, textAlign: 'left' }}>{userProfile?.about}</Typography>
         </div>
       </div>
     </div>

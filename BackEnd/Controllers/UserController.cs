@@ -356,6 +356,18 @@ namespace BackEnd.Controllers
                     throw new KeyNotFoundException("User not found");
                 }
 
+                var check = await _context.User.AnyAsync(x=>x.Email==updateDto.Email);
+                List<ErrorInfo> errors = new List<ErrorInfo>();
+
+                if (_context.User.Any(x => x.Email == updateDto.Email && x.Id != id))
+                {
+                    errors.Add(new ErrorInfo{ error = "Email", message = "El. paštas jau egzistuoja."});
+                }
+
+                if (errors.Count() != 0)
+                {
+                    return BadRequest(errors);
+                }
                 user.Email = updateDto.Email;
                 user.Company = updateDto.Company;
                 user.GithubProfile = updateDto.GithubProfile;
@@ -373,7 +385,6 @@ namespace BackEnd.Controllers
             }
             catch (Exception ex)
             {
-                // Log the exception here
                 return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
             }
         }

@@ -2,7 +2,7 @@ import { AppBar, Toolbar, IconButton, Typography, Button, Box, Menu, MenuItem } 
 import React, { useState, useEffect } from 'react';
 import {Link, useNavigate} from "react-router-dom";
 import MenuIcon from '@mui/icons-material/Menu';
-import {AccountCircle} from "@mui/icons-material";
+import {AccountCircle, Image} from "@mui/icons-material";
 import {jwtDecode, JwtPayload} from "jwt-decode";
 import Avatar from '@mui/material/Avatar';
 import LogoutIcon from '@mui/icons-material/Logout';
@@ -67,7 +67,7 @@ function OptionsForDesktop(role: string){
             const data :CustomJwtPayload=jwtDecode(token)
             return(<div style={{ display: 'flex', alignItems: 'center' }}>
                     <img
-                        style={{ width: 40, height: 40, display: 'flex', justifyContent: 'center', alignItems: 'center', borderRadius: '50%' }}
+                        style={{ width: 40, height: 40, display: 'flex', justifyContent: 'center', alignItems: 'center' }}
                         onClick={handleMenu}
                         src={userProfile?.imageLink}
                     />

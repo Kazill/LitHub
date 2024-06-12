@@ -1,8 +1,9 @@
-import { Button, TextField } from '@mui/material';
+import {Button, TextField, Typography} from '@mui/material';
 import axios from 'axios';
 import { JwtPayload, jwtDecode } from "jwt-decode";
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import RichTextEditor from "../components/RichTextEditor";
 
 interface UserProfile {
     id: number;
@@ -29,6 +30,10 @@ const ProfileEdit: React.FC = () => {
     const navigate = useNavigate();
     const [userRole, setUserRole] = useState('Svečias');
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
+
+    const [errorMessages, setErrorMessages] = useState({
+        email: ''
+    });
 
     useEffect(() => {
         const token = localStorage.getItem('accessToken');
@@ -101,6 +106,9 @@ const ProfileEdit: React.FC = () => {
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target;
         setUserProfile(prevProfile => prevProfile ? { ...prevProfile, [name]: value } : prevProfile);
+        if(name === "email"){
+            setErrorMessages({ ...errorMessages, [name]: ''});
+        }
     };
 
     const handleSave = async () => {
@@ -116,8 +124,20 @@ const ProfileEdit: React.FC = () => {
                 });
                 setUserProfile(response.data);
                 navigate(`/profile/${username}`);
-            } catch (error) {
-                console.error('Error updating user profile:', error);
+            } catch (e) {
+                if (axios.isAxiosError(e)) {
+                    if (e.response && e.response.status === 400) {
+                        e.response.data.forEach(function (response: any){
+                            const { error, message } = response;
+                            setErrorMessages({ ...errorMessages, [error.toLowerCase()]: message });
+                            console.log(response)
+                        })
+                    } else {
+                        console.error('Error submitting form:', e);
+                    }
+                } else {
+                    console.error('An unexpected error occurred:', e);
+                }
             }
         }
     };
@@ -138,6 +158,7 @@ const ProfileEdit: React.FC = () => {
                         value={userProfile.email}
                         required
                         onChange={handleChange}
+                        error={Boolean(errorMessages.email)}
                         sx={{
                             bgcolor: 'rgba(255, 255, 255, 0.3)',
                             mt: 1,
@@ -154,6 +175,9 @@ const ProfileEdit: React.FC = () => {
                             },
                         }}
                     />
+                    {errorMessages.email && (
+                        <Typography color="error" >{errorMessages.email}</Typography>
+                    )}
                     <p style={{ marginBottom: '10px', color: "white" }}>Tel. nr.:</p>
                     <TextField
                         fullWidth
@@ -182,7 +206,7 @@ const ProfileEdit: React.FC = () => {
                     <h2 style={{ marginBottom: '20px', color: "white" }}>{userProfile.userName}</h2>
                     <img
                         src={userProfile.imageLink}
-                        style={{ width: '100px', height: '100px', marginBottom: '20px', borderRadius: '50%' }}
+                        style={{ width: '100px', height: '100px', marginBottom: '20px' }}
                         alt="Profilio nuotrauka"
                     />
                     <div>
