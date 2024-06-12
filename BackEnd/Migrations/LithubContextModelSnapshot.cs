@@ -149,6 +149,10 @@ namespace BackEnd.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<string>("About")
+                        .HasMaxLength(10000)
+                        .HasColumnType("varchar(10000)");
+
                     b.Property<string>("Company")
                         .HasMaxLength(100)
                         .HasColumnType("varchar(100)");
@@ -202,7 +206,7 @@ namespace BackEnd.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("varchar(20)");
 
-                    b.Property<int>("userId")
+                    b.Property<int?>("userId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -233,9 +237,7 @@ namespace BackEnd.Migrations
                 {
                     b.HasOne("BackEnd.Models.User", "user")
                         .WithMany()
-                        .HasForeignKey("userId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("userId");
 
                     b.Navigation("user");
                 });

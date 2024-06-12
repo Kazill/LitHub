@@ -26,6 +26,9 @@ namespace BackEnd.Models
         public string? Company { get; set; }
         [StringLength(maximumLength: 1000)]
         public string? ImageLink { get; set; }
+        
+        [StringLength(maximumLength: 10000)]
+        public string? About { get; set; }
 
     }
 }
