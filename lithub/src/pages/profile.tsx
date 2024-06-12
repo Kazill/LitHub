@@ -13,6 +13,7 @@ interface UserProfile {
   phoneNumber: string;
   role: string;
   imageLink: string;
+  about:string;
   // Add other fields as needed
 }
 interface CustomJwtPayload extends JwtPayload {
@@ -90,7 +91,7 @@ const Profile: React.FC = () => {
       if (userProfile?.githubProfile !== null) {
         return (
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-            <p style={{ marginBottom: '5px' }}>Github adresas:</p>
+            <p style={{ marginBottom: '5px', color: "white" }}>Github adresas:</p>
             <div style={{ background: '#6E83AC', padding: '5px', width: '100%' }}>
               <p style={{ margin: 0 }}>{userProfile?.githubProfile}</p>
             </div>
@@ -109,7 +110,7 @@ const Profile: React.FC = () => {
       if (userProfile?.company !== null) {
         return (
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-            <p style={{ marginBottom: '5px' }}>Įmonė:</p>
+            <p style={{ marginBottom: '5px', color: "white" }}>Įmonė:</p>
             <div style={{ background: '#6E83AC', padding: '5px', width: '100%' }}>
               <p style={{ margin: 0 }}>{userProfile?.company}</p>
             </div>
@@ -121,80 +122,6 @@ const Profile: React.FC = () => {
       }
     }
     return null;
-  };
-
-  const handleUploadImage = () => {
-    if (userRole) {
-      let token = localStorage.getItem('accessToken')
-      switch (token) {
-        case null:
-          return null
-        default:
-          const data: CustomJwtPayload = jwtDecode(token)
-          if (data.username === username) {
-            return (
-              <div>
-                <input type="file" accept="image/*" onChange={handleFileChange} />
-                <br />
-                <br />
-                <Button variant="contained" onClick={handleUpload} style={{ background: '#3f5581' }}>Atnaujinti nuotrauką</Button>
-              </div>
-            );
-
-          }
-      }
-    }
-    return null;
-  };
-
-  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const files = event.target.files;
-    if (files && files.length > 0) {
-      const file = files[0];
-      setSelectedFile(file);
-    }
-  };
-
-  const handleUpload = async () => {
-    if (selectedFile) {
-      try {
-        const base64String = await fileToBase64(selectedFile);
-        const formattedBase64String = base64String.split(',')[1] || base64String;
-
-        const url = `https://localhost:7054/api/User/upload?id=${userProfile?.id}`;
-        const headers = {
-          'Content-Type': 'application/json',
-        };
-
-        console.log('Request URL:', url);
-        console.log('Request Headers:', headers);
-        console.log('Request Body:', formattedBase64String);
-
-        const response = await axios.post(url, formattedBase64String, { headers });
-
-        // Update the userProfile state with the new image link
-        setUserProfile(prevProfile => prevProfile ? { ...prevProfile, imageLink: response.data } : prevProfile);
-
-        return response.data;
-      } catch (error) {
-        // Handle error
-        console.error('Error uploading image:', error);
-        throw error;
-      }
-    }
-  };
-
-
-  const fileToBase64 = (file: File): Promise<string> => {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => {
-        const base64String = reader.result?.toString().split(',')[1];
-        resolve(base64String || "");
-      };
-      reader.onerror = (error) => reject(error);
-    });
   };
 
   const handleAdminPrivileges = () => {
@@ -323,6 +250,18 @@ const Profile: React.FC = () => {
     }
   };
 
+  const handleEditCall= () =>{
+    let token = localStorage.getItem('accessToken')
+    if (token !== null) {
+      const data: CustomJwtPayload = jwtDecode(token)
+      if (username === data.username) {
+        return <Button variant="contained" href={`/profile-edit/${username}`} style={{background: '#3f5581'}}>Redaguoti
+          profilį</Button>
+      }
+    }
+  }
+
+
   if (!userProfile) {
     return <div>Loading...</div>;
   }
@@ -330,30 +269,14 @@ const Profile: React.FC = () => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', padding: '30px', minHeight: '100vh' }}>
       <div><h1>Profilis</h1></div>
+      <div style={{ display: 'flex', width: '100%', marginBottom: '20px' }}>{handleEditCall()}</div>
       <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', marginBottom: '20px' }}>
         <div style={{ width: '45%', padding: '20px', background: '#335285', borderRadius: '4px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-          <p style={{ marginBottom: '10px' }}>El. paštas:</p>
-          <TextField
-            fullWidth
-            name="email"
-            value={userProfile.email}
-            sx={{
-              bgcolor: 'rgba(255, 255, 255, 0.3)',
-              mt: 1,
-              '& .MuiOutlinedInput-root': {
-                '& fieldset': {
-                  borderColor: 'transparent',
-                },
-                '&:hover fieldset': {
-                  borderColor: '#344955',
-                },
-                '&.Mui-focused fieldset': {
-                  borderColor: '#344955',
-                },
-              },
-            }}
-          />
-          <p style={{ marginBottom: '10px' }}>Tel. nr.:</p>
+          <p style={{ marginBottom: '10px', color: "white" }}>El. paštas:</p>
+          <div style={{ background: '#6E83AC', padding: '5px', width: '100%' }}>
+            <p style={{ margin: 0, textAlign: 'left' }}>{userProfile?.email}</p>
+          </div>
+          <p style={{ marginBottom: '10px', color: "white" }}>Tel. nr.:</p>
           <TextField
             fullWidth
             name="number"
@@ -375,27 +298,28 @@ const Profile: React.FC = () => {
             }}
           />
         </div>
-        <div style={{ width: '45%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          <h2 style={{ marginBottom: '20px' }}>{userProfile.userName}</h2>
-          <img
-            src={userProfile.imageLink}
-            style={{ width: '100px', height: '100px', marginBottom: '20px' }}
-            alt="Profilio nuotrauka"
-          />
-          <div>
-            <br></br>
-            {handleConfirmationRequest()}
-            <br />
-            {handleAdminPrivileges()}
-            <br />
-            {handleUploadImage()}
+        <div style={{ width: '45%', padding: '20px', background: '#335285', borderRadius: '4px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <h2 style={{ marginBottom: '20px', color: "white" }}>{userProfile.userName}</h2>
+            <img
+              src={userProfile.imageLink}
+              style={{ width: '100px', height: '100px', marginBottom: '20px',borderRadius: '50%'  }}
+              alt="Profilio nuotrauka"
+            />
+            <div>
+              <br></br>
+              {handleConfirmationRequest()}
+              <br />
+              {handleAdminPrivileges()}
+            </div>
           </div>
-        </div>
       </div>
-      <div style={{ width: '50%', padding: '20px', background: '#335285', marginBottom: '20px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+      <div style={{ padding: '20px', background: '#335285', marginBottom: '20px', borderRadius: '4px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
         {handleGithubLink()}
         {handleCompanyName()}
-        <p>Aprašymas:</p>
+        <p style={{color: "white"}}>Aprašymas:</p>
+        <div style={{ background: '#6E83AC', padding: '5px', width: '100%' }}>
+          <p style={{ margin: 0, textAlign: 'left' }}>{userProfile?.about}</p>
+        </div>
       </div>
     </div>
   );

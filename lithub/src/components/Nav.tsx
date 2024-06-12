@@ -4,9 +4,23 @@ import {Link, useNavigate} from "react-router-dom";
 import MenuIcon from '@mui/icons-material/Menu';
 import {AccountCircle} from "@mui/icons-material";
 import {jwtDecode, JwtPayload} from "jwt-decode";
+import Avatar from '@mui/material/Avatar';
 import LogoutIcon from '@mui/icons-material/Logout';
 import DisplaySettingsIcon from '@mui/icons-material/DisplaySettings';
+import axios from "axios";
 
+interface UserProfile {
+    id: number;
+    userName: string;
+    email: string;
+    company: string;
+    githubProfile: string;
+    phoneNumber: string;
+    role: string;
+    imageLink: string;
+    about:string;
+    // Add other fields as needed
+}
 interface CustomJwtPayload extends JwtPayload {
     username: string;
     role: string;
@@ -16,6 +30,7 @@ interface CustomJwtPayload extends JwtPayload {
 //Switch navbar buttons according to the user role for desktop
 function OptionsForDesktop(role: string){
     const navigate = useNavigate()
+    const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
     const handleLogout = () => {
         localStorage.removeItem('accessToken');
         navigate('/');
@@ -25,7 +40,22 @@ function OptionsForDesktop(role: string){
     const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorEl(event.currentTarget);
     };
+    useEffect(() => {
+        const fetchUserProfile = async () => {
+            try {
+                let token = localStorage.getItem('accessToken')
+                if (token !== null) {
+                    const data: CustomJwtPayload = jwtDecode(token)
+                    const response = await axios.get(`https://localhost:7054/api/User/username/${data.username}`);
+                    setUserProfile(response.data);
+                }
+            } catch (error) {
+                console.error('Error fetching user profile:', error);
+            }
+        };
 
+        fetchUserProfile();
+    }, []);
     const handleClose = () => {
         setAnchorEl(null);
     };
@@ -35,39 +65,34 @@ function OptionsForDesktop(role: string){
             return(<></>);
         default:
             const data :CustomJwtPayload=jwtDecode(token)
-            return(<div>
-                <IconButton
-                    size="large"
-                    aria-label="account of current user"
-                    aria-controls="menu-appbar"
-                    aria-haspopup="true"
-                    onClick={handleMenu}
-                    color="inherit"
-                >
-                    <AccountCircle sx={{color:'white'}}/>
-                </IconButton>
-                <Menu
-                    id="menu-appbar"
-                    anchorEl={anchorEl}
-                    anchorOrigin={{
-                        vertical: 'top',
-                        horizontal: 'right',
-                    }}
-                    keepMounted
-                    transformOrigin={{
-                        vertical: 'top',
-                        horizontal: 'right',
-                    }}
-                    open={Boolean(anchorEl)}
-                    onClose={handleClose}
-                >
-<MenuItem component={Link} to={`/profile/${data.username}`} onClick={handleClose}>
-    {data.username}
-</MenuItem>
-                    {/*<MenuItem onClick={handleClose}>Paskyra</MenuItem>*/}
-                </Menu>
-                <Button onClick={handleLogout} sx={{color: 'white'}}><LogoutIcon/></Button>
-            </div>);
+            return(<div style={{ display: 'flex', alignItems: 'center' }}>
+                    <img
+                        style={{ width: 40, height: 40, display: 'flex', justifyContent: 'center', alignItems: 'center', borderRadius: '50%' }}
+                        onClick={handleMenu}
+                        src={userProfile?.imageLink}
+                    />
+                    <Menu
+                        id="menu-appbar"
+                        anchorEl={anchorEl}
+                        anchorOrigin={{
+                            vertical: 'top',
+                            horizontal: 'right',
+                        }}
+                        keepMounted
+                        transformOrigin={{
+                            vertical: 'top',
+                            horizontal: 'right',
+                        }}
+                        open={Boolean(anchorEl)}
+                        onClose={handleClose}
+                    >
+                        <MenuItem component={Link} to={`/profile/${data.username}`} onClick={handleClose}>
+                            {data.username}
+                        </MenuItem>
+                    </Menu>
+                    <Button onClick={handleLogout} sx={{ color: 'white' }}><LogoutIcon /></Button>
+                </div>
+            );
     }
 }
 //Switch navbar buttons according to the user role for mobile

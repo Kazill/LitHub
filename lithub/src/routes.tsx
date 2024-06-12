@@ -17,6 +17,7 @@ import AdminPage from './pages/Admin';
 import MyProjects from './pages/myProjects';
 import UsersPage from  './pages/Users';
 import UserProjects from "./pages/UserProjects";
+import ProfileEdit from "./pages/profileEdit";
 function loadUserProfile() {
     try {
         const Token = localStorage.getItem('accessToken')
@@ -54,6 +55,7 @@ const Main = () => {
                 <Route path='/profile/:username' element={<Profile/>}></Route>
                 <Route path='/admin-creation' element={<AdminPage/>}></Route>
                 <Route path='/users' element={<UsersPage/>}></Route>
+                <Route path='/profile-edit/:username' element={<ProfileEdit/>}></Route>
             </Routes>
         </div>
     );

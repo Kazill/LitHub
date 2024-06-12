@@ -269,20 +269,18 @@ namespace BackEnd.Controllers
         }
 
         [HttpPost("AskConf/{username}")]
-        public async void AskConfirmation(string username)
+        public void AskConfirmation(string username)
         {
-            var user = await _context.User.FirstAsync(x => x.UserName == username);
+            var user = _context.User.FirstOrDefault(x => x.UserName == username);
             var newApproval = new WaitingForApproval
             {
                 user = user,
                 Status = "Laukia"
             };
             var waitting = _context.Waiting.FirstOrDefault(x => x.user == user);
-            if (waitting == null)
-            {
-                _context.Waiting.Add(newApproval);
-                _context.SaveChanges();
-            }
+            if (waitting != null) return;
+            _context.Waiting.Add(newApproval);
+            _context.SaveChanges();
         }
         [HttpGet("Waitting/{username}")]
         public Boolean Waiting(string username)
@@ -339,6 +337,45 @@ namespace BackEnd.Controllers
                 }
             }
             return Ok(usersList);
+        }
+        
+        [HttpPut("Update/{id}")]
+        public async Task<IActionResult> UpdateUserProfile(int id, [FromBody] UserProfileUpdateDto updateDto)
+        {
+            if (id <= 0 || updateDto == null)
+            {
+                return BadRequest();
+            }
+
+            try
+            {
+                var user = await _context.User.FindAsync(id);
+
+                if (user == null)
+                {
+                    throw new KeyNotFoundException("User not found");
+                }
+
+                user.Email = updateDto.Email;
+                user.Company = updateDto.Company;
+                user.GithubProfile = updateDto.GithubProfile;
+                user.PhoneNumber = updateDto.PhoneNumber;
+                user.ImageLink = updateDto.ImageLink;
+                user.About = updateDto.About;
+
+                _context.User.Update(user);
+                await _context.SaveChangesAsync();
+                return Ok(user);
+            }
+            catch (KeyNotFoundException)
+            {
+                return NotFound();
+            }
+            catch (Exception ex)
+            {
+                // Log the exception here
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
         }
     }
 }
