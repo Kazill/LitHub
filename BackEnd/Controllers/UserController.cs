@@ -388,5 +388,30 @@ namespace BackEnd.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
             }
         }
+        [HttpGet("work/{id}")]
+        public IActionResult getWork(int id)
+        {
+            List<Problem> workList = new List<Problem>();
+            var user = _context.User.FirstOrDefault(x=>x.Id==id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+                var markedList = _context.Marked.Where(x => x.userName == user.UserName).ToList();
+                foreach (var item in markedList)
+                {
+                    var problem = _context.Problem.FirstOrDefault(x => x.Id == item.problemId);
+                    if (problem != null)
+                    {
+                        workList.Add(problem);
+                    }
+                }
+        
+                workList = workList
+                    .OrderBy(p => (p.IsClosed ?? false) || (p.IsPrivate ?? false)) // Sort by IsClosed or IsPrivate being true (true first)
+                    .ThenByDescending(p => p.lastUpdate)
+                    .ToList();
+            return Ok(workList);
+        }
     }
 }
