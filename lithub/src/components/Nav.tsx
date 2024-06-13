@@ -31,6 +31,7 @@ interface CustomJwtPayload extends JwtPayload {
 function OptionsForDesktop(role: string){
     const navigate = useNavigate()
     const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
+    const [loading, setLoading] = useState(true);
     const handleLogout = () => {
         localStorage.removeItem('accessToken');
         navigate('/');
@@ -43,14 +44,16 @@ function OptionsForDesktop(role: string){
     useEffect(() => {
         const fetchUserProfile = async () => {
             try {
-                let token = localStorage.getItem('accessToken')
+                const token = localStorage.getItem('accessToken');
                 if (token !== null) {
-                    const data: CustomJwtPayload = jwtDecode(token)
+                    const data: CustomJwtPayload = jwtDecode(token);
                     const response = await axios.get(`https://localhost:7054/api/User/username/${data.username}`);
                     setUserProfile(response.data);
                 }
             } catch (error) {
                 console.error('Error fetching user profile:', error);
+            } finally {
+                setLoading(false);
             }
         };
 

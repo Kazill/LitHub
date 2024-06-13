@@ -73,8 +73,8 @@ const Login = () => {
                     'Content-Type': 'application/json',
                 },
             });
-
             localStorage.setItem('accessToken', response.data)
+            window.location.reload();
             navigate('/');
         }catch (e) {
             if (axios.isAxiosError(e)) {
