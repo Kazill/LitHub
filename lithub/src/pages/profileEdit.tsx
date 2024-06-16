@@ -277,6 +277,7 @@ const ProfileEdit: React.FC = () => {
                 <p style={{color: "white"}}>Aprašymas:</p>
                 <TextField
                     fullWidth
+                    multiline
                     name="about"
                     value={userProfile.about}
                     onChange={handleChange}

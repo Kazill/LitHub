@@ -362,7 +362,7 @@ const Profile: React.FC = () => {
         {handleCompanyName()}
         <p style={{color: "white"}}>Aprašymas:</p>
         <div style={{ background: '#6E83AC', padding: '5px', width: '100%' }}>
-          <Typography style={{ margin: 0, textAlign: 'left' }}>{userProfile?.about}</Typography>
+          <Typography style={{ margin: 0, textAlign: 'left' }}><Linkify text={userProfile?.about || ''} /></Typography>
         </div>
       </div>
       {userProfile.role==="Prisiregistravęs" ?(
@@ -450,6 +450,32 @@ const Profile: React.FC = () => {
 
     </div>
   );
+};
+
+
+// @ts-ignore
+const Linkify = ({ text }) => {
+  const urlRegex = /(https?:\/\/[^\s]+)/g;
+
+  const parts = text.split('\n').map((line: string, index: any) =>
+      line.split(urlRegex).map((part, i) => {
+        if (urlRegex.test(part)) {
+          return (
+              <a href={part} key={`${index}-${i}`} style={{ color: '#FFA500' }} target="_blank" rel="noopener noreferrer">
+                {part}
+              </a>
+          );
+        }
+        return part;
+      })
+  );
+
+  return parts.map((lineParts: string,index: any) => (
+      <React.Fragment key={index}>
+        {lineParts}
+        <br />
+      </React.Fragment>
+  ));
 };
 
 function ProjectList({ selectedLanguages, startDate, endDate,userId}: { selectedLanguages: string[], startDate: string, endDate: string, userId: number }) {

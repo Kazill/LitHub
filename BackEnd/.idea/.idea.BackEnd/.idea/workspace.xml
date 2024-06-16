@@ -15,7 +15,6 @@
       <change beforePath="$PROJECT_DIR$/bin/Debug/net6.0/BackEnd.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net6.0/BackEnd.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/net6.0/BackEnd.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net6.0/BackEnd.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/net6.0/BackEnd.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net6.0/BackEnd.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/net6.0/BackEnd.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net6.0/BackEnd.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/net6.0/BackEnd.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net6.0/BackEnd.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/net6.0/BackEnd.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net6.0/BackEnd.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/net6.0/BackEnd.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net6.0/BackEnd.sourcelink.json" afterDir="false" />
@@ -23,6 +22,8 @@
       <change beforePath="$PROJECT_DIR$/obj/Debug/net6.0/ref/BackEnd.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net6.0/ref/BackEnd.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/net6.0/refint/BackEnd.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net6.0/refint/BackEnd.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../lithub/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../lithub/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lithub/node_modules/.cache/default-development/index.pack" beforeDir="false" afterPath="$PROJECT_DIR$/../lithub/node_modules/.cache/default-development/index.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lithub/node_modules/.cache/default-development/index.pack.old" beforeDir="false" afterPath="$PROJECT_DIR$/../lithub/node_modules/.cache/default-development/index.pack.old" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +52,7 @@
     &quot;.NET Launch Settings Profile.BackEnd.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;profile-edit&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -125,7 +126,9 @@
       <workItem from="1717064492724" duration="2416000" />
       <workItem from="1717525283624" duration="161000" />
       <workItem from="1718178222012" duration="7206000" />
-      <workItem from="1718284007122" duration="618000" />
+      <workItem from="1718284007122" duration="1212000" />
+      <workItem from="1718463706246" duration="150000" />
+      <workItem from="1718464221693" duration="104000" />
     </task>
     <servers />
   </component>
